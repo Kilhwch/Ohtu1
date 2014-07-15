@@ -1,5 +1,6 @@
 # Siirry gh-pages branchiin
 git checkout gh-pages
+git pull origin gh-pages
 
 echo tyhjennä kansio
 git rm -r .
