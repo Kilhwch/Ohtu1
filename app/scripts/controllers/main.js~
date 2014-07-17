@@ -13,7 +13,7 @@ var myApp = angular.module('ohtuProjektiAppApp');
 myApp.controller('MainCtrl', function ($scope,$http) {
 
 	$scope.getGitInfo = function () {
-	    $http.get('https://api.github.com/repos/'+ $scope.username +'/'+ $scope.reponame +'/issues?client_id=a722b388a41d1580be98&client_secret=7f12c6e3ed9823f7c5fb0c914772b2a6a7ca545d').success(function(issue)
+	    $http.get('https://api.github.com/repos/Kilhwch/Ohtu1/issues?client_id=a722b388a41d1580be98&client_secret=7f12c6e3ed9823f7c5fb0c914772b2a6a7ca545d').success(function(issue)
 	    {
 	      $scope.tasks = issue;
 	    }).error(function() {
