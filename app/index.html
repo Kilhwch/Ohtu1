@@ -57,17 +57,17 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/oauth-js/dist/oauth.min.js"></script>
     <script src="bower_components/github/github.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/lib/base64.js"></script>
-        <script src="scripts/lib/underscore-min.js"></script>    
-        <script src="scripts/lib/github.js"></script>
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->>
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/services/gitapi.js"></script>
+        <script src="scripts/services/auth.js"></script>
         <!-- endbuild -->
 </body>
 </html>
