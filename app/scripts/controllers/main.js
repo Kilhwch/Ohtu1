@@ -10,7 +10,7 @@
 
 var myApp = angular.module('ohtuProjektiAppApp');
 
-myApp.controller('MainCtrl', function ($scope,$http, $location, gitapi) {
+myApp.controller('MainCtrl', function ($scope, $location, gitapi) {
 	if (!gitapi.isAuthenticated()){
 		$location.path('login');
 	}else{
