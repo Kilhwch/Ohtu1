@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: oauth', function () {
+describe('Service: auth', function () {
 
   // load the service's module
   beforeEach(module('ohtuProjektiAppApp'));
 
   // instantiate service
-  var oauth;
-  beforeEach(inject(function (_oauth_) {
-    oauth = _oauth_;
+  var auth;
+  beforeEach(inject(function (_auth_) {
+    auth = _auth_;
   }));
 
   it('should do something', function () {
-    expect(!!oauth).toBe(true);
+    expect(!!auth).toBe(true);
   });
 
 });
