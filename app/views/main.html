@@ -1,12 +1,7 @@
 <div class="container">
 	<div ng-controller="MainCtrl">
-	<input type="text" id="ghusername" ng-model="username" placeholder="Github username...">
-	<input type="text" id="greporname" ng-model="reponame" placeholder="Github reponame..." ng-change="getGitInfo()" >
 		<ul>
-		      <li ng-repeat="issue in tasks">
-		        {{issue.created_at+" "}}
-		        {{issue.body}}
-		      </li>
+			<li ng-repeat="repo in repos">{{repo.name}}</li>
 		</ul>
 	</div>
 </div>
