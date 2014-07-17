@@ -12,7 +12,8 @@
     "angular-animate": "1.2.16",
     "angular-touch": "1.2.16",
     "angular-route": "1.2.16",
-    "oauth-js": "x.x.x"
+    "oauth-js": "x.x.x",
+    "github": "https://github.com/gire/github"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",
