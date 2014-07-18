@@ -15,26 +15,28 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.router'
   ])
   .factory('auth', function(){
 
   })
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
+  .config(function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise("/");
+    $stateProvider
+      .state('index', {
+        url: '/',
+        views: {
+          "header": {templateUrl: 'views/index.header.html'},
+          "login": {templateUrl: 'views/index.login.html',
+                    controller: 'LoginCtrl'}
+        },
         controller: 'MainCtrl'
       })
-      .when('/about', {
+      .state('about', {
+        url: "/about",
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
-      })
-      .when('/login', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
       });
+
   });
