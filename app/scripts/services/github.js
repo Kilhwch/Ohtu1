@@ -15,6 +15,9 @@ angular.module('ohtuProjektiAppApp')
       loginWithToken : function(authtoken){
           token = authtoken;
       },
+      isAuthenticated : function(){
+        return token != undefined;
+      },
       _http: function(method, url, data, success, error) {
         var promise = $http({method: method, url:apiUrl + url, data:data, headers: 'Authorization: token ' + token}).success(success);
         if (error) {
@@ -54,4 +57,5 @@ angular.module('ohtuProjektiAppApp')
           _http("PATCH", url + "/" + number, {"state":"closed"}, cb);
         };
       }
+    };
   }]);
