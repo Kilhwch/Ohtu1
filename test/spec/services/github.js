@@ -7,6 +7,7 @@ describe('Service: github', function () {
 
   // instantiate service
   var github, $httpBackend, httpResult, apiUrl = "https://api.github.com";
+
   function success(data) {
     httpResult = data;
   }
@@ -20,13 +21,68 @@ describe('Service: github', function () {
     expect(github.isAuthenticated()).toBe(true);
   });
 
-<<<<<<< HEAD
 
-  it('labels should do something', function () {
-	expect(github.list).toBeUndefined();
+  describe('github.Label', function(){
+    var labels, user = 'user123', repo = 'repo123';
+    var url = apiUrl + "/repos/" + user + "/" + repo + "/labels";
+
+    beforeEach(inject(function (_$httpBackend_) {
+      $httpBackend = _$httpBackend_;
+      labels = new github.Label(user, repo);
+      httpResult = undefined;
+    }));
+
+    it('should list all labels', function () {
+      $httpBackend.expectGET(url).respond(true);
+      labels.list({}, success);
+      expect(httpResult).toBeUndefined();
+
+      $httpBackend.flush();
+      expect(httpResult).toBe(true);
+    });
+
+    it('should list specific label', function () {
+      $httpBackend.expectGET(url + '/' + 'repo123').respond(true);
+      labels.getLabel('repo123', success);
+      expect(httpResult).toBeUndefined();
+
+      $httpBackend.flush();
+      expect(httpResult).toBe(true);
+    });
+
+    it('should create a label', function () {
+      var data = {name: "label1", "color": "FFFFFF"};
+      $httpBackend.expectPOST(url, data).respond(true);
+      labels.createLabel(data, success);
+      expect(httpResult).toBeUndefined();
+
+      $httpBackend.flush();
+      expect(httpResult).toBe(true);
+    });
+
+    it('should update a label', function () {
+      var data = {name: "label1", "color": "FFFFFF"};
+      $httpBackend.expectPATCH(url + '/' + 'repo123', data).respond(true);
+      labels.updateLabel('repo123', data, success);
+      expect(httpResult).toBeUndefined();
+
+      $httpBackend.flush();
+      expect(httpResult).toBe(true);
+    });
+
+    it('should delete a label', function () {
+      var data = {name: "label1", "color": "FFFFFF"};
+      $httpBackend.expectPATCH(url + '/' + 'repo123', data).respond(true);
+      labels.deleteLabel('repo123', data, success);
+      expect(httpResult).toBeUndefined();
+
+      $httpBackend.flush();
+      expect(httpResult).toBe(true);
+    });
+
+
   });
 
-=======
   describe('github.Issue', function () {
 
     var issues, user = 'user123', repo = 'repo123';
@@ -95,6 +151,7 @@ describe('Service: github', function () {
       $httpBackend.flush();
       expect(httpResult).toBe(true);
     });
+
   });
->>>>>>> 761b073ed27a86ff145a9834ae19ba42e3e6da34
+
 });

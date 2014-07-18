@@ -23,9 +23,11 @@ angular.module('ohtuProjektiAppApp')
       loginWithToken : function(authtoken){
           token = authtoken;
       },
+
       isAuthenticated : function(){
         return token != undefined;
       },
+
       Issue: function(user, repo) {
         var url = "/repos/" + user + "/" + repo + "/issues";
 
@@ -60,9 +62,8 @@ angular.module('ohtuProjektiAppApp')
         };
       },
 
-	Label: function(options) {
-        var url = "/repos/" + options.user + "/" + options.repo + "/labels";
-
+	Label: function(user, repo) {
+        var url = "/repos/" + user + "/" + repo + "/labels";
 
         this.list = function(options, cb) {
           _http("GET", url, options, cb);
@@ -87,6 +88,6 @@ angular.module('ohtuProjektiAppApp')
           _http("PATCH", url + "/" + name, options, cb);
         };
 
-      }
+      },
     };
   }]);
