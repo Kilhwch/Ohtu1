@@ -29,7 +29,9 @@ angular
         views: {
           "header": {templateUrl: 'views/index.header.html'},
           "login": {templateUrl: 'views/index.login.html',
-                    controller: 'LoginCtrl'}
+                    controller: 'LoginCtrl'},
+          "footer": {templateUrl: 'views/index.footer.html',
+                    controller: 'FooterCtrl'}
         },
         controller: 'MainCtrl'
       })
