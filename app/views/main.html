@@ -1,6 +1,6 @@
 <div class="container">
 	<div ng-controller="MainCtrl" class="list-group">
-		<a ng-href="/repo/{{repo.name}}" class="list-group-item list-group-item-info"
+		<a ui-sref="backlog" href="/backlog/{{repo.name}}class="list-group-item list-group-item-info"
 		ng-repeat="repo in repos">{{repo.name}}</a>
 	</div>
 </div>
