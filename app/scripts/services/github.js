@@ -1,5 +1,7 @@
 'use strict';
 
+
+/* jshint ignore:start */
 /**
  * @ngdoc service
  * @name ohtuProjektiAppApp.github
@@ -56,6 +58,35 @@ angular.module('ohtuProjektiAppApp')
         this.closeIssue = function(number, cb) {
           _http("PATCH", url + "/" + number, {"state":"closed"}, cb);
         };
+      },
+
+	Label: function(options) {
+        var url = "/repos/" + options.user + "/" + options.repo + "/labels";
+
+
+        this.list = function(options, cb) {
+          _http("GET", url, options, cb);
+        };
+
+
+        this.getLabel = function(name, cb) {
+          _http("GET", url + "/" + name, null, cb);
+        };
+
+
+        this.createLabel = function(options, cb) {
+          _http("POST", url, options, cb);
+        };
+	
+	this.deleteLabel = function(name, options, cb) {
+          _http("PATCH", url + "/" + name, options, cb);
+        };
+
+
+        this.updateLabel = function(name, options, cb) {
+          _http("PATCH", url + "/" + name, options, cb);
+        };
+
       }
     };
   }]);

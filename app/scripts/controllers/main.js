@@ -16,6 +16,7 @@ myApp.controller('MainCtrl', function ($scope, $location, gitapi) {
 	}else{
 		var git = gitapi.getGithub();
 		var user = git.getUser();
+		
 
 		user.repos(function(err, repos){			
 			$scope.$apply(function(){

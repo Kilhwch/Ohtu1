@@ -15,4 +15,9 @@ describe('Service: github', function () {
     expect(!!github).toBe(true);
   });
 
+
+  it('labels should do something', function () {
+
+  });
+
 });
