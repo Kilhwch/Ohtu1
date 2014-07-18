@@ -10,17 +10,15 @@
 angular.module('ohtuProjektiAppApp')
   .service('github', ['$http', function github($http) {
     var apiUrl = "https://api.github.com";
+    var token;
     return {
       loginWithToken : function(authtoken){
-        github = new Github({
-          token: authtoken,
-          auth: "oauth"
-        });
+          token = authtoken;
       },
       _http: function(method, url, data, success, error) {
-        var obj = $http({method:method, url:url, data:data}).success(success);
+        var promise = $http({method: method, url:apiUrl + url, data:data, headers: 'Authorization: token ' + token}).success(success);
         if (error) {
-          obj.error(error);
+          promise.error(error);
         }
       },
       Issue: function(options) {
@@ -33,44 +31,27 @@ angular.module('ohtuProjektiAppApp')
 
         // Gets details for a specific issue
         this.getIssue = function(number, cb) {
-          _request("GET", url + "/" + number, null, function(err, pull) {
-            if (err) return cb(err);
-            cb(null, pull);
-          });
+          _http("GET", url + "/" + number, null, cb);
         };
 
-      // Create a new issue
-      this.createIssue = function(options, cb) {
-        _request("POST", url, options, function(err, pull) {
-          if (err) return cb(err);
-          cb(null, pull);
-        });
-      };
+        // Create a new issue
+        this.createIssue = function(options, cb) {
+          _http("POST", url, options, cb);
+        };
 
-      // Update an issue
-      this.updateIssue = function(number, options, cb) {
-        _request("PATCH", url + "/" + number, options, function(err, pull) {
-          if (err) return cb(err);
-          cb(null, pull);
-        });
-      };
+        // Update an issue
+        this.updateIssue = function(number, options, cb) {
+          _http("PATCH", url + "/" + number, options, cb);
+        };
 
-      // Open an issue
-      this.openIssue = function(number, cb) {
-        _request("PATCH", url + "/" + number, {"state":"open"}, function(err, pull) {
-          if (err) return cb(err);
-          cb(null, pull);
-        });
-      };
+        // Open an issue
+        this.openIssue = function(number, cb) {
+          _http("PATCH", url + "/" + number, {"state":"open"}, cb);
+        };
 
-      // Close an issue
-      this.closeIssue = function(number, cb) {
-        _request("PATCH", url + "/" + number, {"state":"closed"}, function(err, pull) {
-          if (err) return cb(err);
-          cb(null, pull);
-        });
-      };
-
-    };
-    };
+        // Close an issue
+        this.closeIssue = function(number, cb) {
+          _http("PATCH", url + "/" + number, {"state":"closed"}, cb);
+        };
+      }
   }]);
