@@ -13,6 +13,12 @@ angular.module('ohtuProjektiAppApp')
   .service('github', ['$http', function github($http) {
     var apiUrl = "https://api.github.com";
     var token;
+    function _http(method, url, data, success, error) {
+      var promise = $http({method: method, url:apiUrl + url, data:data, headers: 'Authorization: token ' + token}).success(success);
+      if (error) {
+        promise.error(error);
+      }
+    };
     return {
       loginWithToken : function(authtoken){
           token = authtoken;
@@ -20,14 +26,8 @@ angular.module('ohtuProjektiAppApp')
       isAuthenticated : function(){
         return token != undefined;
       },
-      _http: function(method, url, data, success, error) {
-        var promise = $http({method: method, url:apiUrl + url, data:data, headers: 'Authorization: token ' + token}).success(success);
-        if (error) {
-          promise.error(error);
-        }
-      },
-      Issue: function(options) {
-        var url = "/repos/" + options.user + "/" + options.repo + "/issues";
+      Issue: function(user, repo) {
+        var url = "/repos/" + user + "/" + repo + "/issues";
 
         // List all issues of a repository
         this.list = function(options, cb) {
