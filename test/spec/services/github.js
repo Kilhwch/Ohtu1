@@ -17,7 +17,7 @@ describe('Service: github', function () {
 
 
   it('labels should do something', function () {
-
+	expect(github.list).toBeUndefined();
   });
 
 });
