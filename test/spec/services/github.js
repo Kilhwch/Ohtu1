@@ -69,13 +69,71 @@ describe('Service: github', function () {
       $httpBackend.flush();
       expect(httpResult).toBe(true);
     });
-
+	//fix this
     it('should delete a label', function () {
-      var data = {name: "label1", "color": "FFFFFF"};
-      $httpBackend.expectPATCH(url + '/' + 'repo123', data).respond(true);
-      labels.deleteLabel('repo123', data, success);
+      $httpBackend.expectDELETE(url + '/' + 1).respond(true);
+      labels.deleteLabel(1, success);
       expect(httpResult).toBeUndefined();
 
+      $httpBackend.flush();
+      expect(httpResult).toBe(true);
+    });
+
+
+  });
+
+  describe('github.Milestone', function(){
+    var milestones, user = 'user123', repo = 'repo123';
+    var url = apiUrl + "/repos/" + user + "/" + repo + "/milestones";
+
+    beforeEach(inject(function (_$httpBackend_) {
+      $httpBackend = _$httpBackend_;
+      milestones = new github.Milestone(user, repo);
+      httpResult = undefined;
+    }));
+
+    it('should list all labels', function () {
+      $httpBackend.expectGET(url).respond(true);
+      milestones.list({}, success);
+      expect(httpResult).toBeUndefined();
+
+      $httpBackend.flush();
+      expect(httpResult).toBe(true);
+    });
+
+    it('should list specific milestone', function () {
+      $httpBackend.expectGET(url + '/' + 1).respond(true);
+      milestones.getMilestone(1, success);
+      expect(httpResult).toBeUndefined();
+
+      $httpBackend.flush();
+      expect(httpResult).toBe(true);
+    });
+
+    it('should create a milestone', function () {
+      var data = {title: "milestone1"};
+      $httpBackend.expectPOST(url, data).respond(true);
+      milestones.createMilestone(data, success);
+      expect(httpResult).toBeUndefined();
+
+      $httpBackend.flush();
+      expect(httpResult).toBe(true);
+    });
+
+    it('should update a milestone', function () {
+      var data = {title: "milestone1"};
+      $httpBackend.expectPATCH(url + '/' + 1, data).respond(true);
+      milestones.updateMilestone(1, data, success);
+      expect(httpResult).toBeUndefined();
+
+      $httpBackend.flush();
+      expect(httpResult).toBe(true);
+    });
+	//fix this
+    it('should delete a milestone', function () {
+      $httpBackend.expectDELETE(url + '/' + 1).respond(true);
+      milestones.deleteMilestone(1, success);
+      expect(httpResult).toBeUndefined();
       $httpBackend.flush();
       expect(httpResult).toBe(true);
     });

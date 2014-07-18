@@ -79,8 +79,8 @@ angular.module('ohtuProjektiAppApp')
           _http("POST", url, options, cb);
         };
 	
-	this.deleteLabel = function(name, options, cb) {
-          _http("PATCH", url + "/" + name, options, cb);
+	this.deleteLabel = function(name, cb) {
+          _http("DELETE", url + "/" + name, null, cb);
         };
 
 
@@ -89,5 +89,34 @@ angular.module('ohtuProjektiAppApp')
         };
 
       },
+
+      Milestone: function(user, repo) {
+        var url = "/repos/" + user + "/" + repo + "/milestones";
+
+
+        this.list = function(options, cb) {
+          _http("GET", url, options, cb);
+        };
+
+
+        this.getMilestone = function(number, cb) {
+          _http("GET", url + "/" + number, null, cb);
+        };
+
+
+        this.createMilestone = function(options, cb) {
+          _http("POST", url, options, cb);
+        };
+
+
+        this.updateMilestone = function(number, options, cb) {
+          _http("PATCH", url + "/" + number, options, cb);
+        };
+	
+	this.deleteMilestone = function(number, cb) {
+          _http("DELETE", url + "/" + number, null, cb);
+        };
+      },
+
     };
   }]);
