@@ -14,25 +14,39 @@ angular.module('ohtuProjektiAppApp')
     var apiUrl = "https://api.github.com";
     var token;
     function _http(method, url, data, success, error) {
-      var promise = $http({
-                      method: method,
-                      url: apiUrl + url,
-                      data: data,
-                      headers: {
-                       'Authorization': 'token ' + token
-                      }
-                    }).success(success);
+      var options = { method: method, url: apiUrl + url, data: data };
+
+      if (!!token) {
+        options.headers = { 'Authorization': 'token ' + token };
+      }
+
+      var promise = $http(options).success(success);
       if (error) {
         promise.error(error);
       }
     };
     return {
-      loginWithToken : function(authtoken){
+      loginWithToken: function(authtoken){
           token = authtoken;
       },
 
-      isAuthenticated : function(){
+      isAuthenticated: function(){
         return token != undefined;
+      },
+
+      user: function(username, cb) {
+        _http("GET", "/users/" + username, null, cb);
+      },
+
+      authenticatedUser: function(cb) {
+        _http("GET", "/user", null, cb);
+      },
+
+      // List user repositories
+
+      userRepos: function(username, cb) {
+        var url = "/users/" + username + "/repos?type=all&per_page=1000&sort=updated";
+        _http("GET", url, null, cb);
       },
 
       Issue: function(user, repo) {
