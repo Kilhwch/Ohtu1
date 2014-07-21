@@ -67,12 +67,6 @@ angular
 		views: {
 			'': {
         templateUrl: 'views/issueboard.html',
-        /*
-				controller: function($stateParams, $scope) {
-          $scope.repoName = $stateParams.repoName;
-          $scope.owner = $stateParams.owner;
-        },
-        */
 				controller: 'IssueboardCtrl',
 			},
 			'header@': {
