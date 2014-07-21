@@ -70,11 +70,6 @@ angular
 				controller: function($stateParams, $scope) {
           $scope.repoName = $stateParams.repoName;
         },
-        resolve: {
-          repoName: ['$stateParams', function($stateParams) {
-            return $stateParams.repoName;
-          }]
-        }
 				//controller: 'ListCtrl',
 			},
 			'header@': {
