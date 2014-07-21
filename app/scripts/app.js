@@ -9,7 +9,14 @@
  * Main module of the application.
  */
 angular
-  .module('ohtuProjektiAppApp', ['ui.router'])
+  .module('ohtuProjektiAppApp', [
+    'ngAnimate',
+    'ngCookies',
+    'ngResource',
+    'ngSanitize',
+    'ngTouch',
+    'ui.router'
+  ])
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/main");
     $stateProvider   
@@ -43,4 +50,5 @@ angular
 			}
 		}
       });
+
   });

@@ -11,7 +11,6 @@
     "angular-sanitize": "1.2.16",
     "angular-animate": "1.2.16",
     "angular-touch": "1.2.16",
-    "angular-route": "1.2.16",
     "oauth-js": "x.x.x",
     "underscore": "~1.6.0",
     "github": "https://github.com/gire/github.git",
