@@ -8,10 +8,8 @@
  * Controller of the ohtuProjektiAppApp
  */
 angular.module('ohtuProjektiAppApp')
-  .controller('IssueboardCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('IssueboardCtrl', function ($scope, $stateParams) {
+    $scope.repoName = $stateParams.repoName;
+    $scope.owner = $stateParams.owner;
+
   });

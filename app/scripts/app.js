@@ -63,19 +63,11 @@ angular
 		}
       })
       .state('repository', {
-      	url: '/repos/:repoName',		
+      	url: '/repos/:owner/:repoName',		
 		views: {
 			'': {
-        templateUrl: 'views/repository.html',
-				controller: function($stateParams, $scope) {
-          $scope.repoName = $stateParams.repoName;
-        },
-        resolve: {
-          repoName: ['$stateParams', function($stateParams) {
-            return $stateParams.repoName;
-          }]
-        }
-				//controller: 'ListCtrl',
+        templateUrl: 'views/issueboard.html',
+				controller: 'IssueboardCtrl',
 			},
 			'header@': {
 				templateUrl: 'views/header.html'
