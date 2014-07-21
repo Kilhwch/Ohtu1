@@ -2,7 +2,7 @@ node_js:
 - "0.10"
 env: 
   matrix:
-    secure: "ofToNCIFt9KhGsqioFh6wD5U4WbPOnjp+WL8ARrvwjZ+hpzouvIT13mKNg2YN+mM8buBZWO9c8iDBKJTE53/F2Ri1vL1ehTDZGc5UIqD9MeJKvy01z1DlEjiz9JhsIxVemXtH/mNafC92lfoAn9QprOEdRgCyYDBZf/WQ+GRTO0="
+    secure: "dqFg3We+roZV9bP0BPLipIinNdzAq0V5rRAr91GyZ4D59sdWnYlHhTm5XkSjevXCTnbzyumP6NXidCrjcdsyptUktfuHl95TPKkVv489cCe93kKoMRRwJi4Re9DarJIuq50FL7bDX6EUdc8+ZlODeS2ITAC4B6VIF7UR0TKolDA="
 language: node_js
 before_script: 
   - npm install -g bower grunt-cli
