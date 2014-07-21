@@ -2,8 +2,8 @@
      
 var myApp = angular.module('ohtuProjektiAppApp');
      
-myApp.controller('IssuesCtrl', function ($scope, $state, github) {
-        $scope.issues = new github.Issue('Kilhwch', 'Ohtu1');
+myApp.controller('IssuesCtrl', function ($scope, $stateParams, github) {
+        $scope.issues = new github.Issue($stateParams.owner, $stateParams.repoName);
         $scope.issues.list({}, function(data) {
         $scope.issues = data;
 });
