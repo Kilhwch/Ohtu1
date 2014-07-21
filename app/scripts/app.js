@@ -73,6 +73,26 @@ angular
 				templateUrl: 'views/header.html'
 			}
 		}
+      })
+      .state('repository', {
+      	url: '/repos/:repoName',		
+		views: {
+			'': {
+        templateUrl: 'views/repository.html',
+				controller: function($stateParams, $scope) {
+          $scope.repoName = $stateParams.repoName;
+        },
+        resolve: {
+          repoName: ['$stateParams', function($stateParams) {
+            return $stateParams.repoName;
+          }]
+        }
+				//controller: 'ListCtrl',
+			},
+			'header@': {
+				templateUrl: 'views/header.html'
+			}
+		}
       });
 
   });
