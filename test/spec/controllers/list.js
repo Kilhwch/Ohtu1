@@ -9,14 +9,16 @@ describe('Controller: ListCtrl', function () {
     scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, github) {
     scope = $rootScope.$new();
+    scope.repos = ['repo1', 'repo2', 'repo3'];
+    github.loginWithToken(123);
     ListCtrl = $controller('ListCtrl', {
       $scope: scope
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  it('should attach a list of repos to the scope', function () {
+    expect(scope.repos.length).toBe(3);
   });
 });
