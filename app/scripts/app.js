@@ -63,14 +63,17 @@ angular
 		}
       })
       .state('repository', {
-      	url: '/repos/:repoName',		
+      	url: '/repos/:owner/:repoName',		
 		views: {
 			'': {
-        templateUrl: 'views/repository.html',
+        templateUrl: 'views/issueboard.html',
+        /*
 				controller: function($stateParams, $scope) {
           $scope.repoName = $stateParams.repoName;
+          $scope.owner = $stateParams.owner;
         },
-				//controller: 'ListCtrl',
+        */
+				controller: 'IssueboardCtrl',
 			},
 			'header@': {
 				templateUrl: 'views/header.html'
