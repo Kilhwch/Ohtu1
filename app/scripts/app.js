@@ -26,6 +26,18 @@ angular
       .state('footer', {
 		templateUrl: 'views/footer.html'
       })
+      .state('issues', {
+      	url: '/issues',		
+		views: {
+			'': {
+				templateUrl: 'views/issues.html',
+				controller: 'MainCtrl',
+			},
+			'header@': {
+				templateUrl: 'views/header.html'
+			}
+		}
+      })
       .state('main', {
       	url: '/main',		
 		views: {
