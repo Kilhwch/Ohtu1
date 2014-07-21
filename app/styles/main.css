@@ -4,6 +4,30 @@ body {
   padding-bottom: 20px;
 }
 
+.backlog{
+  width:300px;
+  margin-left:20px;
+  background:rgba(192,192,192, 0.4);
+}
+
+.column1{
+  width:300px;
+  margin-left:20px;
+  background:rgba(144,238,144,0.2);
+}
+
+.column2{
+  width:300px;
+  margin-left:20px;
+  background:rgba(255,255,0,0.2);
+}
+
+.column3{
+  width:300px;
+  margin-left:20px;
+  background:rgba(255,0,0,0.2);
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,

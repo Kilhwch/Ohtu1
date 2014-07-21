@@ -5,11 +5,28 @@
 
 
 <div ng-controller="IssuesCtrl">
+  <div class="backlog" style="float:left">
 	<div ng-repeat="issue in issues">
 	  <p>{{issue.title}}</p>
-	  <p>{{issue.label[0]}}</p>
-	  <div ng-repeat="label in issue.labels">	
-	    <p>{{label.name}} </p>
-	  </div>
 	</div>
+  </div>
+
+  <div class="column1" style="float:left">
+	<div ng-repeat="issue in issues | filter:{labels :'Ready'}">
+	  <p>{{issue.title}}</p>
+	</div>
+  </div>
+
+  <div class="column2" style="float:left">
+	<div ng-repeat="issue in issues | filter:{labels :'InProgress'}">
+	  <p>{{issue.title}}</p>
+	</div>
+  </div>
+
+  <div class="column3" style="float:left">
+	<div ng-repeat="issue in issues | filter:{labels :'Done'}">
+	  <p>{{issue.title}}</p>
+	</div>
+  </div>
+
 </div>
