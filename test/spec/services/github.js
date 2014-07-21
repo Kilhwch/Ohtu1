@@ -16,6 +16,7 @@ describe('Service: github', function () {
   }));
 
   it('should authenticate whith oginWithToken', function () {
+    github.logout();
     expect(github.isAuthenticated()).toBe(false);
     github.loginWithToken(123);
     expect(github.isAuthenticated()).toBe(true);

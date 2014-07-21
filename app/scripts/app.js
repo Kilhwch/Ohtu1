@@ -11,7 +11,7 @@
 angular
   .module('ohtuProjektiAppApp', [
     'ngAnimate',
-    'ngCookies',
+    'LocalStorageModule',
     'ngResource',
     'ngSanitize',
     'ngTouch',
@@ -34,6 +34,7 @@ angular
 				controller: 'IssueboardCtrl',
 			},
 			'header@': {
+				controller: 'HeaderCtrl',
 				templateUrl: 'views/header.html'
 			}
 		}
@@ -46,9 +47,23 @@ angular
 				controller: 'LoginCtrl',
 			},
 			'header@': {
+				controller: 'HeaderCtrl',
 				templateUrl: 'views/header.html'
 			}
 		}
+      })
+      .state('logout', {
+        url: '/logout',
+                views: {
+                        '': {
+                                templateUrl: 'views/logout.html',
+                                controller: 'LogoutCtrl',
+                        },
+                        'header@': {
+				controller: 'HeaderCtrl',
+                                templateUrl: 'views/header.html'
+                        }
+                }
       })
       .state('list', {
       	url: '/list',		
@@ -58,6 +73,7 @@ angular
 				controller: 'ListCtrl',
 			},
 			'header@': {
+				controller: 'HeaderCtrl',
 				templateUrl: 'views/header.html'
 			}
 		}
