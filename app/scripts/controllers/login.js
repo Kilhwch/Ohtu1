@@ -9,11 +9,11 @@
  */
 
 angular.module('ohtuProjektiAppApp')
-  .controller('LoginCtrl', function($scope, $state, gitapi, auth) {
+  .controller('LoginCtrl', function($scope, $state, github, auth) {
        $scope.signin = function(){
        		var gitauth = auth.askAuth();
           gitauth.done(function(result){
-            gitapi.loginWithToken(result.access_token);
+            github.loginWithToken(result.access_token);
             $state.go('main');
             $scope.$apply();
           })

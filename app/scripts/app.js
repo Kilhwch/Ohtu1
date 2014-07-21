@@ -42,8 +42,8 @@ angular
       	url: '/main',		
 		views: {
 			'': {
-				templateUrl: 'views/main.html',
-				controller: 'MainCtrl',
+				templateUrl: 'views/issueboard.html',
+				controller: 'IssueboardCtrl',
 			},
 			'header@': {
 				templateUrl: 'views/header.html'
@@ -56,6 +56,18 @@ angular
 			'': {
 				templateUrl: 'views/login.html',
 				controller: 'LoginCtrl',
+			},
+			'header@': {
+				templateUrl: 'views/header.html'
+			}
+		}
+      })
+      .state('list', {
+      	url: '/list',		
+		views: {
+			'': {
+				templateUrl: 'views/list.html',
+				controller: 'ListCtrl',
 			},
 			'header@': {
 				templateUrl: 'views/header.html'
