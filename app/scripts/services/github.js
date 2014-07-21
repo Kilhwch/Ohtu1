@@ -2,6 +2,7 @@
 
 
 /* jshint ignore:start */
+
 /**
  * @ngdoc service
  * @name ohtuProjektiAppApp.github
@@ -9,6 +10,7 @@
  * # github
  * Service in the ohtuProjektiAppApp.
  */
+
 angular.module('ohtuProjektiAppApp')
   .service('github', ['$http', 'localStorageService', function github($http, localStorageService) {
     var apiUrl = "https://api.github.com";
