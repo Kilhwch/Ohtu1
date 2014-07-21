@@ -16,3 +16,4 @@ echo lisää, ja committaa
 git add .
 git commit -m "pages"
 git push origin gh-pages
+git checkout master
