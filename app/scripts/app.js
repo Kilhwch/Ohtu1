@@ -86,11 +86,12 @@ angular
 				controller: 'IssueboardCtrl',
 			},
 			'header@': {
+				controller: 'HeaderCtrl',
 				templateUrl: 'views/header.html'
 			}
 		}
       })
-      .state('burndow', {
+      .state('burndown', {
       	url: '/repos/:owner/:repoName/burndown',		
 	    	views: {
 			    '': {
@@ -98,6 +99,7 @@ angular
 				  controller: 'BurndownCtrl',
 			  },
 			  'header@': {
+				controller: 'HeaderCtrl',
 				templateUrl: 'views/header.html'
 			  }
 		    }
