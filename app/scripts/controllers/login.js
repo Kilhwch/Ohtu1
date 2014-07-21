@@ -9,12 +9,12 @@
  */
 
 angular.module('ohtuProjektiAppApp')
-  .controller('LoginCtrl', function($scope, $location, gitapi, auth) {
+  .controller('LoginCtrl', function($scope, $state, gitapi, auth) {
        $scope.signin = function(){
        		var gitauth = auth.askAuth();
           gitauth.done(function(result){
             gitapi.loginWithToken(result.access_token);
-            $location.path('/');
+            $state.go('main');
             $scope.$apply();
           })
           .fail(function(err){

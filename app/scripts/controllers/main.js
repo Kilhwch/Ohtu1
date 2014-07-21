@@ -10,13 +10,12 @@
 
 var myApp = angular.module('ohtuProjektiAppApp');
 
-myApp.controller('MainCtrl', function ($scope, $location, gitapi) {
+myApp.controller('MainCtrl', function ($scope, $state, gitapi) {
 	if (!gitapi.isAuthenticated()){
-		$location.path('login');
+		$state.go('login');
 	}else{
 		var git = gitapi.getGithub();
 		var user = git.getUser();
-		
 
 		user.repos(function(err, repos){			
 			$scope.$apply(function(){

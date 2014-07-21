@@ -17,27 +17,38 @@ angular
     'ngTouch',
     'ui.router'
   ])
-  .factory('auth', function(){
-
-  })
   .config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise("/");
-    $stateProvider
-      .state('index', {
-        url: '/',
-        views: {
-          "header": {templateUrl: 'views/index.header.html'},
-          "login": {templateUrl: 'views/index.login.html',
-                    controller: 'LoginCtrl'},
-          "footer": {templateUrl: 'views/index.footer.html',
-                    controller: 'FooterCtrl'}
-        },
-        controller: 'MainCtrl'
+    $urlRouterProvider.otherwise("/main");
+    $stateProvider   
+      .state('header', {
+		templateUrl: 'views/header.html'
       })
-      .state('about', {
-        url: "/about",
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .state('footer', {
+		templateUrl: 'views/footer.html'
+      })
+      .state('main', {
+      	url: '/main',		
+		views: {
+			'': {
+				templateUrl: 'views/main.html',
+				controller: 'MainCtrl',
+			},
+			'header@': {
+				templateUrl: 'views/header.html'
+			}
+		}
+      })
+      .state('login', {
+      	url: '/login',		
+		views: {
+			'': {
+				templateUrl: 'views/login.html',
+				controller: 'LoginCtrl',
+			},
+			'header@': {
+				templateUrl: 'views/header.html'
+			}
+		}
       });
 
   });
