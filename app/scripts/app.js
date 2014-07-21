@@ -77,6 +77,18 @@ angular
 				templateUrl: 'views/header.html'
 			}
 		}
+      })
+      .state('repository', {
+      	url: '/repos/:owner/:repoName',		
+		views: {
+			'': {
+        templateUrl: 'views/issueboard.html',
+				controller: 'IssueboardCtrl',
+			},
+			'header@': {
+				templateUrl: 'views/header.html'
+			}
+		}
       });
 
   });
