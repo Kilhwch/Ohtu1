@@ -1,1 +1,7 @@
 <p>This is the issueboard view.</p>
+
+<div ng-controller="IssuesCtrl">
+	<div ng-repeat="iss in issue">
+	  <p>{{iss.title}}</p>
+	</div>
+</div>
