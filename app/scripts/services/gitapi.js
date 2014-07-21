@@ -19,6 +19,7 @@ angular.module('ohtuProjektiAppApp')
         });
       },
       isAuthenticated : function(){
+        console.log('is logged in');
         return github != undefined;
       },
       getGithub : function(){
