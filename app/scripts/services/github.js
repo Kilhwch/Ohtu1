@@ -12,13 +12,13 @@
  */
 
 angular.module('ohtuProjektiAppApp')
-  .service('github', ['$http', '$cookies', function github($http, $cookies) {
+  .service('github', ['$http', 'localStorageService', function github($http, localStorageService) {
     var apiUrl = "https://api.github.com";
     function _http(method, url, data, success, error) {
       var options = { method: method, url: apiUrl + url, data: data };
-
-      if (!!$cookies.token) {
-        options.headers = { 'Authorization': 'token ' + $cookies.token };
+      var token = localStorageService.get('token');
+      if (!!token) {
+        options.headers = { 'Authorization': 'token ' + token };
       }
 
       var promise = $http(options).success(success);
@@ -28,11 +28,15 @@ angular.module('ohtuProjektiAppApp')
     };
     return {
       loginWithToken: function(authtoken){
-          $cookies.token = authtoken;
+          localStorageService.set('token', authtoken);
+      },
+
+      logout: function(){
+          localStorageService.remove('token');
       },
 
       isAuthenticated: function(){
-        return !!$cookies.token;
+        return !!localStorageService.get('token');
       },
 
       user: function(username, cb) {
