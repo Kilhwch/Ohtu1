@@ -14,7 +14,14 @@ angular.module('ohtuProjektiAppApp')
     var apiUrl = "https://api.github.com";
     var token;
     function _http(method, url, data, success, error) {
-      var promise = $http({method: method, url:apiUrl + url, data:data, headers: 'Authorization: token ' + token}).success(success);
+      var promise = $http({
+                      method: method,
+                      url: apiUrl + url,
+                      data: data,
+                      headers: {
+                       'Authorization': 'token ' + token
+                      }
+                    }).success(success);
       if (error) {
         promise.error(error);
       }
