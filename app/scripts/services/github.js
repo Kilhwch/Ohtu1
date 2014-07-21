@@ -10,14 +10,13 @@
  * Service in the ohtuProjektiAppApp.
  */
 angular.module('ohtuProjektiAppApp')
-  .service('github', ['$http', function github($http) {
+  .service('github', ['$http', '$cookies', function github($http, $cookies) {
     var apiUrl = "https://api.github.com";
-    var token;
     function _http(method, url, data, success, error) {
       var options = { method: method, url: apiUrl + url, data: data };
 
-      if (!!token) {
-        options.headers = { 'Authorization': 'token ' + token };
+      if (!!$cookies.token) {
+        options.headers = { 'Authorization': 'token ' + $cookies.token };
       }
 
       var promise = $http(options).success(success);
@@ -27,11 +26,11 @@ angular.module('ohtuProjektiAppApp')
     };
     return {
       loginWithToken: function(authtoken){
-          token = authtoken;
+          $cookies.token = authtoken;
       },
 
       isAuthenticated: function(){
-        return token != undefined;
+        return !!$cookies.token;
       },
 
       user: function(username, cb) {
@@ -44,8 +43,8 @@ angular.module('ohtuProjektiAppApp')
 
       // List user repositories
 
-      userRepos: function(username, cb) {
-        var url = "/users/" + username + "/repos?type=all&per_page=1000&sort=updated";
+      userRepos: function(cb) {
+        var url = "/user/repos";
         _http("GET", url, null, cb);
       },
 

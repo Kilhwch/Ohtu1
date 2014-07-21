@@ -49,6 +49,18 @@ angular
 				templateUrl: 'views/header.html'
 			}
 		}
+      })
+      .state('list', {
+      	url: '/list',		
+		views: {
+			'': {
+				templateUrl: 'views/list.html',
+				controller: 'ListCtrl',
+			},
+			'header@': {
+				templateUrl: 'views/header.html'
+			}
+		}
       });
 
   });
