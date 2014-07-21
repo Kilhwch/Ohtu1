@@ -11,20 +11,13 @@
 angular
   .module('ohtuProjektiAppApp', ['ui.router'])
   .config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/main");
     $stateProvider   
       .state('header', {
 		templateUrl: 'views/header.html'
       })
       .state('footer', {
 		templateUrl: 'views/footer.html'
-      })
-      .state('home', {
-      	abstract:true, 
-      	url: '/',
-		controller: function($scope, $state){
-			$state.go('main');
-		}
       })
       .state('main', {
       	url: '/main',		
