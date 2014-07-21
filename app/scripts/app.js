@@ -89,6 +89,18 @@ angular
 				templateUrl: 'views/header.html'
 			}
 		}
+      })
+      .state('burndow', {
+      	url: '/repos/:owner/:repoName/burndown',		
+	    	views: {
+			    '': {
+          templateUrl: 'views/burndown.html',
+				  controller: 'BurndownCtrl',
+			  },
+			  'header@': {
+				templateUrl: 'views/header.html'
+			  }
+		    }
       });
 
   });
