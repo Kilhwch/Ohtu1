@@ -21,4 +21,4 @@ angular.module('ohtuProjektiAppApp')
             console.log(err);
           });         
        	};
-	});
+});

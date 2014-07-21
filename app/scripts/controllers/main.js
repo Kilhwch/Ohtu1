@@ -23,6 +23,6 @@ myApp.controller('MainCtrl', function ($scope, $location, gitapi) {
 				$scope.repos = repos;
 			});
 		});
-	}
-  });
+	} 
+});
   
