@@ -30,8 +30,8 @@ angular
       	url: '/main',		
 		views: {
 			'': {
-				templateUrl: 'views/main.html',
-				controller: 'MainCtrl',
+				templateUrl: 'views/issueboard.html',
+				controller: 'IssueboardCtrl',
 			},
 			'header@': {
 				templateUrl: 'views/header.html'
