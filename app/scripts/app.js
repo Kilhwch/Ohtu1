@@ -31,7 +31,7 @@ angular
       	url: '/main',		
 		views: {
 			'': {
-				templateUrl: 'views/issueboard.html',
+				templateUrl: 'views/main.html',
 				controller: 'IssueboardCtrl',
 			},
 			'header@': {
