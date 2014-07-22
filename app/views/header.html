@@ -3,6 +3,12 @@
   <li ng-repeat="link in list" class="{{link.class}}">
     <a ng-href="#{{link.url}}">{{link.name}}</a>
   </li>
+  <li ng-if="currentState == 'burndown'">
+    <a ui-sref="repository($state.params)">Repository</a>
+  </li>
+  <li ng-if="currentState == 'repository'">
+    <a ui-sref="burndown($state.params)">Burndown</a>
+  </li>
 </ul>
 <h3 class="text-muted">Haitari</h3>
 </div>

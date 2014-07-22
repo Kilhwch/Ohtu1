@@ -9,9 +9,11 @@
  */
 
 angular.module('ohtuProjektiAppApp')
-  .controller('HeaderCtrl', function($scope, $location, github) {
+  .controller('HeaderCtrl', function($scope, $location, github, $state, $stateParams) {
     $scope.url = $location.url();
     $scope.list = [{name: 'Home', url : '/main'}, {name: 'List', url: '/list'}];
+    $scope.currentState = $state.current.name;
+    $scope.$state = $state
     if (github.isAuthenticated()) {
       $scope.list.push({name: 'Logout', url: '/logout'});
     } else {
