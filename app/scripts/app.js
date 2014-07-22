@@ -104,6 +104,19 @@ angular
 				templateUrl: 'views/header.html'
 			  }
 		    }
+      })
+      .state('newissue', {
+      	url: '/repos/:owner/:repoName/newissue',		
+	    	views: {
+			    '': {
+          templateUrl: 'views/newissue.html',
+				  controller: 'NewissueCtrl',
+			  },
+			  'header@': {
+				controller: 'HeaderCtrl',
+				templateUrl: 'views/header.html'
+			  }
+		    }
       });
 
   });
