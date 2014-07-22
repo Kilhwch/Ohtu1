@@ -5,48 +5,30 @@ body {
   padding-bottom: 20px;
 }
 
-.backlog{
+.issue{
   border: 1px solid #e5e5e5;
   border-radius: 5px;
   padding: 20px;
   width:300px;
   min-height:100px;
   margin-bottom:20px;
-  background:rgba(192,192,192, 0.3);
   position:relative
+}
+
+.backlog{
+  background:rgba(192,192,192, 0.3);
 }
 
 .ready{
-  border: 1px solid #e5e5e5;
-  border-radius: 5px;
-  padding: 20px;
-  width:300px;
-  min-height:100px;
-  margin-bottom:20px;
   background:rgba(255,0,0,0.1);
-  position:relative
 }
 
 .inprogres{
-  border: 1px solid #e5e5e5;
-  border-radius: 5px;
-  padding: 20px;
-  width:300px;
-  min-height:100px;
-  margin-bottom:20px;
   background:rgba(255,255,0,0.2);
-  position:relative
 }
 
 .done{
-  border: 1px solid #e5e5e5;
-  border-radius: 5px;
-  padding: 20px;
-  width:300px;
-  min-height:100px;
-  margin-bottom:20px;
   background:rgba(144,238,144,0.2);
-  position:relative
 }
 
 .column{

@@ -6,7 +6,7 @@
   <p> Repository is: <b>{{repoName}}</b> </p>
 
   <div class="column" style="float:left">
-	<div ng-repeat="issue in issues | filter:{labels :'!Ready'} | filter:{labels :'!Inprogress'} | filter:{labels :'!Done'}" class="backlog">
+	<div ng-repeat="issue in issues | filter:{labels :'!Ready'} | filter:{labels :'!Inprogress'} | filter:{labels :'!Done'}" class="backlog issue">
 	  <img src="{{issue.user.avatar_url}}">
 	  <p><b>{{issue.title}}</b></p>
 	  <p>{{issue.body}}</p>
@@ -16,7 +16,7 @@
   <div class="vertical"></div>
 
   <div class="column" style="float:left">
-	<div ng-repeat="issue in issues | filter:{labels :'Ready'}" class="ready">
+	<div ng-repeat="issue in issues | filter:{labels :'Ready'}" class="ready issue">
 	  <img src="{{issue.user.avatar_url}}">
 	  <p><b>{{issue.title}}</b></p>
 	  <p>{{issue.body}}</p>
@@ -26,7 +26,7 @@
   <div class="vertical"></div>
 
   <div class="column" style="float:left">
-	<div ng-repeat="issue in issues | filter:{labels :'InProgress'}" class="inprogres">
+	<div ng-repeat="issue in issues | filter:{labels :'InProgress'}" class="inprogres issue">
 	  <img src="{{issue.user.avatar_url}}">
 	  <p></b>{{issue.title}}</b></p>
 	  <p>{{issue.body}}</p>
@@ -36,7 +36,7 @@
   <div class="vertical"></div>
 
   <div class="column" style="float:left">
-	<div ng-repeat="issue in issues | filter:{labels :'Done'}" class="done">
+	<div ng-repeat="issue in issues | filter:{labels :'Done'}" class="done issue">
 	  <img src="{{issue.user.avatar_url}}">
 	  <p><b>{{issue.title}}</b></p>
 	  <p>{{issue.body}}</p>
