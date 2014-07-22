@@ -6,32 +6,65 @@ describe('Service: github', function () {
   beforeEach(module('ohtuProjektiAppApp'));
 
   // instantiate service
-  var github, $httpBackend, httpResult, apiUrl = "https://api.github.com";
+  var github,
+    $httpBackend,
+    httpResult,
+    apiUrl = "https://api.github.com";
 
   function success(data) {
     httpResult = data;
   }
-  beforeEach(inject(function (_github_) {
+
+  beforeEach(inject(function (_github_, _$httpBackend_) {
     github = _github_;
+    github.logout();
+    $httpBackend = _$httpBackend_;
+    httpResult = undefined;
   }));
 
-  it('should authenticate whith oginWithToken', function () {
-    github.logout();
+  it('should authenticate', function () {
     expect(github.isAuthenticated()).toBe(false);
     github.loginWithToken(123);
     expect(github.isAuthenticated()).toBe(true);
+    github.logout();
+    expect(github.isAuthenticated()).toBe(false);
   });
 
+  it('should show user', function () {
+    $httpBackend.expectGET(apiUrl + '/users/test').respond(true);
+    github.user('test', success);
+    expect(httpResult).toBeUndefined();
+
+    $httpBackend.flush();
+    expect(httpResult).toBe(true);
+  });
+
+  it('should show authenticated user', function () {
+    $httpBackend.expectGET(apiUrl + '/user').respond(true);
+    github.authenticatedUser(success);
+    expect(httpResult).toBeUndefined();
+
+    $httpBackend.flush();
+    expect(httpResult).toBe(true);
+  });
+
+  it('should show authenticated users github repositories', function () {
+    $httpBackend.expectGET(apiUrl + '/user/repos').respond(true);
+    github.userRepos(success);
+    expect(httpResult).toBeUndefined();
+
+    $httpBackend.flush();
+    expect(httpResult).toBe(true);
+  });
 
   describe('github.Label', function(){
     var labels, user = 'user123', repo = 'repo123';
     var url = apiUrl + "/repos/" + user + "/" + repo + "/labels";
 
-    beforeEach(inject(function (_$httpBackend_) {
-      $httpBackend = _$httpBackend_;
+    beforeEach(function () {
       labels = new github.Label(user, repo);
       httpResult = undefined;
-    }));
+    });
 
     it('should list all labels', function () {
       $httpBackend.expectGET(url).respond(true);
@@ -87,11 +120,10 @@ describe('Service: github', function () {
     var milestones, user = 'user123', repo = 'repo123';
     var url = apiUrl + "/repos/" + user + "/" + repo + "/milestones";
 
-    beforeEach(inject(function (_$httpBackend_) {
-      $httpBackend = _$httpBackend_;
+    beforeEach(function () {
       milestones = new github.Milestone(user, repo);
       httpResult = undefined;
-    }));
+    });
 
     it('should list all labels', function () {
       $httpBackend.expectGET(url).respond(true);
@@ -147,11 +179,10 @@ describe('Service: github', function () {
     var issues, user = 'user123', repo = 'repo123';
     var url = apiUrl + "/repos/" + user + "/" + repo + "/issues";
 
-    beforeEach(inject(function (_$httpBackend_) {
-      $httpBackend = _$httpBackend_;
+    beforeEach(function () {
       issues = new github.Issue(user, repo);
       httpResult = undefined;
-    }));
+    });
 
     it('should list all issues of a repo', function () {
       $httpBackend.expectGET(url).respond(true);
