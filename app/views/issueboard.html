@@ -2,6 +2,10 @@
 
   <div class="viewbar">
 	  <p> Owner:<b> {{owner}}</b> Repository: <b>{{repoName}}</b> </p>
+        Select issues based on a milestone
+        <select ng-init="sprint.milestone = null" ng-model="sprint.milestone" ng-options="milestone.title as milestone.title for milestone in milestones">
+            <option value="">Not in a milestone</option>
+        </select>
   </div>
 
   <div class="column">
@@ -17,7 +21,7 @@
 
   <div class="column">
 	<p><b>Ready</b></p>
-	<div ng-repeat="issue in issues | filter:{labels :'Ready'}" class="ready issue">
+	<div ng-repeat="issue in issues | filter:{labels :'Ready'}| filter:sprint:true" class="ready issue">
 	  <img src="{{issue.user.avatar_url}}">
 	  <p><b> #{{issue.number}} {{issue.title}}</b></p>
 	  <p>{{issue.body}}</p>
@@ -28,7 +32,7 @@
 
   <div class="column">
 	<p><b>In Progress</b></p>
-	<div ng-repeat="issue in issues | filter:{labels :'InProgress'}" class="inprogres issue">
+	<div ng-repeat="issue in issues | filter:{labels :'InProgress'}| filter:sprint:true" class="inprogres issue">
 	  <img src="{{issue.user.avatar_url}}">
 	  <p><b> #{{issue.number}} {{issue.title}}</b></p>
 	  <p>{{issue.body}}</p>
@@ -39,7 +43,7 @@
 
   <div class="column">
 	<p><b>Done</b></p>
-	<div ng-repeat="issue in issues | filter:{labels :'Done'}" class="done issue">
+	<div ng-repeat="issue in issues | filter:{labels :'Done'}| filter:sprint:true" class="done issue">
 	  <img src="{{issue.user.avatar_url}}">
 	  <p><b> #{{issue.number}} {{issue.title}}</b></p>
 	  <p>{{issue.body}}</p>

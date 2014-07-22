@@ -31,7 +31,7 @@ angular
       	url: '/main',		
 		views: {
 			'': {
-				templateUrl: 'views/issueboard.html',
+				templateUrl: 'views/main.html',
 				controller: 'IssueboardCtrl',
 			},
 			'header@': {
@@ -98,6 +98,19 @@ angular
 			    '': {
           templateUrl: 'views/burndown.html',
 				  controller: 'BurndownCtrl',
+			  },
+			  'header@': {
+				controller: 'HeaderCtrl',
+				templateUrl: 'views/header.html'
+			  }
+		    }
+      })
+      .state('newissue', {
+      	url: '/repos/:owner/:repoName/newissue',		
+	    	views: {
+			    '': {
+          templateUrl: 'views/newissue.html',
+				  controller: 'NewissueCtrl',
 			  },
 			  'header@': {
 				controller: 'HeaderCtrl',
