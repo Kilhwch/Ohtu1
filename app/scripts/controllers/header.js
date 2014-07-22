@@ -10,19 +10,18 @@
 
 angular.module('ohtuProjektiAppApp')
   .controller('HeaderCtrl', function($scope, $location, github, $state, $stateParams) {
-    $scope.url = $location.url();
-    $scope.list = [{name: 'Home', url : '/main'}, {name: 'List', url: '/list'}];
     $scope.currentState = $state.current.name;
-    $scope.$state = $state
-    if (github.isAuthenticated()) {
-      $scope.list.push({name: 'Logout', url: '/logout'});
-    } else {
-      $scope.list.push({name: 'Login', url: '/login'});
-    }
-    for (var i = 0; i < $scope.list.length; i++) {
-      if ($scope.list[i].url === $scope.url) {
-         $scope.list[i].class = "active";
+    $scope.params = $state.params;
+    $scope.isLoggedIn = github.isAuthenticated();
+
+    $scope.getClass = function(path, url) {
+      url = url || $location.path();
+      if (url.substr(0, path.length) == path) {
+        return "active"
+      } else {
+        return ""
       }
     }
-  });
+
+ });
 

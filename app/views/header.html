@@ -1,13 +1,22 @@
 <div class="header">
 <ul class="nav nav-pills pull-right" ng-controller="LoginCtrl">
-  <li ng-repeat="link in list" class="{{link.class}}">
-    <a ng-href="#{{link.url}}">{{link.name}}</a>
+  <li ng-class="{'active': getClass('/main')}">
+    <a ui-sref="main">Home</a>
+  </li>
+  <li ng-if="isLoggedIn" ng-class="{'active': getClass('/list')}">
+    <a ui-sref="list">List</a>
   </li>
   <li ng-if="currentState == 'burndown'">
-    <a ui-sref="repository($state.params)">Repository</a>
+    <a ui-sref="repository(params)">Repository</a>
   </li>
   <li ng-if="currentState == 'repository'">
-    <a ui-sref="burndown($state.params)">Burndown</a>
+    <a ui-sref="burndown(params)">Burndown</a>
+  </li>
+  <li ng-if="isLoggedIn" ng-class="{'active': getClass('/logout')}">
+    <a ui-sref="logout" ng-class="{'active': getClass('/logout')}">Logout</a>
+  </li>
+  <li ng-if="!isLoggedIn" ng-class="{'active': getClass('/login')}">
+    <a ui-sref="login">Login</a>
   </li>
 </ul>
 <h3 class="text-muted">Haitari</h3>
