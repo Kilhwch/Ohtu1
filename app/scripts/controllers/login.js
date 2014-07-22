@@ -14,7 +14,7 @@ angular.module('ohtuProjektiAppApp')
        		var gitauth = auth.askAuth();
           gitauth.done(function(result){
             github.loginWithToken(result.access_token);
-            $state.go('main');
+            $state.go('main', {}, {reload: true});
             $scope.$apply();
           })
           .fail(function(err){
