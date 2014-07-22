@@ -32,7 +32,7 @@
 
   <div class="column">
 	<p><b>In Progress</b></p>
-	<div ng-repeat="issue in issues | filter:{labels :'Ready'}| filter:sprint:true" class="inprogres issue">
+	<div ng-repeat="issue in issues | filter:{labels :'InProgress'}| filter:sprint:true" class="inprogres issue">
 	  <img src="{{issue.user.avatar_url}}">
 	  <p><b> #{{issue.number}} {{issue.title}}</b></p>
 	  <p>{{issue.body}}</p>
@@ -43,7 +43,7 @@
 
   <div class="column">
 	<p><b>Done</b></p>
-	<div ng-repeat="issue in issues | filter:{labels :'Ready'}| filter:sprint:true" class="done issue">
+	<div ng-repeat="issue in issues | filter:{labels :'Done'}| filter:sprint:true" class="done issue">
 	  <img src="{{issue.user.avatar_url}}">
 	  <p><b> #{{issue.number}} {{issue.title}}</b></p>
 	  <p>{{issue.body}}</p>
