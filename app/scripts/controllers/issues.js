@@ -4,10 +4,9 @@ var myApp = angular.module('ohtuProjektiAppApp');
      
 myApp.controller('IssuesCtrl', function ($scope, $stateParams, github) {
         $scope.issues = new github.Issue($stateParams.owner, $stateParams.repoName);
-        
         // list issues
         $scope.issues.list({}, function(data) {
-        $scope.issues = data;
+        $scope.issuet = data;
     });
         // get a specific issue
         
@@ -15,10 +14,11 @@ myApp.controller('IssuesCtrl', function ($scope, $stateParams, github) {
 	
 	    // create a new issue
 	    $scope.addIssue = function() {
-	       alert("haloo");
+         console.log("addIssue kutsuttu");
 	       var d = {title: $scope.issueTitle, body: "hello world heheh"}; 
-	       var options = { method: "POST", url: "https://api.github.com/repos/Kilhwch/Ohtu1/issues", data: d };
-	        $scope.issues.createIssue(options, function(data) {
+	        $scope.issues.createIssue(d, function(err, data) {
+                console.log("createIssue kutsuttu");
+                console.log(err);
                 console.log(data);
             });
 	    };

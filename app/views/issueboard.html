@@ -4,34 +4,34 @@
 <p> Repository is: <b>{{repoName}}</b> </p>
 
 
-<div ng-controller="IssuesCtrl">
+<div>
   <div class="backlog" style="float:left">
-	<div ng-repeat="issue in issues">
+	<div ng-repeat="issue in issuet">
 	  <p>{{issue.title}}</p>
 	</div>
   </div>
 
   <div class="column1" style="float:left">
-	<div ng-repeat="issue in issues | filter:{labels :'Ready'}">
+	<div ng-repeat="issue in issuet | filter:{labels :'Ready'}">
 	  <p>{{issue.title}}</p>
 	</div>
   </div>
 
   <div class="column2" style="float:left">
-	<div ng-repeat="issue in issues | filter:{labels :'InProgress'}">
+	<div ng-repeat="issue in issuet | filter:{labels :'InProgress'}">
 	  <p>{{issue.title}}</p>
 	</div>
   </div>
 
   <div class="column3" style="float:left">
-	<div ng-repeat="issue in issues | filter:{labels :'Done'}">
+	<div ng-repeat="issue in issuet | filter:{labels :'Done'}">
 	  <p>{{issue.title}}</p>
 	</div>
   </div>
 </div>
   
 
-<div ng-controller="IssuesCtrl">
+<div>
   <textarea ng-model="issueTitle"></textarea>
     <button ng-click="addIssue()">Add issue</button>
 </div>

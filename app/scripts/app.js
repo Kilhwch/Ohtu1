@@ -31,7 +31,7 @@ angular
 		views: {
 			'': {
 				templateUrl: 'views/issueboard.html',
-				controller: 'IssueboardCtrl',
+				controller: 'IssuesCtrl',
 			},
 			'header@': {
 				controller: 'HeaderCtrl',
@@ -83,7 +83,7 @@ angular
 		views: {
 			'': {
         templateUrl: 'views/issueboard.html',
-				controller: 'IssueboardCtrl',
+				controller: 'IssuesCtrl',
 			},
 			'header@': {
 				controller: 'HeaderCtrl',
