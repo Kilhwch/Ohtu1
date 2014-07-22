@@ -16,6 +16,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.router',
+    'angularCharts',
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/main");
