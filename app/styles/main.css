@@ -62,12 +62,15 @@ body {
   float:left;
   color: #777;
   border-left: 1px solid #e5e5e5;
-  height:600px;
+  height:100%;
+  margin: 0 auto;
 }
 
 .issueview{
-  margin: 0 auto;
   width:80%;
+  height:100%;
+  position:absolute;
+  margin-left:10%;
 }
 
 
