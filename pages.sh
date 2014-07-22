@@ -1,5 +1,4 @@
 # Siirry gh-pages branchiin
-git stash
 git checkout gh-pages
 git pull origin gh-pages
 
