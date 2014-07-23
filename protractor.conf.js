@@ -4,21 +4,13 @@ exports.config = {
 
   // Spec patterns are relative to the location of this config.
   specs: [
-<<<<<<< HEAD
-    'spec/*_spec.js'
-=======
+
     'test/e2e/**/*_spec.js'
->>>>>>> 5a75e3b8982fa2fa91278d67dc9054bbe50566da
   ],
 
 
   capabilities: {
-<<<<<<< HEAD
-    'browserName': 'chrome',
-    'chromeOptions': {'args': ['--disable-extensions']}
-=======
     'browserName': 'firefox'
->>>>>>> 5a75e3b8982fa2fa91278d67dc9054bbe50566da
   },
 
 

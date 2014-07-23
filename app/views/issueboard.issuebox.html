@@ -1,5 +1,14 @@
-<div class="backlog issue">
+<div ng-hide="issue.editing" class="backlog issue" ng-click="editItem(issue)">
 	<img src="{{issue.user.avatar_url}}">
 	<p><b> #{{issue.number}} {{issue.title}}</b></p>
 	<p>{{issue.body}}</p>
+</div>
+<div ng-show="issue.editing" class="backlog issue">
+	<img src="{{issue.user.avatar_url}}">
+	<p><b> #{{issue.number}} {{issue.title}}</b></p>
+	<form ng-submit="doneEditing(issue)">
+		<input ng-model="issue.body"/>
+		<span class="glyphicon glyphicon-remove-circle" ng-click="cancelEditing(issue)"></span>
+	</form>
+	
 </div>
