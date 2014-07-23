@@ -40,19 +40,6 @@ angular
 			}
 		}
       })
-      .state('login', {
-      	url: '/login',		
-		views: {
-			'': {
-				templateUrl: 'views/login.html',
-				controller: 'LoginCtrl',
-			},
-			'header@': {
-				controller: 'HeaderCtrl',
-				templateUrl: 'views/header.html'
-			}
-		}
-      })
       .state('logout', {
         url: '/logout',
                 views: {
