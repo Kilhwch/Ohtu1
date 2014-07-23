@@ -18,8 +18,8 @@ angular.module('ohtuProjektiAppApp')
         $scope.milestones = data;
         console.log(data);
     });
-    $scope.issues = issues;
-    $scope.issues.list({}, function(data) {
+
+    issues.list({}, function(data) {
         data.editing = false;
         $scope.issues = data;
     });
@@ -33,7 +33,7 @@ angular.module('ohtuProjektiAppApp')
     };
 
     $scope.doneEditing = function(issue){
-        issues.updateIssue(issue.number, {body: issue.body}, function(data){});
+        issues.updateIssue(issue.number, issue, function(data){});
         issue.editing = false;
     };
   });
