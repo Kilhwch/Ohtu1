@@ -15,13 +15,10 @@ angular.module('ohtuProjektiAppApp')
             $scope.issueBody = "";
           }
           $scope.addIssue = function() {
-            console.log("addIssue kutsuttu");
             var d = {title: $scope.issueTitle, body: $scope.issueBody};
             $scope.issues.createIssue(d, function(err, data) {
-                console.log("createIssue kutsuttu");
-                console.log(err);
-                console.log(data);
-
+                if (err)
+                  console.log(err);
             });
             $scope.clearFields();
           };

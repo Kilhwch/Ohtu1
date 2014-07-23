@@ -6,9 +6,8 @@ describe('Listing repos', function() {
   beforeEach(function() {
     ptor = protractor.getInstance();
     ptor.addMockModule('httpBackendMock', mockModule.httpBackendMock);
-    browser.get('http://localhost:38765');
+    browser.get('http://localhost:9001');
     browser.manage().addCookie('token', 'testing', '/', 'localhost');
-    //browser.executeScript('localStorage.setItem("token", "testing");');
   });
 
   it('should list repos', function() {
@@ -21,5 +20,17 @@ describe('Listing repos', function() {
     expect(element(by.css('.list-group li a')).getText()).toBe('Test Repo');
     expect(element(by.css('.list-group li p')).getText()).toBe('Test description');
   });
+  
+  it('should display owner and repo correctly', function() {
+    //kovakooditesti
+    browser.get('#/repos/Kilhwch/Ohtu1');
+    var owner = element(by.binding('params.owner'));
+    var repo = element(by.binding('params.repoName'));
+    expect(owner.getText()).toEqual('Kilhwch');
+    expect(repo.getText()).toEqual('Ohtu1');
+  
+  });
+  
+  
 
 });

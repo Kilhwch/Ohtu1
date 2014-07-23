@@ -7,36 +7,39 @@ describe('Controller: IssueboardCtrl', function () {
   beforeEach(angular.mock.module('appMock'));
 
   var IssueboardCtrl, githubMock,
-    scope, issue;
+    scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(function(){
-    issue = {number : 0, editing : true};
-    inject(function ($controller, $rootScope, $githubMock) {
-      scope = $rootScope.$new();
-      githubMock = $githubMock;
-      IssueboardCtrl = $controller('IssueboardCtrl', {
-        $scope: scope,
-        github : githubMock
-      });
+  beforeEach(inject(function ($controller, $rootScope, $githubMock) {
+    scope = $rootScope.$new();
+    scope.issue = {number : 0, editing : true, body : 'body'};
+	  githubMock = $githubMock;
+    IssueboardCtrl = $controller('IssueboardCtrl', {
+      $scope: scope,
+  		github : githubMock
     });
+    
+  }));
+
+  it('issue editing should be true', function () {
+     scope.editItem(scope.issue);
+     expect(scope.issue.editing).toBe(true);
   });
 
-  it("should set issue's editing state to false when calling cancelEditing", function(){
-    scope.cancelEditing(issue);
-    expect(issue.editing).toBe(false);
+  it('issue editing should be false', function () {
+     scope.cancelEditing(scope.issue);
+     expect(scope.issue.editing).toBe(false);
   });
 
-  it("should set issue's editing state to false when calling doneEditing", function(){
-    scope.doneEditing(issue);
-    expect(issue.editing).toBe(false);
+  it('issue editing should be false', function () {
+     scope.doneEditing(scope.issue);
+     expect(scope.issue.editing).toBe(false);
   });
 
   it("should update issue when calling doneEditing", function(){
-    issue.body = 'body';
-    scope.doneEditing(issue, function(data){
+    scope.doneEditing(scope.issue, function(data){
       var issues = githubMock.Issues('.','.');
-      expect(issues[issue.number].body).toBe('body');
+      expect(issues[scope.issue.number].body).toBe('body');
     });   
   });
 

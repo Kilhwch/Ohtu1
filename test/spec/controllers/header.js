@@ -34,10 +34,10 @@ describe('Controller: HeaderCtrl', function () {
   });
 
   it('should attach getClass function', function () {
-    expect(scope.getClass('/123', '/123')).toBe('active');
-    expect(scope.getClass('/123', '/123/4')).toBe('active');
-    expect(scope.getClass('/123', '/123/4/5')).toBe('active');
+    expect(scope.getClass('/123', '/123')).toBe("active");
+    expect(scope.getClass('/123', '/123/4')).toBe("active");
+    expect(scope.getClass('/123', '/123/4/5')).toBe("active");
 
-    expect(scope.getClass('/123', '/124/4/5')).toBe('');
+    expect(scope.getClass('/123', '/124/4/5')).toBe("");
   });
 });
