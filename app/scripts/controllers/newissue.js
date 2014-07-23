@@ -10,6 +10,10 @@
 angular.module('ohtuProjektiAppApp')
   .controller('NewissueCtrl', function ($scope,github,$stateParams) {
           $scope.issues = new github.Issue($stateParams.owner, $stateParams.repoName);
+          $scope.clearFields = function() {
+            $scope.issueTitle = "";
+            $scope.issueBody = "";
+          }
           $scope.addIssue = function() {
             console.log("addIssue kutsuttu");
             var d = {title: $scope.issueTitle, body: $scope.issueBody};
@@ -17,8 +21,8 @@ angular.module('ohtuProjektiAppApp')
                 console.log("createIssue kutsuttu");
                 console.log(err);
                 console.log(data);
+
             });
-            $scope.issueTitle = "";
-            $scope.issueBody = "";
+            $scope.clearFields();
           };
       });

@@ -14,9 +14,13 @@ describe('Controller: NewissueCtrl', function () {
     NewissueCtrl = $controller('NewissueCtrl', {
       $scope: scope
     });
+    scope.issueBody = "body";
+    scope.issueTitle = "title";
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    //expect(scope.awesomeThings.length).toBe(3);
+  it('Clear fields should clear body and title variables.', function () {
+    scope.clearFields();
+    expect(scope.issueBody).toBe("");
+    expect(scope.issueTitle).toBe("");
   });
 });
