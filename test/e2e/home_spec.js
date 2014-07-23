@@ -6,19 +6,25 @@ describe('Home view', function() {
         ptor = protractor.getInstance();
         ptor.addMockModule('httpBackendMock', mockModule.httpBackendMock);
         browser.get('http://localhost:9001');
-        browser.manage().addCookie('token', 'testing', '/', 'localhost');
     });
 
     it('has a title', function() {
-        browser.get('/');
         expect(browser.getTitle()).toEqual('Haitari');
+    });
+    
+    it('updates after login', function() {
+        expect(ptor.element(by.id('login')).getText()).toEqual('Login');
+        browser.manage().addCookie('token', 'testing', '/', 'localhost');
+        browser.get('/')
+        expect(ptor.element(by.id('home')).getText()).toEqual('Home');
+        expect(ptor.element(by.id('list')).getText()).toEqual('List');
+        expect(ptor.element(by.id('logout')).getText()).toEqual('Logout');
     });
 
     it('updates after logout', function() {
-        var ptor = protractor.getInstance();
-        ptor.get('/');
+        browser.manage().addCookie('token', 'testing', '/', 'localhost');
         expect(ptor.element(by.id('list')).getText()).toEqual('List');
-        ptor.get('/#/logout');
+        browser.get('/#/logout');
         expect(ptor.element(by.id('login')).getText()).toEqual('Login');
     });
 });
