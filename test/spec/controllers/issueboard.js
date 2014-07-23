@@ -14,6 +14,24 @@ describe('Controller: IssueboardCtrl', function () {
     IssueboardCtrl = $controller('IssueboardCtrl', {
       $scope: scope
     });
+    scope.issue = {}
+    scope.issue.number = 1;
+    scope.issue.body = "";
   }));
+
+  it('issue editing should be true', function () {
+     scope.editItem(scope.issue);
+     expect(scope.issue.editing).toBe(true);
+  });
+  it('issue editing should be false', function () {
+     scope.cancelEditing(scope.issue);
+     expect(scope.issue.editing).toBe(false);
+  });
+  it('issue editing should be false', function () {
+     scope.doneEditing(scope.issue);
+     expect(scope.issue.editing).toBe(false);
+  });
+
+
 
 });
