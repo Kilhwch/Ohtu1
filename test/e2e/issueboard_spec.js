@@ -10,15 +10,46 @@ describe('Listing issues', function() {
     browser.manage().addCookie('token', 'testing', '/', 'localhost');
   });
 
-  xit('should list issues', function() {
-    browser.get('#/issueboard');
-    expect(element.all(by.css('.ng-scope')).count()).toBe(1);
+  it('should list issues', function() {
+    browser.get('#/repos/user/repo');
+    var elems = element.all(by.repeater('issue in issues'));
+    expect(elems.count()).toBe(1);
   });
 
-  xit('should show repo.name and repo.description', function() {
-    browser.get('#/issueboard');
-    expect(element(by.css('.ng-scope')).getText()).toBe('Test title');
-    expect(element(by.css('.ng-scope')).getText()).toBe('Test body');
+  it('should show issue.title', function() {
+    browser.get('#/repos/user/repo');
+    var elems = element.all(by.repeater('issue in issues'));
+    expect(elems.first().getText()).toBe('# Test tickle');
   });
+
+  it('should show owner', function() {
+    browser.get('#/repos/user/repo');
+    expect(element(by.css('.viewbar')).getText()).toContain('Owner: ')
+  });
+
+  it('should show issue labels Backlog', function() {
+    browser.get('#/repos/user/repo');
+    var elems = element.all((by.css('.column')));
+    expect(elems.first().getText()).toContain('Backlog');
+  });
+
+  it('should show issue labels Ready', function() {
+    browser.get('#/repos/user/repo');
+    var elems = element.all((by.css('.column')));
+    expect(elems.get(1).getText()).toContain('Ready');
+  });
+
+  it('should show issue labels In Progress', function() {
+    browser.get('#/repos/user/repo');
+    var elems = element.all((by.css('.column')));
+    expect(elems.get(2).getText()).toContain('In Progress');
+  });
+
+  it('should show issue labels Done', function() {
+    browser.get('#/repos/user/repo');
+    var elems = element.all((by.css('.column')));
+    expect(elems.get(3).getText()).toContain('Done');
+  });
+
 
 });

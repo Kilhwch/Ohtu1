@@ -3,9 +3,9 @@ exports.httpBackendMock = function() {
     .run(function($httpBackend) {
         var apiUrl = 'https://api.github.com';
         var list = apiUrl + '/user/repos';
-	var issueboard = apiUrl + list + '/owner/repo';
+	var issueboard = apiUrl + '/repos/user/repo/issues';
         var repo = {name: 'Test Repo', description: 'Test description'};
-	var issue = {title: 'Test title', body:'Test body'}
+	var issue = {title: 'Test tickle'};
 
         $httpBackend.whenGET(/https:\/\/oauth.io.*/).respond('token');        
         $httpBackend.whenGET(list).respond([repo]);
