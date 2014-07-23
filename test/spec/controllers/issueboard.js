@@ -21,6 +21,14 @@ describe('Controller: IssueboardCtrl', function () {
     
   }));
 
+  it('should have milestones in scope'), function(){
+    except(scope.milestones).not.toBeUndefined();
+  };
+
+  it('should have issues in scope'), function(){
+    except(scope.issues).not.toBeUndefined();
+  };
+
   it('issue editing should be true', function () {
      scope.editItem(scope.issue);
      expect(scope.issue.editing).toBe(true);

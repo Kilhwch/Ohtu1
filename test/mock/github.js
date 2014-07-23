@@ -26,7 +26,9 @@ app.mock.$githubMockProvider = function(){
 			},
 
 			Milestone: function(user, repo){
-				this.list = function(options, cb){}
+				this.list = function(options, cb){
+					cb([]);
+				}
 			}
 		};
 		return $service;
