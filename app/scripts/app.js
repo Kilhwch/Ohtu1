@@ -11,7 +11,7 @@
 angular
   .module('ohtuProjektiAppApp', [
     'ngAnimate',
-    'LocalStorageModule',
+    'ngCookies',
     'ngResource',
     'ngSanitize',
     'ngTouch',
