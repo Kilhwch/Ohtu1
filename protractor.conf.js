@@ -8,9 +8,11 @@ exports.config = {
   ],
 
 
-  capabilities: {
-    'browserName': 'firefox'
-  },
+  multiCapabilities: [{
+    browserName: 'firefox'
+  }, {
+    browserName: 'chrome'
+  }],
 
 
   // A base URL for your application under test. Calls to protractor.get()
