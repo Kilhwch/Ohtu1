@@ -1,4 +1,6 @@
-<div ng-hide="issue.editing" class="backlog issue" ng-click="editItem(issue)">
+<div class="backlog issue" ng-class="{highlight : hover}" ng-hide="issue.editing"
+ng-click="editItem(issue)" ng-init="hover = false"
+ng-mouseenter="hover = true" ng-mouseleave="hover = false">
 	<img src="{{issue.user.avatar_url}}">
 	<p><b> #{{issue.number}} {{issue.title}}</b></p>
 	<p>{{issue.body}}</p>
