@@ -14,6 +14,12 @@ body {
   margin-bottom:20px;
   position:relative
 }
+
+.issue.highlight {
+  border: solid;
+  background: #c3f4d4;
+}
+
 .viewbar{
   margin-left:20px;
   margin-right:20px;
