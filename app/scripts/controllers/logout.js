@@ -11,5 +11,5 @@
 angular.module('ohtuProjektiAppApp')
   .controller('LogoutCtrl', function(github, $state) {
      github.logout();
-     $state.go('login');
+     $state.go('main');
   });

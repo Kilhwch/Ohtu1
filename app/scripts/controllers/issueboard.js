@@ -8,8 +8,15 @@
  * Controller of the ohtuProjektiAppApp
  */
 angular.module('ohtuProjektiAppApp')
-  .controller('IssueboardCtrl', function ($scope, $stateParams) {
-    $scope.repoName = $stateParams.repoName;
-    $scope.owner = $stateParams.owner;
+  .controller('IssueboardCtrl', function ($scope, $stateParams,github) {
+    $scope.milestones = new github.Milestone($stateParams.owner, $stateParams.repoName);
+    $scope.milestones.list({}, function(data) {
+        $scope.milestones = data;
+        console.log(data);
+    });
+    $scope.issues = new github.Issue($stateParams.owner, $stateParams.repoName);
+    $scope.issues.list({}, function(data) {
+        $scope.issues = data;
+    });
 
   });
