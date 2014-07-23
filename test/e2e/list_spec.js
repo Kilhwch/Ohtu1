@@ -6,9 +6,8 @@ describe('Listing repos', function() {
   beforeEach(function() {
     ptor = protractor.getInstance();
     ptor.addMockModule('httpBackendMock', mockModule.httpBackendMock);
-    browser.get('http://localhost:38765');
+    browser.get('http://localhost:9001');
     browser.manage().addCookie('token', 'testing', '/', 'localhost');
-    //browser.executeScript('localStorage.setItem("token", "testing");');
   });
 
   it('should list repos', function() {
