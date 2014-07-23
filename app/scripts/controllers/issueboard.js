@@ -13,13 +13,12 @@ angular.module('ohtuProjektiAppApp')
     var issues = new github.Issue($stateParams.owner, $stateParams.repoName);
     var milestones = new github.Milestone($stateParams.owner, $stateParams.repoName);
 
-    $scope.milestones = milestones;
-    $scope.milestones.list({}, function(data) {
+    milestones.list({}, function(data) {
         $scope.milestones = data;
         console.log(data);
     });
-    $scope.issues = issues;
-    $scope.issues.list({}, function(data) {
+
+    issues.list({}, function(data) {
         data.editing = false;
         $scope.issues = data;
     });
@@ -33,7 +32,7 @@ angular.module('ohtuProjektiAppApp')
     };
 
     $scope.doneEditing = function(issue){
-        issues.updateIssue(issue.number, {body: issue.body}, function(data){});
+        issues.updateIssue(issue.number, issue, function(data){});
         issue.editing = false;
     };
   });

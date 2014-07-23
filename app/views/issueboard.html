@@ -10,6 +10,7 @@
   <div class="column">
 	<p><b>Backlog</b></p>
 	<issuebox ng-repeat="issue in issues | filter:{labels :'!Ready'} | filter:{labels :'!Inprogress'} | filter:{labels :'!Done'}"></issuebox>
+
   </div>
 
   <div class="vertical"></div>
