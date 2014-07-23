@@ -21,12 +21,6 @@ angular
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/main");
     $stateProvider   
-      .state('header', {
-		templateUrl: 'views/header.html'
-      })
-      .state('footer', {
-		templateUrl: 'views/footer.html'
-      })
       .state('main', {
       	url: '/main',		
 		views: {
