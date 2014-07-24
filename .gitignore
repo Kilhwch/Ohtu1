@@ -6,5 +6,5 @@ dist
 bower_components
 *.swp
 *.orig
-coverage/
+coverage/*
 phantomjsdriver.log
