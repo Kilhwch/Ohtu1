@@ -6,7 +6,7 @@ describe('Listing issues', function() {
   beforeEach(function() {
     ptor = protractor.getInstance();
     ptor.addMockModule('httpBackendMock', mockModule.httpBackendMock);
-    browser.get('http://localhost:38765');
+    browser.get('/');
     browser.manage().addCookie('token', 'testing', '/', 'localhost');
   });
 
