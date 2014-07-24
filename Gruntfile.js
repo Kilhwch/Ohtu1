@@ -362,9 +362,9 @@ module.exports = function (grunt) {
       options: {
         configFile: "protractor.conf.js", // Default config file
         keepAlive: false, // If false, the grunt process stops when the test fails.
-        baseUrl: 'http://localhost:9001', 
         noColor: false, // If true, protractor will not use colors in its output.
         args: {
+          baseUrl: 'http://localhost:9001', 
           seleniumServerJar: 'node_modules/protractor/selenium/selenium-server-standalone-2.42.2.jar',
           chromeDriver: 'node_modules/protractor/selenium/chromedriver'
             }
