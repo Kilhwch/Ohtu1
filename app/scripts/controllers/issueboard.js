@@ -19,6 +19,7 @@ angular.module('ohtuProjektiAppApp')
     });
 
     issues.list({}, function(data) {
+        console.log(data);
         data.editing = false;
         $scope.issues = data;
     });
@@ -34,5 +35,9 @@ angular.module('ohtuProjektiAppApp')
     $scope.doneEditing = function(issue){
         issues.updateIssue(issue.number, issue, function(data){});
         issue.editing = false;
+    };
+
+    $scope.getLabelColor = function(issue){
+      return (issue.labels.length === 0)? "": "#" + issue.labels[0].color;
     };
   });
