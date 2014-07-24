@@ -40,9 +40,29 @@ describe('Listing issues', function() {
     expect(elems.get(4).getText()).toContain('Test done2');
   });
 
-  xit('should list issues in Done', function() {
-    var elems = element.all((by.css('.column4')));
-    expect(elems.get(1).getText()).toContain('Test done');
+  it('should list issues in Backlog', function() {
+    var column = element.all((by.css('.backlogbox'))).get(0);
+    expect(column.getText()).toContain('Test tickle')
+  });
+
+  it('should list issues in Ready', function() {
+    var column = element.all((by.css('.readybox'))).get(0);
+    expect(column.getText()).toContain('Test ready')
+  });
+
+  it('should list issues in In Progress', function() {
+    var column = element.all((by.css('.inprogressbox'))).get(0);
+    expect(column.getText()).toContain('Test inprogress')
+  });
+   
+  it('should list issues in Done', function() {
+    var column = element.all((by.css('.donebox'))).get(0);
+    expect(column.getText()).toContain('Test done')
+  });
+
+  it('should list issues in Done2', function() {
+    var column = element.all((by.css('.donebox'))).get(1);
+    expect(column.getText()).toContain('Test done2')
   });
 
   it('should show issue.body', function() {
