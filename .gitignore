@@ -7,4 +7,3 @@ bower_components
 *.swp
 *.orig
 coverage/*
-phantomjsdriver.log
