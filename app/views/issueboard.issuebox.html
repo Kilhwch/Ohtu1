@@ -12,8 +12,10 @@
     <form ng-submit="doneEditing(issue)">
         <input ng-model="issue.body"/>
         <span class="glyphicon glyphicon-remove-circle" ng-click="cancelEditing(issue)"></span>
-        <select ng-init="issue.milestone" ng-model="issue.milestone" ng-options="milestone as milestone.title for milestone in milestones" ng-change="cancelEditing(issue)">
+        <select ng-model="issue.milestone" ng-options="milestone as milestone.title for milestone in milestones" ng-change="doneEditing(issue)">
             <option value="">Not in a milestone</option>
+        </select>
+        <select ng-model="issue.labels[0]" ng-options="label as label for label in labels" ng-change="doneEditing(issue)">
         </select>
     </form>
 

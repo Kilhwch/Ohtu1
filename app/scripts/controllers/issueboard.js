@@ -12,6 +12,7 @@ angular.module('ohtuProjektiAppApp')
 
     var issues = new github.Issue($stateParams.owner, $stateParams.repoName);
     var milestones = new github.Milestone($stateParams.owner, $stateParams.repoName);
+    $scope.labels = ["Ready","InProgress","Done"];
 
     milestones.list({}, function(data) {
         $scope.milestones = data;
