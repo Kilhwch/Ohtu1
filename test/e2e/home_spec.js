@@ -12,6 +12,7 @@ describe('Home view', function() {
         expect(browser.getTitle()).toEqual('Haitari');
     });
     
+    
     it('updates after login', function() {
         expect(ptor.element(by.id('login')).getText()).toEqual('Login');
         browser.manage().addCookie('token', 'testing', '/', 'localhost');
@@ -27,4 +28,5 @@ describe('Home view', function() {
         browser.get('/#/logout');
         expect(ptor.element(by.id('login')).getText()).toEqual('Login');
     });
+
 });
