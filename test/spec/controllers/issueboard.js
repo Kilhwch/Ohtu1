@@ -51,4 +51,9 @@ describe('Controller: IssueboardCtrl', function () {
     });   
   });
 
+  it("should have getLabelColor function", function(){
+    expect(scope.getLabelColor({labels:[]})).toBe('');
+    expect(scope.getLabelColor({labels:[{name: 'test', color: '123456'}]})).toBe('#123456');
+  });
+
 });

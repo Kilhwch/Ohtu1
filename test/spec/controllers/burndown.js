@@ -16,7 +16,7 @@ describe('Controller: BurndownCtrl', function () {
     });
   }));
 
-  xit('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  it('config labels should be false', function () {
+    expect(scope.config.labels).toBe(false);
   });
 });
