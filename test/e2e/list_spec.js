@@ -24,17 +24,4 @@ describe('Listing repos', function() {
     expect(elems.last().element(by.css('.list-group li p')).getText()).toBe('Test description X2000 pro');
     
   });
-  
-  it('should display owner and repo correctly', function() {
-    //kovakooditesti
-    browser.get('#/repos/Kilhwch/Ohtu1');
-    var owner = element(by.binding('params.owner'));
-    var repo = element(by.binding('params.repoName'));
-    expect(owner.getText()).toEqual('Kilhwch');
-    expect(repo.getText()).toEqual('Ohtu1');
-  
-  });
-  
-  
-
 });
