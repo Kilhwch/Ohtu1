@@ -28,6 +28,7 @@ module.exports = function(config) {
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/angular-charts/dist/angular-charts.js',
+      'bower_components/angular-bootstrap/ui-bootstrap.js',
       'bower_components/oauth-js/dist/oauth.min.js',      
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
