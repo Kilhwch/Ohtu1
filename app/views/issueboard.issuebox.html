@@ -9,9 +9,9 @@ ng-mouseenter="hover = true" ng-mouseleave="hover = false">
 	<img src="{{issue.user.avatar_url}}">
 	<p><b> #{{issue.number}} {{issue.title}}</b></p>
 	<form ng-submit="doneEditing(issue)">
-		<input ng-model="issue.body"/>
-		<span class="glyphicon glyphicon-ok" ng-click="doneEditing(issue)"></span>
-		<span class="glyphicon glyphicon-remove-circle" ng-click="cancelEditing(issue)"></span>
+		<input ng-model="issue.editingbody"/>
+		<span id="submit" class="glyphicon glyphicon-ok" ng-click="doneEditing(issue)"></span>
+		<span id="cancel" class="glyphicon glyphicon-remove-circle" ng-click="cancelEditing(issue)"></span>
 		<select ng-init="issue.milestone" ng-model="issue.milestone" ng-options="milestone as milestone.title for milestone in milestones" ng-change="cancelEditing(issue)">
             <option value="">Not in a milestone</option>
         </select>
