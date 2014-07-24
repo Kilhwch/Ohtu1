@@ -19,7 +19,12 @@
   border-bottom: 1px solid #e5e5e5;
 }
 
-/*
+.issue.highlight {
+  border: solid;
+  background: #c3f4d4;
+}
+
+
 .backlog{
   background:rgba(192,192,192, 0.3);
 }
@@ -35,7 +40,7 @@
 .done{
   background:rgba(144,238,144,0.2);
 }
-*/
+
 .column{
   float:left;
   width:300px;
