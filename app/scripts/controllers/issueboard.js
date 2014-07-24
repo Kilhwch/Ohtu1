@@ -26,6 +26,7 @@ angular.module('ohtuProjektiAppApp')
     });
 
     $scope.editItem = function(issue){
+        issue.editingbody = issue.body;
         issue.editing = true;
     };
 
@@ -34,6 +35,7 @@ angular.module('ohtuProjektiAppApp')
     };
 
     $scope.doneEditing = function(issue){
+        issue.body = issue.editingbody;
         issues.updateIssue(issue.number, issue, function(data){});
         issue.editing = false;
     };

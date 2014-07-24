@@ -110,16 +110,50 @@ describe('Listing issues', function() {
       expect(issueElem.element(by.css('.edit')).getAttribute('class')).not.toContain('ng-hide');      
     });
 
-    it('should edit text of issue in edit mode', function(){
+    it('should edit text of issue in edit mode after pressing submit button', function(){
+
       var issueElem = element.all(by.repeater('issue in issues')).first();
       var notEdit = issueElem.element(by.css('.notedit'));
       notEdit.click();
-      var input = issueElem.element(by.model('issue.body'));
+      var input = issueElem.element(by.model('issue.editingbody'));
       input.sendKeys('HODOR');
-      //notEdit.sendKeys(protractor.Key.Enter);
+
+      var submitBtn = issueElem.element(by.css('#submit'));
+      submitBtn.click();
+
       issueElem.all(by.css('.notedit p')).last().getInnerHtml().then(function(text){
         expect(text).toContain('HODOR');
-      });    
+      });
+
+    });
+
+    it('should edit text of issue in edit mode after pressing enter', function(){
+
+      var issueElem = element.all(by.repeater('issue in issues')).first();
+      var notEdit = issueElem.element(by.css('.notedit'));
+      notEdit.click();
+      var input = issueElem.element(by.model('issue.editingbody'));
+      input.sendKeys('HODOR\n');
+
+      expect(issueElem.all(by.css('.notedit p')).last().getText()).toContain('HODOR');
+
+    });
+
+    it('should not edit text of issue after pressing cancel in edit mode', function(){
+
+      var issueElem = element.all(by.repeater('issue in issues')).first();
+      var notEdit = issueElem.element(by.css('.notedit'));
+      notEdit.click();
+      var input = issueElem.element(by.model('issue.editingbody'));
+      input.sendKeys('HODOR');
+      
+      var cancelBtn = issueElem.element(by.css('#cancel'));
+      cancelBtn.click();
+
+      issueElem.all(by.css('.notedit p')).last().getInnerHtml().then(function(text){
+        expect(text).not.toContain('HODOR');
+      });
+
     });
 
   });
