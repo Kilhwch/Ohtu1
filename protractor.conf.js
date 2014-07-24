@@ -10,7 +10,7 @@ exports.config = {
 
 
   capabilities: {
-   'browserName': 'phantomjs',
+   'browserName': 'firefox',
    'phantomjs.binary.path':'./node_modules/phantomjs/bin/phantomjs',
   },
 
