@@ -6,47 +6,70 @@ describe('Listing issues', function() {
   beforeEach(function() {
     ptor = protractor.getInstance();
     ptor.addMockModule('httpBackendMock', mockModule.httpBackendMock);
-    browser.get('/');
+    browser.get('#/repos/user/repo');
     browser.manage().addCookie('token', 'testing', '/', 'localhost');
   });
 
   it('should list issues', function() {
-    browser.get('#/repos/user/repo');
     var elems = element.all(by.repeater('issue in issues'));
-    expect(elems.count()).toBe(1);
+    expect(elems.count()).toBe(5);
   });
 
   it('should show issue.title', function() {
-    browser.get('#/repos/user/repo');
     var elems = element.all(by.repeater('issue in issues'));
-    expect(elems.first().getText()).toBe('# Test tickle');
+    expect(elems.first().getText()).toContain('# Test tickle');
+  });
+
+  it('should show second issue.title', function() {
+    var elems = element.all(by.repeater('issue in issues'));
+    expect(elems.get(1).getText()).toContain('Test ready');
+  });
+
+  it('should show third issue.title', function() {
+    var elems = element.all(by.repeater('issue in issues'));
+    expect(elems.get(2).getText()).toContain('Test inprogress');
+  });
+
+  it('should show frouth issue.title', function() {
+    var elems = element.all(by.repeater('issue in issues'));
+    expect(elems.get(3).getText()).toContain('Test done');
+  });
+
+  it('should show fifth issue.title', function() {
+    var elems = element.all(by.repeater('issue in issues'));
+    expect(elems.get(4).getText()).toContain('Test done2');
+  });
+
+  xit('should list issues in Done', function() {
+    var elems = element.all((by.css('.column4')));
+    expect(elems.get(1).getText()).toContain('Test done');
+  });
+
+  it('should show issue.body', function() {
+    var elems = element.all(by.repeater('issue in issues'));
+    expect(elems.first().getText()).toContain('Test body');
   });
 
   it('should show owner', function() {
-    browser.get('#/repos/user/repo');
     expect(element(by.css('.viewbar')).getText()).toContain('Owner: ')
   });
 
-  it('should show issue labels Backlog', function() {
-    browser.get('#/repos/user/repo');
+  it('should show issue column Backlog', function() {
     var elems = element.all((by.css('.column')));
     expect(elems.first().getText()).toContain('Backlog');
   });
 
-  it('should show issue labels Ready', function() {
-    browser.get('#/repos/user/repo');
+  it('should show issue column Ready', function() {
     var elems = element.all((by.css('.column')));
     expect(elems.get(1).getText()).toContain('Ready');
   });
 
-  it('should show issue labels In Progress', function() {
-    browser.get('#/repos/user/repo');
+  it('should show issue column In Progress', function() {
     var elems = element.all((by.css('.column')));
     expect(elems.get(2).getText()).toContain('In Progress');
   });
 
-  it('should show issue labels Done', function() {
-    browser.get('#/repos/user/repo');
+  it('should show issue column Done', function() {
     var elems = element.all((by.css('.column')));
     expect(elems.get(3).getText()).toContain('Done');
   });
@@ -54,7 +77,6 @@ describe('Listing issues', function() {
   describe('Issue box', function(){
 
     it('be in edit mode when first viewing backlog', function(){
-      browser.get('#/repos/user/repo');
       element.all(by.repeater('issue in issues')).each(function(elem){
         expect(elem.element(by.css('.notedit')).getAttribute('class')).not.toContain('ng-hide');
         expect(elem.element(by.css('.edit')).getAttribute('class')).toContain('ng-hide');
@@ -62,7 +84,6 @@ describe('Listing issues', function() {
     });
 
     it('should be in edit mode when clicked on', function(){
-      browser.get('#/repos/user/repo');
       var issueElem = element.all(by.repeater('issue in issues')).first();
       issueElem.element(by.css('.notedit')).click();
       expect(issueElem.element(by.css('.notedit')).getAttribute('class')).toContain('ng-hide');
@@ -70,13 +91,12 @@ describe('Listing issues', function() {
     });
 
     it('should edit text of issue in edit mode after pressing submit button', function(){
-      browser.get('#/repos/user/repo');
+
       var issueElem = element.all(by.repeater('issue in issues')).first();
       var notEdit = issueElem.element(by.css('.notedit'));
       notEdit.click();
       var input = issueElem.element(by.model('issue.editingbody'));
       input.sendKeys('HODOR');
-      //notEdit.sendKeys(protractor.Key.Enter);
 
       var submitBtn = issueElem.element(by.css('#submit'));
       submitBtn.click();
@@ -84,21 +104,23 @@ describe('Listing issues', function() {
       issueElem.all(by.css('.notedit p')).last().getInnerHtml().then(function(text){
         expect(text).toContain('HODOR');
       });
+
     });
 
     it('should edit text of issue in edit mode after pressing enter', function(){
-      browser.get('#/repos/user/repo');
+
       var issueElem = element.all(by.repeater('issue in issues')).first();
       var notEdit = issueElem.element(by.css('.notedit'));
       notEdit.click();
       var input = issueElem.element(by.model('issue.editingbody'));
       input.sendKeys('HODOR\n');
 
-      expect(issueElem.all(by.css('.notedit p')).last().getText()).toEqual('HODOR');
+      expect(issueElem.all(by.css('.notedit p')).last().getText()).toContain('HODOR');
+
     });
 
     it('should not edit text of issue after pressing cancel in edit mode', function(){
-      browser.get('#/repos/user/repo');
+
       var issueElem = element.all(by.repeater('issue in issues')).first();
       var notEdit = issueElem.element(by.css('.notedit'));
       notEdit.click();
@@ -111,6 +133,7 @@ describe('Listing issues', function() {
       issueElem.all(by.css('.notedit p')).last().getInnerHtml().then(function(text){
         expect(text).not.toContain('HODOR');
       });
+
     });
 
   });
