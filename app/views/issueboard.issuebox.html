@@ -1,4 +1,5 @@
-<div class="backlog issue" ng-class="{highlight : hover}" ng-hide="issue.editing"
+
+<div style="background-color: {{getLabelColor(issue)}}"  class="backlog issue" ng-class="{highlight : hover}" ng-hide="issue.editing"
      ng-click="editItem(issue)" ng-init="hover = false"
      ng-mouseenter="hover = true" ng-mouseleave="hover = false">
     <img src="{{issue.user.avatar_url}}">
@@ -7,9 +8,7 @@
 </div>
 <div ng-show="issue.editing" class="backlog issue">
     <img src="{{issue.user.avatar_url}}">
-    <p>
-        <b> #{{issue.number}} {{issue.title}}</b>
-    </p>
+    <p><b> #{{issue.number}} {{issue.title}}</b></p>
     <form ng-submit="doneEditing(issue)">
         <input ng-model="issue.body"/>
         <span class="glyphicon glyphicon-remove-circle" ng-click="cancelEditing(issue)"></span>

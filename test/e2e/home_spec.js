@@ -5,7 +5,7 @@ describe('Home view', function() {
     beforeEach(function() {
         ptor = protractor.getInstance();
         ptor.addMockModule('httpBackendMock', mockModule.httpBackendMock);
-        browser.get('http://localhost:9001');
+        browser.get('/');
     });
 
     it('has a title', function() {
