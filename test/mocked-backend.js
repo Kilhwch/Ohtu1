@@ -15,6 +15,11 @@ exports.httpBackendMock = function() {
                 $httpBackend.whenGET(/https:\/\/oauth.io.*/).respond('token');
                 $httpBackend.whenGET(list).respond([repo, repo2]);
                 $httpBackend.whenGET(issueboard).respond([issue, issue2, issue3, issue4, issue5]);
+                $httpBackend.whenPOST('https://api.github.com/repos/user/repo/issues')
+                  .respond(function(method, url, data, headers) {
+                   return [201, {title: "moi"}];
+                  });
                 $httpBackend.whenGET(/.*/).passThrough();
+                
             });
 }

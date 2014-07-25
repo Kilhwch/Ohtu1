@@ -8,17 +8,19 @@
  * Controller of the ohtuProjektiAppApp
  */
 angular.module('ohtuProjektiAppApp')
-  .controller('NewissueCtrl', function ($scope,github,$stateParams) {
-          $scope.issues = new github.Issue($stateParams.owner, $stateParams.repoName);
+  .controller('NewissueCtrl', function ($scope, github, $stateParams) {
+          var issues = new github.Issue($stateParams.owner, $stateParams.repoName);
           $scope.clearFields = function() {
             $scope.issueTitle = "";
             $scope.issueBody = "";
           }
           $scope.addIssue = function() {
             var d = {title: $scope.issueTitle, body: $scope.issueBody};
-            $scope.issues.createIssue(d, function(err, data) {
-                if (err)
-                  console.log(err);
+            issues.createIssue(d, function(object, response) {
+            console.log("issues data", $scope.issues);
+            if (response=='201')
+              $scope.issues.unshift(object);
+            
             });
             $scope.clearFields();
           };
