@@ -65,13 +65,17 @@ angular
       	url: '/repos/:owner/:repoName',		
 		views: {
 			'': {
-        templateUrl: 'views/issueboard.html',
+                templateUrl: 'views/issueboard.html',
 				controller: 'IssueboardCtrl',
 			},
 			'header@': {
 				controller: 'HeaderCtrl',
 				templateUrl: 'views/header.html'
-			}
+			},
+			'newissue@repository': {
+			    templateUrl: 'views/newissue.html',
+			    controller: 'NewissueCtrl'
+			 }
 		}
       })
       .state('burndown', {
