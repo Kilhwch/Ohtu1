@@ -16,11 +16,9 @@ angular.module('ohtuProjektiAppApp')
 
     milestones.list({}, function(data) {
         $scope.milestones = data;
-        console.log(data);
     });
 
     issues.list({}, function(data) {
-        console.log(data);
         data.editing = false;
         $scope.issues = data;
     });
@@ -38,6 +36,13 @@ angular.module('ohtuProjektiAppApp')
         issue.body = issue.editingbody;
         issues.updateIssue(issue.number, issue, function(data){});
         issue.editing = false;
+    };
+    
+    $scope.changedMilestone = function(issue){
+        $scope.doneEditing(issue);
+        milestones.getMilestone(issue.milestone,function(data){
+            issue.milestone = data;
+        });
     };
 
     $scope.getLabelColor = function(issue){
