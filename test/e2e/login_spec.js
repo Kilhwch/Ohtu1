@@ -5,7 +5,7 @@ describe('Login', function() {
     beforeEach(function() {
         ptor = protractor.getInstance();
         ptor.addMockModule('auth', authModule.authMock(browser))
-        browser.get('/');
+        //browser.get('/');
     });
 
     afterEach(function() {
