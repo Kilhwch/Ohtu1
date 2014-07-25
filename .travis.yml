@@ -4,6 +4,9 @@ env:
   matrix:
     secure: "dqFg3We+roZV9bP0BPLipIinNdzAq0V5rRAr91GyZ4D59sdWnYlHhTm5XkSjevXCTnbzyumP6NXidCrjcdsyptUktfuHl95TPKkVv489cCe93kKoMRRwJi4Re9DarJIuq50FL7bDX6EUdc8+ZlODeS2ITAC4B6VIF7UR0TKolDA="
 language: node_js
+before_install:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
 before_script: 
   - npm install -g bower grunt-cli
   - bower install
