@@ -7,7 +7,8 @@
   width:300px;
   min-height:100px;
   margin-bottom:20px;
-  position:relative
+  position:relative;
+  word-wrap:break-word;
 }
 
 .viewbar{

@@ -19,7 +19,6 @@ angular.module('ohtuProjektiAppApp')
     });
 
     issues.list({}, function(data) {
-        console.log(data);
         data.editing = false;
         $scope.issues = data;
     });
