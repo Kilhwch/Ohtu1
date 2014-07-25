@@ -93,6 +93,20 @@ describe('Listing issues', function() {
     var elems = element.all((by.css('.column')));
     expect(elems.get(3).getText()).toContain('Done');
   });
+  
+  
+  it('should receive correct response when creating a new issue', function() {
+    var input = element(by.model('issueTitle'));
+    input.sendKeys('testi');
+    expect(input.getAttribute('value')).toBe('testi');
+    var button = ptor.findElement(protractor.By.id('Add issue'));
+    button.click();
+    
+    var elems = element.all(by.repeater('issue in issues'));
+    expect(elems.get(0).getText()).toContain('moi');
+  });
+  
+  
 
   describe('Issue box', function(){
 
