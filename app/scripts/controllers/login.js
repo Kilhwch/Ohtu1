@@ -10,15 +10,16 @@
 
 angular.module('ohtuProjektiAppApp')
   .controller('LoginCtrl', function($scope, $state, github, auth) {
-       $scope.signin = function(){
-       		var gitauth = auth.askAuth();
-          gitauth.done(function(result){
-            github.loginWithToken(result.access_token);
-            $state.go('main', {}, {reload: true});
-            $scope.$apply();
-          })
-          .fail(function(err){
+    $scope.signin = function() {
+      var gitauth = auth.askAuth();
+
+      gitauth.done(function(result){
+        github.loginWithToken(result.access_token);
+        $state.go('main', {}, {reload: true});
+        $scope.$apply();
+      })
+      .fail(function(err){
             console.log(err);
-          });         
-       	};
+      });
+    };
 });
