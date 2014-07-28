@@ -22,10 +22,16 @@ angular.module('ohtuProjektiAppApp')
         options.headers = { 'Authorization': 'token ' + token };
       }
 
-      var promise = $http(options).success(success);
+      var promise = $http(options);
  
-      if (error) {
-        promise.error(error);
+      if (success) {
+        if (error) {
+          promise.success(success).error(error);
+        } else {
+          promise.success(success);
+        }
+      } else {
+        return promise;
       }
     };
 
@@ -44,15 +50,15 @@ angular.module('ohtuProjektiAppApp')
       },
 
       user: function(username, success, error) {
-        _http('GET', '/users/' + username, null, success, error);;
+        return _http('GET', '/users/' + username, null, success, error);
       },
 
       authenticatedUser: function(success, error) {
-        _http('GET', '/user', null, success, error);;
+        return _http('GET', '/user', null, success, error);
       },
 
       userRepos: function(success, error) {
-        _http('GET', '/user/repos', null, success, error);;
+        return _http('GET', '/user/repos', null, success, error);
       },
 
       Issue: function(user, repo) {
@@ -60,32 +66,32 @@ angular.module('ohtuProjektiAppApp')
 
         // List all issues of a repository
         this.list = function(options, success, error) {
-          _http('GET', url, options, success, error);;
+          return _http('GET', url, options || {}, success, error);
         };
 
         // Gets details for a specific issue
         this.getIssue = function(number, success, error) {
-          _http('GET', url + '/' + number, null, success, error);;
+          return _http('GET', url + '/' + number, null, success, error);
         };
 
         // Create a new issue
         this.createIssue = function(options, success, error) {
-          _http('POST', url, options, success, error);;
+          return _http('POST', url, options, success, error);
         };
 
         // Update an issue
         this.updateIssue = function(number, options, success, error) {
-          _http('PATCH', url + '/' + number, options, success, error);;
+          return _http('PATCH', url + '/' + number, options, success, error);
         };
 
         // Open an issue
         this.openIssue = function(number, success, error) {
-          _http('PATCH', url + '/' + number, {'state':'open'}, success, error);;
+          return _http('PATCH', url + '/' + number, {'state':'open'}, success, error);
         };
 
         // Close an issue
         this.closeIssue = function(number, success, error) {
-          _http('PATCH', url + '/' + number, {'state':'closed'}, success, error);;
+          return _http('PATCH', url + '/' + number, {'state':'closed'}, success, error);
         };
       },
 
@@ -93,26 +99,26 @@ angular.module('ohtuProjektiAppApp')
         var url = '/repos/' + user + '/' + repo + '/labels';
 
         this.list = function(options, success, error) {
-          _http('GET', url, options, success, error);;
+          return _http('GET', url, options || {}, success, error);
         };
 
 
         this.getLabel = function(name, success, error) {
-          _http('GET', url + '/' + name, null, success, error);;
+          return _http('GET', url + '/' + name, null, success, error);
         };
 
 
         this.createLabel = function(options, success, error) {
-          _http('POST', url, options, success, error);;
+          return _http('POST', url, options, success, error);
         };
         
         this.deleteLabel = function(name, success, error) {
-          _http('DELETE', url + '/' + name, null, success, error);;
+          return _http('DELETE', url + '/' + name, null, success, error);
         };
 
 
         this.updateLabel = function(name, options, success, error) {
-          _http('PATCH', url + '/' + name, options, success, error);;
+          return _http('PATCH', url + '/' + name, options, success, error);
         };
 
       },
@@ -122,25 +128,25 @@ angular.module('ohtuProjektiAppApp')
 
 
         this.list = function(options, success, error) {
-          _http('GET', url, options, success, error);;
+          return _http('GET', url, options || {}, success, error);
         };
 
         this.getMilestone = function(number, success, error) {
-          _http('GET', url + '/' + number, null, success, error);;
+          return _http('GET', url + '/' + number, null, success, error);
         };
 
 
         this.createMilestone = function(options, success, error) {
-          _http('POST', url, options, success, error);;
+          return _http('POST', url, options, success, error);
         };
 
 
         this.updateMilestone = function(number, options, success, error) {
-          _http('PATCH', url + '/' + number, options, success, error);;
+          return _http('PATCH', url + '/' + number, options, success, error);
         };
         
         this.deleteMilestone = function(number, success, error) {
-          _http('DELETE', url + '/' + number, null, success, error);;
+          return _http('DELETE', url + '/' + number, null, success, error);
         };
       },
 
