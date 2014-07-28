@@ -23,7 +23,7 @@ angular.module('ohtuProjektiAppApp')
       }
 
       var promise = $http(options).success(success);
-
+ 
       if (error) {
         promise.error(error);
       }
@@ -43,76 +43,76 @@ angular.module('ohtuProjektiAppApp')
         return !!localStorageService.get('token');
       },
 
-      user: function(username, cb) {
-        _http('GET', '/users/' + username, null, cb);
+      user: function(username, success, error) {
+        _http('GET', '/users/' + username, null, success, error);;
       },
 
-      authenticatedUser: function(cb) {
-        _http('GET', '/user', null, cb);
+      authenticatedUser: function(success, error) {
+        _http('GET', '/user', null, success, error);;
       },
 
-      userRepos: function(cb) {
-        _http('GET', '/user/repos', null, cb);
+      userRepos: function(success, error) {
+        _http('GET', '/user/repos', null, success, error);;
       },
 
       Issue: function(user, repo) {
         var url = '/repos/' + user + '/' + repo + '/issues';
 
         // List all issues of a repository
-        this.list = function(options, cb) {
-          _http('GET', url, options, cb);
+        this.list = function(options, success, error) {
+          _http('GET', url, options, success, error);;
         };
 
         // Gets details for a specific issue
-        this.getIssue = function(number, cb) {
-          _http('GET', url + '/' + number, null, cb);
+        this.getIssue = function(number, success, error) {
+          _http('GET', url + '/' + number, null, success, error);;
         };
 
         // Create a new issue
-        this.createIssue = function(options, cb) {
-          _http('POST', url, options, cb);
+        this.createIssue = function(options, success, error) {
+          _http('POST', url, options, success, error);;
         };
 
         // Update an issue
-        this.updateIssue = function(number, options, cb) {
-          _http('PATCH', url + '/' + number, options, cb);
+        this.updateIssue = function(number, options, success, error) {
+          _http('PATCH', url + '/' + number, options, success, error);;
         };
 
         // Open an issue
-        this.openIssue = function(number, cb) {
-          _http('PATCH', url + '/' + number, {'state':'open'}, cb);
+        this.openIssue = function(number, success, error) {
+          _http('PATCH', url + '/' + number, {'state':'open'}, success, error);;
         };
 
         // Close an issue
-        this.closeIssue = function(number, cb) {
-          _http('PATCH', url + '/' + number, {'state':'closed'}, cb);
+        this.closeIssue = function(number, success, error) {
+          _http('PATCH', url + '/' + number, {'state':'closed'}, success, error);;
         };
       },
 
       Label: function(user, repo) {
         var url = '/repos/' + user + '/' + repo + '/labels';
 
-        this.list = function(options, cb) {
-          _http('GET', url, options, cb);
+        this.list = function(options, success, error) {
+          _http('GET', url, options, success, error);;
         };
 
 
-        this.getLabel = function(name, cb) {
-          _http('GET', url + '/' + name, null, cb);
+        this.getLabel = function(name, success, error) {
+          _http('GET', url + '/' + name, null, success, error);;
         };
 
 
-        this.createLabel = function(options, cb) {
-          _http('POST', url, options, cb);
+        this.createLabel = function(options, success, error) {
+          _http('POST', url, options, success, error);;
         };
         
-        this.deleteLabel = function(name, cb) {
-          _http('DELETE', url + '/' + name, null, cb);
+        this.deleteLabel = function(name, success, error) {
+          _http('DELETE', url + '/' + name, null, success, error);;
         };
 
 
-        this.updateLabel = function(name, options, cb) {
-          _http('PATCH', url + '/' + name, options, cb);
+        this.updateLabel = function(name, options, success, error) {
+          _http('PATCH', url + '/' + name, options, success, error);;
         };
 
       },
@@ -121,27 +121,26 @@ angular.module('ohtuProjektiAppApp')
         var url = '/repos/' + user + '/' + repo + '/milestones';
 
 
-        this.list = function(options, cb) {
-          _http('GET', url, options, cb);
+        this.list = function(options, success, error) {
+          _http('GET', url, options, success, error);;
+        };
+
+        this.getMilestone = function(number, success, error) {
+          _http('GET', url + '/' + number, null, success, error);;
         };
 
 
-        this.getMilestone = function(number, cb) {
-          _http('GET', url + '/' + number, null, cb);
+        this.createMilestone = function(options, success, error) {
+          _http('POST', url, options, success, error);;
         };
 
 
-        this.createMilestone = function(options, cb) {
-          _http('POST', url, options, cb);
-        };
-
-
-        this.updateMilestone = function(number, options, cb) {
-          _http('PATCH', url + '/' + number, options, cb);
+        this.updateMilestone = function(number, options, success, error) {
+          _http('PATCH', url + '/' + number, options, success, error);;
         };
         
-        this.deleteMilestone = function(number, cb) {
-          _http('DELETE', url + '/' + number, null, cb);
+        this.deleteMilestone = function(number, success, error) {
+          _http('DELETE', url + '/' + number, null, success, error);;
         };
       },
 
