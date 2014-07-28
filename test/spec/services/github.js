@@ -9,10 +9,15 @@ describe('Service: github', function () {
   var github,
     $httpBackend,
     httpResult,
+    httpError,
     apiUrl = "https://api.github.com";
 
   function success(data) {
     httpResult = data;
+  }
+
+  function error(data) {
+    httpError = data;
   }
 
   beforeEach(inject(function (_github_, _$httpBackend_) {
@@ -20,6 +25,7 @@ describe('Service: github', function () {
     github.logout();
     $httpBackend = _$httpBackend_;
     httpResult = undefined;
+    httpError = undefined;
   }));
 
   it('should authenticate', function () {
@@ -240,6 +246,15 @@ describe('Service: github', function () {
 
       $httpBackend.flush();
       expect(httpResult).toBe(true);
+    });
+
+    it('should call error function', function () {
+      $httpBackend.expectGET(url + '/' + 2).respond(401, true);
+      issues.getIssue(2,success,error);
+      expect(httpResult).toBeUndefined();
+
+      $httpBackend.flush();
+      expect(httpError).toBe(true);
     });
 
   });

@@ -8,17 +8,19 @@
  * Controller of the ohtuProjektiAppApp
  */
 angular.module('ohtuProjektiAppApp')
-  .controller('IssueboardCtrl', function ($scope, $stateParams, github) {
+  .controller('IssueboardCtrl', function ($scope, $state, $stateParams, github) {
+
+    if (!github.isAuthenticated()) $state.go('main');
 
     var issues = new github.Issue($stateParams.owner, $stateParams.repoName);
     var milestones = new github.Milestone($stateParams.owner, $stateParams.repoName);
     $scope.labels = ["Ready","InProgress","Done"];
 
-    milestones.list({}, function(data) {
+    milestones.list().success(function(data) {
         $scope.milestones = data;
     });
 
-    issues.list({}, function(data) {
+    issues.list().success(function(data) {
         data.editing = false;
         $scope.issues = data;
     });
@@ -34,15 +36,21 @@ angular.module('ohtuProjektiAppApp')
 
     $scope.doneEditing = function(issue){
         issue.body = issue.editingbody;
-        issues.updateIssue(issue.number, issue, function(data){});
+        issues.updateIssue(issue.number, {body:issue.body}, function(data){});
         issue.editing = false;
     };
     
-    $scope.changedMilestone = function(issue){
-        $scope.doneEditing(issue);
-        milestones.getMilestone(issue.milestone,function(data){
-            issue.milestone = data;
+    $scope.changedMilestone = function(issue, oldmilestone){
+        issues.updateIssue(issue.number, {milestone:issue.milestone.number}, function(){}, function(error){
+               issue.milestone = oldmilestone;
         });
+        issue.editing = false;
+    };
+    $scope.changedLabel = function(issue, oldlabels){
+        issues.updateIssue(issue.number, {labels:issue.labels}, function(){},function(error){
+            issue.labels = oldlabels;
+        });
+        issue.editing = false;
     };
 
     $scope.getLabelColor = function(issue){

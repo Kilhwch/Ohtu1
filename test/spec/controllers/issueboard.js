@@ -10,10 +10,10 @@ describe('Controller: IssueboardCtrl', function () {
     scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope, $githubMock) {
+  beforeEach(inject(function ($controller, $rootScope, github) {
     scope = $rootScope.$new();
     scope.issue = {number : 0, editing : true, body : 'body'};
-	  githubMock = $githubMock;
+	  githubMock = github;
     IssueboardCtrl = $controller('IssueboardCtrl', {
       $scope: scope,
   		github : githubMock

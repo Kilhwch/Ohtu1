@@ -17,6 +17,6 @@ describe('Controller: BurndownCtrl', function () {
   }));
 
   it('config labels should be false', function () {
-    expect(scope.config.labels).toBe(false);
+    expect(scope.myData[0]).toBe(10);
   });
 });

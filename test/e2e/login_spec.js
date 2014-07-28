@@ -4,8 +4,7 @@ describe('Login', function() {
 
     beforeEach(function() {
         ptor = protractor.getInstance();
-        ptor.addMockModule('auth', authModule.authMock(browser))
-        //browser.get('/');
+        ptor.addMockModule('auth', authModule.authMock)
     });
 
     afterEach(function() {
@@ -16,7 +15,6 @@ describe('Login', function() {
       browser.get('#/logout');
       $('.login-button').click();
       browser.get('#/list');
-      //browser.pause();
       expect(browser.getCurrentUrl()).toContain('#/list');
     });
 });

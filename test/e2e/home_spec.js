@@ -1,11 +1,13 @@
 describe('Home view', function() {
     var mockModule = require('../mocked-backend'),
-            prot;
+        authModule = require('../mocked-auth'),
+        prot;
 
     beforeEach(function() {
         ptor = protractor.getInstance();
         ptor.addMockModule('httpBackendMock', mockModule.httpBackendMock);
-        browser.get('/');
+        ptor.addMockModule('auth', authModule.authMock);
+        browser.get('#/logout');
     });
 
     it('has a title', function() {
@@ -15,15 +17,14 @@ describe('Home view', function() {
     
     it('updates after login', function() {
         expect(ptor.element(by.id('login')).getText()).toEqual('Login');
-        browser.manage().addCookie('token', 'testing', '/', 'localhost');
-        browser.get('/')
+        $('.login-button').click();
         expect(ptor.element(by.id('home')).getText()).toEqual('Home');
         expect(ptor.element(by.id('list')).getText()).toEqual('List');
         expect(ptor.element(by.id('logout')).getText()).toEqual('Logout');
     });
 
     it('updates after logout', function() {
-        browser.manage().addCookie('token', 'testing', '/', 'localhost');
+        $('.login-button').click();
         expect(ptor.element(by.id('list')).getText()).toEqual('List');
         browser.get('/#/logout');
         expect(ptor.element(by.id('login')).getText()).toEqual('Login');
