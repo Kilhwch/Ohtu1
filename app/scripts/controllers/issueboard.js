@@ -38,11 +38,21 @@ angular.module('ohtuProjektiAppApp')
         issue.editing = false;
     };
     
-    $scope.changedMilestone = function(issue){
-        $scope.doneEditing(issue);
-        milestones.getMilestone(issue.milestone,function(data){
-            issue.milestone = data;
+    $scope.changedMilestone = function(issue, oldmilestone){
+        issues.updateIssue(issue.number, {milestone:issue.milestone.number}, function(data, response){
+           if(response === 200)
+           if(response !== 200)
+               issue.milestone = oldmilestone;
         });
+        issue.editing = false;
+    };
+    $scope.changedLabel = function(issue, oldlabels){
+        issues.updateIssue(issue.number, {labels:issue.labels}, function(data, response){
+           if(response === 200)
+           if(response !== 200)
+               issue.labels = oldlabels
+        });
+        issue.editing = false;
     };
 
     $scope.getLabelColor = function(issue){
