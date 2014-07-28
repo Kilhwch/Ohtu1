@@ -1,4 +1,21 @@
-<head> <style type="text/css">.chart {
-  width: 500px;
-  height: 500px;
-  }</style>  <b>This is a mock chart for burndown view</b> <div ng-controller="BurndownCtrl" data-ac-chart="'bar'" data-ac-data="data" data-ac-config="config" class="chart"> </div>
+<head> <style>.chart {
+    background: #eee;
+    padding: 3px;
+}
+
+.chart div {
+  width: 0;
+  transition: all 1s ease-out;
+  -moz-transition: all 1s ease-out;
+  -webkit-transition: all 1s ease-out;
+}
+
+.chart div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 5px;
+  color: white;
+  box-shadow: 2px 2px 2px #666;
+}</style>  <b>This is a mock chart for burndown view</b> <bars-chart chart-data="myData"></bars-chart>
