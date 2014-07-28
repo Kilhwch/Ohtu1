@@ -105,6 +105,24 @@ describe('Listing issues', function() {
     var elems = element.all(by.repeater('issue in issues'));
     expect(elems.get(0).getText()).toContain('moi');
   });
+
+  it('should edit label of issue', function(){
+      var backlog = element.all((by.css('.backlogbox'))).get(0);
+      expect(backlog.getText()).toContain('Test tickle')
+  
+      var issueElem = element.all(by.repeater('issue in issues')).first();
+      var notEdit = issueElem.element(by.css('.notedit'));
+      notEdit.click();
+
+      issueElem.element(by.id('labels')).click();
+      issueElem.element(by.css('#labels option[value="0"]')).click();
+
+      ptor.sleep(1000);
+
+      var ready = element.all((by.css('.readybox'))).get(1);
+      expect(ready.getText()).toContain('Test tickle')
+
+  });
   
   
 
