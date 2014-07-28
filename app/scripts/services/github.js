@@ -24,8 +24,8 @@ angular.module('ohtuProjektiAppApp')
 
       var promise = $http(options);
  
-      if (success) {
-        if (error) {
+      if (!!success) {
+        if (!!error) {
           promise.success(success).error(error);
         } else {
           promise.success(success);
