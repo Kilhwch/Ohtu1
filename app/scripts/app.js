@@ -17,6 +17,7 @@ angular
     'ngTouch',
     'ui.router',
     'ui.bootstrap',
+    'AngularEtag'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/main");
