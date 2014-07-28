@@ -7,7 +7,6 @@ describe('Listing issues', function() {
     ptor = protractor.getInstance();
     ptor.addMockModule('httpBackendMock', mockModule.httpBackendMock);
     browser.get('#/repos/user/repo');
-    browser.manage().addCookie('token', 'testing', '/', 'localhost');
   });
 
   it('should list issues', function() {
