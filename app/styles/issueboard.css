@@ -21,8 +21,10 @@
 }
 
 .issue.highlight {
-  border: solid;
-  background: #c3f4d4;
+  outline: solid;
+  outline-color: #0F6B8E;
+  border-radius: 0px;
+  border: 1px solid #0F6B8E;
 }
 
 
