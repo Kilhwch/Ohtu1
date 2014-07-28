@@ -10,9 +10,13 @@ app.mock.$githubMockProvider = function(){
 
 	var issues = [issue];
 
+
 	this.$get = function(){
 		
 		var $service = {
+
+                        isAuthenticated: function() { return true; },
+
 			Issue: function(user, repo){
 
 				this.list = function(options, cb){

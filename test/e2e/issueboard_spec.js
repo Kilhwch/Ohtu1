@@ -1,11 +1,15 @@
 describe('Listing issues', function() {
 
   var mockModule = require('../mocked-backend'),
-    ptor;
+      authModule = require('../mocked-auth'),
+      ptor;
 
   beforeEach(function() {
     ptor = protractor.getInstance();
     ptor.addMockModule('httpBackendMock', mockModule.httpBackendMock);
+    ptor.addMockModule('auth', authModule.authMock);
+    browser.get('#/logout');
+    $('.login-button').click();
     browser.get('#/repos/user/repo');
   });
 

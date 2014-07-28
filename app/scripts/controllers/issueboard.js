@@ -8,7 +8,9 @@
  * Controller of the ohtuProjektiAppApp
  */
 angular.module('ohtuProjektiAppApp')
-  .controller('IssueboardCtrl', function ($scope, $stateParams, github) {
+  .controller('IssueboardCtrl', function ($scope, $state, $stateParams, github) {
+
+    if (!github.isAuthenticated()) $state.go('main');
 
     var issues = new github.Issue($stateParams.owner, $stateParams.repoName);
     var milestones = new github.Milestone($stateParams.owner, $stateParams.repoName);
