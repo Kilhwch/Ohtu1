@@ -8,7 +8,9 @@
  * Controller of the ohtuProjektiAppApp
  */
 angular.module('ohtuProjektiAppApp')
-  .controller('IssueboardCtrl', function ($scope, $stateParams, github) {
+  .controller('IssueboardCtrl', function ($scope, $state, $stateParams, github) {
+
+    if (!github.isAuthenticated()) $state.go('main');
 
     var issues = new github.Issue($stateParams.owner, $stateParams.repoName);
     var milestones = new github.Milestone($stateParams.owner, $stateParams.repoName);
@@ -38,11 +40,21 @@ angular.module('ohtuProjektiAppApp')
         issue.editing = false;
     };
     
-    $scope.changedMilestone = function(issue){
-        $scope.doneEditing(issue);
-        milestones.getMilestone(issue.milestone,function(data){
-            issue.milestone = data;
+    $scope.changedMilestone = function(issue, oldmilestone){
+        issues.updateIssue(issue.number, {milestone:issue.milestone.number}, function(data, response){
+           if(response === 200)
+           if(response !== 200)
+               issue.milestone = oldmilestone;
         });
+        issue.editing = false;
+    };
+    $scope.changedLabel = function(issue, oldlabels){
+        issues.updateIssue(issue.number, {labels:issue.labels}, function(data, response){
+           if(response === 200)
+           if(response !== 200)
+               issue.labels = oldlabels
+        });
+        issue.editing = false;
     };
 
     $scope.getLabelColor = function(issue){

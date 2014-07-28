@@ -11,12 +11,11 @@
 angular
   .module('ohtuProjektiAppApp', [
     'ngAnimate',
-    'ngCookies',
+    'LocalStorageModule',
     'ngResource',
     'ngSanitize',
     'ngTouch',
     'ui.router',
-    'angularCharts',
     'ui.bootstrap',
   ])
   .config(function ($stateProvider, $urlRouterProvider) {

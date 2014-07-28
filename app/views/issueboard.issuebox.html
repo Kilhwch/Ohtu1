@@ -1,4 +1,4 @@
-<div style="background-color: {{getLabelColor(issue)}}" class="backlog issue notedit" ng-class="{highlight : hover}" ng-hide="issue.editing"
+<div style="background-color: {{getLabelColor(issue)}}" class="backlog issue notedit" ng-class="{highlight : hover}" ng-hide="issue.editing" title="Click to edit"
      ng-click="editItem(issue)" ng-init="hover = false"
      ng-mouseenter="hover = true" ng-mouseleave="hover = false">
     <img src="{{issue.user.avatar_url}}">
@@ -12,7 +12,7 @@
         <input ng-model="issue.editingbody"/>
         <span id="submit" class="glyphicon glyphicon-ok" ng-click="doneEditing(issue)"></span>
         <span id="cancel" class="glyphicon glyphicon-remove-circle" ng-click="cancelEditing(issue)"></span>
-        <select ng-init="issue.milestone" ng-model="issue.milestone" ng-options="milestone.number as milestone.title for milestone in milestones" ng-change="changedMilestone(issue)">
+        <select ng-init="issue.milestone" ng-model="issue.milestone" ng-options="milestone as milestone.title for milestone in milestones" ng-change="changedMilestone(issue,[{{issue.milestone}}])">
             <option value="" ng-click="issue.milestone = null">Not in a milestone</option>
         </select>
         <select id="labels" ng-init="labels[0]" ng-model="issue.labels[0]" ng-options="label as label for label in labels" ng-change="doneEditing(issue)">
