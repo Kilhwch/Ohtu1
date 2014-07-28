@@ -8,7 +8,7 @@ describe('Listing repos', function() {
     ptor = protractor.getInstance();
     ptor.addMockModule('httpBackendMock', mockModule.httpBackendMock);
     ptor.addMockModule('auth', authModule.authMock);
-    browser.get('/');
+    browser.get('#/logout');
     $('.login-button').click();
     browser.get('#/list');
   });
