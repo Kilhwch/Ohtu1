@@ -10,7 +10,7 @@
 angular.module('ohtuProjektiAppApp')
   .controller('ListCtrl', function ($scope, $state, github) {
     if (!github.isAuthenticated()) $state.go('main');
-    github.userRepos(function(data) {
+    github.userRepos().success(function(data) {
       $scope.repos = data;
     });
   });
