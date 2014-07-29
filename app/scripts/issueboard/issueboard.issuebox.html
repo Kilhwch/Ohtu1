@@ -15,7 +15,7 @@
         <select ng-init="issue.milestone" ng-model="issue.milestone" ng-options="milestone as milestone.title for milestone in milestones" ng-change="changedMilestone(issue,[{{issue.milestone}}])">
             <option value="" ng-click="issue.milestone = null">Not in a milestone</option>
         </select>
-        <select id="labels" ng-init="labels[0]" ng-model="issue.labels[0]" ng-options="label as label for label in labels" ng-change="doneEditing(issue)">
+        <select ng-init="labels[0]" ng-model="issue.labels" ng-options="label.name as label.name for label in labels" ng-change="changedLabel(issue,[{{issue.labels}}])">
         </select>
     </form>	
 </div>
