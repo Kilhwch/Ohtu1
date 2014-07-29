@@ -20,7 +20,7 @@ describe('Listing issues', function() {
 
   it('should show issue.title', function() {
     var elems = element.all(by.repeater('issue in issues'));
-    expect(elems.first().getText()).toContain('# Test tickle');
+    expect(elems.first().getText()).toContain('Test tickle');
   });
 
   it('should show second issue.title', function() {
@@ -110,7 +110,6 @@ describe('Listing issues', function() {
   });
   
   
-
   describe('Issue box', function(){
 
     it('be in edit mode when first viewing backlog', function(){
