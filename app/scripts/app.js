@@ -84,7 +84,7 @@ angular
 				templateUrl: 'scripts/header/header.html'
 			},
 			'newissue@repository': {
-			    templateUrl: 'scripts/newissue/newissue.html',
+			    templateUrl: 'scripts/issueboard/newissue.html',
 			    controller: 'NewissueCtrl'
 			 }
 		}
@@ -106,7 +106,7 @@ angular
       	url: '/repos/:owner/:repoName/newissue',		
 	    	views: {
 			    '': {
-          templateUrl: 'scripts/newissue/newissue.html',
+          templateUrl: 'scripts/issueboard/newissue.html',
 				  controller: 'NewissueCtrl',
 			  },
 			  'header@': {
