@@ -18,8 +18,7 @@
     "angular-ui-router": "~0.2.10",
     "angular-local-storage": "~0.0.5",
     "d3": "3.3.13",
-    "angular-bootstrap": "0.11.0",
-    "angular-etag": "https://github.com/forforf/angular-etag.git"
+    "angular-bootstrap": "0.11.0"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",

@@ -9,7 +9,7 @@
  */
 
 angular.module('ohtuProjektiAppApp')
-  .service('github', ['ehttp', 'localStorageService',
+  .service('github', ['$http', 'localStorageService',
   function github($http, localStorageService) {
 
     var apiUrl = 'https://api.github.com';
@@ -22,6 +22,7 @@ angular.module('ohtuProjektiAppApp')
         options.headers = { 'Authorization': 'token ' + token };
       }
 
+      console.log(options);
       var promise = $http(options);
  
       if (!!success) {

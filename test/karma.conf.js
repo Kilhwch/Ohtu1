@@ -30,7 +30,6 @@ module.exports = function(config) {
       'bower_components/angular-charts/dist/angular-charts.js',
       'bower_components/angular-bootstrap/ui-bootstrap.js',
       'bower_components/oauth-js/dist/oauth.min.js',      
-      'bower_components/angular-etag/angular-etag.js',
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
       'test/spec/**/*.js'
