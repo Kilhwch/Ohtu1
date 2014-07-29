@@ -19,10 +19,16 @@ angular
     'ui.bootstrap'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
-    // Cache config
+    // Github requests using Basic Authentication or OAuth
+    // can make up to 5,000 requests per hour.
+    // Making a conditional request and receiving a 304 response
+    // does not count against your Rate Limit, but it uses cache.
+
+    // This configuration "disables" cache.
     if (!$httpProvider.defaults.headers.get) {
         $httpProvider.defaults.headers.get = {};    
     }
+
     $httpProvider.defaults.headers.get['If-Modified-Since'] = '0';    
 
     $urlRouterProvider.otherwise("/main");
