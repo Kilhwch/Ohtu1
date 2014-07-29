@@ -8,7 +8,7 @@
  * Controller of the ohtuProjektiAppApp
  */
 angular.module('ohtuProjektiAppApp')
-  .controller('IssueboardCtrl', function ($scope, $state, $stateParams, github) {
+  .controller('IssueboardCtrl', function ($scope, $state, $stateParams, github, $modal) {
 
     if (!github.isAuthenticated()) $state.go('main');
 
@@ -58,5 +58,13 @@ angular.module('ohtuProjektiAppApp')
 
     $scope.getLabelColor = function(issue){
       return (issue.labels.length === 0)? "": "#" + issue.labels[0].color;
+    };
+
+    $scope.openNewIssueModal = function() {
+      var modalInstance = $modal.open({
+        templateUrl: 'views/newissue.html',
+        controller: 'NewissueCtrl',
+        scope: $scope 
+      });
     };
   });
