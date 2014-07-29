@@ -16,9 +16,15 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.router',
-    'ui.bootstrap',
+    'ui.bootstrap'
   ])
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+    // Cache config
+    if (!$httpProvider.defaults.headers.get) {
+        $httpProvider.defaults.headers.get = {};    
+    }
+    $httpProvider.defaults.headers.get['If-Modified-Since'] = '0';    
+
     $urlRouterProvider.otherwise("/main");
     $stateProvider   
       .state('main', {

@@ -15,13 +15,14 @@ angular.module('ohtuProjektiAppApp')
     var apiUrl = 'https://api.github.com';
 
     function _http(method, url, data, success, error) {
-      var options = { method: method, url: apiUrl + url, data: data };
+      var options = { method: method, url: apiUrl + url, data: data, cache: false };
       var token = localStorageService.get('token');
 
       if (!!token) {
         options.headers = { 'Authorization': 'token ' + token };
       }
 
+      console.log(options);
       var promise = $http(options);
  
       if (!!success) {
