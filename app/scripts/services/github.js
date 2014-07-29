@@ -22,7 +22,6 @@ angular.module('ohtuProjektiAppApp')
         options.headers = { 'Authorization': 'token ' + token };
       }
 
-      console.log(options);
       var promise = $http(options);
  
       if (!!success) {

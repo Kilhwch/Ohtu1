@@ -83,23 +83,13 @@ module.exports = function (grunt) {
               ),
               connect.static(appConfig.app)
             ];
-          }
+          } 
         }
       },
       test: {
         options: {
           port: 9001,
-          middleware: function (connect) {
-            return [
-              connect.static('.tmp'),
-              connect.static('test'),
-              connect().use(
-                '/bower_components',
-                connect.static('./bower_components')
-              ),
-              connect.static(appConfig.app)
-            ];
-          }
+          base: 'instrumented/app',
         }
       },
       dist: {
@@ -142,7 +132,16 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      server: '.tmp'
+      server: '.tmp',
+      test: {
+        files: [{
+          dot: true,
+          src: [
+            'instrumented',
+            'coverage'
+          ]
+        }]
+      }
     },
 
     // Add vendor prefixed styles
@@ -331,6 +330,15 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      test: {
+        files: [{
+          src: ['app/**/*', '!app/scripts/**/*'],
+          dest: 'instrumented/'
+        }, {
+          src: ['bower_components/**/*'],
+          dest: 'instrumented/app/'
+        }],
       }
     },
 
@@ -371,7 +379,43 @@ module.exports = function (grunt) {
       },
       run: {
       },
+    },
+
+    protractor_coverage: {
+      options: {
+        configFile: "protractor.conf.js", // Default config file
+        keepAlive: true, // If false, the grunt process stops when the test fails.
+        noColor: false, // If true, protractor will not use colors in its output.
+        coverageDir: 'coverage',
+      },
+      local: {
+        options: {
+          args: {
+            seleniumServerJar: 'node_modules/protractor/selenium/selenium-server-standalone-2.42.2.jar',
+            chromeDriver: 'node_modules/protractor/selenium/chromedriver',
+            baseUrl: 'http://localhost:9001',
+          }
+        }
+      }
+    },
+
+    instrument: {
+      files: 'app/**/*.js',
+      options: {
+        lazy: true,
+        basePath: "instrumented"
+      }
+    },
+
+    makeReport: {
+      src: 'coverage/*.json',
+      options: {
+        type: ['lcov', 'html'],
+        dir: 'coverage/reports',
+        print: 'detail'
+      }
     }
+
   });
 
 
@@ -397,11 +441,15 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
+    'clean:test',
+    'copy:test',
+    'instrument',
     'concurrent:test',
     'autoprefixer',
     'connect:test',
     'karma',
-    'protractor:run'
+    'protractor_coverage:local',
+    'makeReport'
   ]);
 
   grunt.registerTask('build', [
@@ -427,5 +475,9 @@ module.exports = function (grunt) {
     'build'
   ]);
 
+  grunt.registerTask('test-local', ['copy:test', 'instrument', 'connect:test', 'protractor_coverage:local', 'makeReport']);
+
   grunt.loadNpmTasks('grunt-protractor-runner');
+  grunt.loadNpmTasks('grunt-protractor-coverage');
+  grunt.loadNpmTasks('grunt-istanbul');
 };
