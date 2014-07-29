@@ -6,6 +6,7 @@
     <select ng-init="sprint.milestone = null" ng-model="sprint.milestone" ng-options="milestone.id as milestone.title for milestone in milestones">
       <option value="">Not in a milestone</option>
     </select>
+    <div ui-view="newlabel"></div>
   </div>
   
   <div class="column">
