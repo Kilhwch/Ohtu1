@@ -86,6 +86,10 @@ angular
 			'newissue@repository': {
 			    templateUrl: 'scripts/issueboard/newissue.html',
 			    controller: 'NewissueCtrl'
+			 },
+			'newlabel@repository': {
+			    templateUrl: 'scripts/issueboard/newlabel.html',
+			    controller: 'NewlabelCtrl'
 			 }
 		}
       })
