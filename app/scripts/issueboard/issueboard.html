@@ -1,4 +1,5 @@
 <div class ="issueview" ng-controller="HeaderCtrl">
+  <button id="create-issue-modal" class="btn btn-default" ng-click="openNewIssueModal()">New Issue</button>
   <div class="viewbar">
 	  <p> Owner:<b> {{params.owner}}</b> Repository: <b>{{params.repoName}}</b> </p>
         Select issues based on a milestone
@@ -8,9 +9,6 @@
 	<input ng-model="textFilter" placeholder="Filter">
         <div ui-view="newlabel"></div>
   </div>
-  
-  <div ui-view="newissue"></div>
-  
   
   <div class="column">
 	<p><b>Backlog</b></p>

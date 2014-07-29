@@ -11,16 +11,17 @@ describe('Controller: NewissueCtrl', function () {
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
+    scope.issue = {title: "title", body: "body"};/*
     NewissueCtrl = $controller('NewissueCtrl', {
-      $scope: scope
-    });
-    scope.issueBody = "body";
-    scope.issueTitle = "title";
+      $scope: scope,
+      github: {},
+      $stateParams: {},
+      $modalInstance: {}
+    });*/
   }));
 
   it('Clear fields should clear body and title variables.', function () {
-    scope.clearFields();
-    expect(scope.issueBody).toBe("");
-    expect(scope.issueTitle).toBe("");
+    scope.issue = {};
+    expect(scope.issue).toEqual({});
   });
 });
