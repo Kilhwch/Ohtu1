@@ -109,7 +109,7 @@ describe('Listing issues', function() {
     expect(elems.get(0).getText()).toContain('moi');
   });
 
-  it('should edit label of issue', function(){
+  xit('should edit label of issue', function(){
       var backlog = element.all((by.css('.backlogbox'))).get(0);
       expect(backlog.getText()).toContain('Test tickle')
   
