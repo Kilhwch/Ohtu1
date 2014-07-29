@@ -14,7 +14,7 @@
   
   <div class="column">
 	<p><b>Backlog</b></p>
-	<issuebox class="backlogbox" ng-repeat="issue in issues | filter:{labels :'!Ready'} | filter:{labels :'!Inprogress'} | filter:{labels :'!Done'}"></issuebox>
+	<issuebox class="backlogbox" ng-repeat="issue in issues | filter:{labels :'!Ready'} | filter:{labels :'!Inprogress'} | filter:{labels :'!Done'} | filter:{title:textFilter}"></issuebox>
 
   </div>
 
@@ -29,7 +29,7 @@
 
   <div class="column">
 	<p><b>In Progress</b></p>
-	<issuebox class="inprogressbox" ng-repeat="issue in issues | filter:{labels :'InProgress'}| filter:sprint:true">
+	<issuebox class="inprogressbox" ng-repeat="issue in issues | filter:{labels :'InProgress'}| filter:sprint:true | filter:{title:textFilter}">
 	</issuebox>
   </div>
 
@@ -37,7 +37,7 @@
 
   <div class="column">
 	<p><b>Done</b></p>
-	<issuebox class ="donebox" ng-repeat="issue in issues | filter:{labels :'Done'}| filter:sprint:true">
+	<issuebox class ="donebox" ng-repeat="issue in issues | filter:{labels :'Done'}| filter:sprint:true | filter:{title:textFilter}">
 	</issuebox>
   </div>
 
