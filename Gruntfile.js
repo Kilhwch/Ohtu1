@@ -83,7 +83,7 @@ module.exports = function (grunt) {
               ),
               connect.static(appConfig.app)
             ];
-          }
+          } 
         }
       },
       test: {
@@ -132,7 +132,16 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      server: '.tmp'
+      server: '.tmp',
+      test: {
+        files: [{
+          dot: true,
+          src: [
+            'instrumented',
+            'coverage'
+          ]
+        }]
+      }
     },
 
     // Add vendor prefixed styles
@@ -401,7 +410,7 @@ module.exports = function (grunt) {
     makeReport: {
       src: 'coverage/*.json',
       options: {
-        type: 'lcov',
+        type: ['lcov', 'html'],
         dir: 'coverage/reports',
         print: 'detail'
       }
@@ -432,11 +441,15 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
+    'clean:test',
+    'copy:test',
+    'instrument',
     'concurrent:test',
     'autoprefixer',
     'connect:test',
     'karma',
-    'protractor:run'
+    'protractor_coverage:local',
+    'makeReport'
   ]);
 
   grunt.registerTask('build', [
