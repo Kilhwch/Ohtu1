@@ -1,0 +1,9 @@
+<div ng-controller="NewlabelCtrl">
+    Here you can create a label: 
+    <input type="text" ng-model="labelName" rows="1" cols="10" placeholder="Label name">
+    <button type="button" ng-click="createLabel()">Create label</button>
+</div>
+<div ng-controller="NewlabelCtrl">
+    Here you can delete a label:
+    <select ng-model="label" ng-options="label.name as label.name for label in labels" ng-change="deleteLabel(label)"></select>
+</div>
