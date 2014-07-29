@@ -37,7 +37,7 @@ angular.module('ohtuProjektiAppApp')
     $scope.doneEditing = function(issue){
         var temp = issue.body;
         issue.body = issue.editingbody;
-        issues.updateIssue(issue.number, {body:issue.body}, function(data){},function(error){
+        issues.updateIssue(issue.number, {body:issue.body}).error(function(data){
             issue.body = temp;
         });
         issue.editing = false;
