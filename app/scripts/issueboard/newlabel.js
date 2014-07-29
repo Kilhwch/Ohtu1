@@ -8,7 +8,7 @@
  * Controller of the ohtuProjektiAppApp
  */
 angular.module('ohtuProjektiAppApp')
-  .controller('NewlabelCtrl', function ($scope,github,$stateParams) {
+  .controller('NewlabelCtrl', function ($scope,github,$stateParams, $state) {
       var labels = new github.Label($stateParams.owner,$stateParams.repoName);
       $scope.createLabel = function() {
           var options = {name : $scope.labelName};
@@ -21,6 +21,7 @@ angular.module('ohtuProjektiAppApp')
           if(label !== "Ready" && label !== "InProgress" && label !== "Done") {
               labels.deleteLabel(label,function(){},function(error){
               });
+              $state.reload();
           }
           else{
               console.log("Tried to delete forbidden label: "+label);
