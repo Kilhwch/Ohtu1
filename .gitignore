@@ -8,3 +8,4 @@ bower_components
 *.orig
 coverage/*
 phantomjsdriver.log
+instrumented

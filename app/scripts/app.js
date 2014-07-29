@@ -37,12 +37,12 @@ angular
       	url: '/main',		
 		views: {
 			'': {
-				templateUrl: 'views/main.html',
+				templateUrl: 'scripts/main/main.html',
 				controller: 'IssueboardCtrl',
 			},
 			'header@': {
 				controller: 'HeaderCtrl',
-				templateUrl: 'views/header.html'
+				templateUrl: 'scripts/header/header.html'
 			}
 		}
       })
@@ -50,12 +50,12 @@ angular
         url: '/logout',
                 views: {
                         '': {
-                                templateUrl: 'views/logout.html',
+                                templateUrl: 'scripts/user/logout.html',
                                 controller: 'LogoutCtrl',
                         },
                         'header@': {
 				controller: 'HeaderCtrl',
-                                templateUrl: 'views/header.html'
+                                templateUrl: 'scripts/header/header.html'
                         }
                 }
       })
@@ -63,12 +63,12 @@ angular
       	url: '/list',		
 		views: {
 			'': {
-				templateUrl: 'views/list.html',
+				templateUrl: 'scripts/list/list.html',
 				controller: 'ListCtrl',
 			},
 			'header@': {
 				controller: 'HeaderCtrl',
-				templateUrl: 'views/header.html'
+				templateUrl: 'scripts/header/header.html'
 			}
 		}
       })
@@ -76,15 +76,15 @@ angular
       	url: '/repos/:owner/:repoName',		
 		views: {
 			'': {
-                templateUrl: 'views/issueboard.html',
+        templateUrl: 'scripts/issueboard/issueboard.html',
 				controller: 'IssueboardCtrl',
 			},
 			'header@': {
 				controller: 'HeaderCtrl',
-				templateUrl: 'views/header.html'
+				templateUrl: 'scripts/header/header.html'
 			},
 			'newissue@repository': {
-			    templateUrl: 'views/newissue.html',
+			    templateUrl: 'scripts/issueboard/newissue.html',
 			    controller: 'NewissueCtrl'
 			 }
 		}
@@ -93,12 +93,12 @@ angular
       	url: '/repos/:owner/:repoName/burndown',		
 	    	views: {
 			    '': {
-          templateUrl: 'views/burndown.html',
+          templateUrl: 'scripts/burndown/burndown.html',
 				  controller: 'BurndownCtrl',
 			  },
 			  'header@': {
 				controller: 'HeaderCtrl',
-				templateUrl: 'views/header.html'
+				templateUrl: 'scripts/header/header.html'
 			  }
 		    }
       })
@@ -106,12 +106,12 @@ angular
       	url: '/repos/:owner/:repoName/newissue',		
 	    	views: {
 			    '': {
-          templateUrl: 'views/newissue.html',
+          templateUrl: 'scripts/issueboard/newissue.html',
 				  controller: 'NewissueCtrl',
 			  },
 			  'header@': {
 				controller: 'HeaderCtrl',
-				templateUrl: 'views/header.html'
+				templateUrl: 'scripts/header/header.html'
 			  }
 		    }
       });
