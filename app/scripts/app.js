@@ -24,13 +24,6 @@ angular
     // Making a conditional request and receiving a 304 response
     // does not count against your Rate Limit, but it uses cache.
 
-    // This configuration "disables" cache.
-    if (!$httpProvider.defaults.headers.get) {
-        $httpProvider.defaults.headers.get = {};    
-    }
-
-    $httpProvider.defaults.headers.get['If-Modified-Since'] = '0';    
-
     $urlRouterProvider.otherwise("/main");
     $stateProvider   
       .state('main', {
