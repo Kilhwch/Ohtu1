@@ -13,7 +13,6 @@ describe('Controller: NewissueCtrl', function () {
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope, _github_, _$httpBackend_) {
     scope = $rootScope.$new();
-    scope.issue = {title: 'New issue', body: 'text'};
     scope.issues = [];
     $httpBackend = _$httpBackend_;
     NewissueCtrl = $controller('NewissueCtrl', {
@@ -31,6 +30,7 @@ describe('Controller: NewissueCtrl', function () {
   });
 
   it('has an addIssue method that adds an issue', function () {
+    scope.issue = {title: 'New issue', body: 'text'};
     $httpBackend.expectPOST('https://api.github.com/repos/user/repo/issues', scope.issue)
                 .respond(201, scope.issue);
     scope.addIssue();
@@ -38,6 +38,6 @@ describe('Controller: NewissueCtrl', function () {
 
     $httpBackend.flush();
     expect(scope.issues.length).toBe(1);
-    expect(scope.issues[0]).toBe(scope.issue);
+    expect(scope.issues[0]).toEqual(scope.issue);
   });
 });
