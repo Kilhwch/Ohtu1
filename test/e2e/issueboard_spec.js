@@ -33,7 +33,7 @@ describe('Listing issues', function() {
     expect(elems.get(2).getText()).toContain('Test inprogress');
   });
 
-  it('should show frouth issue.title', function() {
+  it('should show fourth issue.title', function() {
     var elems = element.all(by.repeater('issue in issues'));
     expect(elems.get(3).getText()).toContain('Test done');
   });
@@ -105,90 +105,26 @@ describe('Listing issues', function() {
     var elems = element.all(by.repeater('issue in issues'));
     expect(elems.get(0).getText()).toContain('moi');
   });
-  
-  describe('Issue box', function(){
 
-    it('be in edit mode when first viewing backlog', function(){
-      element.all(by.repeater('issue in issues')).each(function(elem){
-        expect(elem.element(by.css('.notedit')).getAttribute('class')).not.toContain('ng-hide');
-        expect(elem.element(by.css('.edit')).getAttribute('class')).toContain('ng-hide');
-      });
-    });
+  it('filter issues with text in title', function(){
 
-    it('should be in edit mode when clicked on', function(){
-      var issueElem = element.all(by.repeater('issue in issues')).first();
-      issueElem.element(by.css('.notedit')).click();
-      expect(issueElem.element(by.css('.notedit')).getAttribute('class')).toContain('ng-hide');
-      expect(issueElem.element(by.css('.edit')).getAttribute('class')).not.toContain('ng-hide');      
-    });
+      var filterbox = element.all(by.css('.textFilter')).first();
+      filterbox.sendKeys('tickle');
 
-    it('should edit text of issue in edit mode after pressing submit button', function(){
+      var elems = element.all(by.repeater('issue in issues'));
+      expect(elems.count()).toBe(1);
 
-      var issueElem = element.all(by.repeater('issue in issues')).first();
-      var notEdit = issueElem.element(by.css('.notedit'));
-      notEdit.click();
-      var input = issueElem.element(by.model('issue.editingbody'));
-      input.sendKeys('HODOR');
+   });
 
-      var submitBtn = issueElem.element(by.css('#submit'));
-      submitBtn.click();
+    it('filter issues with text in body', function(){
 
-      issueElem.all(by.css('.notedit p')).last().getInnerHtml().then(function(text){
-        expect(text).toContain('HODOR');
-      });
+      var filterbox = element.all(by.css('.textFilter')).first();
+      filterbox.sendKeys('inprogress body');
 
-    });
+      var elems = element.all(by.repeater('issue in issues'));
+      expect(elems.count()).toBe(1);
 
-    it('should edit text of issue in edit mode after pressing enter', function(){
-
-      var issueElem = element.all(by.repeater('issue in issues')).first();
-      var notEdit = issueElem.element(by.css('.notedit'));
-      notEdit.click();
-      var input = issueElem.element(by.model('issue.editingbody'));
-      input.sendKeys('HODOR\n');
-
-      expect(issueElem.all(by.css('.notedit p')).last().getText()).toContain('HODOR');
-
-    });
-
-    it('should not edit text of issue after pressing cancel in edit mode', function(){
-
-      var issueElem = element.all(by.repeater('issue in issues')).first();
-      var notEdit = issueElem.element(by.css('.notedit'));
-      notEdit.click();
-      var input = issueElem.element(by.model('issue.editingbody'));
-      input.sendKeys('HODOR');
-      
-      var cancelBtn = issueElem.element(by.css('#cancel'));
-      cancelBtn.click();
-
-      issueElem.all(by.css('.notedit p')).last().getInnerHtml().then(function(text){
-        expect(text).not.toContain('HODOR');
-      });
-
-    });
-
-  });
-
-  xit('should edit label of issue', function(){
-      var backlog = element.all((by.css('.backlogbox'))).get(0);
-      expect(backlog.getText()).toContain('Test tickle')
-  
-      var issueElem = element.all(by.repeater('issue in issues')).first();
-      var notEdit = issueElem.element(by.css('.notedit'));
-      notEdit.click();
-
-      issueElem.element(by.id('labels')).click();
-      issueElem.element(by.css('#labels option[value="0"]')).click();
-
-      ptor.sleep(1000);
-
-      var ready = element.all((by.css('.readybox'))).get(1);
-      expect(ready.getText()).toContain('Test tickle')
-
-  });
-  
-  
+   });
 
   describe('Issue box', function(){
 
