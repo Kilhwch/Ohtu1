@@ -6,22 +6,38 @@ describe('Controller: NewissueCtrl', function () {
   beforeEach(module('ohtuProjektiAppApp'));
 
   var NewissueCtrl,
-    scope;
+    scope,
+    $httpBackend,
+    mockModal = {dismiss: function(arg) {}, };
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, _github_, _$httpBackend_) {
     scope = $rootScope.$new();
-    scope.issue = {title: "title", body: "body"};/*
+    scope.issue = {title: 'New issue', body: 'text'};
+    scope.issues = [];
+    $httpBackend = _$httpBackend_;
     NewissueCtrl = $controller('NewissueCtrl', {
       $scope: scope,
-      github: {},
-      $stateParams: {},
-      $modalInstance: {}
-    });*/
+      github: _github_,
+      $stateParams: {owner: 'user', repoName: 'repo'},
+      $modalInstance: mockModal
+    });
   }));
 
-  it('Clear fields should clear body and title variables.', function () {
-    scope.issue = {};
-    expect(scope.issue).toEqual({});
+  it('has a close method that dismisses the modal', function () {
+    spyOn(mockModal, 'dismiss');
+    scope.close();
+    expect(mockModal.dismiss).toHaveBeenCalled();
+  });
+
+  it('has an addIssue method that adds an issue', function () {
+    $httpBackend.expectPOST('https://api.github.com/repos/user/repo/issues', scope.issue)
+                .respond(201, scope.issue);
+    scope.addIssue();
+    expect(scope.issues.length).toBe(0);
+
+    $httpBackend.flush();
+    expect(scope.issues.length).toBe(1);
+    expect(scope.issues[0]).toBe(scope.issue);
   });
 });
