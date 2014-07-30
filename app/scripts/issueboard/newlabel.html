@@ -1,9 +1,17 @@
-<div ng-controller="NewlabelCtrl">
-    Here you can create a label: 
-    <input type="text" ng-model="labelName" rows="1" cols="10" placeholder="Label name">
-    <button type="button" ng-click="createLabel()">Create label</button>
+<div class="modal-header">
+    <h3>Create a new label</h3>
 </div>
-<div ng-controller="NewlabelCtrl">
-    Here you can delete a label:
-    <select ng-model="label" ng-options="label.name as label.name for label in labels" ng-change="deleteLabel(label)"></select>
+<div class="modal-body">
+    <div>
+        Here you can create a label: 
+        <input type="text" ng-model="label.name" rows="1" cols="10" placeholder="Label name">
+        <button class="btn btn-primary" ng-click="createLabel(label)">Create label</button>
+    </div>
+    <div>
+        Here you can delete a label:
+        <select ng-model="label" ng-options="label.name as label.name for label in labels" ng-change="deleteLabel(label)"></select>
+    </div>
+</div>
+<div class="modal-footer">
+    <button id="newlabel-close" class="btn btn-warning" ng-click="close()">Cancel</button>
 </div>
