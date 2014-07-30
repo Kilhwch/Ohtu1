@@ -19,6 +19,8 @@ angular.module('ohtuProjektiAppApp')
             $scope.close();
           };
 
-          $scope.close = function(){ $modalInstance.dismiss('close'); };
+          $scope.close = function(){
+            $modalInstance.dismiss('close');
+          };
 
       });

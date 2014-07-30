@@ -113,4 +113,11 @@ angular.module('ohtuProjektiAppApp')
         scope: $scope 
       });
     };
+    $scope.openNewLabelModal = function() {
+      var modalInstance = $modal.open({
+        templateUrl: 'scripts/issueboard/newlabel.html',
+        controller: 'NewlabelCtrl',
+        scope: $scope 
+      });
+    };
   });

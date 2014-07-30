@@ -5,12 +5,12 @@
 	</div>
 	<div class="vierbar.inner " ng-show="collapsed"> 
 		<button id="create-issue-modal" class="btn btn-default" ng-click="openNewIssueModal()">New Issue</button>
+                <button id="create-label-modal" class="btn btn-default" ng-click="openNewLabelModal()">New Label</button>
 		Select issues based on a milestone
 		<select  ng-init="sprint.milestone = null" ng-model="sprint.milestone" ng-options="milestone.id as milestone.title for milestone in milestones">
 		    <option  value="">Not in a milestone</option>
 		</select>
 		<input ng-model="textFilter" placeholder="Filter">
-		<div ui-view="newlabel"></div>
 	</div >
   </div>
   
