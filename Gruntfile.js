@@ -90,6 +90,16 @@ module.exports = function (grunt) {
         options: {
           port: 9001,
           base: 'instrumented/app',
+          middleware: function (connect) {
+            return [
+              connect.static('.tmp'),
+              connect().use(
+                '/bower_components',
+                connect.static('./bower_components')
+              ),
+              connect.static(appConfig.app)
+            ];
+          }
         }
       },
       dist: {
@@ -116,7 +126,7 @@ module.exports = function (grunt) {
         options: {
           jshintrc: 'test/.jshintrc'
         },
-        src: ['test/spec/{,*/}*.js']
+        src: ['app/script/{,*/}*_test.js']
       }
     },
 
@@ -448,7 +458,7 @@ module.exports = function (grunt) {
     'autoprefixer',
     'connect:test',
     'karma',
-    'protractor_coverage:local',
+    'protractor:run',
     'makeReport'
   ]);
 
