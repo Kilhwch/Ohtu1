@@ -7,6 +7,8 @@
  * # IssueboardCtrl
  * Controller of the ohtuProjektiAppApp
  */
+
+
 angular.module('ohtuProjektiAppApp')
   .controller('IssueboardCtrl', function ($scope, $state, $stateParams, github, $modal) {
 
@@ -63,6 +65,46 @@ angular.module('ohtuProjektiAppApp')
     $scope.getLabelColor = function(issue){
       return (issue.labels.length === 0)? "": "#" + issue.labels[0].color;
     };
+
+    $scope.isInBacklog = function(issue) {
+	var count = 0;
+	for(var i = 0; i < issue.labels.length; i++){
+		if(issue.labels[i].name.match("Ready") || issue.labels[i].name.match("InProgress") || issue.labels[i].name.match("Done")){
+			count++;
+		}
+	}
+	if (count === 0){
+		return issue;
+	}
+    };
+
+
+    $scope.isReady = function(issues) {
+	for(var i = 0; i < issue.labels.length; i++){
+		if(issue.labels[i].name.match("Ready")){
+			return issue;
+		}
+	}
+    };
+
+
+    $scope.isInProgress = function(issue) {
+	for(var i = 0; i < issue.labels.length; i++){
+		if(issue.labels[i].name.match("InProgress")){
+			return issue;
+		}
+	}
+    };
+
+    $scope.isDone = function(issue) {
+    	for(var i = 0; i < issue.labels.length; i++){
+		if(issue.labels[i].name.match("Done")){
+			return issue;
+		}
+	}
+    };
+
+    
 
     $scope.openNewIssueModal = function() {
       var modalInstance = $modal.open({

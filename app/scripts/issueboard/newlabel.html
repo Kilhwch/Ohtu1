@@ -4,12 +4,13 @@
 <div class="modal-body">
     <div>
         Here you can create a label: 
-        <input type="text" ng-model="label.name" rows="1" cols="10" placeholder="Label name">
-        <button class="btn btn-primary" ng-click="createLabel(label)">Create label</button>
+        <input type="text" ng-model="createlabel.name" rows="1" cols="10" placeholder="Label name">
+        <button class="btn btn-primary" ng-click="createLabel(createlabel)">Create label</button>
     </div>
     <div>
         Here you can delete a label:
-        <select ng-model="label" ng-options="label.name as label.name for label in labels" ng-change="deleteLabel(label)"></select>
+        <select ng-model="delLabel" ng-options="label.name as label.name for label in labels"></select>
+        <button class="btn btn-danger" ng-click="deleteLabel(delLabel)">Delete</button>
     </div>
 </div>
 <div class="modal-footer">
