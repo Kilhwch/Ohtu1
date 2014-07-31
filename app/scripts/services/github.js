@@ -18,6 +18,10 @@ angular.module('ohtuProjektiAppApp')
       var options = { method: method, url: apiUrl + url, data: data, cache: false };
       var token = localStorageService.get('token');
 
+      if (githubObject.realtime() && method === 'GET') {
+        options.params = { cache: new Date().getTime() };
+      }
+
       if (!!token) {
         options.headers = { 'Authorization': 'token ' + token };
       }
@@ -35,9 +39,16 @@ angular.module('ohtuProjektiAppApp')
       }
     };
 
-    return {
+    var githubObject = {
+      realtime: function(value) {
+        if (typeof value == 'undefined') {
+          return angular.fromJson(localStorageService.get('realtime'));
+        } else {
+          localStorageService.set('realtime', value);
+        }
+      },
 
-      loginWithToken: function(authtoken){
+      loginWithToken: function(authtoken) {
         localStorageService.set('token', authtoken);
       },
 
@@ -151,4 +162,6 @@ angular.module('ohtuProjektiAppApp')
       },
 
     };
+
+    return githubObject;
   }]);

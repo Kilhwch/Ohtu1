@@ -18,7 +18,11 @@ exports.httpBackendMock = function() {
                 $httpBackend.whenPATCH(issueboard + '/' + 1).respond(201, '');
                 $httpBackend.whenPOST('https://api.github.com/repos/user/repo/issues')
                   .respond(function(method, url, data, headers) {
-                   return [201, {title: "moi"}];
+                   return [201, data];
+                  });
+                $httpBackend.whenPOST('https://api.github.com/repos/user/repo/labels')
+                  .respond(function(method, url, data, headers) {
+                   return [201, data];
                   });
                 $httpBackend.whenGET(/.*/).passThrough();
                 

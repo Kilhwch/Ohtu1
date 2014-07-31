@@ -9,7 +9,7 @@
  */
 
 angular.module('ohtuProjektiAppApp')
-  .controller('HeaderCtrl', function($scope, $location, github, $state, $stateParams) {
+  .controller('HeaderCtrl', function($rootScope, $scope, $location, github, $state, $stateParams) {
     $scope.currentState = $state.current.name;
     $scope.params = $state.params;
     $scope.isLoggedIn = github.isAuthenticated();
@@ -24,6 +24,18 @@ angular.module('ohtuProjektiAppApp')
       }
     }
     
+
+    $scope.newIssue = function(){
+      $rootScope.$broadcast('addItem', {choice: 'New issue'});
+    };
+
+    $scope.newLabel = function(){
+      $rootScope.$broadcast('addItem', {choice: 'New label/Delete label'});
+    };
+
+    $scope.newMilestone = function(){
+      $rootScope.$broadcast('addItem', {choice: 'New milestone'});
+    };
 
  });
 

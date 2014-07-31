@@ -1,5 +1,5 @@
-<div class="container">
-  <div ng-controller="ListCtrl">
+
+  <div class="repolist" ng-controller="ListCtrl">
     <ul class="list-group">
       <li class="list-group-item" ng-repeat="repo in repos">
        <h4><a ng-href="#/repos/{{repo.owner.login}}/{{repo.name}}">{{repo.name}}</a></h4>
@@ -7,4 +7,3 @@
       </li>
     </ul>
   </div>
-</div>

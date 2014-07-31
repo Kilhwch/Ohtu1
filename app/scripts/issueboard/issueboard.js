@@ -7,17 +7,19 @@
  * # IssueboardCtrl
  * Controller of the ohtuProjektiAppApp
  */
+
+
 angular.module('ohtuProjektiAppApp')
   .controller('IssueboardCtrl', function ($scope, $state, $stateParams, github, $modal) {
-    
+
     if (!github.isAuthenticated()) $state.go('main');
+    $scope.options = { realtime: github.realtime() };
 
     var issues = new github.Issue($stateParams.owner, $stateParams.repoName);
     var milestones = new github.Milestone($stateParams.owner, $stateParams.repoName);
-    var labels = new github.Label($stateParams.owner,$stateParams.repoName);
-    var temp;
+    var labels = new github.Label($stateParams.owner,$stateParams.repoName); 
     
-
+    $scope.createOptions = ['New issue','New label/Delete label','New milestone'];
     
      labels.list().success(function(data) {
          $scope.labels = data
@@ -70,20 +72,62 @@ angular.module('ohtuProjektiAppApp')
       return (issue.labels.length === 0)? "": "#" + issue.labels[0].color;
     };
 
+    $scope.isInBacklog = function(issue) {
+	var count = 0;
+	for(var i = 0; i < issue.labels.length; i++){
+		if(issue.labels[i].name.match("Ready") || issue.labels[i].name.match("InProgress") || issue.labels[i].name.match("Done")){
+			count++;
+		}
+	}
+	if (count === 0){
+		return issue;
+	}
+    };
+
+
+    $scope.isReady = function(issues) {
+	for(var i = 0; i < issue.labels.length; i++){
+		if(issue.labels[i].name.match("Ready")){
+			return issue;
+		}
+	}
+    };
+
+
+    $scope.isInProgress = function(issue) {
+	for(var i = 0; i < issue.labels.length; i++){
+		if(issue.labels[i].name.match("InProgress")){
+			return issue;
+		}
+	}
+    };
+
+    $scope.isDone = function(issue) {
+    	for(var i = 0; i < issue.labels.length; i++){
+		if(issue.labels[i].name.match("Done")){
+			return issue;
+		}
+	}
+    };
+
+    $scope.openModal = function(choice) {
+        if(choice === "New issue") {
+            $scope.openNewIssueModal();
+        }
+        if(choice === "New label/Delete label") {
+            $scope.openNewLabelModal();
+        }
+        if(choice === "New milestone") {
+            console.log(choice+"3")
+        }
+    };
+
     $scope.openNewIssueModal = function() {
       var modalInstance = $modal.open({
         templateUrl: 'scripts/issueboard/newissue.html',
         controller: 'NewissueCtrl',
         scope: $scope 
       });
-    };
-    
-    $scope.isReady = function() {
-        angular.forEach( $scope.filtersGrouped, function( value, key ) {
-            if ( value.ticked === true ) {
-                
-            }
-        })
     };
     
     // dropdown valikko
@@ -112,4 +156,11 @@ angular.module('ohtuProjektiAppApp')
         $scope.filtersGrouped.push({ multiSelectGroup: false});
     };
     
+    $scope.updateRealtime = function() {
+      github.realtime($scope.options.realtime);
+    };
+
+    $scope.$on('addItem', function(event, args){
+        $scope.openModal(args.choice);
+    });
 });
