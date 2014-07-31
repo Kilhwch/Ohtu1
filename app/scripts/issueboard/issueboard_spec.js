@@ -97,16 +97,16 @@ describe('Listing issues', function() {
     expect(elems.get(3).getText()).toContain('Done');
   });
   
-  it('should receive correct response when creating a new issue', function() {
-    browser.actions().mouseMove($('.hoverdiv')).perform();
-    $('#create-issue-modal').click();
+  /*it('should receive correct response when creating a new issue', function() {
+    element(by.id('create')).click();
+    element(by.css('#create option[value="1"]')).click();
     element(by.model('issue.title')).sendKeys('issue title');
     element(by.model('issue.body')).sendKeys('issue body');
     $('#create-issue').click();
     
     expect(element.all(by.binding('issue.title')).first().getText()).toContain('issue title');
     expect(element.all(by.binding('issue.body')).first().getText()).toContain('issue body');
-  });
+  });*/
  
   describe('Issue box', function(){
 
