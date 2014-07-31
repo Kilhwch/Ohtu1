@@ -1,6 +1,22 @@
 <div class="header navbar navbar-default">
     <div class="container-fluid">
-        <ul class="nav nav-pills pull-right" ng-controller="LoginCtrl">
+        
+        <div class="navbar-header">
+            <a class="navbar-brand">Haitari</a>
+            <h4 ng-if="currentState == 'repository'" class="repoAddress">
+                {{params.owner}}/{{params.repoName}}
+            </h4>
+        </div>
+        <div>
+          <ul class="nav navbar-nav">
+            <li ng-if="currentState == 'repository'">
+                <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                  Add
+                  <span class="caret"></span>
+                </button>          
+            </li>
+          </ul> 
+          <ul class="nav nav-pills navbar-right" ng-controller="LoginCtrl">
           <li ng-class="{'active': getClass('/main')}">
             <a id="home" ui-sref="main">Home</a>
           </li>
@@ -20,11 +36,6 @@
             <a href="#" class="login-button" ng-click="signin()">Login <i style="font-size: 1.5em;" class="fa fa-github separator"></i></a>
           </li>
         </ul>
-        <div class="navbar-header">
-            <a class="navbar-brand">Haitari</a>
-            <h4 ng-if="currentState == 'repository'" class="repoAddress">
-                {{params.owner}}/{{params.repoName}}
-            </h4>
-        </div>       
+        </div>
     </div>   
 </div>

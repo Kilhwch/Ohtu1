@@ -73,8 +73,8 @@ describe('Listing issues', function() {
     expect(elems.first().getText()).toContain('Test body');
   });
 
-  it('should show owner', function() {
-    expect(element(by.css('.viewbar')).getText()).toContain('Owner: ')
+  it('should show owner and repository', function() {
+    expect(element(by.css('.repoAddress')).getText()).toContain('user/repo');
   });
 
   it('should show issue column Backlog', function() {

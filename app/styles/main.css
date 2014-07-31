@@ -31,6 +31,10 @@ body {
   border-bottom: 1px solid #e5e5e5;
 }
 
+.header .navbar-header {
+  margin-right: 40px;
+}
+
 .header .navbar-brand {
   font-size: 25px;
 }
