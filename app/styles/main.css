@@ -3,8 +3,11 @@
 /* Space out content a bit */
 body {
   margin-left:20px;
+  margin-right:20px;
   padding-top: 20px;
   padding-bottom: 20px;
+  height:100%;
+  width:100%
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -14,7 +17,6 @@ body {
   padding-left: 15px;
   padding-right: 15px;
   margin: 0 auto;
-  width:80%;
 }
 
 /* Custom page header */
