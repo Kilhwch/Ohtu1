@@ -14,7 +14,11 @@ angular.module('ohtuProjektiAppApp')
                 var options = {name: label.name};
                 labels.createLabel(options, function() {}, function(error) {
                 });
-                $state.reload();
+                $state.transitionTo($state.current, $stateParams, {
+                  reload: true,
+                  inherit: false,
+                  notify: true
+                });
                 $scope.close();
             };
             $scope.deleteLabel = function(label) {
