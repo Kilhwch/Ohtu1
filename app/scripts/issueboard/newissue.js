@@ -15,6 +15,7 @@ angular.module('ohtuProjektiAppApp')
             issues.createIssue($scope.issue).success(function(object, response) {
               if (response=='201')
                 $scope.issues.unshift(object);
+                alert("Created issue: "+$scope.issue.title);
             });
             $scope.close();
           };
