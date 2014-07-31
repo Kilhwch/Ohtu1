@@ -28,7 +28,7 @@ angular.module('ohtuProjektiAppApp')
     };
 
     $scope.newLabel = function(){
-      $rootScope.$broadcast('addItem', {choice: 'New label'});
+      $rootScope.$broadcast('addItem', {choice: 'New label/Delete label'});
     };
 
     $scope.newMilestone = function(){
