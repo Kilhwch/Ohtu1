@@ -13,7 +13,12 @@
                 <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                   Add
                   <span class="caret"></span>
-                </button>          
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li ng-click="newIssue()"><a href="javascript:void(0)">Issue</a></li>
+                  <li ng-click="newLabel()"><a href="javascript:void(0)">Label</a></li>
+                  <li ng-click="newMilestone()"><a href="javascript:void(0)">Milestone</a></li>
+                </ul>         
             </li>
           </ul> 
           <ul class="nav nav-pills navbar-right" ng-controller="LoginCtrl">
