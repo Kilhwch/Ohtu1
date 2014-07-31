@@ -3,6 +3,7 @@
      ng-mouseenter="hover = true" ng-mouseleave="hover = false">
     <img src="{{issue.user.avatar_url}}">
     <p><b> #{{issue.number}} {{issue.title}}</b></p>
+    <hr ng-class="{highlight : hover}"/>
     <p>{{issue.body}}</p>
 </div>
 <div ng-show="issue.editing" class="backlog issue edit">
