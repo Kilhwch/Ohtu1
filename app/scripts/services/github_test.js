@@ -26,6 +26,7 @@ describe('Service: github', function () {
     $httpBackend = _$httpBackend_;
     httpResult = undefined;
     httpError = undefined;
+    github.realtime(false);
   }));
 
   it('should authenticate', function () {
@@ -55,6 +56,16 @@ describe('Service: github', function () {
   });
 
   it('should show authenticated users github repositories', function () {
+    github.realtime(true);
+    $httpBackend.expectGET(/https:\/\/api\.github.com\/user\/repos\?cache=\d+/).respond(true);
+    github.userRepos(success);
+    expect(httpResult).toBeUndefined();
+
+    $httpBackend.flush();
+    expect(httpResult).toBe(true);
+  });
+
+  it('should be able to add cache param to get request', function () {
     $httpBackend.expectGET(apiUrl + '/user/repos').respond(true);
     github.userRepos(success);
     expect(httpResult).toBeUndefined();
@@ -131,7 +142,7 @@ describe('Service: github', function () {
       httpResult = undefined;
     });
 
-    it('should list all labels', function () {
+    it('should list all milestones', function () {
       $httpBackend.expectGET(url).respond(true);
       milestones.list({}, success);
       expect(httpResult).toBeUndefined();

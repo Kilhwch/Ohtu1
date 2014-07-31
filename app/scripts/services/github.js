@@ -19,7 +19,7 @@ angular.module('ohtuProjektiAppApp')
       var token = localStorageService.get('token');
 
       if (githubObject.realtime() && method === 'GET') {
-        options.url += '?cache=' + new Date().getTime();
+        options.params = { cache: new Date().getTime() };
       }
 
       if (!!token) {
