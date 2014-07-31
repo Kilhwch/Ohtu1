@@ -115,8 +115,8 @@ describe('Listing issues', function() {
     element(by.model('createlabel.name')).sendKeys('label name');
     $('#sendlabel').click();
     var alertDialog = ptor.switchTo().alert();
-    expect(alertDialog.getText()).toEqual("Created label: label name");
     alertDialog.accept();
+    expect(alertDialog.getText()).toEqual("Created label: label name");
   });
  
   describe('Issue box', function(){

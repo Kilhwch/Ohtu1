@@ -21,6 +21,7 @@ angular.module('ohtuProjektiAppApp')
                 var options = {name: label.name};
                 labels.createLabel(options, function() {
                     alert("Created label: " + label.name);
+                    $scope.labels.push(label);
                 }, function(error) {
                     alert("Creation unsuccessful");
                 });

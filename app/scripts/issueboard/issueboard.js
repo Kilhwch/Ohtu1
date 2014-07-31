@@ -110,11 +110,9 @@ angular.module('ohtuProjektiAppApp')
     $scope.openModal = function(choice) {
         if(choice === "New issue") {
             $scope.openNewIssueModal();
-            console.log(choice + "1")
         }
         if(choice === "New label") {
             $scope.openNewLabelModal();
-            console.log(choice +"2")
         }
         if(choice === "New milestone") {
             console.log(choice+"3")
