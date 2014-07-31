@@ -372,6 +372,10 @@ module.exports = function (grunt) {
       unit: {
         configFile: 'test/karma.conf.js',
         singleRun: true
+      },
+      watch: {
+        configFile: 'test/karma.conf.js',
+        singleRun: false
       }
     },
 
@@ -457,7 +461,7 @@ module.exports = function (grunt) {
     'concurrent:test',
     'autoprefixer',
     'connect:test',
-    'karma',
+    'karma:unit',
     'protractor:run',
     'makeReport'
   ]);
