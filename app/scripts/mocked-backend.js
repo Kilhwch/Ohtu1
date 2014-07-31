@@ -20,6 +20,10 @@ exports.httpBackendMock = function() {
                   .respond(function(method, url, data, headers) {
                    return [201, data];
                   });
+                $httpBackend.whenPOST('https://api.github.com/repos/user/repo/labels')
+                  .respond(function(method, url, data, headers) {
+                   return [201, data];
+                  });
                 $httpBackend.whenGET(/.*/).passThrough();
                 
             });
