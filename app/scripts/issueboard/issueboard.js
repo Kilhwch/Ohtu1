@@ -9,19 +9,25 @@
  */
 angular.module('ohtuProjektiAppApp')
   .controller('IssueboardCtrl', function ($scope, $state, $stateParams, github, $modal) {
-
+    
     if (!github.isAuthenticated()) $state.go('main');
 
     var issues = new github.Issue($stateParams.owner, $stateParams.repoName);
     var milestones = new github.Milestone($stateParams.owner, $stateParams.repoName);
-    var labels = new github.Label($stateParams.owner,$stateParams.repoName); 
+    var labels = new github.Label($stateParams.owner,$stateParams.repoName);
+    var temp;
+    
+
     
      labels.list().success(function(data) {
          $scope.labels = data
+         
      });
 
     milestones.list().success(function(data) {
         $scope.milestones = data;
+        //temp = data;
+        $scope.init();
     });
 
     issues.list().success(function(data) {
@@ -71,4 +77,39 @@ angular.module('ohtuProjektiAppApp')
         scope: $scope 
       });
     };
-  });
+    
+    $scope.isReady = function() {
+        angular.forEach( $scope.filtersGrouped, function( value, key ) {
+            if ( value.ticked === true ) {
+                
+            }
+        })
+    };
+    
+    // dropdown valikko
+    
+    $scope.init = function() {
+      
+        $scope.filtersGrouped = [];
+        
+        $scope.filtersGrouped.push({name: '<strong>Milestones</strong>', multiSelectGroup: true});
+        
+        for (var i = 0; i < $scope.milestones.length; i++) {
+            var title = $scope.milestones[i].title;
+            $scope.filtersGrouped.push({name: title, ticked: true, type: 'milestone'});
+        }
+        
+        $scope.filtersGrouped.push({ multiSelectGroup: false});
+        
+        
+        $scope.filtersGrouped.push({name: '<strong>Labels</strong>', multiSelectGroup: true});
+        
+        for (var i = 0; i < $scope.labels.length; i++) {
+            var name = $scope.labels[i].name;
+            $scope.filtersGrouped.push({name: name, ticked: true, type: 'label'});
+        }
+        
+        $scope.filtersGrouped.push({ multiSelectGroup: false});
+    };
+    
+});

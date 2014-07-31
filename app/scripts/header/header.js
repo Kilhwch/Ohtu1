@@ -13,6 +13,7 @@ angular.module('ohtuProjektiAppApp')
     $scope.currentState = $state.current.name;
     $scope.params = $state.params;
     $scope.isLoggedIn = github.isAuthenticated();
+    
 
     $scope.getClass = function(path, url) {
       url = url || $location.path();
@@ -22,6 +23,7 @@ angular.module('ohtuProjektiAppApp')
         return ""
       }
     }
+    
 
  });
 

@@ -1,10 +1,12 @@
-<div class="backlog issue notedit" ng-class="{highlight : hover}" ng-hide="issue.editing" title="Click to edit"
+<div ng-app="ohtuProjektiAppApp" class="backlog issue notedit" ng-class="{highlight : hover}" ng-hide="issue.editing" title="Click to edit"
      ng-click="editItem(issue)" ng-init="hover = false"
      ng-mouseenter="hover = true" ng-mouseleave="hover = false">
     <img src="{{issue.user.avatar_url}}">
-    <p><b> #{{issue.number}} {{issue.title}}</b></p>
-    <p>{{issue.body}}</p>
-</div>
+        <p><b> #{{issue.number}} {{issue.title}}</b></p>
+        <p>{{issue.body}}</p>
+    </div>
+
+
 <div ng-show="issue.editing" class="backlog issue edit">
     <img src="{{issue.user.avatar_url}}">
     <p><b> #{{issue.number}} {{issue.title}}</b></p>
@@ -19,3 +21,7 @@
         </select>
     </form>	
 </div>
+
+
+
+

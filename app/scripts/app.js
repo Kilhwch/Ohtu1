@@ -16,7 +16,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.router',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'multi-select'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
     // Github requests using Basic Authentication or OAuth
@@ -60,7 +61,7 @@ angular
                 }
       })
       .state('list', {
-      	url: '/list',		
+      	url: '/list',
 		views: {
 			'': {
 				templateUrl: 'scripts/list/list.html',
@@ -90,7 +91,11 @@ angular
 			'newlabel@repository': {
 			    templateUrl: 'scripts/issueboard/newlabel.html',
 			    controller: 'NewlabelCtrl'
-			 }
+			 },
+			 //'multiselect@repository': {
+			 //   templateUrl: 'scripts/multiselect/multiselect.html',
+			 //   controller: 'multiselectCtrl'
+			 //}
 		}
       })
       .state('burndown', {
