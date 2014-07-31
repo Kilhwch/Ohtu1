@@ -1,9 +1,6 @@
 <div class ="issueview" ng-controller="HeaderCtrl">
 <div class="container">
   <div class="viewbar">
-	<div class="row">
-		<p> Owner:<b> {{params.owner}}</b> Repository: <b>{{params.repoName}}</b> </p>
-	</div>
 <label>Set realtime<input type="checkbox" ng-model="options.realtime" ng-change="updateRealtime()"></label>
       <div class="row">
           <div class="col-xs-2">
@@ -50,5 +47,5 @@
 	<issuebox class ="donebox" ng-repeat="issue in issues | filter:{labels:'Done'} | filter:sprint:true | filter:textFilter">
 	</issuebox>
   </div>
-
+</div>
 </div>
