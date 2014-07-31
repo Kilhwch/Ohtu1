@@ -97,16 +97,19 @@ describe('Listing issues', function() {
     expect(elems.get(3).getText()).toContain('Done');
   });
   
-  /*it('should receive correct response when creating a new issue', function() {
+  it('should receive correct response when creating a new issue', function() {
     element(by.id('create')).click();
-    element(by.css('#create option[value="1"]')).click();
+    element(by.css('#create option[value="0"]')).click();
     element(by.model('issue.title')).sendKeys('issue title');
     element(by.model('issue.body')).sendKeys('issue body');
     $('#create-issue').click();
-    
+    ptor.sleep(1000)
+    var alertDialog = ptor.switchTo().alert();
+    alertDialog.accept();
     expect(element.all(by.binding('issue.title')).first().getText()).toContain('issue title');
+    ptor.sleep(1000)
     expect(element.all(by.binding('issue.body')).first().getText()).toContain('issue body');
-  });*/
+  });
  
   describe('Issue box', function(){
 
