@@ -1,4 +1,5 @@
 <div class ="issueview" ng-controller="HeaderCtrl">
+<div class="container">
   <div class="viewbar">
 	<div class="row">
 		<p> Owner:<b> {{params.owner}}</b> Repository: <b>{{params.repoName}}</b> </p>
@@ -51,5 +52,5 @@
 	<issuebox class ="donebox" ng-repeat="issue in issues | filter:{labels:'Done'} | filter:sprint:true | filter:textFilter">
 	</issuebox>
   </div>
-
+</div>
 </div>
