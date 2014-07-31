@@ -137,4 +137,8 @@ angular.module('ohtuProjektiAppApp')
     $scope.updateRealtime = function() {
       github.realtime($scope.options.realtime);
     };
+
+    $scope.$on('addItem', function(event, args){
+        $scope.openModal(args.choice);
+    });
   });
