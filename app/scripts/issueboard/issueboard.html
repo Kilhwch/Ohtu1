@@ -1,9 +1,6 @@
 <div class ="issueview" ng-controller="HeaderCtrl">
 <div class="container">
   <div class="viewbar">
-	<div class="row">
-		<p> Owner:<b> {{params.owner}}</b> Repository: <b>{{params.repoName}}</b> </p>
-	</div>
       <div class="row">
           <div class="col-xs-2">
               <select class="form-control" ui-select2 id="create" ng-model="choice" ng-options="option as option for option in createOptions" ng-change="openModal(choice)"></select>
