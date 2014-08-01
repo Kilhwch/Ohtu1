@@ -159,7 +159,6 @@ angular.module('ohtuProjektiAppApp')
             var name = $scope.labels[i].name;
                 if (name != 'Done' && name != 'InProgress' && name != 'Ready') {
                     $scope.filtersGrouped.push({name: name, ticked: false, type: 'label'});
-                    console.log(name);
                 }
         }
         

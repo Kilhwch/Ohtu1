@@ -86,10 +86,10 @@ angular
 			    templateUrl: 'scripts/issueboard/newlabel.html',
 			    controller: 'NewlabelCtrl'
 			 },
-			 //'multiselect@repository': {
-			 //   templateUrl: 'scripts/multiselect/multiselect.html',
-			 //   controller: 'multiselectCtrl'
-			 //}
+			 'multiselect@repository': {
+			    templateUrl: 'scripts/multiselect/multiselect.html',
+			    //controller: 'multiselectCtrl'
+			 }
 		}
       })
       .state('burndown', {
