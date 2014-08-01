@@ -130,6 +130,14 @@ angular.module('ohtuProjektiAppApp')
       });
     };
     
+    $scope.openNewLabelModal = function() {
+      var modalInstance = $modal.open({
+        templateUrl: 'scripts/issueboard/newlabel.html',
+        controller: 'NewlabelCtrl',
+        scope: $scope 
+      });
+    };
+    
     // dropdown valikko
     
     $scope.init = function() {

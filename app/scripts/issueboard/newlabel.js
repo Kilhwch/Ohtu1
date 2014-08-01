@@ -20,12 +20,11 @@ angular.module('ohtuProjektiAppApp')
             $scope.createLabel = function(label) {
                 var options = {name: label.name};
                 labels.createLabel(options, function() {
-                    alert("Created label: " + label.name);
                     $scope.labels.push(label);
+                    alert("Created label: " + label.name);
                 }, function(error) {
                     alert("Creation unsuccessful");
                 });
-                reload();
                 $scope.close();
             };
             $scope.deleteLabel = function(label) {
