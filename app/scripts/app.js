@@ -88,7 +88,7 @@ angular
 			 },
 			 'multiselect@repository': {
 			    templateUrl: 'scripts/multiselect/multiselect.html',
-			    //controller: 'multiselectCtrl'
+			    controller: 'IssueboardCtrl'
 			 }
 		}
       })
