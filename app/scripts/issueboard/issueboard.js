@@ -32,10 +32,23 @@ angular.module('ohtuProjektiAppApp')
         $scope.init();       
     });
 
-    issues.list().success(function(data) {
+    issues.list().success(function(data, status, headers) {
         data.editing = false;
         $scope.issues = data;
+        console.log(parseNextLink(headers()['link']));
     });
+
+    function parseNextLink(link) {
+      if (!link) return;
+      var urls = link.split(';'), i, index;
+      if (urls.length == 0)
+        return;
+
+      for (var i = 0; i < urls.length; i++) {
+        index = urls[i].indexOf('next');
+        if (index > -1) return urls[i].slice(index + 8, -1);
+      }
+    }
 
     $scope.editItem = function(issue){
         issue.editingbody = issue.body;
