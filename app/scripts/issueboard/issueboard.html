@@ -1,5 +1,22 @@
-<div class ="issueview" ng-controller="HeaderCtrl">
-<div class="container">
+<div class ="issueview">
+  
+  
+  
+<link rel="stylesheet" href="styles/angular-multi-select.css" />
+
+    <div
+        multi-select 
+        input-model="filtersGrouped"
+        button-label="icon name"         
+        item-label="icon name maker" 
+        tick-property="ticked" 
+        orientation="vertical"
+        group-property="multiSelectGroup"
+        
+    >
+    </div>
+
+  
   <div class="viewbar">
 <label>Set realtime<input type="checkbox" ng-model="options.realtime" ng-change="updateRealtime()"></label>
       <div class="row">
@@ -19,6 +36,8 @@
       </div >
   </div>
   
+  
+  
   <div class="column">
 	<p><b>Backlog</b></p>
 	<issuebox class="backlogbox" ng-repeat="issue in issues | filter:{labels:'!Ready'}  | filter:{labels:'!InProgress'} | filter:{labels:'!Done'} | filter:textFilter ">
@@ -30,15 +49,14 @@
 
   <div class="column">
 	<p><b>Ready</b></p>
-	<issuebox class="readybox" ng-repeat="issue in issues | filter:{labels:'Ready'} | filter:sprint:true | filter:textFilter">
-	</issuebox>
+	<issuebox class="readybox" ng-repeat="issue in issues | slug:this  | filter:{labels :'Ready'} | filter:sprint:true"></issuebox>
   </div>
 
   <div class="vertical"></div>
 
   <div class="column">
 	<p><b>In Progress</b></p>
-	<issuebox class="inprogressbox" ng-repeat="issue in issues | filter:{labels:'InProgress'}| filter:sprint:true | filter:textFilter">
+	<issuebox class="inprogressbox" ng-repeat="issue in issues | slug:this | filter:{labels :'InProgress'}">
 	</issuebox>
   </div>
 
@@ -46,8 +64,10 @@
 
   <div class="column">
 	<p><b>Done</b></p>
-	<issuebox class ="donebox" ng-repeat="issue in issues | filter:{labels:'Done'} | filter:sprint:true | filter:textFilter">
+	<issuebox class ="donebox" ng-repeat="issue in issues | slug:this  | filter:{labels :'Done'}| filter:sprint:true">
 	</issuebox>
   </div>
+  
+
 </div>
 </div>

@@ -23,10 +23,13 @@ angular.module('ohtuProjektiAppApp')
     
      labels.list().success(function(data) {
          $scope.labels = data
+         
      });
 
     milestones.list().success(function(data) {
         $scope.milestones = data;
+        //temp = data;
+        $scope.init();
     });
 
     issues.list().success(function(data) {
@@ -126,6 +129,7 @@ angular.module('ohtuProjektiAppApp')
         scope: $scope 
       });
     };
+    
     $scope.openNewLabelModal = function() {
       var modalInstance = $modal.open({
         templateUrl: 'scripts/issueboard/newlabel.html',
@@ -133,7 +137,33 @@ angular.module('ohtuProjektiAppApp')
         scope: $scope 
       });
     };
-
+    
+    // dropdown valikko
+    
+    $scope.init = function() {
+      
+        $scope.filtersGrouped = [];
+        
+        $scope.filtersGrouped.push({name: '<strong>Milestones</strong>', multiSelectGroup: true});
+        
+        for (var i = 0; i < $scope.milestones.length; i++) {
+            var title = $scope.milestones[i].title;
+            $scope.filtersGrouped.push({name: title, ticked: true, type: 'milestone'});
+        }
+        
+        $scope.filtersGrouped.push({ multiSelectGroup: false});
+        
+        
+        $scope.filtersGrouped.push({name: '<strong>Labels</strong>', multiSelectGroup: true});
+        
+        for (var i = 0; i < $scope.labels.length; i++) {
+            var name = $scope.labels[i].name;
+            $scope.filtersGrouped.push({name: name, ticked: true, type: 'label'});
+        }
+        
+        $scope.filtersGrouped.push({ multiSelectGroup: false});
+    };
+    
     $scope.updateRealtime = function() {
       github.realtime($scope.options.realtime);
     };
@@ -141,4 +171,4 @@ angular.module('ohtuProjektiAppApp')
     $scope.$on('addItem', function(event, args){
         $scope.openModal(args.choice);
     });
-  });
+});

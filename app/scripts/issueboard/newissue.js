@@ -8,7 +8,7 @@
  * Controller of the ohtuProjektiAppApp
  */
 angular.module('ohtuProjektiAppApp')
-  .controller('NewissueCtrl', function ($scope, github, $stateParams, $modalInstance) {
+  .controller('NewissueCtrl', function ($state, $scope, github, $stateParams, $modalInstance) {
           var issues = new github.Issue($stateParams.owner, $stateParams.repoName);
           var reload = function () {
                 $state.transitionTo($state.current, $stateParams, {
