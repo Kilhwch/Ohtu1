@@ -20,7 +20,7 @@ describe('Home view', function() {
         $('.login-button').click();
         expect(ptor.element(by.id('home')).getText()).toEqual('Home');
         expect(ptor.element(by.id('list')).getText()).toEqual('List');
-        expect(ptor.element(by.id('logout')).getText()).toEqual('Logout');
+        expect(ptor.element(by.id('logout')).getText()).toEqual('(Sign out)');
     });
 
     it('updates after logout', function() {
