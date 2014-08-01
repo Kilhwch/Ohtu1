@@ -32,6 +32,10 @@ body {
   border-bottom: 1px solid #e5e5e5;
 }
 
+.header .navbar-text {
+  margin-top: 10px;
+}
+
 .header .navbar-header {
   margin-right: 40px;
 }
