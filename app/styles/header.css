@@ -1,0 +1,58 @@
+.navbar-default {
+	background: -webkit-linear-gradient(#88a6af, #738c94);
+	background: -o-linear-gradient(#88a6af, #738c94);
+	background: -moz-linear-gradient(#88a6af, #738c94);
+	background: linear-gradient(#88a6af, #738c94);
+	background-color: #88a6af;
+	border-color: #d9cdb8;
+	border: 0px;
+	border-radius: 0px;
+	color: #f5f2eb;
+}
+
+.header a, h4 {
+	color: #f5f2eb;
+}
+
+.header .navbar-header .navbar-brand {
+	color: #f5f2eb;
+}
+
+.header .nav-pills a:hover {
+    background-color: #d9cdb8;
+    color: #435a66;
+}
+
+.header,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #738c94;
+}
+
+.header .navbar-text {
+  margin-top: 10px;
+  color: #435a66;
+}
+
+.header .navbar-header {
+  margin-right: 40px;
+}
+
+.header .navbar-brand {
+  font-size: 25px;
+}
+
+.header ul {
+  margin-top: 10px;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-bottom: 0;
+  padding-bottom: 19px;
+}
