@@ -50,14 +50,14 @@
 
   <div class="column">
 	<p><b>Ready</b></p>
-	<issuebox class="readybox" ng-repeat="issue in issues | slug:this  | filter:{labels :'Ready'} | filter:sprint:true"></issuebox>
+	<issuebox class="readybox" ng-repeat="issue in issues | multiselect:this  | filter:{labels :'Ready'}"></issuebox>
   </div>
 
   <div class="vertical"></div>
 
   <div class="column">
 	<p><b>In Progress</b></p>
-	<issuebox class="inprogressbox" ng-repeat="issue in issues | slug:this | filter:{labels :'InProgress'}">
+	<issuebox class="inprogressbox" ng-repeat="issue in issues | multiselect:this | filter:{labels :'InProgress'}">
 	</issuebox>
   </div>
 
@@ -65,7 +65,7 @@
 
   <div class="column">
 	<p><b>Done</b></p>
-	<issuebox class ="donebox" ng-repeat="issue in issues | slug:this  | filter:{labels :'Done'}| filter:sprint:true">
+	<issuebox class ="donebox" ng-repeat="issue in issues | multiselect:this  | filter:{labels :'Done'}">
 	</issuebox>
   </div>
   
