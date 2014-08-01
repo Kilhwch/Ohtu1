@@ -1,6 +1,26 @@
 .navbar-default {
-	background-color: #ff8500;
-	border-color: #D97330;
+	background: -webkit-linear-gradient(#88a6af, #738c94);
+	background: -o-linear-gradient(#88a6af, #738c94);
+	background: -moz-linear-gradient(#88a6af, #738c94);
+	background: linear-gradient(#88a6af, #738c94);
+	background-color: #88a6af;
+	border-color: #d9cdb8;
+	border: 0px;
+	border-radius: 0px;
+	color: #f5f2eb;
+}
+
+.header a, h4 {
+	color: #f5f2eb;
+}
+
+.header .navbar-header .navbar-brand {
+	color: #f5f2eb;
+}
+
+.header .nav-pills a:hover {
+    background-color: #d9cdb8;
+    color: #435a66;
 }
 
 .header,
@@ -12,11 +32,12 @@
 
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #C4682B;
+  border-bottom: 1px solid #738c94;
 }
 
 .header .navbar-text {
   margin-top: 10px;
+  color: #435a66;
 }
 
 .header .navbar-header {

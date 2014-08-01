@@ -6,11 +6,11 @@
 }
 
 .backlog.issue {
-  background-color: #828282;
+  background-color: #d9cdb8;
 }
 
 .issue{
-  border: 2px solid #606060;
+  border: 1px solid #435a66;
   border-radius: 5px;
   padding: 0px;
   width:300px;
@@ -30,14 +30,19 @@
   display: block;
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
-  border-width: 2px;
+  border-width: 1px;
   margin-top: 0px;
   margin-bottom: 0px;
-  border-top: 2px solid #606060;
+  border-top: 1px solid #435a66;
 }
 
 .issue hr.highlight {
-  border-top: 2px solid #ff8500;
+  border-top: 1px solid #435a66;
+}
+
+.issue.highlight {
+  border: 1px solid #435a66;
+  background-color: #88a6af;
 }
 
 .viewbar{
@@ -49,12 +54,6 @@
   border-bottom: 1px solid #e5e5e5;
   width: 100%;
 }
-
-.issue.highlight {
-  border: 2px solid #ff8500;
-  background-color: #C4682B;
-}
-
 
 .backlog{
 }
