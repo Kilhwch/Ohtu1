@@ -1,7 +1,7 @@
 angular.module('ohtuProjektiAppApp')
   .filter('multiselect', function () {
     return function (issues, $scope) {
-       if (!$scope.filtersGrouped) return [];
+       if (!$scope.filtersGrouped) return issues
        var filtered = [];
        var filteredLabels = [];
        var filteredMilestones = [];
