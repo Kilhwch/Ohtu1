@@ -21,9 +21,8 @@ angular.module('ohtuProjektiAppApp')
     
     $scope.createOptions = ['New issue','New label/Delete label','New milestone'];
     
-     labels.list().success(function(data) {
-         $scope.labels = data
-         
+    labels.list().success(function(data) {
+         $scope.labels = data     
      });
 
     milestones.list().success(function(data) {
@@ -142,14 +141,15 @@ angular.module('ohtuProjektiAppApp')
     // dropdown valikko
     
     $scope.init = function() {
-      
+      if (!$scope.labels) return;
         $scope.filtersGrouped = [];
         
         $scope.filtersGrouped.push({name: '<strong>Milestones</strong>', multiSelectGroup: true});
+        $scope.filtersGrouped.push({name: "No milestone", ticked: false, type: 'check'});
         
         for (var i = 0; i < $scope.milestones.length; i++) {
             var title = $scope.milestones[i].title;
-            $scope.filtersGrouped.push({name: title, ticked: true, type: 'milestone'});
+            $scope.filtersGrouped.push({name: title, ticked: false, type: 'milestone'});
         }
         
         $scope.filtersGrouped.push({ multiSelectGroup: false});
@@ -159,7 +159,10 @@ angular.module('ohtuProjektiAppApp')
         
         for (var i = 0; i < $scope.labels.length; i++) {
             var name = $scope.labels[i].name;
-            $scope.filtersGrouped.push({name: name, ticked: true, type: 'label'});
+                if (name != 'Done' && name != 'InProgress' && name != 'Ready') {
+                    $scope.filtersGrouped.push({name: name, ticked: false, type: 'label'});
+                    console.log(name);
+                }
         }
         
         $scope.filtersGrouped.push({ multiSelectGroup: false});
