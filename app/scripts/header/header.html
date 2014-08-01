@@ -21,7 +21,7 @@
                 </ul>         
             </li>-->
             <li>
-                <select class="form-control" ui-select2 id="create" ng-model="choice" ng-change="doAction(choice)" ng-options="option as option for option in options">
+                <select class="form-control" ui-select2 id="create" ng-model="choice" ng-click="doAction(choice)" ng-options="option as option for option in options">
                     <option value>--Select Action--</option>
                 </select>
             </li>

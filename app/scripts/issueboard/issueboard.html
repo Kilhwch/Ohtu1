@@ -21,11 +21,6 @@
 <label>Set realtime<input type="checkbox" ng-model="options.realtime" ng-change="updateRealtime()"></label>
       <div class="row">
           <div class="col-xs-2">
-              <select class="form-control" ui-select2 id="create" ng-model="choice" ng-options="option as option for option in createOptions" ng-change="openModal(choice)">
-                  <option value="">--Select action--</option>
-              </select>
-          </div>
-          <div class="col-xs-2">
               <select class="form-control" ng-init="sprint.milestone = null" ng-model="sprint.milestone" ng-options="milestone.id as milestone.title for milestone in milestones">
                   <option  value="">Not in a milestone</option>
               </select>
