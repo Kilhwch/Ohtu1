@@ -29,5 +29,13 @@ angular.module('ohtuProjektiAppApp')
       $rootScope.$broadcast('addItem', {choice: choice});
     }
 
+    $scope.changedMilestone = function(milestone){
+        $rootScope.$broadcast('changedMilestone', {milestone : milestone});
+    };
+
+    $scope.$on('viewIssueboard', function(event, args){
+      $scope.milestones = args.milestones;
+    });
+
  });
 
