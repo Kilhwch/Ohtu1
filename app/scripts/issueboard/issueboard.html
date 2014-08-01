@@ -1,8 +1,4 @@
 <div class ="issueview">
-  
-  
-  
-<link rel="stylesheet" href="styles/angular-multi-select.css" />
 
     <div
         multi-select 
@@ -18,7 +14,7 @@
 
   
   <div class="viewbar">
-<label>Set realtime<input type="checkbox" ng-model="options.realtime" ng-change="updateRealtime()"></label>
+    <label>Set realtime<input type="checkbox" ng-model="options.realtime" ng-change="updateRealtime()"></label>
       <div class="row">
           <div class="col-xs-2">
               <select class="form-control" ui-select2 id="create" ng-model="choice" ng-options="option as option for option in createOptions" ng-change="openModal(choice)">
@@ -39,35 +35,31 @@
   
   
   <div class="column">
-	<p><b>Backlog</b></p>
-	<issuebox class="backlogbox" ng-repeat="issue in issues | filter:{labels:'!Ready'}  | filter:{labels:'!InProgress'} | filter:{labels:'!Done'} | filter:textFilter ">
-	</issuebox>
-
+  	<p><b>Backlog</b></p>
+  	<issuebox class="backlogbox" ng-repeat="issue in issues | filter:{labels:'!Ready'}  | filter:{labels:'!InProgress'} | filter:{labels:'!Done'} | filter:textFilter ">
+  	</issuebox>
   </div>
 
   <div class="vertical"></div>
 
   <div class="column">
-	<p><b>Ready</b></p>
-	<issuebox class="readybox" ng-repeat="issue in issues | slug:this  | filter:{labels :'Ready'} | filter:sprint:true"></issuebox>
+  	<p><b>Ready</b></p>
+  	<issuebox class="readybox" ng-repeat="issue in issues | slug:this  | filter:{labels :'Ready'} | filter:sprint:true"></issuebox>
   </div>
 
   <div class="vertical"></div>
 
   <div class="column">
-	<p><b>In Progress</b></p>
-	<issuebox class="inprogressbox" ng-repeat="issue in issues | slug:this | filter:{labels :'InProgress'}">
-	</issuebox>
+  	<p><b>In Progress</b></p>
+  	<issuebox class="inprogressbox" ng-repeat="issue in issues | slug:this | filter:{labels :'InProgress'}">
+  	</issuebox>
   </div>
 
   <div class="vertical"></div>
 
   <div class="column">
-	<p><b>Done</b></p>
-	<issuebox class ="donebox" ng-repeat="issue in issues | slug:this  | filter:{labels :'Done'}| filter:sprint:true">
-	</issuebox>
+  	<p><b>Done</b></p>
+  	<issuebox class ="donebox" ng-repeat="issue in issues | slug:this  | filter:{labels :'Done'}| filter:sprint:true">
+  	</issuebox>
   </div>
-  
-
-</div>
 </div>
