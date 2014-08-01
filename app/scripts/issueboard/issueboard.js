@@ -21,21 +21,18 @@ angular.module('ohtuProjektiAppApp')
     
     $scope.createOptions = ['New issue','New label/Delete label','New milestone'];
     
-     labels.list().success(function(data) {
-         $scope.labels = data
-         
+    labels.list().success(function(data) {
+         $scope.labels = data     
      });
 
     milestones.list().success(function(data) {
         $scope.milestones = data;
-        //temp = data;
         $scope.init();
     });
 
     issues.list().success(function(data) {
         data.editing = false;
         $scope.issues = data;
-            console.log($scope.issues.length);
     });
 
     $scope.editItem = function(issue){
@@ -131,12 +128,19 @@ angular.module('ohtuProjektiAppApp')
       });
     };
     
+    $scope.openNewLabelModal = function() {
+      var modalInstance = $modal.open({
+        templateUrl: 'scripts/issueboard/newlabel.html',
+        controller: 'NewlabelCtrl',
+        scope: $scope 
+      });
+    };
+    
     // dropdown valikko
     
     $scope.init = function() {
       if (!$scope.labels) return;
         $scope.filtersGrouped = [];
-        
         
         $scope.filtersGrouped.push({name: '<strong>Milestones</strong>', multiSelectGroup: true});
         $scope.filtersGrouped.push({name: "No milestone", ticked: false, type: 'check'});

@@ -29,15 +29,4 @@ describe('Controller: NewissueCtrl', function () {
     expect(mockModal.dismiss).toHaveBeenCalled();
   });
 
-  it('has an addIssue method that adds an issue', function () {
-    scope.issue = {title: 'New issue', body: 'text'};
-    $httpBackend.expectPOST('https://api.github.com/repos/user/repo/issues', scope.issue)
-                .respond(201, scope.issue);
-    scope.addIssue();
-    expect(scope.issues.length).toBe(0);
-
-    $httpBackend.flush();
-    expect(scope.issues.length).toBe(1);
-    expect(scope.issues[0]).toEqual(scope.issue);
-  });
 });
