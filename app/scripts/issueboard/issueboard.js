@@ -176,7 +176,10 @@ angular.module('ohtuProjektiAppApp')
         $scope.openModal(args.choice);
     });
 
+    /*
     $scope.$on('changedMilestone', function(event, args){
+        console.log("milestone event");
         $scope.sprint.milestone = args.milestone;
     });
+    */
 });
