@@ -13,7 +13,8 @@ angular.module('ohtuProjektiAppApp')
     $scope.currentState = $state.current.name;
     $scope.params = $state.params;
     $scope.isLoggedIn = github.isAuthenticated();
-    
+
+    $scope.options = ['New issue','New label/Delete label','New milestone'];
 
     $scope.getClass = function(path, url) {
       url = url || $location.path();
@@ -23,19 +24,10 @@ angular.module('ohtuProjektiAppApp')
         return ""
       }
     }
-    
 
-    $scope.newIssue = function(){
-      $rootScope.$broadcast('addItem', {choice: 'New issue'});
-    };
-
-    $scope.newLabel = function(){
-      $rootScope.$broadcast('addItem', {choice: 'New label/Delete label'});
-    };
-
-    $scope.newMilestone = function(){
-      $rootScope.$broadcast('addItem', {choice: 'New milestone'});
-    };
+    $scope.doAction = function(choice){
+      $rootScope.$broadcast('addItem', {choice: choice});
+    }
 
  });
 
