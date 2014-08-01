@@ -38,14 +38,10 @@
               <a ui-sref="burndown(params)">Burndown</a>
             </li>
             <li id="logout" ng-if="isLoggedIn" ng-class="{'active': getClass('/logout')}">
-              <a ui-sref="logout" ng-class="{'active': getClass('/logout')}">Logout</a>
+             <p ng-if="isLoggedIn" class="navbar-text">{{userName}} (<a ui-sref="logout" class="">Sign out</a>)</p>
             </li>
             <li id="login" ng-if="!isLoggedIn" ng-class="{'active': getClass('/login')}">
               <a href="#" class="login-button" ng-click="signin()">Login <i style="font-size: 1.5em;" class="fa fa-github separator"></i></a>
-            </li>
-            <li>
-              <p ng-if="isLoggedIn" class="navbar-text">{{userName}} (<a ui-sref="logout" class="">Sign out</a>)</p>
-              <p ng-if="!isLoggedIn" class="navbar-text"><a href="javascript:void(0)" ng-click="signin()">Sign in</a></p>
             </li>
           </ul>         
         </div>
