@@ -9,10 +9,24 @@ angular.module('ohtuProjektiAppApp')
 
 
        /**
+        *  Return true if a milestone is ticked.
+        */
+       function isMilestoneTicked() {
+           return (filteredMilestones.length != 0);
+       };
+
+       /**
+        *  Return true if a label is ticked.
+        */
+       function isLabelTicked() {
+           return (filteredLabels.length != 0);
+       };
+
+       /**
         *  Return true if no item is ticked.
         */
        function isNothingTicked() {
-           return (filteredLabels.length == 0) && (filteredMilestones.length == 0) && !noMilestones;
+           return !isLabelTicked() && !isMilestoneTicked() && !noMilestones;
        };
 
 
@@ -45,7 +59,7 @@ angular.module('ohtuProjektiAppApp')
         function filterIssues(issue) {
           // Adds to filtered list if the issue has no milestone.
           if (noMilestones) {
-            if (issue.milestone) {
+            if (issue.milestone && !isMilestoneTicked()) {
               return;
             }
             filtered.push(issue);
