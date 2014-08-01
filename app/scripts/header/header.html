@@ -8,8 +8,8 @@
             </h4>
         </div>
         <div>
-          <ul class="nav navbar-nav">
-            <li ng-if="currentState == 'repository'">
+          <ul class="nav navbar-nav" ng-if="currentState == 'repository'">
+            <!--<li>
                 <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                   Add
                   <span class="caret"></span>
@@ -19,6 +19,11 @@
                   <li ng-click="newLabel()"><a href="javascript:void(0)">Label</a></li>
                   <li ng-click="newMilestone()"><a href="javascript:void(0)">Milestone</a></li>
                 </ul>         
+            </li>-->
+            <li>
+                <select class="form-control" ui-select2 id="create" ng-model="choice" ng-change="doAction(choice)" ng-options="option as option for option in options">
+                    <option value>--Select Action--</option>
+                </select>
             </li>
           </ul> 
           <ul class="nav nav-pills navbar-right" ng-controller="LoginCtrl">
@@ -41,6 +46,7 @@
             <a href="#" class="login-button" ng-click="signin()">Login <i style="font-size: 1.5em;" class="fa fa-github separator"></i></a>
           </li>
         </ul>
+        <p class="navbar-text navbar-right">mockUser (<a href="" class="navbar-link">Sign out</a>)</p>
         </div>
     </div>   
 </div>
