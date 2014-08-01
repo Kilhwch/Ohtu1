@@ -10,7 +10,7 @@
 
 
 angular.module('ohtuProjektiAppApp')
-  .controller('IssueboardCtrl', function ($scope, $state, $stateParams, github, $modal) {
+  .controller('IssueboardCtrl', function ($rootScope, $scope, $state, $stateParams, github, $modal) {
 
     if (!github.isAuthenticated()) $state.go('main');
     $scope.options = { realtime: github.realtime() };
@@ -27,7 +27,9 @@ angular.module('ohtuProjektiAppApp')
 
     milestones.list().success(function(data) {
         $scope.milestones = data;
-        $scope.init();
+        $rootScope.$broadcast('viewIssueboard', {milestones: data});
+        //temp = data;
+        $scope.init();       
     });
 
     issues.list().success(function(data) {
@@ -172,5 +174,9 @@ angular.module('ohtuProjektiAppApp')
 
     $scope.$on('addItem', function(event, args){
         $scope.openModal(args.choice);
+    });
+
+    $scope.$on('changedMilestone', function(event, args){
+        $scope.sprint.milestone = args.milestone;
     });
 });
