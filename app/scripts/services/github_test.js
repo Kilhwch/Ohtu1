@@ -26,7 +26,6 @@ describe('Service: github', function () {
     $httpBackend = _$httpBackend_;
     httpResult = undefined;
     httpError = undefined;
-    github.realtime(false);
   }));
 
   it('should authenticate', function () {
@@ -38,7 +37,7 @@ describe('Service: github', function () {
   });
 
   it('should show user', function () {
-    $httpBackend.expectGET(apiUrl + '/users/test').respond(true);
+    $httpBackend.expectGET(/https:\/\/api\.github\.com\/users\/test/).respond(true);
     github.user('test', success);
     expect(httpResult).toBeUndefined();
 
@@ -47,7 +46,7 @@ describe('Service: github', function () {
   });
 
   it('should show authenticated user', function () {
-    $httpBackend.expectGET(apiUrl + '/user').respond(true);
+    $httpBackend.expectGET(/https:\/\/api\.github\.com\/user/).respond(true);
     github.authenticatedUser(success);
     expect(httpResult).toBeUndefined();
 
@@ -56,8 +55,7 @@ describe('Service: github', function () {
   });
 
   it('should show authenticated users github repositories', function () {
-    github.realtime(true);
-    $httpBackend.expectGET(/https:\/\/api\.github.com\/user\/repos\?cache=\d+/).respond(true);
+    $httpBackend.expectGET(/https:\/\/api\.github\.com\/user\/repos\?cache=\d+/).respond(true);
     github.userRepos(success);
     expect(httpResult).toBeUndefined();
 
@@ -66,7 +64,7 @@ describe('Service: github', function () {
   });
 
   it('should be able to add cache param to get request', function () {
-    $httpBackend.expectGET(apiUrl + '/user/repos').respond(true);
+    $httpBackend.expectGET(/https:\/\/api\.github\.com\/user\/repos/).respond(true);
     github.userRepos(success);
     expect(httpResult).toBeUndefined();
 
@@ -76,7 +74,8 @@ describe('Service: github', function () {
 
   describe('github.Label', function(){
     var labels, user = 'user123', repo = 'repo123';
-    var url = apiUrl + "/repos/" + user + "/" + repo + "/labels";
+    var url = /https:\/\/api\.github\.com\/repos\/user123\/repo123\/labels/;
+    var urlLabel = /https:\/\/api\.github\.com\/repos\/user123\/repo123\/labels\/label123/;
 
     beforeEach(function () {
       labels = new github.Label(user, repo);
@@ -93,8 +92,8 @@ describe('Service: github', function () {
     });
 
     it('should list specific label', function () {
-      $httpBackend.expectGET(url + '/' + 'repo123').respond(true);
-      labels.getLabel('repo123', success);
+      $httpBackend.expectGET(urlLabel).respond(true);
+      labels.getLabel('label123', success);
       expect(httpResult).toBeUndefined();
 
       $httpBackend.flush();
@@ -113,8 +112,8 @@ describe('Service: github', function () {
 
     it('should update a label', function () {
       var data = {name: "label1", "color": "FFFFFF"};
-      $httpBackend.expectPATCH(url + '/' + 'repo123', data).respond(true);
-      labels.updateLabel('repo123', data, success);
+      $httpBackend.expectPATCH(urlLabel, data).respond(true);
+      labels.updateLabel('label123', data, success);
       expect(httpResult).toBeUndefined();
 
       $httpBackend.flush();
@@ -122,8 +121,8 @@ describe('Service: github', function () {
     });
 	//fix this
     it('should delete a label', function () {
-      $httpBackend.expectDELETE(url + '/' + 1).respond(true);
-      labels.deleteLabel(1, success);
+      $httpBackend.expectDELETE(urlLabel).respond(true);
+      labels.deleteLabel('label123', success);
       expect(httpResult).toBeUndefined();
 
       $httpBackend.flush();
@@ -135,7 +134,8 @@ describe('Service: github', function () {
 
   describe('github.Milestone', function(){
     var milestones, user = 'user123', repo = 'repo123';
-    var url = apiUrl + "/repos/" + user + "/" + repo + "/milestones";
+    var url = /https:\/\/api\.github\.com\/repos\/user123\/repo123\/milestones/;
+    var urlMilestone = /https:\/\/api\.github\.com\/repos\/user123\/repo123\/milestones\/1/;
 
     beforeEach(function () {
       milestones = new github.Milestone(user, repo);
@@ -152,7 +152,7 @@ describe('Service: github', function () {
     });
 
     it('should list specific milestone', function () {
-      $httpBackend.expectGET(url + '/' + 1).respond(true);
+      $httpBackend.expectGET(urlMilestone).respond(true);
       milestones.getMilestone(1, success);
       expect(httpResult).toBeUndefined();
 
@@ -172,7 +172,7 @@ describe('Service: github', function () {
 
     it('should update a milestone', function () {
       var data = {title: "milestone1"};
-      $httpBackend.expectPATCH(url + '/' + 1, data).respond(true);
+      $httpBackend.expectPATCH(urlMilestone, data).respond(true);
       milestones.updateMilestone(1, data, success);
       expect(httpResult).toBeUndefined();
 
@@ -181,7 +181,7 @@ describe('Service: github', function () {
     });
 	//fix this
     it('should delete a milestone', function () {
-      $httpBackend.expectDELETE(url + '/' + 1).respond(true);
+      $httpBackend.expectDELETE(urlMilestone).respond(true);
       milestones.deleteMilestone(1, success);
       expect(httpResult).toBeUndefined();
       $httpBackend.flush();
@@ -194,7 +194,8 @@ describe('Service: github', function () {
   describe('github.Issue', function () {
 
     var issues, user = 'user123', repo = 'repo123';
-    var url = apiUrl + "/repos/" + user + "/" + repo + "/issues";
+    var url = /https:\/\/api\.github\.com\/repos\/user123\/repo123\/issues/;
+    var urlIssue = /https:\/\/api\.github\.com\/repos\/user123\/repo123\/issues\/1/;
 
     beforeEach(function () {
       issues = new github.Issue(user, repo);
@@ -211,7 +212,7 @@ describe('Service: github', function () {
     });
 
     it('should get a specific issue', function () {
-      $httpBackend.expectGET(url + '/' + 1).respond(true);
+      $httpBackend.expectGET(urlIssue).respond(true);
       issues.getIssue(1, success);
       expect(httpResult).toBeUndefined();
 
@@ -231,7 +232,7 @@ describe('Service: github', function () {
 
     it('should update an issue', function () {
       var data = {title: "issue1"};
-      $httpBackend.expectPATCH(url + '/' + 1, data).respond(true);
+      $httpBackend.expectPATCH(urlIssue, data).respond(true);
       issues.updateIssue(1, data, success);
       expect(httpResult).toBeUndefined();
 
@@ -241,7 +242,7 @@ describe('Service: github', function () {
 
     it('should open an issue', function () {
       var data = {state: "open"};
-      $httpBackend.expectPATCH(url + '/' + 1, data).respond(true);
+      $httpBackend.expectPATCH(urlIssue, data).respond(true);
       issues.openIssue(1,success);
       expect(httpResult).toBeUndefined();
 
@@ -251,7 +252,7 @@ describe('Service: github', function () {
 
     it('should close an issue', function () {
       var data = {state: "closed"};
-      $httpBackend.expectPATCH(url + '/' + 1, data).respond(true);
+      $httpBackend.expectPATCH(urlIssue, data).respond(true);
       issues.closeIssue(1,success);
       expect(httpResult).toBeUndefined();
 
@@ -260,7 +261,7 @@ describe('Service: github', function () {
     });
 
     it('should call error function', function () {
-      $httpBackend.expectGET(url + '/' + 2).respond(401, true);
+      $httpBackend.expectGET(/https:\/\/api\.github\.com\/repos\/user123\/repo123\/issues\/2/).respond(401, true);
       issues.getIssue(2,success,error);
       expect(httpResult).toBeUndefined();
 
