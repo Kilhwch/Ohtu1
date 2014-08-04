@@ -25,6 +25,7 @@ angular.module('ohtuProjektiAppApp')
                 }, function(error) {
                     alert("Creation unsuccessful");
                 });
+                reload();
                 $scope.close();
             };
             $scope.deleteLabel = function(label) {

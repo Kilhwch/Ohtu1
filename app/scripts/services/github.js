@@ -15,11 +15,12 @@ angular.module('ohtuProjektiAppApp')
     var apiUrl = 'https://api.github.com';
 
     function _http(method, url, data, success, error) {
-      var options = { method: method, url: apiUrl + url, data: data, cache: false };
+      var options = { method: method, url: apiUrl + url, data: data, cache: false, params: {} };
       var token = localStorageService.get('token');
 
       if (githubObject.realtime() && method === 'GET') {
-        options.params = { cache: new Date().getTime() };
+        options.params.cache = new Date().getTime();
+//        options.params.per_page = 100;
       }
 
       if (!!token) {
