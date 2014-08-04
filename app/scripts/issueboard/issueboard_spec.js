@@ -113,7 +113,6 @@ describe('Listing issues', function() {
       element(by.model('issue.body')).sendKeys('issue body');
       $('#create-issue').click();
       var alertDialog = ptor.switchTo().alert();
-      ptor.sleep(700);
       alertDialog.accept();
       expect(alertDialog.getText()).toContain("Created issue: issue title");
     });
