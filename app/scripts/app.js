@@ -80,11 +80,11 @@ angular
 				templateUrl: 'scripts/header/header.html'
 			},
 			'newissue@repository': {
-			    templateUrl: 'scripts/issueboard/newissue.html',
+			    templateUrl: 'scripts/issueboard/newissue/newissue.html',
 			    controller: 'NewissueCtrl'
 			 },
 			'newlabel@repository': {
-			    templateUrl: 'scripts/issueboard/newlabel.html',
+			    templateUrl: 'scripts/issueboard/newlabel/newlabel.html',
 			    controller: 'NewlabelCtrl'
 			 },
 			 'multiselect@repository': {
