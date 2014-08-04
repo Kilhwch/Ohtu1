@@ -118,6 +118,7 @@ angular.module('ohtuProjektiAppApp')
         if(choice === "New milestone") {
             console.log(choice+"3")
         }
+        $scope.choice = 0;
     };
 
     $scope.openNewIssueModal = function() {
