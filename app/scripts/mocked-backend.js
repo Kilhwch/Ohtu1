@@ -2,8 +2,8 @@ exports.httpBackendMock = function() {
     angular.module('httpBackendMock', ['ohtuProjektiAppApp', 'ngMockE2E'])
             .run(function($httpBackend) {
                 var apiUrl = 'https://api.github.com';
-                var list = apiUrl + '/user/repos';
-                var issueboard = apiUrl + '/repos/user/repo/issues';
+                var list =  /https:\/\/api\.github\.com\/user\/repos/;
+                var issueboard = /https:\/\/api\.github\.com\/repos\/user\/repo\/issues/;
                 var repo = {name: 'Test Repo', description: 'Test description'};
                 var repo2 = {name: 'Testi Reponen', description: 'Test description X2000 pro'};
                 var issue = {number: 1, title: 'Test tickle', body:'Test body', milestone: null};
@@ -14,11 +14,10 @@ exports.httpBackendMock = function() {
                     var label = {'name':'Done','color': 'f29513'};
                     
 
-                $httpBackend.whenGET('https://api.github.com/repos/user/repo/labels').respond([label]);
                 $httpBackend.whenGET(/https:\/\/oauth.io.*/).respond('token');
                 $httpBackend.whenGET(list).respond([repo, repo2]);
                 $httpBackend.whenGET(issueboard).respond([issue, issue2, issue3, issue4, issue5]);
-                $httpBackend.whenPATCH(issueboard + '/' + 1).respond(201, '');
+                $httpBackend.whenPATCH(/https:\/\/api\.github\.com\/repos\/user\/repo\/issues\/1/).respond(201, '');
 
                 $httpBackend.whenPATCH('https://api.github.com/repos/user/repo/labels')
                   .respond(function(method, url, data, headers) {

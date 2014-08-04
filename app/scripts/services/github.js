@@ -18,9 +18,9 @@ angular.module('ohtuProjektiAppApp')
       var options = { method: method, url: apiUrl + url, data: data, cache: false, params: {} };
       var token = localStorageService.get('token');
 
-      if (githubObject.realtime() && method === 'GET') {
+      if (method === 'GET') {
         options.params.cache = new Date().getTime();
-//        options.params.per_page = 100;
+        options.params.per_page = 100;
       }
 
       if (!!token) {
@@ -41,14 +41,6 @@ angular.module('ohtuProjektiAppApp')
     };
 
     var githubObject = {
-      realtime: function(value) {
-        if (typeof value == 'undefined') {
-          return angular.fromJson(localStorageService.get('realtime'));
-        } else {
-          localStorageService.set('realtime', value);
-        }
-      },
-
       loginWithToken: function(authtoken) {
         localStorageService.set('token', authtoken);
       },
