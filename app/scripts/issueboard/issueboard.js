@@ -13,7 +13,6 @@ angular.module('ohtuProjektiAppApp')
   .controller('IssueboardCtrl', function ($rootScope, $scope, $state, $stateParams, github, $modal) {
 
     if (!github.isAuthenticated()) $state.go('main');
-    $scope.options = { realtime: github.realtime() };
 
     var issues = new github.Issue($stateParams.owner, $stateParams.repoName);
     var milestones = new github.Milestone($stateParams.owner, $stateParams.repoName);
@@ -169,10 +168,6 @@ angular.module('ohtuProjektiAppApp')
         $scope.filtersGrouped.push({ multiSelectGroup: false});
     };
     
-    $scope.updateRealtime = function() {
-      github.realtime($scope.options.realtime);
-    };
-
     /*$scope.$on('addItem', function(event, args){
         $scope.openModal(args.choice);
     });*/
