@@ -75,11 +75,13 @@
   margin-right:20px;
 }
 
-.column img{
+.avatar-img {
   border: 2px solid;
+  border-radius: 20px;
+}
+.column img{
   width:40px;
   height:40px;
-  border-radius: 20px;
   position: absolute;
   right: -10px; 
   top: -10px

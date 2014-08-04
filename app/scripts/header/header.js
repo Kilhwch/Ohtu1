@@ -15,6 +15,7 @@ angular.module('ohtuProjektiAppApp')
     $scope.isLoggedIn = github.isAuthenticated();
     github.authenticatedUser().success(function(user){
       $scope.userName = user.login;
+      $scope.avatar = user.avatar_url;
     });
     
     //$scope.userName = github.authenticatedUser

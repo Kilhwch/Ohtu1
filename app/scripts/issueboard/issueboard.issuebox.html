@@ -1,13 +1,13 @@
 <div class="backlog issue notedit" ng-class="{highlight : hover}" ng-hide="issue.editing" title="Click to edit"
      ng-click="editItem(issue)" ng-init="hover = false"
      ng-mouseenter="hover = true" ng-mouseleave="hover = false">
-    <img src="{{issue.user.avatar_url}}">
+    <img src="{{issue.user.avatar_url}}" class="avatar-img">
     <p><b> #{{issue.number}} {{issue.title}}</b></p>
     <hr ng-class="{highlight : hover}"/>
     <p>{{issue.body}}</p>
 </div>
 <div ng-show="issue.editing" class="backlog issue edit">
-    <img src="{{issue.user.avatar_url}}">
+    <img src="{{issue.user.avatar_url}}" class="avatar-img">
     <p><b> #{{issue.number}} {{issue.title}}</b></p>
     <form ng-submit="doneEditing(issue)">
         <input ng-model="issue.editingbody"/>
