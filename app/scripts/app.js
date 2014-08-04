@@ -19,6 +19,7 @@ angular
     'ui.bootstrap',
     'multi-select',
     'n3-line-chart',
+    'multiselectFilter'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
     // Github requests using Basic Authentication or OAuth
@@ -49,7 +50,7 @@ angular
                                 controller: 'LogoutCtrl',
                         },
                         'header@': {
-				controller: 'HeaderCtrl',
+				                controller: 'HeaderCtrl',
                                 templateUrl: 'scripts/header/header.html'
                         }
                 }
@@ -88,7 +89,7 @@ angular
 			 },
 			 'multiselect@repository': {
 			    templateUrl: 'scripts/multiselect/multiselect.html',
-			    controller: 'IssueboardCtrl'
+			    //controller: 'IssueboardCtrl'
 			 }
 		}
       })
