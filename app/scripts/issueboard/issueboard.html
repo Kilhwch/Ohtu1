@@ -1,14 +1,15 @@
 <div class ="issueview">
 
+                
   <div class="viewbar">
     <label>Set realtime<input type="checkbox" ng-model="options.realtime" ng-change="updateRealtime()"></label>
       <div class="row">
           <div class="col-xs-2">
               <input class ="textFilter form-control" ng-model="textFilter" placeholder="Filter">
           </div>
-      </div >
+      </div>
   </div> 
-  
+  <div ui-view="multiselect"></div>
   <div class="column">
 	  <p><b>Backlog</b></p>
   	<issuebox class="backlogbox" ng-repeat="issue in issues | multiselect:this | filter:{labels:'!Ready'}  | filter:{labels:'!InProgress'} | filter:{labels:'!Done'} | filter:textFilter ">
