@@ -19,7 +19,7 @@ angular.module('ohtuProjektiAppApp')
     
     //$scope.userName = github.authenticatedUser
 
-    //$scope.options = ['New issue','New label/Delete label','New milestone'];
+    $scope.options = ['New issue','New label/Delete label','New milestone'];
 
     $scope.getClass = function(path, url) {
       url = url || $location.path();
@@ -30,9 +30,9 @@ angular.module('ohtuProjektiAppApp')
       }
     }
 
-    /*$scope.doAction = function(choice){
+    $scope.doAction = function(choice){
       $rootScope.$broadcast('addItem', {choice: choice});
-    }*/
+    }
 
     /*
     $scope.changedMilestone = function(milestone){

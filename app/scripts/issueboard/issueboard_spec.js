@@ -106,7 +106,7 @@ describe('Listing issues', function() {
  
   describe('when post', function() {
 
-    it('should receive correct response when creating a new issue', function() {
+    xit('should receive correct response when creating a new issue', function() {
       element(by.id('create')).click();
       element(by.css('#create option[value="0"]')).click();
       element(by.model('issue.title')).sendKeys('issue title');
@@ -114,17 +114,18 @@ describe('Listing issues', function() {
       $('#create-issue').click();
       var alertDialog = ptor.switchTo().alert();
       alertDialog.accept();
-      expect(alertDialog.getText()).toContain("Created issue: issue title");
+      expect(element.all(by.binding('issue.title')).first().getText()).toContain('issue title');
+      expect(element.all(by.binding('issue.body')).first().getText()).toContain('issue body');
     });
     
-    it('should receive correct response when creating a new label', function() {
+    xit('should receive correct response when creating a new label', function() {
       element(by.id('create')).click();
       element(by.css('#create option[value="1"]')).click();
       element(by.model('createlabel.name')).sendKeys('label name');
       $('#sendlabel').click();
       var alertDialog = ptor.switchTo().alert();
       alertDialog.accept();
-      expect(alertDialog.getText()).toContain("Created label: label name");
+      expect(alertDialog.getText()).toEqual("Created label: label name");
     });
 
   });
