@@ -11,12 +11,12 @@
         <div>
           <ul class="nav navbar-nav" ng-if="currentState == 'repository'">
             <li>
-              <select class="form-control" ui-select2 id="create" ng-model="choice" ng-click="doAction(choice)" ng-options="option as option for option in options">
+              <select ng-controller="IssueboardCtrl" class="form-control" ui-select2 id="create" ng-model="choice" ng-click="openModal(choice)" ng-options="option as option for option in createOptions">
                   <option value>--Select Action--</option>
               </select>
             </li>
             <li>
-                <div ui-view="multiselect"></div>
+
             </li>
           </ul>
           <ul class="nav nav-pills navbar-right" ng-controller="LoginCtrl">

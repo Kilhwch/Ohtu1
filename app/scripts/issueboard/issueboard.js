@@ -26,29 +26,14 @@ angular.module('ohtuProjektiAppApp')
      });
 
     milestones.list().success(function(data) {
-        $scope.milestones = data;
-        $rootScope.$broadcast('viewIssueboard', {milestones: data});
-        //temp = data;
-        $scope.init();       
-    });
-
-    issues.list().success(function(data, status, headers) {
+      $scope.milestones = data;
+      $rootScope.$broadcast('viewIssueboard', {milestones: data});
+      issues.list().success(function(data) {
         data.editing = false;
         $scope.issues = data;
-        console.log(parseNextLink(headers()['link']));
+        $scope.init();
+      });
     });
-
-    function parseNextLink(link) {
-      if (!link) return;
-      var urls = link.split(';'), i, index;
-      if (urls.length == 0)
-        return;
-
-      for (var i = 0; i < urls.length; i++) {
-        index = urls[i].indexOf('next');
-        if (index > -1) return urls[i].slice(index + 8, -1);
-      }
-    }
 
     $scope.editItem = function(issue){
         issue.editingbody = issue.body;
@@ -137,7 +122,7 @@ angular.module('ohtuProjektiAppApp')
 
     $scope.openNewIssueModal = function() {
       var modalInstance = $modal.open({
-        templateUrl: 'scripts/issueboard/newissue.html',
+        templateUrl: 'scripts/issueboard/newissue/newissue.html',
         controller: 'NewissueCtrl',
         scope: $scope 
       });
@@ -145,7 +130,7 @@ angular.module('ohtuProjektiAppApp')
     
     $scope.openNewLabelModal = function() {
       var modalInstance = $modal.open({
-        templateUrl: 'scripts/issueboard/newlabel.html',
+        templateUrl: 'scripts/issueboard/newlabel/newlabel.html',
         controller: 'NewlabelCtrl',
         scope: $scope 
       });
@@ -166,8 +151,7 @@ angular.module('ohtuProjektiAppApp')
         }
         
         $scope.filtersGrouped.push({ multiSelectGroup: false});
-        
-        
+
         $scope.filtersGrouped.push({name: '<strong>Labels</strong>', multiSelectGroup: true});
         
         for (var i = 0; i < $scope.labels.length; i++) {
@@ -184,9 +168,9 @@ angular.module('ohtuProjektiAppApp')
       github.realtime($scope.options.realtime);
     };
 
-    $scope.$on('addItem', function(event, args){
+    /*$scope.$on('addItem', function(event, args){
         $scope.openModal(args.choice);
-    });
+    });*/
 
     /*
     $scope.$on('changedMilestone', function(event, args){
