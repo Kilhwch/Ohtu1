@@ -127,6 +127,16 @@ describe('Listing issues', function() {
       expect(alertDialog.getText()).toContain("Created label: label name");
     });
 
+  it('should receive correct response when deleting a new label', function() {
+    element(by.id('create')).click();
+    element(by.css('#create option[value="1"]')).click();
+    element(by.css('#delete option[value="0"]')).click();
+    $('#deletelabel').click();
+    var alertDialog = ptor.switchTo().alert();
+    alertDialog.accept();
+    expect(alertDialog.getText()).toContain("Deletion of 'Done' is not allowed");
+});
+
   });
 
   describe('filter', function() {
