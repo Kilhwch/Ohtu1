@@ -171,9 +171,9 @@ angular.module('ohtuProjektiAppApp')
       github.realtime($scope.options.realtime);
     };
 
-    $scope.$on('addItem', function(event, args){
+    /*$scope.$on('addItem', function(event, args){
         $scope.openModal(args.choice);
-    });
+    });*/
 
     /*
     $scope.$on('changedMilestone', function(event, args){
