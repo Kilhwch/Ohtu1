@@ -104,7 +104,7 @@ describe('Listing issues', function() {
 
   });
  
-  describe('when post', function() {
+  describe('when create', function() {
 
     it('should receive correct response when creating a new issue', function() {
       element(by.id('create')).click();
@@ -113,7 +113,6 @@ describe('Listing issues', function() {
       element(by.model('issue.body')).sendKeys('issue body');
       $('#create-issue').click();
       var alertDialog = ptor.switchTo().alert();
-      ptor.sleep(700);
       alertDialog.accept();
       expect(alertDialog.getText()).toContain("Created issue: issue title");
     });
