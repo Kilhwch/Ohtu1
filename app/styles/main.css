@@ -1,3 +1,4 @@
+@import "header.css";
 @import "issueboard.css";
 @import "angular-multi-select.css";
 
@@ -5,48 +6,14 @@
 body {
   height:100%;
   width:100%;
-}
-
-.repolist {
-  width: 600px;
-  margin-right: auto;
-  margin-left: auto;
+  background-color: #f5f2eb;
+  color: #000000;
 }
 
 .repoAddress {
   margin-left: 50px;
   float: right;
   margin-top: 19px;
-}
-
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-  margin: 0 auto;
-}
-
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.header .navbar-header {
-  margin-right: 40px;
-}
-
-.header .navbar-brand {
-  font-size: 25px;
-}
-
-.header ul {
-  margin-top: 10px;
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-bottom: 0;
-  padding-bottom: 19px;
 }
 
 /* Custom page footer */

@@ -174,7 +174,6 @@ angular.module('ohtuProjektiAppApp')
             var name = $scope.labels[i].name;
                 if (name != 'Done' && name != 'InProgress' && name != 'Ready') {
                     $scope.filtersGrouped.push({name: name, ticked: false, type: 'label'});
-                    console.log(name);
                 }
         }
         
@@ -189,7 +188,10 @@ angular.module('ohtuProjektiAppApp')
         $scope.openModal(args.choice);
     });
 
+    /*
     $scope.$on('changedMilestone', function(event, args){
+        console.log("milestone event");
         $scope.sprint.milestone = args.milestone;
     });
+    */
 });

@@ -13,6 +13,11 @@ angular.module('ohtuProjektiAppApp')
     $scope.currentState = $state.current.name;
     $scope.params = $state.params;
     $scope.isLoggedIn = github.isAuthenticated();
+    github.authenticatedUser().success(function(user){
+      $scope.userName = user.login;
+    });
+    
+    //$scope.userName = github.authenticatedUser
 
     $scope.options = ['New issue','New label/Delete label','New milestone'];
 
@@ -29,6 +34,7 @@ angular.module('ohtuProjektiAppApp')
       $rootScope.$broadcast('addItem', {choice: choice});
     }
 
+    /*
     $scope.changedMilestone = function(milestone){
         $rootScope.$broadcast('changedMilestone', {milestone : milestone});
     };
@@ -36,6 +42,6 @@ angular.module('ohtuProjektiAppApp')
     $scope.$on('viewIssueboard', function(event, args){
       $scope.milestones = args.milestones;
     });
-
+  */
  });
 

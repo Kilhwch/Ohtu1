@@ -7,51 +7,38 @@
                 {{params.owner}}/{{params.repoName}}
             </h4>
         </div>
+        
         <div>
           <ul class="nav navbar-nav" ng-if="currentState == 'repository'">
-            <!--<li>
-                <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                  Add
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu">
-                  <li ng-click="newIssue()"><a href="javascript:void(0)">Issue</a></li>
-                  <li ng-click="newLabel()"><a href="javascript:void(0)">Label</a></li>
-                  <li ng-click="newMilestone()"><a href="javascript:void(0)">Milestone</a></li>
-                </ul>         
-            </li>-->
             <li>
-              <select class="form-control" ui-select2 id="create" ng-model="choice" ng-change="doAction(choice)" ng-options="option as option for option in options">
+              <select class="form-control" ui-select2 id="create" ng-model="choice" ng-click="doAction(choice)" ng-options="option as option for option in options">
                   <option value>--Select Action--</option>
               </select>
             </li>
             <li>
-              <select class="form-control" ng-init="ms = null" ng-model="ms" ng-options="milestone.id as milestone.title for milestone in milestones" ng-change='changedMilestone(ms)'>
-                  <option value="">Not in a milestone</option>
-              </select>
+                <div ui-view="multiselect"></div>
             </li>
-          </ul> 
+          </ul>
           <ul class="nav nav-pills navbar-right" ng-controller="LoginCtrl">
-          <li ng-class="{'active': getClass('/main')}">
-            <a id="home" ui-sref="main">Home</a>
-          </li>
-          <li id="list" ng-if="isLoggedIn" ng-class="{'active': getClass('/list')}">
-            <a ui-sref="list">List</a>
-          </li>
-          <li ng-if="currentState == 'burndown'">
-            <a ui-sref="repository(params)">Repository</a>
-          </li>
-          <li ng-if="currentState == 'repository'">
-            <a ui-sref="burndown(params)">Burndown</a>
-          </li>
-          <li id="logout" ng-if="isLoggedIn" ng-class="{'active': getClass('/logout')}">
-            <a ui-sref="logout" ng-class="{'active': getClass('/logout')}">Logout</a>
-          </li>
-          <li id="login" ng-if="!isLoggedIn" ng-class="{'active': getClass('/login')}">
-            <a href="#" class="login-button" ng-click="signin()">Login <i style="font-size: 1.5em;" class="fa fa-github separator"></i></a>
-          </li>
-        </ul>
-        <p class="navbar-text navbar-right">mockUser (<a href="" class="navbar-link">Sign out</a>)</p>
+            <li ng-class="{'active': getClass('/main')}">
+              <a id="home" ui-sref="main">Home</a>
+            </li>
+            <li id="list" ng-if="isLoggedIn" ng-class="{'active': getClass('/list')}">
+              <a ui-sref="list">List</a>
+            </li>
+            <li ng-if="currentState == 'burndown'">
+              <a ui-sref="repository(params)">Repository</a>
+            </li>
+            <li ng-if="currentState == 'repository'">
+              <a ui-sref="burndown(params)">Burndown</a>
+            </li>
+            <li id="logout" ng-if="isLoggedIn" ng-class="{'active': getClass('/logout')}">
+             <p ng-if="isLoggedIn" class="navbar-text">{{userName}} (<a ui-sref="logout" class="">Sign out</a>)</p>
+            </li>
+            <li id="login" ng-if="!isLoggedIn" ng-class="{'active': getClass('/login')}">
+              <a href="#" class="login-button" ng-click="signin()">Login <i style="font-size: 1.5em;" class="fa fa-github separator"></i></a>
+            </li>
+          </ul>         
         </div>
     </div>   
 </div>
