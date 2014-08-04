@@ -20,15 +20,16 @@ angular.module('ohtuProjektiAppApp')
     
     $scope.createOptions = ['New issue','New label/Delete label','New milestone'];
     
-    labels.list().success(function(data) {
-         $scope.labels = data     
-     });
+    
 
     milestones.list().success(function(data) {
         $scope.milestones = data;
         $rootScope.$broadcast('viewIssueboard', {milestones: data});
-        //temp = data;
-        $scope.init();       
+        
+        labels.list().success(function(data) {
+         $scope.labels = data;
+         $scope.init();  
+     });
     });
 
     issues.list().success(function(data) {
