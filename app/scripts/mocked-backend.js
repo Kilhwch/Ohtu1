@@ -11,7 +11,8 @@ exports.httpBackendMock = function() {
             		var issue3 = {number: 1, title: 'Test inprogress', body:'inprogress body', milestone: null , 'labels':[{'name':'InProgress','color': 'f29513'}] };
             		var issue4 = {number: 1, title: 'Test done', body:'done body', milestone: null , 'labels':[{'name':'Done','color': 'f29513'}] };
             		var issue5 = {number: 1, title: 'Test done2', body:'done body2', milestone: null , 'labels':[{'name':'Done','color': 'f29513'}] };
-                var label = {'name':'Done','color': 'f29513'};
+                    var label = {'name':'Done','color': 'f29513'};
+                    
 
                 $httpBackend.whenGET('https://api.github.com/repos/user/repo/labels').respond([label]);
                 $httpBackend.whenGET(/https:\/\/oauth.io.*/).respond('token');
