@@ -113,6 +113,7 @@ describe('Listing issues', function() {
       element(by.model('issue.body')).sendKeys('issue body');
       $('#create-issue').click();
       var alertDialog = ptor.switchTo().alert();
+      ptor.sleep(700);
       alertDialog.accept();
       expect(alertDialog.getText()).toContain("Created issue: issue title");
     });
@@ -127,22 +128,26 @@ describe('Listing issues', function() {
       expect(alertDialog.getText()).toContain("Created label: label name");
     });
 
-  });
-
-  describe('Issue box', function(){
-
-
-    it('should edit label of issue', function(){
+    xit('should edit label of issue', function(){
         var backlog = element.all((by.css('.backlogbox'))).get(0);
         expect(backlog.getText()).toContain('Test tickle')
+    
         var issueElem = element.all(by.repeater('issue in issues')).first();
         var notEdit = issueElem.element(by.css('.notedit'));
         notEdit.click();
+
         issueElem.element(by.id('labels')).click();
         issueElem.element(by.css('#labels option[value="0"]')).click();
-        var done = element.all((by.css('.donebox'))).get(0);
-        expect(done.getText()).toContain('Test tickle');
+
+        ptor.sleep(1000);
+
+        var ready = element.all((by.css('.readybox'))).get(1);
+        expect(ready.getText()).toContain('Test tickle')
+
     });
+  });
+
+  describe('Issue box', function(){
 
     it('should not be in edit mode when first viewing backlog', function(){
       element.all(by.repeater('issue in issues')).each(function(elem){

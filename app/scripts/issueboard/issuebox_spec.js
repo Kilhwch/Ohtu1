@@ -1,7 +1,7 @@
 describe('Issue box', function(){
 	
-	var mockModule = require('../../mocked-backend'),
-		authModule = require('../../mocked-auth'),
+	var mockModule = require('../mocked-backend'),
+		authModule = require('../mocked-auth'),
     	ptor;
 
 	beforeEach(function() {

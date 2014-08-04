@@ -26,13 +26,15 @@ angular.module('ohtuProjektiAppApp')
      });
 
     milestones.list().success(function(data) {
-      $scope.milestones = data;
-      $rootScope.$broadcast('viewIssueboard', {milestones: data});
-      issues.list().success(function(data) {
+        $scope.milestones = data;
+        $rootScope.$broadcast('viewIssueboard', {milestones: data});
+        //temp = data;
+        $scope.init();       
+    });
+
+    issues.list().success(function(data) {
         data.editing = false;
         $scope.issues = data;
-        $scope.init();
-      });
     });
 
     $scope.editItem = function(issue){
@@ -152,7 +154,8 @@ angular.module('ohtuProjektiAppApp')
         }
         
         $scope.filtersGrouped.push({ multiSelectGroup: false});
-
+        
+        
         $scope.filtersGrouped.push({name: '<strong>Labels</strong>', multiSelectGroup: true});
         
         for (var i = 0; i < $scope.labels.length; i++) {
