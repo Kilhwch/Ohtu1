@@ -124,7 +124,7 @@ angular.module('ohtuProjektiAppApp')
 
     $scope.openNewIssueModal = function() {
       var modalInstance = $modal.open({
-        templateUrl: 'scripts/issueboard/newissue.html',
+        templateUrl: 'scripts/issueboard/newissue/newissue.html',
         controller: 'NewissueCtrl',
         scope: $scope 
       });
@@ -132,7 +132,7 @@ angular.module('ohtuProjektiAppApp')
     
     $scope.openNewLabelModal = function() {
       var modalInstance = $modal.open({
-        templateUrl: 'scripts/issueboard/newlabel.html',
+        templateUrl: 'scripts/issueboard/newlabel/newlabel.html',
         controller: 'NewlabelCtrl',
         scope: $scope 
       });
