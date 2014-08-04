@@ -6,11 +6,11 @@
 }
 
 .backlog.issue {
-  background-color: #d9cdb8;
+  background-color: #f5f2eb;
 }
 
 .issue{
-  border: 1px solid #435a66;
+  border: 1px solid #424342;
   border-radius: 5px;
   padding: 0px;
   width:300px;
@@ -34,7 +34,7 @@
   border-width: 1px;
   margin-top: 0px;
   margin-bottom: 0px;
-  border-top: 1px solid #435a66;
+  border-top: 1px solid #424342;
 }
 
 .issue hr.highlight {
