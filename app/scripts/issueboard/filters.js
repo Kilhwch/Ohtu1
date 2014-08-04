@@ -1,17 +1,13 @@
-angular.module('multiselectFilter', [])
+angular.module('ohtuProjektiAppApp')
   .filter('multiselect', function () {
     return function (issues, $scope) {
-       if (!$scope.filtersGrouped) {
-        
-        
-        return issues;
-        }
+       if (!$scope.filtersGrouped) return issues
        var filtered = [];
        var filteredLabels = [];
        var filteredMilestones = [];
        var noMilestones = false;
 
-       
+
        /**
         *  Return true if a milestone is ticked.
         */
@@ -30,11 +26,8 @@ angular.module('multiselectFilter', [])
         *  Return true if no item is ticked.
         */
        function isNothingTicked() {
-     //      console.log("1 : " + !isLabelTicked());
-     //      console.log("2 : " + !isMilestoneTicked());
-     //      console.log("3 : " + !noMilestones);
            return !isLabelTicked() && !isMilestoneTicked() && !noMilestones;
-       }; // AINA TRUE
+       };
 
 
          /**
@@ -42,6 +35,7 @@ angular.module('multiselectFilter', [])
           */
           for (var i = 0; i < $scope.filtersGrouped.length; i++) {
             var item = $scope.filtersGrouped[i];
+
             // Checks if "No milestone"-item is ticked.
             if (item.type === 'check') {
               noMilestones = item.ticked;
@@ -53,17 +47,15 @@ angular.module('multiselectFilter', [])
               }
               if (item.type === 'milestone') {
                 filteredMilestones.push(item);
-                //console.log(filteredMilestones);
               }
             }
+
           }
 
           if (isNothingTicked()) {
             return issues;
           }
-   
 
-        // main filter function
         function filterIssues(issue) {
           // Adds to filtered list if the issue has no milestone.
           if (noMilestones) {
@@ -110,10 +102,7 @@ angular.module('multiselectFilter', [])
         }
         
         angular.forEach(issues, filterIssues);
-        
 
         return filtered;
     };
   });
-
-
