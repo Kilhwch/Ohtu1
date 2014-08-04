@@ -10,7 +10,7 @@
     <div>
         Here you can delete a label:
         <select ng-model="delLabel" ng-options="label.name as label.name for label in labels"></select>
-        <button class="btn btn-danger" ng-click="deleteLabel(delLabel)">Delete</button>
+        <button id="delLabel" class="btn btn-danger" ng-click="deleteLabel(delLabel)">Delete</button>
     </div>
 </div>
 <div class="modal-footer">

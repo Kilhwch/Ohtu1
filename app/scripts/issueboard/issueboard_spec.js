@@ -126,6 +126,32 @@ describe('Listing issues', function() {
       alertDialog.accept();
       expect(alertDialog.getText()).toContain("Created label: label name");
     });
+
+  });
+
+  describe('filter', function() {
+
+    it('should filter excess issues', function() {
+      var elems = element.all(by.repeater('issue in issues'));
+      expect(elems.count()).toBe(5);
+
+      var elem = element.all((by.css('.textFilter'))).first();
+      elem.sendKeys('body2');
+
+      var elems = element.all(by.repeater('issue in issues'));
+      expect(elems.count()).toBe(1);
+    });
+
+    it('should filter excess issues done', function() {
+      var elems = element.all(by.repeater('issue in issues'));
+      expect(elems.count()).toBe(5);
+
+      var elem = element.all((by.css('.textFilter'))).first();
+      elem.sendKeys('Done');
+
+      var elems = element.all(by.repeater('issue in issues'));
+      expect(elems.count()).toBe(2);
+    });
   });
 
   describe('Issue box', function(){
