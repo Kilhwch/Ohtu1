@@ -20,14 +20,15 @@ describe('Home view', function() {
         $('.login-button').click();
         expect(ptor.element(by.id('home')).getText()).toEqual('Haitari');
         expect(ptor.element(by.id('list')).getText()).toEqual('List');
-        expect(ptor.element(by.id('logout')).getText()).toEqual('(Sign out)');
+        element(by.css('.dropdown-toggle')).click();
+        expect(ptor.element(by.css('.dropdown-menu a')).getText()).toEqual('Sign out');
     });
 
     it('updates after logout', function() {
         $('.login-button').click();
         expect(ptor.element(by.id('list')).getText()).toEqual('List');
         browser.get('/#/logout');
-        expect(ptor.element(by.id('login')).getText()).toEqual('Login');
+        expect(ptor.element(by.css('#login')).getText()).toEqual('Login');
     });
 
 });
