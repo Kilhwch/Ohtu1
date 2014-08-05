@@ -11,10 +11,10 @@
           <ul class="nav navbar-nav" ng-if="currentState == 'repository'">
             <li>
               <div class="btn-group" dropdown>
-                <i class="fa fa-plus-circle fa-2x dropdown-toggle"></i>
+                <i id="add" class="fa fa-plus-circle fa-2x dropdown-toggle"></i>
                 <ul id="create" class="dropdown-menu" role="menu" ng-controller="IssueboardCtrl">
                   <li ng-repeat="option in createOptions">
-                    <a href ng-click="openModal(option)" >{{option}}</a>
+                    <a id="{{option}}" href ng-click="openModal(option)" >{{option}}</a>
                   </li>
                 </ul>
               </div>

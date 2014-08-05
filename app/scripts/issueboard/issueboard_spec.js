@@ -107,8 +107,8 @@ describe('Listing issues', function() {
   describe('when create', function() {
 
     xit('should receive correct response when creating a new issue', function() {
-      element(by.id('create')).click();
-      element(by.css('#create option[value="0"]')).click();
+      element(by.id('add')).click();
+      element(by.id('New issue')).click();
       element(by.model('issue.title')).sendKeys('issue title');
       element(by.model('issue.body')).sendKeys('issue body');
       $('#create-issue').click();
@@ -118,8 +118,8 @@ describe('Listing issues', function() {
     });
     
     xit('should receive correct response when creating a new label', function() {
-      element(by.id('create')).click();
-      element(by.css('#create option[value="1"]')).click();
+      element(by.id('add')).click();
+      element(by.id('New label/Delete label')).click();
       element(by.model('createlabel.name')).sendKeys('label name');
       $('#sendlabel').click();
       var alertDialog = ptor.switchTo().alert();
