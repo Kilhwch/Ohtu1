@@ -46,6 +46,14 @@ angular.module('ohtuProjektiAppApp')
         issue.editing = false;
     };
 
+    var reload = function () {
+     $state.transitionTo($state.current, $stateParams, {
+       reload: true,
+       inherit: false,
+       notify: true
+       });
+     }; 
+
     $scope.doneEditing = function(issue){
         var temp = issue.body;
         issue.body = issue.editingbody;
@@ -53,6 +61,8 @@ angular.module('ohtuProjektiAppApp')
             issue.body = temp;
         });
         issue.editing = false;
+        $scope.modalInstance.dismiss('close');
+        reload();
     };
     
     $scope.changedMilestone = function(issue, oldmilestone){
@@ -125,13 +135,17 @@ angular.module('ohtuProjektiAppApp')
         }
         $scope.choice = 0;
     };
-  
+
+
+
     $scope.openIssueEditModal = function() {
-      var modalInstance = $modal.open({
-        templateUrl: 'scripts/issueboard/issuebox/issueboxedit.html',
+      $scope.modalInstance = $modal.open({
+        templateUrl: 'scripts/issueboard/issueboxedit.html',
         controller: 'IssueboardCtrl',
         scope: $scope
       });
+
+
     };
 
     $scope.openNewIssueModal = function() {
@@ -161,7 +175,7 @@ angular.module('ohtuProjektiAppApp')
     // dropdown valikko
     
     $scope.init = function() {
-        console.log("Initializing issueboard, scope id: ", $scope.$id);
+        //console.log("Initializing issueboard, scope id: ", $scope.$id);
       if (!$scope.labels) return;
         $rootScope.filtersGrouped = [];
         
