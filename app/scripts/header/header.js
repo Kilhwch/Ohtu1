@@ -9,10 +9,11 @@
  */
 
 angular.module('ohtuProjektiAppApp')
-  .controller('HeaderCtrl', function($rootScope, $scope, $location, github, $state, $stateParams) {
+  .controller('HeaderCtrl', function($rootScope, $scope, $location, github, filteringOptions, $state, $stateParams) {
     $scope.currentState = $state.current.name;
     $scope.params = $state.params;
     $scope.isLoggedIn = github.isAuthenticated();
+    $scope.filters = {textFilter: ""};
     github.authenticatedUser().success(function(user){
       $scope.userName = user.login;
       $scope.avatar = user.avatar_url;
@@ -26,5 +27,9 @@ angular.module('ohtuProjektiAppApp')
         return ""
       }
     }
+
+    $scope.textFilterChanged = function(){
+      filteringOptions.setTextFilter($scope.filters.textFilter);
+    };
  });
 
