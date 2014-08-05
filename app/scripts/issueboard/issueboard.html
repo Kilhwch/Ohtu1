@@ -1,16 +1,15 @@
 <div class="issueview">
 
   <div class="viewbar row">
-          <div class="col-xs-2">
-    <div ui-view="multiselect"></div>
-          </div>
-          <div class="col-xs-2">
-              <input class ="textFilter form-control" ng-model="textFilter" placeholder="Filter">
-          </div>
+    <div class="col-xs-2">
+      <div ui-view="multiselect"></div>
+    </div>
+    <div class="col-xs-2">
+      <input class ="textFilter form-control" ng-model="textFilter" placeholder="Filter">
+    </div>
   </div> 
 
  <div class="row">
-
   <div class="column col-md-3" ng-style="{height: height}">
 	  <p><b>Backlog</b></p>
   	<issuebox class="backlogbox" ng-repeat="issue in issues | multiselect:this | filter:{labels:'!Ready'}  | filter:{labels:'!InProgress'} | filter:{labels:'!Done'} | filter:textFilter "></issuebox>
@@ -30,6 +29,5 @@
   	<p><b>Done</b></p>
   	<issuebox class ="donebox" ng-repeat="issue in issues | multiselect:this  | filter:{labels :'Done'} | filter:textFilter "></issuebox>
   </div>
-
  </div>
 </div>
