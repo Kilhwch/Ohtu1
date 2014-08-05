@@ -10,7 +10,7 @@
 
 
 angular.module('ohtuProjektiAppApp')
-  .controller('IssueboardCtrl', function ($rootScope, $scope, $state, $stateParams, github, $modal) {
+  .controller('IssueboardCtrl', function ($rootScope, $scope, $state, $stateParams, github, $modal, $window) {
 
     if (!github.isAuthenticated()) $state.go('main');
 
@@ -178,4 +178,12 @@ angular.module('ohtuProjektiAppApp')
         $scope.sprint.milestone = args.milestone;
     });
     */
+
+  $scope.height = $window.innerHeight - 150;
+  $($window).resize(function(){
+    $scope.$apply(function(){
+      $scope.height = $window.innerHeight - 150;
+    });
+  });
+
 });

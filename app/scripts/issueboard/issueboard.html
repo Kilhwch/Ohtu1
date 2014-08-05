@@ -1,40 +1,35 @@
-<div class ="issueview">
+<div class="issueview">
 
-  <div class="viewbar">
+  <div class="viewbar row">
+          <div class="col-xs-2">
     <div ui-view="multiselect"></div>
-      <div class="row">
+          </div>
           <div class="col-xs-2">
               <input class ="textFilter form-control" ng-model="textFilter" placeholder="Filter">
           </div>
-      </div >
   </div> 
-  
-  <div class="column">
+
+ <div class="row">
+
+  <div class="column col-md-3" ng-style="{height: height}">
 	  <p><b>Backlog</b></p>
-  	<issuebox class="backlogbox" ng-repeat="issue in issues | multiselect:this | filter:{labels:'!Ready'}  | filter:{labels:'!InProgress'} | filter:{labels:'!Done'} | filter:textFilter ">
-  	</issuebox>
+  	<issuebox class="backlogbox" ng-repeat="issue in issues | multiselect:this | filter:{labels:'!Ready'}  | filter:{labels:'!InProgress'} | filter:{labels:'!Done'} | filter:textFilter "></issuebox>
   </div>
 
-  <div class="vertical"></div>
-
-  <div class="column">
+  <div class="column col-md-3" ng-style="{height: height}">
   	<p><b>Ready</b></p>
   	<issuebox class="readybox" ng-repeat="issue in issues | multiselect:this  | filter:{labels :'Ready'} | filter:textFilter"></issuebox>
   </div>
 
-  <div class="vertical"></div>
-
-  <div class="column">
+  <div class="column col-md-3" ng-style="{height: height}">
   	<p><b>In Progress</b></p>
-  	<issuebox class="inprogressbox" ng-repeat="issue in issues | multiselect:this | filter:{labels :'InProgress'} | filter:textFilter ">
-  	</issuebox>
+  	<issuebox class="inprogressbox" ng-repeat="issue in issues | multiselect:this | filter:{labels :'InProgress'} | filter:textFilter "></issuebox>
   </div>
 
-  <div class="vertical"></div>
-
-  <div class="column">
+  <div class="column col-md-3" ng-style="{height: height}">
   	<p><b>Done</b></p>
-  	<issuebox class ="donebox" ng-repeat="issue in issues | multiselect:this  | filter:{labels :'Done'} | filter:textFilter ">
-  	</issuebox>
+  	<issuebox class ="donebox" ng-repeat="issue in issues | multiselect:this  | filter:{labels :'Done'} | filter:textFilter "></issuebox>
   </div>
+
+ </div>
 </div>
