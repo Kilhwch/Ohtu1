@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3" ng-controller="ListCtrl">
-    <ul class="list-group">
-      <li class="list-group-item" ng-repeat="repo in repos">
-       <h4><a ng-href="#/repos/{{repo.owner.login}}/{{repo.name}}">{{repo.name}}</a></h4>
-       <p>{{repo.description}}</p>
-      </li>
-    </ul>
+    <div class="list-group">
+      <a href="#/repos/{{repo.owner.login}}/{{repo.name}}" class="list-group-item" ng-repeat="repo in repos" ng-class="{active: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
+       <h4 class="list-group-item-heading">{{repo.name}}</h4>
+       <p class="list-group-item-text">{{repo.description}}</p>
+      </a>
+    </div>
   </div>
 </div>
