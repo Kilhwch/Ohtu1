@@ -18,7 +18,7 @@ describe('Home view', function() {
     it('updates after login', function() {
         expect(ptor.element(by.id('login')).getText()).toEqual('Login');
         $('.login-button').click();
-        expect(ptor.element(by.id('home')).getText()).toEqual('Home');
+        expect(ptor.element(by.id('home')).getText()).toEqual('Haitari');
         expect(ptor.element(by.id('list')).getText()).toEqual('List');
         expect(ptor.element(by.id('logout')).getText()).toEqual('(Sign out)');
     });

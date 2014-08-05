@@ -2,7 +2,7 @@
     <div class="container-fluid">
         
         <div class="navbar-header">
-            <a class="navbar-brand">Haitari</a>
+            <a class="navbar-brand" id="home" ui-sref="main" ng-class="{'active': getClass('/main')}">Haitari</a>
             <h4 ng-if="currentState == 'repository'" class="repoAddress">
                 {{params.owner}}/{{params.repoName}}
             </h4>
@@ -17,9 +17,6 @@
             </li>
           </ul>
           <ul class="nav nav-pills navbar-right" ng-controller="LoginCtrl">
-            <li ng-class="{'active': getClass('/main')}">
-              <a id="home" ui-sref="main">Home</a>
-            </li>
             <li id="list" ng-if="isLoggedIn" ng-class="{'active': getClass('/list')}">
               <a ui-sref="list">List</a>
             </li>
