@@ -7,13 +7,17 @@
                 {{params.owner}}/{{params.repoName}}
             </h4>
         </div>
-        
         <div>
           <ul class="nav navbar-nav" ng-if="currentState == 'repository'">
             <li>
-              <select ng-controller="IssueboardCtrl" class="form-control" ui-select2 id="create" ng-model="choice" ng-click="openModal(choice)" ng-options="option as option for option in createOptions">
-                  <option value>--Select Action--</option>
-              </select>
+              <div class="btn-group" dropdown>
+                <i class="fa fa-plus-circle fa-2x dropdown-toggle"></i>
+                <ul class="dropdown-menu" role="menu" ng-controller="IssueboardCtrl">
+                  <li ng-repeat="option in createOptions">
+                    <a href ng-click="openModal(option)" >{{option}}</a>
+                  </li>
+                </ul>
+              </div>
             </li>
           </ul>
           <ul class="nav nav-pills navbar-right" ng-controller="LoginCtrl">
@@ -27,7 +31,6 @@
               <a ui-sref="burndown(params)">Burndown</a>
             </li>
             <li id="logout" ng-if="isLoggedIn" ng-class="{'active': getClass('/logout')}">
-             
              <div class="btn-group">
               <p type="button" class="btn dropdown-toggle" data-toggle="dropdown">
                 <img ng-if="isLoggedIn" width="28" height="28" class="avatar-img" ng-src="{{avatar}}"/> 
