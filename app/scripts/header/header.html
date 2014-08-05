@@ -18,6 +18,10 @@
             <li ng-controller="IssueboardCtrl">
               <div ui-view="multiselect" />
             </li>
+            <li>
+              <input class ="textFilter form-control"
+              ng-model="filters.textFilter" ng-change="textFilterChanged()" placeholder="Filter">
+            </li>
           </ul>
           <ul class="nav nav-pills navbar-right" ng-controller="LoginCtrl">
             <li id="list" ng-if="isLoggedIn" ng-class="{'active': getClass('/list')}">

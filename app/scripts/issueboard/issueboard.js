@@ -10,7 +10,8 @@
 
 
 angular.module('ohtuProjektiAppApp')
-  .controller('IssueboardCtrl', function ($rootScope, $scope, $filter, $state, $stateParams, github, $modal) {
+  .controller('IssueboardCtrl', function(
+    $rootScope, $scope, $filter, $state, $stateParams, github, filteringOptions, $modal) {
 
     if (!github.isAuthenticated()) $state.go('main');
 
@@ -176,6 +177,10 @@ angular.module('ohtuProjektiAppApp')
         
         $rootScope.filtersGrouped.push({ multiSelectGroup: false});
     };
+
+    $scope.$watch(function(){return filteringOptions.getTextFilter();}, function(newFilters, oldFilters){
+        $scope.textFilter = newFilters.textFilter;
+    }, true);
     
     /*$scope.$on('addItem', function(event, args){
         $scope.openModal(args.choice);
