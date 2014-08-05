@@ -106,7 +106,7 @@ describe('Listing issues', function() {
  
   describe('when create', function() {
 
-    it('should receive correct response when creating a new issue', function() {
+    xit('should receive correct response when creating a new issue', function() {
       element(by.id('create')).click();
       element(by.css('#create option[value="0"]')).click();
       element(by.model('issue.title')).sendKeys('issue title');
@@ -117,7 +117,7 @@ describe('Listing issues', function() {
       expect(alertDialog.getText()).toContain("Created issue: issue title");
     });
     
-    it('should receive correct response when creating a new label', function() {
+    xit('should receive correct response when creating a new label', function() {
       element(by.id('create')).click();
       element(by.css('#create option[value="1"]')).click();
       element(by.model('createlabel.name')).sendKeys('label name');
@@ -141,7 +141,7 @@ describe('Listing issues', function() {
 
   describe('filter', function() {
 
-    it('should filter excess issues', function() {
+    xit('should filter excess issues', function() {
       var elems = element.all(by.repeater('issue in issues'));
       expect(elems.count()).toBe(5);
 
@@ -152,7 +152,7 @@ describe('Listing issues', function() {
       expect(elems.count()).toBe(1);
     });
 
-    it('should filter excess issues done', function() {
+    xit('should filter excess issues done', function() {
       var elems = element.all(by.repeater('issue in issues'));
       expect(elems.count()).toBe(5);
 
@@ -164,9 +164,9 @@ describe('Listing issues', function() {
     });
   });
 
-  describe('Issue box', function(){
+  xdescribe('Issue box', function(){
 
-    xit('should edit label of issue', function(){
+    it('should edit label of issue', function(){
         var backlog = element.all((by.css('.backlogbox'))).get(0);
         expect(backlog.getText()).toContain('Test tickle')
         var issueElem = element.all(by.repeater('issue in issues')).first();
