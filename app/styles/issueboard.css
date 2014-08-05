@@ -47,13 +47,9 @@
 }
 
 .viewbar{
-  margin-left:20px;
-  margin-right:20px;
-  text-align:center;
   padding-bottom: 10px;
   margin-bottom:10px;
   border-bottom: 1px solid #e5e5e5;
-  width: 100%;
 }
 
 .backlog{
@@ -69,10 +65,7 @@
 }
 
 .column{
-  float:left;
-  width:300px;
-  margin-left:20px;
-  margin-right:20px;
+  overflow: scroll;
 }
 
 .avatar-img {
