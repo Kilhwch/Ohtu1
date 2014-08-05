@@ -120,7 +120,18 @@ angular.module('ohtuProjektiAppApp')
         if(choice === "New milestone") {
             $scope.openNewMilestoneModal();
         }
+        if(choice === "Issue edit") {
+            $scope.openIssueEditModal();
+        }
         $scope.choice = 0;
+    };
+  
+    $scope.openIssueEditModal = function() {
+      var modalInstance = $modal.open({
+        templateUrl: 'scripts/issueboard/issuebox/issueboxedit.html',
+        controller: 'IssueboardCtrl',
+        scope: $scope
+      });
     };
 
     $scope.openNewIssueModal = function() {
