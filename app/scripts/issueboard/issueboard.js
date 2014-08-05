@@ -10,7 +10,7 @@
 
 
 angular.module('ohtuProjektiAppApp')
-  .controller('IssueboardCtrl', function ($rootScope, $scope, $filter, $state, $stateParams, github, $modal) {
+  .controller('IssueboardCtrl', function ($rootScope, $scope, $filter, $state, $stateParams, github, $modal, $window) {
 
     if (!github.isAuthenticated()) $state.go('main');
 
@@ -120,7 +120,18 @@ angular.module('ohtuProjektiAppApp')
         if(choice === "New milestone") {
             $scope.openNewMilestoneModal();
         }
+        if(choice === "Issue edit") {
+            $scope.openIssueEditModal();
+        }
         $scope.choice = 0;
+    };
+  
+    $scope.openIssueEditModal = function() {
+      var modalInstance = $modal.open({
+        templateUrl: 'scripts/issueboard/issuebox/issueboxedit.html',
+        controller: 'IssueboardCtrl',
+        scope: $scope
+      });
     };
 
     $scope.openNewIssueModal = function() {
@@ -187,4 +198,12 @@ angular.module('ohtuProjektiAppApp')
         $scope.sprint.milestone = args.milestone;
     });
     */
+
+  $scope.height = $window.innerHeight - 150;
+  $($window).resize(function(){
+    $scope.$apply(function(){
+      $scope.height = $window.innerHeight - 150;
+    });
+  });
+
 });
