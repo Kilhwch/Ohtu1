@@ -33,6 +33,7 @@
 /* Custom page header */
 .header {
   border-bottom: 1px solid #738c94;
+  height: 55px;
 }
 
 .header .navbar-text {

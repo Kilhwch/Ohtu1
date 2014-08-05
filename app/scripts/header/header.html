@@ -28,7 +28,14 @@
             </li>
             <li id="logout" ng-if="isLoggedIn" ng-class="{'active': getClass('/logout')}">
              
-             <p ng-if="isLoggedIn" class="navbar-text"><img ng-if="isLoggedIn" width="28" height="28" class="avatar-img" ng-src="{{avatar}}"/> (<a ui-sref="logout" class="">Sign out</a>)</p>
+             <div class="btn-group">
+              <p type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                <img ng-if="isLoggedIn" width="28" height="28" class="avatar-img" ng-src="{{avatar}}"/> 
+              </p>
+              <ul class="dropdown-menu" role="menu">
+                <li><a ui-sref="logout">Sign out</a></li>
+              </ul>
+            </div>
             </li>
             <li id="login" ng-if="!isLoggedIn" ng-class="{'active': getClass('/login')}">
               <a href="#" class="login-button" ng-click="signin()">Login <i style="font-size: 1.5em;" class="fa fa-github separator"></i></a>
