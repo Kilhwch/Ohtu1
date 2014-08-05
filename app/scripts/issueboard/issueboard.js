@@ -10,7 +10,7 @@
 
 
 angular.module('ohtuProjektiAppApp')
-  .controller('IssueboardCtrl', function ($rootScope, $scope, $state, $stateParams, github, $modal) {
+  .controller('IssueboardCtrl', function ($rootScope, $scope, $filter, $state, $stateParams, github, $modal) {
 
     if (!github.isAuthenticated()) $state.go('main');
 
@@ -142,30 +142,31 @@ angular.module('ohtuProjektiAppApp')
     // dropdown valikko
     
     $scope.init = function() {
+        console.log("Initializing issueboard, scope id: ", $scope.$id);
       if (!$scope.labels) return;
-        $scope.filtersGrouped = [];
+        $rootScope.filtersGrouped = [];
         
-        $scope.filtersGrouped.push({name: '<strong>Milestones</strong>', multiSelectGroup: true});
-        $scope.filtersGrouped.push({name: "No milestone", ticked: false, type: 'check'});
+        $rootScope.filtersGrouped.push({name: '<strong>Milestones</strong>', multiSelectGroup: true});
+        $rootScope.filtersGrouped.push({name: "No milestone", ticked: false, type: 'check'});
         
         for (var i = 0; i < $scope.milestones.length; i++) {
             var title = $scope.milestones[i].title;
             $scope.filtersGrouped.push({name: title, ticked: false, type: 'milestone'});
         }
         
-        $scope.filtersGrouped.push({ multiSelectGroup: false});
+        $rootScope.filtersGrouped.push({ multiSelectGroup: false});
         
         
-        $scope.filtersGrouped.push({name: '<strong>Labels</strong>', multiSelectGroup: true});
+        $rootScope.filtersGrouped.push({name: '<strong>Labels</strong>', multiSelectGroup: true});
         
         for (var i = 0; i < $scope.labels.length; i++) {
             var name = $scope.labels[i].name;
                 if (name != 'Done' && name != 'InProgress' && name != 'Ready') {
-                    $scope.filtersGrouped.push({name: name, ticked: false, type: 'label'});
+                    $rootScope.filtersGrouped.push({name: name, ticked: false, type: 'label'});
                 }
         }
         
-        $scope.filtersGrouped.push({ multiSelectGroup: false});
+        $rootScope.filtersGrouped.push({ multiSelectGroup: false});
     };
     
     /*$scope.$on('addItem', function(event, args){

@@ -17,10 +17,6 @@ angular.module('ohtuProjektiAppApp')
       $scope.userName = user.login;
       $scope.avatar = user.avatar_url;
     });
-    
-    //$scope.userName = github.authenticatedUser
-
-    //$scope.options = ['New issue','New label/Delete label','New milestone'];
 
     $scope.getClass = function(path, url) {
       url = url || $location.path();
@@ -30,19 +26,5 @@ angular.module('ohtuProjektiAppApp')
         return ""
       }
     }
-
-    /*$scope.doAction = function(choice){
-      $rootScope.$broadcast('addItem', {choice: choice});
-    }*/
-
-    /*
-    $scope.changedMilestone = function(milestone){
-        $rootScope.$broadcast('changedMilestone', {milestone : milestone});
-    };
-
-    $scope.$on('viewIssueboard', function(event, args){
-      $scope.milestones = args.milestones;
-    });
-  */
  });
 

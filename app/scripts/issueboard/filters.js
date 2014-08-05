@@ -1,7 +1,8 @@
 angular.module('ohtuProjektiAppApp')
-  .filter('multiselect', function () {
-    return function (issues, $scope) {
-       if (!$scope.filtersGrouped) return issues
+  .filter('multiselect', function ($rootScope) {
+    return function (issues, scope) {
+      //console.log("scopeID in filter: ", scope.$id);
+       if (!scope.filtersGrouped) return issues
        var filtered = [];
        var filteredLabels = [];
        var filteredMilestones = [];
@@ -33,8 +34,8 @@ angular.module('ohtuProjektiAppApp')
          /**
           *  Filters milestones and labels into their respective arrays.
           */
-          for (var i = 0; i < $scope.filtersGrouped.length; i++) {
-            var item = $scope.filtersGrouped[i];
+          for (var i = 0; i < $rootScope.filtersGrouped.length; i++) {
+            var item = $rootScope.filtersGrouped[i];
 
             // Checks if "No milestone"-item is ticked.
             if (item.type === 'check') {

@@ -15,6 +15,9 @@
                   <option value>--Select Action--</option>
               </select>
             </li>
+            <li ng-controller="IssueboardCtrl">
+              <div ui-view="multiselect" />
+            </li>
           </ul>
           <ul class="nav nav-pills navbar-right" ng-controller="LoginCtrl">
             <li ng-class="{'active': getClass('/main')}">
