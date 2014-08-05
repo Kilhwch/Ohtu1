@@ -1,5 +1,8 @@
 
   <div class="repolist" ng-controller="ListCtrl">
+  	<input class ="owner form-control" ng-model="owner" placeholder="Owner">
+  	<input class ="repo form-control" ng-model="repo" placeholder="Repo">
+  	<h4><a ng-href="#/repos/{{owner}}/{{repo}}" ng-hide="!owner.length">{{owner}}/{{repo}}</a></h4>
     <ul class="list-group">
       <li class="list-group-item" ng-repeat="repo in repos">
        <h4><a ng-href="#/repos/{{repo.owner.login}}/{{repo.name}}">{{repo.name}}</a></h4>
