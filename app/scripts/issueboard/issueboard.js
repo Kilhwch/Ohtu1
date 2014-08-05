@@ -118,7 +118,7 @@ angular.module('ohtuProjektiAppApp')
             $scope.openNewLabelModal();
         }
         if(choice === "New milestone") {
-            console.log(choice+"3")
+            $scope.openNewMilestoneModal();
         }
         $scope.choice = 0;
     };
@@ -135,6 +135,14 @@ angular.module('ohtuProjektiAppApp')
       var modalInstance = $modal.open({
         templateUrl: 'scripts/issueboard/newlabel/newlabel.html',
         controller: 'NewlabelCtrl',
+        scope: $scope 
+      });
+    };
+
+    $scope.openNewMilestoneModal = function() {
+      var modalInstance = $modal.open({
+        templateUrl: 'scripts/issueboard/newmilestone/newmilestone.html',
+        controller: 'NewmilestoneCtrl',
         scope: $scope 
       });
     };
