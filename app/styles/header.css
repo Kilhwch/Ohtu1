@@ -52,6 +52,9 @@
 .header ul {
   margin-top: 10px;
 }
+.header li {
+  margin-left: 20px;
+}
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
   margin-bottom: 0;

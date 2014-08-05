@@ -14,14 +14,10 @@
   	</issuebox>
   </div>
 
-  <div class="vertical"></div>
-
   <div class="column">
   	<p><b>Ready</b></p>
   	<issuebox class="readybox" ng-repeat="issue in issues | multiselect:this  | filter:{labels :'Ready'} | filter:textFilter"></issuebox>
   </div>
-
-  <div class="vertical"></div>
 
   <div class="column">
   	<p><b>In Progress</b></p>
@@ -29,11 +25,10 @@
   	</issuebox>
   </div>
 
-  <div class="vertical"></div>
-
   <div class="column">
   	<p><b>Done</b></p>
   	<issuebox class ="donebox" ng-repeat="issue in issues | multiselect:this  | filter:{labels :'Done'} | filter:textFilter ">
   	</issuebox>
   </div>
+</div>  
 </div>
