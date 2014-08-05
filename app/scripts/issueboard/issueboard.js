@@ -42,10 +42,6 @@ angular.module('ohtuProjektiAppApp')
         issue.editing = true;
     };
 
-    $scope.cancelEditing = function(issue){
-        issue.editing = false;
-    };
-
     var reload = function () {
      $state.transitionTo($state.current, $stateParams, {
        reload: true,
@@ -53,6 +49,12 @@ angular.module('ohtuProjektiAppApp')
        notify: true
        });
      }; 
+
+    $scope.cancelEditing = function(issue){
+        issue.editing = false;
+        reload();
+        $scope.modalInstance.dismiss('close');
+    };
 
     $scope.doneEditing = function(issue){
         var temp = issue.body;
