@@ -86,6 +86,10 @@ angular
 			    templateUrl: 'scripts/issueboard/newlabel/newlabel.html',
 			    controller: 'NewlabelCtrl'
 			 },
+			'newmilestone@repository': {
+			    templateUrl: 'scripts/issueboard/newmilestone/newmilestone.html',
+			    controller: 'NewmilestoneCtrl'
+			 },
 			 'multiselect@repository': {
 			    templateUrl: 'scripts/multiselect/multiselect.html',
 			    //controller: 'IssueboardCtrl'
