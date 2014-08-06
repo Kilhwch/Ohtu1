@@ -1,6 +1,6 @@
 
 .repolist {
-  height: 80s%;
+  height: 80%;
   overflow-y: scroll;
 }
 
@@ -26,6 +26,7 @@
   padding-right: 10px;
 }
 
+
 .issue hr {
   display: block;
   -webkit-margin-start: 0px;
@@ -42,7 +43,7 @@
 
 .issue.highlight {
   border: 1px solid #435a66;
-  background-color: #88a6af;
+  background-color: #E5E3DC;
 }
 
 .viewbar{
@@ -63,6 +64,13 @@
 .done{
 }
 
+.assigneeDropdown{
+  position:absolute;
+  right:5px;
+  bottom:5px;
+}
+
+
 ::-webkit-scrollbar {
     width: 5px;
 }
@@ -78,7 +86,7 @@
   padding-left: 2%;
   padding-right: 2%;
   max-height: 90%;
-  overflow-y: scroll; 
+  overflow-y: scroll;
 }
 
 .avatar-img {

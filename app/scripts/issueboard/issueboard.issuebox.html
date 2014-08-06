@@ -1,18 +1,20 @@
 <div class="backlog issue notedit" ng-class="{highlight : hover}" title="Click to edit"
-     ng-click="openIssueEditModal(issue)" ng-init="hover = false"
-     ng-mouseenter="hover = true" ng-mouseleave="hover = false">
-    <img src="{{issue.user.avatar_url}}" class="avatar-img ">
-    <p><b> #{{issue.number}} {{issue.title}}</b></p>
-    <hr ng-class="{highlight : hover}"/>
-    <p>{{issue.body}}</p>
-    <p ng-hide="!issue.assignee.login.length"><b>Assignee: {{issue.assignee.login}}</b></p>
+    ng-init="hover = false" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
+    <div ng-click="openIssueEditModal(issue)">
+        <img src="{{issue.user.avatar_url}}" class="avatar-img ">
+        <p><b> #{{issue.number}} {{issue.title}}</b></p>
+    </div>
+    <div>
+        <hr ng-class="{highlight : hover}"/>
+        <p>{{issue.body}}</p>
+        <div class="btn-group assigneeDropdown">
+        <i class="fa fa-user dropdown-toggle" data-toggle="dropdown">{{issue.assignee.login}}</i>
+          <ul class="dropdown-menu" role="menu">
+            <li ng-repeat="assignee in assignees">
+                <a href ng-click="assign(issue, assignee)" id="{{assignee}}">{{assignee.login}}</a>
+            </li>
+          </ul>
+        </div>
+    </div>
 </div>
 
-<div class="btn-group">
-  <i class="glyphicon glyphicon-cog dropdown-toggle" data-toggle="dropdown"></i>
-  <ul class="dropdown-menu" role="menu">
-    <li ng-repeat="assignee in assignees">
-        <a href ng-click="assign(issue, assignee)" id="{{assignee}}">{{assignee.login}}</a>
-    </li>
-  </ul>
-</div>
