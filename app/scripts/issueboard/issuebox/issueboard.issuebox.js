@@ -22,10 +22,12 @@ angular.module('ohtuProjektiAppApp')
                 $scope.modalInstance.dismiss('close');
             };
 
-            $scope.doneEditing = function(issue){
+            $scope.doneEditing = function(issue,oldMilestone){
                 var temp = issue.body;
-                issues.updateIssue(issue.number, {body:issue.body}).error(function(data){
-                    issue.body = temp;
+                issues.updateIssue(issue.number, {body:issue.body,milestone: issue.milestone.number},function(data,response) {
+                    issue = data;
+                },function(err) {
+                    issue.milestone = oldMilestone;
                 });
                 issue.editing = false;
                 $scope.modalInstance.dismiss('close');
