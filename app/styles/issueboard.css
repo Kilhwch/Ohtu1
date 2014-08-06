@@ -1,8 +1,7 @@
 
 .repolist {
-  width: 600px;
-  margin-right: auto;
-  margin-left: auto;
+  height: 80%;
+  overflow-y: scroll;
 }
 
 .backlog.issue {
