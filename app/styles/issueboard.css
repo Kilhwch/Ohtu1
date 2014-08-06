@@ -1,6 +1,6 @@
 
 .repolist {
-  height: 80s%;
+  height: 80%;
   overflow-y: scroll;
 }
 
@@ -43,7 +43,7 @@
 
 .issue.highlight {
   border: 1px solid #435a66;
-  background-color: #88a6af;
+  background-color: #E5E3DC;
 }
 
 .viewbar{
