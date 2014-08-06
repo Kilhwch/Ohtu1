@@ -1,5 +1,5 @@
 <div class="backlog issue notedit" ng-class="{highlight : hover}" title="Click to edit"
-     ng-click="openModal('Issue edit')" ng-init="hover = false"
+     ng-click="openIssueEditModal(issue)" ng-init="hover = false"
      ng-mouseenter="hover = true" ng-mouseleave="hover = false">
     <img src="{{issue.user.avatar_url}}" class="avatar-img ">
     <p><b> #{{issue.number}} {{issue.title}}</b></p>

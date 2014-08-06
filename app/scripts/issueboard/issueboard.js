@@ -59,19 +59,16 @@ angular.module('ohtuProjektiAppApp')
 
     $scope.cancelEditing = function(issue){
         issue.editing = false;
-        reload();
         $scope.modalInstance.dismiss('close');
     };
 
     $scope.doneEditing = function(issue){
         var temp = issue.body;
-        issue.body = issue.editingbody;
         issues.updateIssue(issue.number, {body:issue.body}).error(function(data){
             issue.body = temp;
         });
         issue.editing = false;
         $scope.modalInstance.dismiss('close');
-        reload();
     };
     
     $scope.changedMilestone = function(issue, oldmilestone){
@@ -118,7 +115,8 @@ angular.module('ohtuProjektiAppApp')
 
 
 
-    $scope.openIssueEditModal = function() {
+    $scope.openIssueEditModal = function(issue) {
+      $scope.issue = issue;
       $scope.modalInstance = $modal.open({
         templateUrl: 'scripts/issueboard/issueboxedit.html',
         controller: 'IssueboardCtrl',
