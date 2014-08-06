@@ -55,21 +55,7 @@ angular.module('ohtuProjektiAppApp')
        inherit: false,
        notify: true
        });
-     }; 
-
-    $scope.cancelEditing = function(issue){
-        issue.editing = false;
-        $scope.modalInstance.dismiss('close');
-    };
-
-    $scope.doneEditing = function(issue){
-        var temp = issue.body;
-        issues.updateIssue(issue.number, {body:issue.body}).error(function(data){
-            issue.body = temp;
-        });
-        issue.editing = false;
-        $scope.modalInstance.dismiss('close');
-    };
+     };
     
     $scope.changedMilestone = function(issue, oldmilestone){
         issues.updateIssue(issue.number, {milestone:issue.milestone.number}, function(){}, function(error){
@@ -118,8 +104,8 @@ angular.module('ohtuProjektiAppApp')
     $scope.openIssueEditModal = function(issue) {
       $scope.issue = issue;
       $scope.modalInstance = $modal.open({
-        templateUrl: 'scripts/issueboard/issueboxedit.html',
-        controller: 'IssueboardCtrl',
+        templateUrl: 'scripts/issueboard/issuebox/issueboxedit.html',
+        controller: 'IssueboxCtrl',
         scope: $scope
       });
 
