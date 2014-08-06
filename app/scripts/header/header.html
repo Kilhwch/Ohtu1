@@ -39,12 +39,12 @@
             </li>
             <li id="logout" ng-if="isLoggedIn" ng-class="{'active': getClass('/logout')}">
               <div class="btn-group">
-                <p type="button" class="btn dropdown-toggle" data-toggle="dropdown">
-                  <img ng-if="isLoggedIn" width="28" height="28" class="avatar-img" ng-src="{{avatar}}"/> 
-                </p>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a ui-sref="logout">Sign out</a></li>
-                </ul>
+              <p type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                <img ng-if="isLoggedIn" width="28" height="28" class="avatar-img" ng-src="{{avatar}}"/> 
+              </p>
+              <ul class="dropdown-menu" role="menu">
+                <li><a ui-sref="logout">Sign out</a></li>
+              </ul>
               </div>
             </li>
             <li id="login" ng-if="!isLoggedIn" ng-class="{'active': getClass('/login')}">
