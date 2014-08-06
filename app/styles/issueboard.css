@@ -52,6 +52,18 @@
   border-bottom: 1px solid #e5e5e5;
 }
 
+.column .navbar-fixed-top {
+	left: auto;
+	right: auto;
+	top: auto;
+	width: 20%;
+	background: #f5f2eb;
+}
+
+.column .issueboxes{
+	padding-top: 40px;
+}
+
 .backlog{
 }
 
@@ -70,6 +82,11 @@
   bottom:5px;
 }
 
+.assigneeDropdown i{
+  padding: 5px;
+}
+
+
 
 ::-webkit-scrollbar {
     width: 5px;
@@ -87,6 +104,7 @@
   padding-right: 2%;
   max-height: 90%;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .avatar-img {
