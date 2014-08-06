@@ -18,10 +18,18 @@
 		    	</select>
 	    	</div>
 	    </div>
+	    <div class="form-group">
+	    	<label class="col-sm-2 control-label" for="text">Change labels</label>
+	    	<div class="col-sm-9">
+		    	<select class="form-control" ng-model="issue.labels" ng-options="label.name for label in labels">
+		    		<option value="">--Select--</option>
+		    	</select>
+	    	</div>
+	    </div>
  	</form>
  </div>
  <div class="modal-footer">
- 	<button id="submit" class="btn btn-primary" ng-click="doneEditing(issue,[{{issue.milestone}}])">Edit</button>
-    <button id="newlabel-close" class="btn btn-warning" ng-click="cancelEditing(issue)">Cancel</button>
+ 	<button id="submit" class="btn btn-primary" ng-click="doneEditing(issue,[{{issue.milestone}}],[{{issue.labels}}])">Edit</button>
+    <button id="newlabel-close" class="btn btn-warning" ng-click="cancelEditing(issue,[{{issue.milestone}}],[{{issue.labels}}])">Cancel</button>
  </div>
 
