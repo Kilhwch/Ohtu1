@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Listing issues', function() {
 
   var mockModule = require('../mocked-backend'),

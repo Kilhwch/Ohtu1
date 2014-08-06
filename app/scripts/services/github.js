@@ -154,6 +154,20 @@ angular.module('ohtuProjektiAppApp')
         };
       },
 
+      Assignee: function(user, repo) {
+        var url = '/repos/' + user + '/' + repo + '/assignees';
+
+
+        this.list = function(options, success, error) {
+          return _http('GET', url, options || {}, success, error);
+        };
+
+        this.checkAssignee = function(assignee, success, error) {
+          return _http('GET', url + '/' + assignee, null, success, error);
+        };
+
+      },
+
     };
 
     return githubObject;

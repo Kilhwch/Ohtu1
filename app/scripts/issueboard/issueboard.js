@@ -17,7 +17,8 @@ angular.module('ohtuProjektiAppApp')
 
     var issues = new github.Issue($stateParams.owner, $stateParams.repoName);
     var milestones = new github.Milestone($stateParams.owner, $stateParams.repoName);
-    var labels = new github.Label($stateParams.owner,$stateParams.repoName); 
+    var labels = new github.Label($stateParams.owner,$stateParams.repoName);
+    var assignees = new github.Assignee($stateParams.owner,$stateParams.repoName);  
     
     $scope.createOptions = ['New issue','New label/Delete label','New milestone'];
     
@@ -30,7 +31,12 @@ angular.module('ohtuProjektiAppApp')
         labels.list().success(function(data) {
          $scope.labels = data;
          $scope.init();  
-     });
+        });
+    });
+
+    assignees.list().success(function(data) {
+        data.editing = false;
+        $scope.assignees = data;
     });
 
     issues.list().success(function(data) {
@@ -74,6 +80,15 @@ angular.module('ohtuProjektiAppApp')
         });
         issue.editing = false;
     };
+
+    $scope.assign = function(issue, assignee){
+        issues.updateIssue(issue.number,{assignee:assignee.login}, function(data, response){issue.assignee = data.assignee},function(data, error){
+            console.log('Error while assigning assignee');
+        });
+        issue.editing = false;
+
+    };
+
     $scope.changedLabel = function(issue, oldlabels){
         issues.updateIssue(issue.number, {labels:issue.labels}, function(){},function(error){
             issue.labels = oldlabels;
@@ -83,44 +98,6 @@ angular.module('ohtuProjektiAppApp')
 
     $scope.getLabelColor = function(issue){
       return (issue.labels.length === 0)? "": "#" + issue.labels[0].color;
-    };
-
-    $scope.isInBacklog = function(issue) {
-	var count = 0;
-	for(var i = 0; i < issue.labels.length; i++){
-		if(issue.labels[i].name.match("Ready") || issue.labels[i].name.match("InProgress") || issue.labels[i].name.match("Done")){
-			count++;
-		}
-	}
-	if (count === 0){
-		return issue;
-	}
-    };
-
-
-    $scope.isReady = function(issues) {
-	for(var i = 0; i < issue.labels.length; i++){
-		if(issue.labels[i].name.match("Ready")){
-			return issue;
-		}
-	}
-    };
-
-
-    $scope.isInProgress = function(issue) {
-	for(var i = 0; i < issue.labels.length; i++){
-		if(issue.labels[i].name.match("InProgress")){
-			return issue;
-		}
-	}
-    };
-
-    $scope.isDone = function(issue) {
-    	for(var i = 0; i < issue.labels.length; i++){
-		if(issue.labels[i].name.match("Done")){
-			return issue;
-		}
-	}
     };
 
     $scope.openModal = function(choice) {

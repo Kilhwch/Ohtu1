@@ -1,6 +1,6 @@
 
 .repolist {
-  height: 80%;
+  height: 80s%;
   overflow-y: scroll;
 }
 
@@ -90,7 +90,7 @@
   height:40px;
   position: absolute;
   right: -10px; 
-  top: -10px
+  top: -10px;
 }
 
 .vertical{
