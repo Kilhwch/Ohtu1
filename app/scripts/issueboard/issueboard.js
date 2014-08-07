@@ -116,7 +116,7 @@ angular.module('ohtuProjektiAppApp')
       var modalInstance = $modal.open({
         templateUrl: 'scripts/issueboard/newissue/newissue.html',
         controller: 'NewissueCtrl',
-        scope: $scope 
+        scope: $scope
       });
     };
     
