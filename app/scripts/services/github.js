@@ -127,6 +127,34 @@ angular.module('ohtuProjektiAppApp')
 
       },
 
+      Comment: function(user, repo, issue) {
+        var url = '/repos/' + user + '/' + repo + '/issues' + issue.number +'/comments';
+
+        this.list = function(options, success, error) {
+          return _http('GET', url, options || {}, success, error);
+        };
+
+
+        this.getComment = function(id, success, error) {
+          return _http('GET', url + '/' + id, null, success, error);
+        };
+
+
+        this.createComment = function(options, success, error) {
+          return _http('POST', url, options, success, error);
+        };
+        
+        this.deleteComment= function(id, success, error) {
+          return _http('DELETE', url + '/' + id, null, success, error);
+        };
+
+
+        this.updateComment = function(id, options, success, error) {
+          return _http('PATCH', url + '/' + id, options, success, error);
+        };
+
+      },
+
       Milestone: function(user, repo) {
         var url = '/repos/' + user + '/' + repo + '/milestones';
 
