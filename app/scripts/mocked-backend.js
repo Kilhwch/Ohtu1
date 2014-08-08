@@ -15,7 +15,7 @@ exports.httpBackendMock = function() {
             		var issue2 = {number: 1, title: 'Test ready', body:'ready body', milestone: 'testi' , 'labels':[{'name':'Ready','color': 'f29513'}] };
             		var issue3 = {number: 1, title: 'Test inprogress', body:'inprogress body', milestone: null , 'labels':[{'name':'InProgress','color': 'f29513'}] };
             		var issue4 = {number: 1, title: 'Test done', body:'done body', milestone: null , 'labels':[{'name':'Done','color': 'f29513'}] };
-            		var issue5 = {number: 1, title: 'Test done2', body:'done body2', milestone: null , 'labels':[{'name':'Done','color': 'f29513'}] };
+            		var issue5 = {number: 1, title: 'Test done2', body:'done body2', milestone: null , 'labels':[{'name':'Done','color': 'f29513'}, multilabel] };
                     var label = {'name':'Done','color': 'f29513'};
                     
    

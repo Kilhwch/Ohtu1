@@ -108,7 +108,7 @@ describe('Listing issues', function() {
   
   
   describe('multiselect filter', function() {
-    it('(multiselect) should filter "Test inprogress"-issue', function() {
+    it('should filter (hide) issues that have a milestone', function() {
       
       var multiselect = ptor.findElement(by.css('.multiSelect'));
       var button = ptor.findElement(by.css('.multiSelectButton'));
@@ -119,6 +119,19 @@ describe('Listing issues', function() {
       var elems = element.all(by.repeater('issue in issues'));
       expect(elems.count()).toBe(4);
     });
+    
+    it('should filter issues that have a "" label', function() {
+      
+      var multiselect = ptor.findElement(by.css('.multiSelect'));
+      var button = ptor.findElement(by.css('.multiSelectButton'));
+      button.click();
+      
+      var item = ptor.findElement(by.cssContainingText('.multiSelectItem', 'testlabel'), multiselect);
+      item.click();
+      var elems = element.all(by.repeater('issue in issues'));
+      expect(elems.count()).toBe(1);
+    });
+    
   });
 
   describe('filter', function() {
