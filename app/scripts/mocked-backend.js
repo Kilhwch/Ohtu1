@@ -7,16 +7,29 @@ exports.httpBackendMock = function() {
                 var labels = /https:\/\/api\.github\.com\/repos\/user\/repo\/labels/;
                 var milestones = /https:\/\/api\.github\.com\/repos\/user\/repo\/milestones/;
                 
+                
+                // milestones
                 var multimilestone = {title: 'testi'};
+                
+                
+                // issuelabels
+                var label = {'name':'Done','color': 'f29513'};
+                var readylabel = {'name':'Ready','color': 'f29513'};
+                var inproglabel = {'name':'InProgress','color': 'f29513'}
+                var donelabel = {'name':'Done','color': 'f29513'};
                 var multilabel = {'name':'testlabel','color': 'f29513'};
+                
+                // repos
                 var repo = {name: 'Test Repo', description: 'Test description'};
                 var repo2 = {name: 'Testi Reponen', description: 'Test description X2000 pro'};
+                
+                // issues
                 var issue = {number: 1, title: 'Test tickle', body:'Test body', milestone: null};
-            		var issue2 = {number: 1, title: 'Test ready', body:'ready body', milestone: 'testi' , 'labels':[{'name':'Ready','color': 'f29513'}] };
-            		var issue3 = {number: 1, title: 'Test inprogress', body:'inprogress body', milestone: null , 'labels':[{'name':'InProgress','color': 'f29513'}] };
-            		var issue4 = {number: 1, title: 'Test done', body:'done body', milestone: null , 'labels':[{'name':'Done','color': 'f29513'}] };
-            		var issue5 = {number: 1, title: 'Test done2', body:'done body2', milestone: null , 'labels':[{'name':'Done','color': 'f29513'}, multilabel] };
-                    var label = {'name':'Done','color': 'f29513'};
+                var issue2 = {number: 1, title: 'Test ready', body:'ready body', milestone: 'testi' , 'labels':[readylabel] };
+            	var issue3 = {number: 1, title: 'Test inprogress', body:'inprogress body', milestone: null , 'labels':[inproglabel] };
+            	var issue4 = {number: 1, title: 'Test done', body:'done body', milestone: null , 'labels':[donelabel] };
+            	var issue5 = {number: 1, title: 'Test done2', body:'done body2', milestone: null , 'labels':[donelabel, multilabel] };
+                    
                     
    
                 $httpBackend.whenGET(/https:\/\/oauth.io.*/).respond('token');
