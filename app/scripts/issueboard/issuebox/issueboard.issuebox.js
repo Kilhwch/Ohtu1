@@ -44,4 +44,11 @@ angular.module('ohtuProjektiAppApp')
             $scope.close = function() {
                 $modalInstance.dismiss('close');
             };
+            $scope.newComment = function(body) {
+                comment.createComment({body : body},function(data,response){
+                    $scope.comments.push(data);
+                }, function(err){
+
+                });
+            };
         });
