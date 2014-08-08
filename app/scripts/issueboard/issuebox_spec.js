@@ -14,15 +14,30 @@ describe('Issue box', function(){
 	});
 
 
- it('should edit label of issue', function(){
-    var elems = element.all(by.repeater('issue in issues'));
-    ptor.findElement(by.id('editCog'), elems.first()).click();
+ it('should edit text of issue', function(){
+    var elems = element.all(by.repeater('issue in issues')).first();
+    elems.element(by.css('.fa.fa-cog')).click();
 
     element(by.model('issue.body')).sendKeys("label name");
     $('#submit').click();
      
-    var issueBody = ptor.findElement(by.css('.issueBody'), elems.first());
+    var issueBody = elems.element(by.css('.issueBody'));
     expect(issueBody.getText()).toContain("label name");   
+  });
+
+ it('should add comment', function() {
+     var elems = element.all(by.repeater('issue in issues')).first();
+    elems.element(by.css('.fa.fa-cog')).click();
+// model = issue.labels
+// button id = submit
+    element(by.css('.pull-right.glyphicon.ng-scope.glyphicon-chevron-right')).click();
+    element(by.model('body')).sendKeys("new comment");
+    $('#comment').click();
+    var divi = element.all(by.css('.panel.panel-default.ng-isolate-scope')).first();
+    var elem = divi.element(by.css('.form-control.ng-binding'));
+//    divi.getInnerHtml().then(function(data) { console.log(data) });
+   expect(elem.getText()).toContain("Test body");
+
   });
   
 
