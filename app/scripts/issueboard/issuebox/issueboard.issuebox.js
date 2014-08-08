@@ -25,7 +25,9 @@ angular.module('ohtuProjektiAppApp')
             };
 
             $scope.doneEditing = function(issue,oldMilestone,oldLabels){
-                var options = {body :issue.body, milestone : issue.milestone.number, labels : issue.labels};
+                console.log(issue.milestone)
+                var options = {body :issue.body, labels : issue.labels};
+                if(issue.milestone) options = {body :issue.body, labels : issue.labels, milestone : issue.milestone.number};
                 var temp = issue.body;
                 issues.updateIssue(issue.number, options,function(data,response) {
                     issue = data;
