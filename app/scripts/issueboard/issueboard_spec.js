@@ -140,9 +140,7 @@ describe('Listing issues', function() {
 });
 
   });
-
   describe('filter', function() {
-
     xit('should filter excess issues', function() {
       var elems = element.all(by.repeater('issue in issues'));
       expect(elems.count()).toBe(5);
