@@ -29,4 +29,15 @@ describe('Controller: NewissueCtrl', function () {
     expect(mockModal.dismiss).toHaveBeenCalled();
   });
 
+  xit('should receive correct response when creating a new issue', function() {
+  element(by.id('add')).click();
+  element(by.id('New issue')).click();
+  element(by.model('issue.title')).sendKeys('issue title');
+  element(by.model('issue.body')).sendKeys('issue body');
+  $('#create-issue').click();
+  var alertDialog = ptor.switchTo().alert();
+  alertDialog.accept();
+  expect(alertDialog.getText()).toContain("Created issue: issue title");
+});
+
 });
