@@ -52,6 +52,18 @@
   border-bottom: 1px solid #e5e5e5;
 }
 
+.column .navbar-fixed-top {
+	left: auto;
+	right: auto;
+	top: auto;
+	width: 20%;
+	background: #f5f2eb;
+}
+
+.column .issueboxes{
+	padding-top: 40px;
+}
+
 .backlog{
 }
 

@@ -17,17 +17,21 @@ angular.module('ohtuProjektiAppApp')
                   notify: true
                 });
             };
-            $scope.cancelEditing = function(issue){
+            $scope.cancelEditing = function(issue,oldMilestone,oldLabels){
+                issue.milestone = oldMilestone;
+                issue.labels = oldLabels;
                 issue.editing = false;
                 $scope.modalInstance.dismiss('close');
             };
 
-            $scope.doneEditing = function(issue,oldMilestone){
+            $scope.doneEditing = function(issue,oldMilestone,oldLabels){
+                var options = {body :issue.body, milestone : issue.milestone.number, labels : issue.labels};
                 var temp = issue.body;
-                issues.updateIssue(issue.number, {body:issue.body,milestone: issue.milestone.number},function(data,response) {
+                issues.updateIssue(issue.number, options,function(data,response) {
                     issue = data;
                 },function(err) {
                     issue.milestone = oldMilestone;
+                    issue.labels = oldLabels
                 });
                 issue.editing = false;
                 $scope.modalInstance.dismiss('close');

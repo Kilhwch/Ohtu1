@@ -1,25 +1,33 @@
 <div class ="issueview">
   <div class="column">
-	  <p><b>Backlog</b></p>
-  	<issuebox class="backlogbox" ng-repeat="issue in issues | multiselect:this | filter:{labels:'!Ready'}  | filter:{labels:'!InProgress'} | filter:{labels:'!Done'} | filter:textFilter ">
-  	</issuebox>
+	  <p class=""><b>Backlog</b></p>
+	  <div class="issueboxes">
+	  	<issuebox class="backlogbox" ng-repeat="issue in issues | multiselect:this | filter:{labels:'!Ready'}  | filter:{labels:'!InProgress'} | filter:{labels:'!Done'} | filter:textFilter ">
+	  	</issuebox>
+  	   </div>
   </div>
 
   <div class="column">
-  	<p><b>Ready</b></p>
+  	<p class=""><b>Ready</b></p>
+  	<div class="issueboxes">
   	<issuebox class="readybox" ng-repeat="issue in issues | multiselect:this  | filter:{labels :'Ready'} | filter:textFilter"></issuebox>
+  	</div>
   </div>
 
   <div class="column">
-  	<p><b>In Progress</b></p>
+  	<p class=""><b>In Progress</b></p>
+  	<div class="issueboxes">
   	<issuebox class="inprogressbox" ng-repeat="issue in issues | multiselect:this | filter:{labels :'InProgress'} | filter:textFilter ">
   	</issuebox>
+  	</div>
   </div>
 
   <div class="column">
-  	<p><b>Done</b></p>
+  	<p class=""><b>Done</b></p>
+  	<div class="issueboxes">
   	<issuebox class ="donebox" ng-repeat="issue in issues | multiselect:this  | filter:{labels :'Done'} | filter:textFilter ">
   	</issuebox>
+  	</div>
   </div>
 </div>  
 </div>
