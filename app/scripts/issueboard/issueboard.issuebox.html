@@ -1,4 +1,4 @@
-<div class="backlog issue notedit" ng-class="{highlight : hover}" title="Click to edit"
+<div class="backlog issue notedit" ng-class="{highlight : hover}"
     ng-init="hover = false" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
     <div class="issueHeader">
         <div class="btn-group assigneeDropdown">
@@ -15,7 +15,7 @@
     <div class="issueBody">
         <hr ng-class="{highlight : hover}"/>
         <p>{{issue.body}}</p>
-        <i id="editCog" class="fa fa-cog" ng-click="openIssueEditModal(issue)"></i>
+        <i id="editCog" class="fa fa-cog" ng-click="openIssueEditModal(issue)" title="Click to edit"></i>
     </div>
 </div>
 
