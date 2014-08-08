@@ -181,11 +181,4 @@ angular.module('ohtuProjektiAppApp')
     });
     */
 
-  $scope.height = $window.innerHeight - 150;
-  $($window).resize(function(){
-    $scope.$apply(function(){
-      $scope.height = $window.innerHeight - 150;
-    });
-  });
-
 });
