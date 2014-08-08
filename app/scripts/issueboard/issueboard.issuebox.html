@@ -2,7 +2,7 @@
     ng-init="hover = false" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
     <div class="issueHeader">
         <div class="btn-group assigneeDropdown">
-        <img ng-src="{{issue.assignee.avatar_url}}"  ng-hide="!issue.assignee.avatar_url.length" class="avatar-img dropdown-toggle" data-toggle="dropdown">
+        <img ng-src="{{issue.assignee.avatar_url}}"  ng-hide="!issue.assignee.avatar_url.length" class="avatar-img dropdown-toggle" data-toggle="dropdown" title="{{issue.assignee.login}}">
         <i id="assignee" class="fa fa-user dropdown-toggle" data-toggle="dropdown" ng-hide="issue.assignee.avatar_url.length" ></i>
           <ul class="dropdown-menu" role="menu">
             <li ng-repeat="assignee in assignees">
