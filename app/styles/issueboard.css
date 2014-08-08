@@ -58,6 +58,7 @@
 	top: auto;
 	width: 20%;
 	background: #f5f2eb;
+	z-index: 1;
 }
 
 .column .issueboxes{
