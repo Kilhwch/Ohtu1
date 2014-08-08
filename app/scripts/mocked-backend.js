@@ -9,7 +9,7 @@ exports.httpBackendMock = function() {
                 
                 
                 // milestones
-                var multimilestone = {title: 'testi'};
+                var multimilestone = {title: 'testi', number: 1};
                 
                 
                 // issuelabels
@@ -55,6 +55,10 @@ exports.httpBackendMock = function() {
                    return [201, data];
                   });
                 $httpBackend.whenPOST('https://api.github.com/repos/user/repo/milestones')
+                  .respond(function(method, url, data, headers) {
+                   return [201, data];
+                  });
+                $httpBackend.whenDELETE('https://api.github.com/repos/user/repo/milestones/1')
                   .respond(function(method, url, data, headers) {
                    return [201, data];
                   });

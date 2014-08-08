@@ -42,9 +42,15 @@ describe('Controller: NewmilestoneCtrl', function () {
   });
 
   it('has a createMilestone method', function () {
-    spyOn(scope.milestones, 'createMilestone');
+    spyOn(scope.ghMilestones, 'createMilestone');
     scope.createMilestone(milestone);
-    expect(scope.milestones.createMilestone).toHaveBeenCalled();
+    expect(scope.ghMilestones.createMilestone).toHaveBeenCalled();
+  });
+
+  it('has a deleteMilestone method', function () {
+    spyOn(scope.ghMilestones, 'deleteMilestone');
+    scope.deleteMilestone(milestone);
+    expect(scope.ghMilestones.deleteMilestone).toHaveBeenCalled();
   });
 
 });

@@ -20,7 +20,7 @@ angular.module('ohtuProjektiAppApp')
     var labels = new github.Label($stateParams.owner,$stateParams.repoName);
     var assignees = new github.Assignee($stateParams.owner,$stateParams.repoName);
     
-    $scope.createOptions = ['New issue','New label/Delete label','New milestone'];
+    $scope.createOptions = ['New issue','New label/Delete label','New milestone', 'Delete milestone'];
     
     
 
@@ -93,6 +93,9 @@ angular.module('ohtuProjektiAppApp')
         if(choice === "New milestone") {
             $scope.openNewMilestoneModal();
         }
+        if(choice === "Delete milestone") {
+            $scope.openDeleteMilestoneModal();
+        }
         if(choice === "Issue edit") {
             $scope.openIssueEditModal();
         }
@@ -131,6 +134,14 @@ angular.module('ohtuProjektiAppApp')
     $scope.openNewMilestoneModal = function() {
       var modalInstance = $modal.open({
         templateUrl: 'scripts/issueboard/newmilestone/newmilestone.html',
+        controller: 'NewmilestoneCtrl',
+        scope: $scope 
+      });
+    };
+
+    $scope.openDeleteMilestoneModal = function() {
+      var modalInstance = $modal.open({
+        templateUrl: 'scripts/issueboard/newmilestone/deletemilestone.html',
         controller: 'NewmilestoneCtrl',
         scope: $scope 
       });

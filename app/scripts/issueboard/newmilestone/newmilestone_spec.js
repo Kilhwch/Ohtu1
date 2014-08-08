@@ -29,4 +29,20 @@ describe('Creating milestones', function() {
 
   });
 
+  describe('when delete', function() {
+
+    it('should receive correct response when deleting a new milestone', function() {
+      $('#add').click();
+      element(by.id('Delete milestone')).click();
+      $('select#delete').click()
+      $('option[value="0"]').click()
+      browser.sleep(1000)
+      $('#milestone-delete').click();
+      var alertDialog = ptor.switchTo().alert();
+      alertDialog.accept();
+      expect(alertDialog.getText()).toContain("Deleted milestone: testi");
+    });
+
+  });
+
 });
