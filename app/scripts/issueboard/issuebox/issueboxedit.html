@@ -26,6 +26,16 @@
 		    	</select>
 	    	</div>
 	    </div>
+	    <accordion>
+	    	<accordion-group heading="Comments">
+	    		<div ng-repeat="comment in comments">
+	    			<label class="col-sm-2 control-label" for="text">{{comment.user.login}}</label>
+	    			<div class="col-sm-9">
+	    				<p class="form-control">{{comment.body}}</p>
+	    			</div>
+	    		</div>
+	    	</accordion-group>
+		</accordion>
  	</form>
  </div>
  <div class="modal-footer">

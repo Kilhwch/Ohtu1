@@ -10,6 +10,10 @@
 angular.module('ohtuProjektiAppApp')
         .controller('IssueboxCtrl', function($scope, github, $state,$stateParams, $modalInstance) {
             var issues = new github.Issue($stateParams.owner, $stateParams.repoName);
+            var comment = new github.Comment($stateParams.owner, $stateParams.repoName, $scope.issue)
+            comment.list({},function(data, response) {
+                $scope.comments = data;
+            });
             var reload = function () {
                 $state.transitionTo($state.current, $stateParams, {
                   reload: true,
@@ -25,7 +29,6 @@ angular.module('ohtuProjektiAppApp')
             };
 
             $scope.doneEditing = function(issue,oldMilestone,oldLabels){
-                console.log(issue.milestone)
                 var options = {body :issue.body, labels : issue.labels.name};
                 if(issue.milestone) options = {body :issue.body, labels : issue.labels.name, milestone : issue.milestone.number};
                 var temp = issue.body;

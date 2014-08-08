@@ -128,7 +128,7 @@ angular.module('ohtuProjektiAppApp')
       },
 
       Comment: function(user, repo, issue) {
-        var url = '/repos/' + user + '/' + repo + '/issues' + issue.number +'/comments';
+        var url = '/repos/' + user + '/' + repo + '/issues/' + issue.number +'/comments';
 
         this.list = function(options, success, error) {
           return _http('GET', url, options || {}, success, error);
