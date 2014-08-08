@@ -22,9 +22,10 @@ angular.module('ohtuProjektiAppApp')
                 });
             };
             $scope.cancelEditing = function(issue,oldMilestone,oldLabels){
-                issue.milestone = oldMilestone;
+                console.log(oldMilestone);
+                /*issue.milestone = oldMilestone;
                 issue.labels = oldLabels;
-                issue.editing = false;
+                issue.editing = false;*/
                 $scope.modalInstance.dismiss('close');
             };
 
@@ -34,6 +35,8 @@ angular.module('ohtuProjektiAppApp')
                 var temp = issue.body;
                 issues.updateIssue(issue.number, options,function(data,response) {
                     issue = data;
+                    oldMilestone = data.milestone;
+                    oldLabels = data.labels;
                 },function(err) {
                     issue.milestone = oldMilestone;
                     issue.labels = oldLabels
