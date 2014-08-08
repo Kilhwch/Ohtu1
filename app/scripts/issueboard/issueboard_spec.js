@@ -108,7 +108,7 @@ describe('Listing issues', function() {
  
   describe('when create', function() {
 
-    xit('should receive correct response when creating a new issue', function() {
+    it('should receive correct response when creating a new issue', function() {
       element(by.id('add')).click();
       element(by.id('New issue')).click();
       element(by.model('issue.title')).sendKeys('issue title');
@@ -119,7 +119,7 @@ describe('Listing issues', function() {
       expect(alertDialog.getText()).toContain("Created issue: issue title");
     });
     
-    xit('should receive correct response when creating a new label', function() {
+    it('should receive correct response when creating a new label', function() {
       element(by.id('add')).click();
       element(by.id('New label/Delete label')).click();
       element(by.model('createlabel.name')).sendKeys('label name');
@@ -129,20 +129,18 @@ describe('Listing issues', function() {
       expect(alertDialog.getText()).toContain("Created label: label name");
     });
 
-  xit('should receive correct response when deleting a new label', function() {
-    element(by.id('create')).click();
-    element(by.css('#create option[value="1"]')).click();
-    element(by.css('#delete option[value="0"]')).click();
-    $('#deletelabel').click();
+  it('should receive correct response when deleting a new label', function() {
+    element(by.id('add')).click();
+    element(by.id('New label/Delete label')).click();
+    element(by.model('delLabel')).click();
+    $('#delLabel').click();
     var alertDialog = ptor.switchTo().alert();
     alertDialog.accept();
-    expect(alertDialog.getText()).toContain("Deletion of 'Done' is not allowed");
+    expect(alertDialog.getText()).toContain("Deletion unsuccessful");
 });
 
   });
-
   describe('filter', function() {
-
     xit('should filter excess issues', function() {
       var elems = element.all(by.repeater('issue in issues'));
       expect(elems.count()).toBe(5);

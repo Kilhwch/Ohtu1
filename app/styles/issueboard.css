@@ -58,6 +58,7 @@
 	top: auto;
 	width: 20%;
 	background: #f5f2eb;
+	z-index: 1;
 }
 
 .column .issueboxes{
@@ -81,6 +82,7 @@
   right: -5px; 
   top: -5px;
 }
+
 .assigneeDropdown ul{
   left:-180px;
   top: 35px;
