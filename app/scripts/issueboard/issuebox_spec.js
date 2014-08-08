@@ -13,20 +13,18 @@ describe('Issue box', function(){
 	    browser.get('#/repos/user/repo');
 	});
 
-	xit('should not be in edit mode when first viewing backlog', function(){
-	  element.all(by.repeater('issue in issues')).each(function(elem){
-	    expect(elem.findElement(by.css('.notedit')).getAttribute('class')).not.toContain('ng-hide');
-	    expect(elem.findElement(by.css('.edit')).getAttribute('class')).toContain('ng-hide');
-	  });
-	});
 
-	xit('should be in edit mode when clicked on', function(){
-	  var issueElem = element.all(by.repeater('issue in issues')).first();
-	  issueElem.findElement(by.css('.notedit')).click();
-	  expect(issueElem.findElement(by.css('.notedit')).getAttribute('class')).toContain('ng-hide');
-	  expect(issueElem.findElement(by.css('.edit')).getAttribute('class')).not.toContain('ng-hide');      
-	});
+ it('should edit label of issue', function(){
+    var elems = element.all(by.repeater('issue in issues'));
+    ptor.findElement(by.id('editCog'), elems.first()).click();
 
+    element(by.model('issue.body')).sendKeys("label name");
+    $('#submit').click();
+     
+    var issueBody = ptor.findElement(by.css('.issueBody'), elems.first());
+    expect(issueBody.getText()).toContain("label name");   
+  });
+  
 
 	/* Most likely the mocked backend is not handling these correctly
 	it('should edit text of issue in edit mode after pressing submit button', function(){
