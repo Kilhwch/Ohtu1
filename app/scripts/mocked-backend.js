@@ -37,6 +37,10 @@ exports.httpBackendMock = function() {
                   .respond(function(method, url, data, headers) {
                    return [201, data];
                   });
+                $httpBackend.whenPOST('https://api.github.com/repos/user/repo/milestones')
+                  .respond(function(method, url, data, headers) {
+                   return [201, data];
+                  });
                 $httpBackend.whenGET(/.*/).passThrough();
                 
             });

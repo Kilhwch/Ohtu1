@@ -9,8 +9,8 @@
  */
 angular.module('ohtuProjektiAppApp')
         .controller('NewmilestoneCtrl', function($scope, github, $state,$stateParams, $modalInstance) {
-            var milestones = new github.Milestone($stateParams.owner, $stateParams.repoName);
-            var reload = function () {
+            $scope.milestones = new github.Milestone($stateParams.owner, $stateParams.repoName);
+            $scope.reload = function () {
                 $state.transitionTo($state.current, $stateParams, {
                   reload: true,
                   inherit: false,
@@ -19,7 +19,7 @@ angular.module('ohtuProjektiAppApp')
             };
             $scope.createMilestone = function(milestone) {
                 var options = {title:milestone.title,description:milestone.description,due_on:milestone.due_on};
-                milestones.createMilestone(options,function(data,response){
+                $scope.milestones.createMilestone(options,function(data,response){
                     alert("Created milestone: " + milestone.title);
                     $scope.milestones.push(data);
                 },function(err){
@@ -28,7 +28,7 @@ angular.module('ohtuProjektiAppApp')
                 $scope.close();
             };
             $scope.deleteMilestone = function(milestone) {
-                reload();
+                $scope.reload();
                 $scope.close();
             };
             $scope.close = function() {
