@@ -106,40 +106,7 @@ describe('Listing issues', function() {
 
   });
  
-  describe('when create', function() {
 
-    it('should receive correct response when creating a new issue', function() {
-      element(by.id('add')).click();
-      element(by.id('New issue')).click();
-      element(by.model('issue.title')).sendKeys('issue title');
-      element(by.model('issue.body')).sendKeys('issue body');
-      $('#create-issue').click();
-      var alertDialog = ptor.switchTo().alert();
-      alertDialog.accept();
-      expect(alertDialog.getText()).toContain("Created issue: issue title");
-    });
-    
-    it('should receive correct response when creating a new label', function() {
-      element(by.id('add')).click();
-      element(by.id('New label/Delete label')).click();
-      element(by.model('createlabel.name')).sendKeys('label name');
-      $('#sendlabel').click();
-      var alertDialog = ptor.switchTo().alert();
-      alertDialog.accept();
-      expect(alertDialog.getText()).toContain("Created label: label name");
-    });
-
-  it('should receive correct response when deleting a new label', function() {
-    element(by.id('add')).click();
-    element(by.id('New label/Delete label')).click();
-    element(by.model('delLabel')).click();
-    $('#delLabel').click();
-    var alertDialog = ptor.switchTo().alert();
-    alertDialog.accept();
-    expect(alertDialog.getText()).toContain("Deletion unsuccessful");
-});
-
-  });
   describe('filter', function() {
     xit('should filter excess issues', function() {
       var elems = element.all(by.repeater('issue in issues'));
