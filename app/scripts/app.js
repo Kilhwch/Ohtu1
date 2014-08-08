@@ -90,9 +90,12 @@ angular
 			    templateUrl: 'scripts/issueboard/newmilestone/newmilestone.html',
 			    controller: 'NewmilestoneCtrl'
 			 },
+			'deletemilestone@repository': {
+			    templateUrl: 'scripts/issueboard/newmilestone/deletemilestone.html',
+			    controller: 'NewmilestoneCtrl'
+			 },
 			 'multiselect@repository': {
 			    templateUrl: 'scripts/multiselect/multiselect.html',
-			    //controller: 'IssueboardCtrl'
 			 }
 		}
       })
