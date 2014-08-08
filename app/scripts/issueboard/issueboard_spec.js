@@ -108,7 +108,7 @@ describe('Listing issues', function() {
   
   
   describe('multiselect filter', function() {
-    it('should filter (hide) issues that have a milestone', function() {
+    it('should filter issues that have no milestone', function() {
       
       var multiselect = ptor.findElement(by.css('.multiSelect'));
       var button = ptor.findElement(by.css('.multiSelectButton'));
@@ -120,7 +120,7 @@ describe('Listing issues', function() {
       expect(elems.count()).toBe(4);
     });
     
-    it('should filter issues that have a "" label', function() {
+    it('should filter issues that have a "testlabel" label', function() {
       
       var multiselect = ptor.findElement(by.css('.multiSelect'));
       var button = ptor.findElement(by.css('.multiSelectButton'));
