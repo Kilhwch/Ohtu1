@@ -18,7 +18,7 @@ angular.module('ohtuProjektiAppApp')
     var issues = new github.Issue($stateParams.owner, $stateParams.repoName);
     var milestones = new github.Milestone($stateParams.owner, $stateParams.repoName);
     var labels = new github.Label($stateParams.owner,$stateParams.repoName);
-    var assignees = new github.Assignee($stateParams.owner,$stateParams.repoName);  
+    var assignees = new github.Assignee($stateParams.owner,$stateParams.repoName);
     
     $scope.createOptions = ['New issue','New label/Delete label','New milestone'];
     
