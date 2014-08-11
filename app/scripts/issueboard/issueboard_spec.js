@@ -135,7 +135,7 @@ describe('Listing issues', function() {
   });
 
   describe('filter', function() {
-    xit('should filter excess issues', function() {
+    it('should filter excess issues', function() {
       var elems = element.all(by.repeater('issue in issues'));
       expect(elems.count()).toBe(5);
 
@@ -146,7 +146,7 @@ describe('Listing issues', function() {
       expect(elems.count()).toBe(1);
     });
 
-    xit('should filter excess issues done', function() {
+    it('should filter excess issues done', function() {
       var elems = element.all(by.repeater('issue in issues'));
       expect(elems.count()).toBe(5);
 
@@ -156,6 +156,23 @@ describe('Listing issues', function() {
       var elems = element.all(by.repeater('issue in issues'));
       expect(elems.count()).toBe(2);
     });
+  });
+
+  describe('assignee', function() {
+    it('should not have any to begin with', function() {
+      var elem = element.all(by.repeater('issue in issues')).first();
+      expect(elem.element(by.css('.avatar-img')).isDisplayed()).toBe(false);
+      expect(elem.element(by.id('assignee')).isDisplayed()).toBe(true); 
+    });
+
+    xit('should have assignee when assigned', function() {
+      var elem = element.all(by.repeater('issue in issues')).first();
+      elem.element(by.id('assignee')).click();
+      elem.element(by.id('octocat')).click();
+      expect(elem.element(by.css('.avatar-img')).isDisplayed()).toBe(true);
+      expect(elem.element(by.id('assignee')).isDisplayed()).toBe(false);
+    });
+
   });
 
 
