@@ -16,6 +16,7 @@ describe('Issue box', function(){
 
  it('should edit text of issue', function(){
     var elems = element.all(by.repeater('issue in issues')).first();
+    ptor.actions().mouseMove(elems).perform();
     elems.element(by.css('.fa.fa-cog')).click();
 
     element(by.model('issue.body')).sendKeys("label name");
@@ -26,7 +27,8 @@ describe('Issue box', function(){
   });
 
  it('should add comment', function() {
-     var elems = element.all(by.repeater('issue in issues')).first();
+    var elems = element.all(by.repeater('issue in issues')).first();
+    ptor.actions().mouseMove(elems).perform();
     elems.element(by.css('.fa.fa-cog')).click();
 // model = issue.labels
 // button id = submit
@@ -34,7 +36,7 @@ describe('Issue box', function(){
     element(by.model('body')).sendKeys("new comment");
     $('#comment').click();
     var divi = element.all(by.css('.panel.panel-default.ng-isolate-scope')).first();
-    var elem = divi.element(by.css('.form-control.ng-binding'));
+    var elem = divi.element(by.css('.form-control.ng-binding')).first();
 //    divi.getInnerHtml().then(function(data) { console.log(data) });
    expect(elem.getText()).toContain("Test body");
 
