@@ -25,16 +25,19 @@ angular.module('ohtuProjektiAppApp')
                 }, function(err) {
                     alert("Creation unsuccessful");
                 });
+                $scope.reload();
                 $scope.close();
             };
 
             $scope.deleteMilestone = function(milestone) {
+              if (milestone) {
               $scope.ghMilestones.deleteMilestone(milestone.number, function(data) {
                   alert("Deleted milestone: " + milestone.title);
                   //var index = $scope.milestones.indexOf(milestone);
                   //$scope.milestones.slice(index,1);
                   $scope.reload();
                 });
+              }
               $scope.close();
             };
 
