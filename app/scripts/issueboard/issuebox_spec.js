@@ -13,34 +13,60 @@ describe('Issue box', function(){
 	    browser.get('#/repos/user/repo');
 	});
 
+ 	it('should edit label', function() {
+	    var elems = element.all(by.repeater('issue in issues')).first();
+	    ptor.actions().mouseMove(elems).perform();
+	    elems.element(by.css('.fa.fa-cog')).click();
+	    element(by.css('.labels option[value="1"]')).click();
+	    $('#submit').click();
+	    var cols = element.all(by.css('.column')).get(3);
+	    ptor.sleep(500);
+	    var newElem = cols.element(by.repeater('issue in issues'));
+	    expect(newElem.getText()).toContain("Test tickle")
 
- it('should edit text of issue', function(){
-    var elems = element.all(by.repeater('issue in issues')).first();
-    ptor.actions().mouseMove(elems).perform();
-    elems.element(by.css('.fa.fa-cog')).click();
+  	});
 
-    element(by.model('issue.body')).sendKeys("label name");
-    $('#submit').click();
-     
-    var issueBody = elems.element(by.css('.issueBody'));
-    expect(issueBody.getText()).toContain("label name");   
-  });
+  	it('should edit milestone', function() {
+	    var elems = element.all(by.repeater('issue in issues')).first();
+	    ptor.actions().mouseMove(elems).perform();
+	    elems.element(by.css('.fa.fa-cog')).click();
+	    element(by.css('.milestones option[value="0"]')).click();
+	    $('#submit').click();
 
- it('should add comment', function() {
-    var elems = element.all(by.repeater('issue in issues')).first();
-    ptor.actions().mouseMove(elems).perform();
-    elems.element(by.css('.fa.fa-cog')).click();
-// model = issue.labels
-// button id = submit
-    element(by.css('.pull-right.glyphicon.ng-scope.glyphicon-chevron-right')).click();
-    element(by.model('body')).sendKeys("new comment");
-    $('#comment').click();
-    var divi = element.all(by.css('.panel.panel-default.ng-isolate-scope')).first();
-    var elem = divi.element(by.css('.form-control.ng-binding')).first();
-//    divi.getInnerHtml().then(function(data) { console.log(data) });
-   expect(elem.getText()).toContain("Test body");
+	    var elem = element.all((by.css('.textFilter'))).first();
+	    elem.sendKeys('testi');
+	    var elems = element.all(by.repeater('issue in issues'));
+	    expect(elems.count()).toBe(2);
 
-  });
+  	});
+
+	it('should edit text of issue', function(){
+	    var elems = element.all(by.repeater('issue in issues')).first();
+	    ptor.actions().mouseMove(elems).perform();
+	    elems.element(by.css('.fa.fa-cog')).click();
+
+	    element(by.model('issue.body')).sendKeys("label name");
+	    $('#submit').click();
+	     
+	    var issueBody = elems.element(by.css('.issueBody'));
+	    expect(issueBody.getText()).toContain("label name");   
+	});
+
+	it('should add comment', function() {
+	    var elems = element.all(by.repeater('issue in issues')).first();
+	    ptor.actions().mouseMove(elems).perform();
+	    elems.element(by.css('.fa.fa-cog')).click();
+	// model = issue.labels
+	// button id = submit
+	    element(by.css('.pull-right.glyphicon.ng-scope.glyphicon-chevron-right')).click();
+	    element(by.model('body')).sendKeys("new comment");
+	    $('#comment').click();
+	    var divi = element.all(by.css('.panel.panel-default.ng-isolate-scope')).first();
+	    var elem = element.all(by.css('.form-control.ng-binding')).first();
+	//    divi.getInnerHtml().then(function(data) { console.log(data) });
+	   expect(elem.getText()).toContain("Test body");
+
+	});
   
 
 	/* Most likely the mocked backend is not handling these correctly
