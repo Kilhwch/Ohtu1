@@ -40,13 +40,16 @@ exports.httpBackendMock = function() {
                 $httpBackend.whenGET(assignees).respond([assignee]);
                 $httpBackend.whenGET(list).respond([repo, repo2]);
                 $httpBackend.whenGET(issueboard).respond([issue, issue2, issue3, issue4, issue5]);
-                $httpBackend.whenGET(labels).respond([multilabel]);
+                $httpBackend.whenGET(labels).respond([multilabel, label]);
                 $httpBackend.whenGET(milestones).respond([multimilestone]);
                 
                 
                 $httpBackend.whenPATCH(/https:\/\/api\.github\.com\/repos\/user\/repo\/issues\/1/).respond(201, '');
                 
-
+                $httpBackend.whenPATCH('https://api.github.com/repos/user/repo/issues/1')
+                  .respond(function(method, url, data, headers) {
+                   return [201, data];
+                  });
                 $httpBackend.whenPATCH('https://api.github.com/repos/user/repo/labels')
                   .respond(function(method, url, data, headers) {
                    return [201, data];

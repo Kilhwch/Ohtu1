@@ -36,7 +36,6 @@ describe('Creating milestones', function() {
       element(by.id('Delete milestone')).click();
       $('select#delete').click()
       $('option[value="0"]').click()
-      browser.sleep(1000)
       $('#milestone-delete').click();
       var alertDialog = ptor.switchTo().alert();
       alertDialog.accept();

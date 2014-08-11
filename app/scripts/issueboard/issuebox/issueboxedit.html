@@ -13,7 +13,7 @@
 	    <div class="form-group">
 	    	<label class="col-sm-2 control-label" for="text">Change milestone</label>
 	    	<div class="col-sm-9">
-		    	<select class="form-control" ng-model="issue.milestone" ng-options="milestone.title for milestone in milestones">
+		    	<select class="form-control milestones" ng-model="issue.milestone" ng-options="milestone.title for milestone in milestones">
 		    		<option value="">--Select--</option>
 		    	</select>
 	    	</div>
@@ -21,7 +21,7 @@
 	    <div class="form-group">
 	    	<label class="col-sm-2 control-label" for="text">Change labels</label>
 	    	<div class="col-sm-9">
-		    	<select class="form-control" ng-model="issue.labels" ng-options="label.name for label in labels">
+		    	<select class="form-control labels" ng-model="issue.labels" ng-options="label.name for label in labels">
 		    		<option value="">--Select--</option>
 		    	</select>
 	    	</div>
