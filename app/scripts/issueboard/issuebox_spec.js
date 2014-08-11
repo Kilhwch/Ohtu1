@@ -34,10 +34,8 @@ describe('Issue box', function(){
 	    $('#submit').click();
 	    var cols = element.all(by.css('.column')).get(3);
 	    ptor.sleep(1000);
-
 	    var elem = element.all((by.css('.textFilter'))).first();
 	    elem.sendKeys('testi');
-	    ptor.sleep(5000);
 	    var elems = element.all(by.repeater('issue in issues'));
 	    expect(elems.count()).toBe(2);
 
