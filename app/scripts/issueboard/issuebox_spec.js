@@ -36,7 +36,7 @@ describe('Issue box', function(){
     element(by.model('body')).sendKeys("new comment");
     $('#comment').click();
     var divi = element.all(by.css('.panel.panel-default.ng-isolate-scope')).first();
-    var elem = divi.element(by.css('.form-control.ng-binding'));
+    var elem = element.all(by.css('.form-control.ng-binding')).first();
 //    divi.getInnerHtml().then(function(data) { console.log(data) });
    expect(elem.getText()).toContain("Test body");
 
