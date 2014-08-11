@@ -20,7 +20,7 @@ describe('Issue box', function(){
 	    element(by.css('.labels option[value="1"]')).click();
 	    $('#submit').click();
 	    var cols = element.all(by.css('.column')).get(3);
-	    ptor.sleep(1000);
+	    ptor.sleep(500);
 	    var newElem = cols.element(by.repeater('issue in issues'));
 	    expect(newElem.getText()).toContain("Test tickle")
 
@@ -32,8 +32,7 @@ describe('Issue box', function(){
 	    elems.element(by.css('.fa.fa-cog')).click();
 	    element(by.css('.milestones option[value="0"]')).click();
 	    $('#submit').click();
-	    var cols = element.all(by.css('.column')).get(3);
-	    ptor.sleep(1000);
+
 	    var elem = element.all((by.css('.textFilter'))).first();
 	    elem.sendKeys('testi');
 	    var elems = element.all(by.repeater('issue in issues'));
