@@ -29,7 +29,7 @@ describe('Creating milestones', function() {
 
   });
 
-  describe('when delete', function() {
+  xdescribe('when delete', function() {
 
     it('should receive correct response when deleting a new milestone', function() {
       $('#add').click();

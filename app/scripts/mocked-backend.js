@@ -6,12 +6,16 @@ exports.httpBackendMock = function() {
                 var issueboard = /https:\/\/api\.github\.com\/repos\/user\/repo\/issues/;
                 var labels = /https:\/\/api\.github\.com\/repos\/user\/repo\/labels/;
                 var milestones = /https:\/\/api\.github\.com\/repos\/user\/repo\/milestones/;
+                var assignees = /https:\/\/api\.github\.com\/repos\/user\/repo\/assignees/;
                 
-                
+
+
                 // milestones
                 var multimilestone = {title: 'testi', number: 1};
                 
-                
+                //assignees
+                var assignee = {'login': 'octocat','id': 1,'avatar_url': 'https://github.com/images/error/octocat_happy.gif'};
+
                 // issuelabels
                 var label = {'name':'Done','color': 'f29513'};
                 var readylabel = {'name':'Ready','color': 'f29513'};
@@ -25,14 +29,15 @@ exports.httpBackendMock = function() {
                 
                 // issues
                 var issue = {number: 1, title: 'Test tickle', body:'Test body', milestone: null};
-                var issue2 = {number: 1, title: 'Test ready', body:'ready body', milestone: 'testi' , 'labels':[readylabel] };
-            	var issue3 = {number: 1, title: 'Test inprogress', body:'inprogress body', milestone: null , 'labels':[inproglabel] };
-            	var issue4 = {number: 1, title: 'Test done', body:'done body', milestone: null , 'labels':[donelabel] };
-            	var issue5 = {number: 1, title: 'Test done2', body:'done body2', milestone: null , 'labels':[donelabel, multilabel] };
+                var issue2 = {number: 2, title: 'Test ready', body:'ready body', milestone: 'testi' , 'labels':[readylabel] };
+              	var issue3 = {number: 3, title: 'Test inprogress', body:'inprogress body', milestone: null , 'labels':[inproglabel] };
+              	var issue4 = {number: 4, title: 'Test done', body:'done body', milestone: null , 'labels':[donelabel] };
+              	var issue5 = {number: 5, title: 'Test done2', body:'done body2', milestone: null , 'labels':[donelabel, multilabel] };
                     
                     
    
                 $httpBackend.whenGET(/https:\/\/oauth.io.*/).respond('token');
+                $httpBackend.whenGET(assignees).respond([assignee]);
                 $httpBackend.whenGET(list).respond([repo, repo2]);
                 $httpBackend.whenGET(issueboard).respond([issue, issue2, issue3, issue4, issue5]);
                 $httpBackend.whenGET(labels).respond([multilabel]);
