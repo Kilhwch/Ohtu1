@@ -21,7 +21,7 @@ describe('Filtering', function() {
   	};
 
 
-	var authModule = require('../mocked-auth'),
+	var authModule = require('../../app/scripts/mocked-auth'),
 		ptor;
 
 	beforeEach(function() {
