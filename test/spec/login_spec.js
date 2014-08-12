@@ -1,5 +1,5 @@
 describe('Login', function() {
-    var authModule = require('../mocked-auth'),
+    var authModule = require('../../app/scripts/mocked-auth'),
         prot;
 
     beforeEach(function() {

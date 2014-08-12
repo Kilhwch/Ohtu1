@@ -4,7 +4,8 @@ exports.config = {
 
   // Spec patterns are relative to the location of this config.
   specs: [
-    'app/scripts/**/*_spec.js'
+    'app/scripts/**/*_spec.js',
+    'test/spec/*_spec.js'
   ],
 
 

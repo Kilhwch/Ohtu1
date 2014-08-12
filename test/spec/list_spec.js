@@ -1,7 +1,7 @@
 describe('Listing repos', function() {
 
-  var mockModule = require('../mocked-backend'),
-      authModule = require('../mocked-auth'),
+  var mockModule = require('../../app/scripts/mocked-backend'),
+      authModule = require('../../app/scripts/mocked-auth'),
       prot;
 
   beforeEach(function() {
