@@ -183,12 +183,21 @@ angular.module('ohtuProjektiAppApp')
     
     $scope.issueBoxDragStarted = function(item){
     	console.log(item);
-    	console.log(item.target);
-    	var elem = item.target;
-    	angular.element(elem).css({
-    		'z-index': 1
+    	var elem = angular.element(item.target);
+    	//$(item.target).hide();
+    	elem.css({
+    		'z-index': 99999,
+    		visibility: 'hidden',
     	});
-    	console.log($(elem).css('border'));
+    };
+
+    $scope.issueBoxDragStopped = function(item){
+    	var elem = angular.element(item.target);
+    	//elem.show();
+    	elem.css({
+    		'z-index': 'auto',
+    		visibility: 'visible',
+    	});
     };
 
 });
