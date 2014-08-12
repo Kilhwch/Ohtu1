@@ -32,13 +32,15 @@ angular.module('ohtuProjektiAppApp')
             $scope.doneEditing = function(issue){
                 var tmp = angular.copy($scope.issue);
                 
-                $scope.issue.body = $scope.editissue.body;
-                $scope.issue.milestone = $scope.editissue.milestone;
-                $scope.issue.labels = $scope.editissue.labels;
+                $scope.issue.title = issue.title;
+                $scope.issue.body = issue.body;
+                $scope.issue.milestone = issue.milestone;
+                $scope.issue.labels = issue.labels;
 
-                var options = {body :issue.body, labels : issue.labels.name};
-                if(issue.milestone) options = {body :issue.body, labels : issue.labels.name, milestone : issue.milestone};
+                var options = {title : issue.title, body : issue.body, labels : issue.labels.name};
+                if(issue.milestone) options = {title : issue.title, body :issue.body, labels : issue.labels.name, milestone : issue.milestone.number};
                 issues.updateIssue(issue.number, options,function(data,response) {},function(err) {
+                    $scope.issue.title = tmp.title;
                     $scope.issue.body = tmp.body;
                     $scope.issue.milestone = tmp.milestone;
                     $scope.issue.labels = tmp.labels;
