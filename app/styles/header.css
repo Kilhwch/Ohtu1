@@ -10,6 +10,11 @@
 	color: #f5f2eb;
 }
 
+.navbar-nav input{
+    max-width: 80%;
+    position:relative;
+}
+
 .header .fa-2x {
 	margin-top: 4px;
 }
@@ -25,6 +30,15 @@
 
 .header .navbar-header .navbar-brand {
 	color: #f5f2eb;
+	line-height: 25px
+}
+
+.header .nav-pills{
+	line-height: initial;
+}
+
+.header .nav-pills .btn-group{
+    bottom: 3px;
 }
 
 .header .nav-pills a:hover {

@@ -51,6 +51,7 @@
 	left: auto;
 	right: auto;
 	top: auto;
+  margin-top: -20px;
 	width: 22%;
 	background: #f5f2eb;
 	z-index: 1;
@@ -128,10 +129,9 @@
   width:25%;
   padding-left: 2%;
   padding-right: 2%;
-  max-height: 92%;
+  max-height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
-  margin-top: -20px;
 }
 
 .mainCol{
@@ -157,11 +157,7 @@
 }
 
 .issueview{
-  height:100%;
-}
-
-.issueview{
   width:100%;
-  max-height:100%;
+  height:90%;
   position:absolute;
 }

@@ -7,7 +7,9 @@
                 {{params.owner}}/{{params.repoName}}
             </h4>
         </div>
+
         <div>
+
           <ul class="nav navbar-nav" ng-if="currentState == 'repository'">
             <li>
               <div class="btn-group" dropdown>
@@ -27,6 +29,7 @@
               ng-model="filters.textFilter" ng-change="textFilterChanged()" placeholder="Filter">
             </li>
           </ul>
+
           <ul class="nav nav-pills navbar-right" ng-controller="LoginCtrl">
             <li id="list" ng-if="isLoggedIn" ng-class="{'active': getClass('/list')}">
               <a ui-sref="list">List</a>
@@ -50,7 +53,8 @@
             <li id="login" ng-if="!isLoggedIn" ng-class="{'active': getClass('/login')}">
               <a href="#" class="login-button" ng-click="signin()">Login <i style="font-size: 1.5em;" class="fa fa-github separator"></i></a>
             </li>
-          </ul>         
+          </ul>  
+
         </div>
     </div>   
 </div>
