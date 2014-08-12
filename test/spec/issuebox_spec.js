@@ -13,6 +13,18 @@ describe('Issue box', function(){
 	    browser.get('#/repos/user/repo');
 	});
 
+	it('should edit title of issue', function(){
+	    var elems = element.all(by.repeater('issue in issues')).first();
+	    ptor.actions().mouseMove(elems).perform();
+	    elems.element(by.css('.fa.fa-cog')).click();
+
+	    element(by.model('editissue.title')).sendKeys("new title");
+	    $('#submit').click();
+	     
+	    var issueHeader = elems.element(by.css('.issueHeader'));
+	    expect(issueHeader.getText()).toContain("new title");   
+	});
+
  	it('should edit label', function() {
 	    var elems = element.all(by.repeater('issue in issues')).first();
 	    ptor.actions().mouseMove(elems).perform();
