@@ -96,6 +96,10 @@ angular
 			 },
 			 'multiselect@repository': {
 			    templateUrl: 'scripts/multiselect/multiselect.html',
+			 },
+			 'issuebox@repository': {
+			    templateUrl: 'scripts/issueboard/issuebox/issueboard.issuebox.html',
+			    controller: 'IssueboxCtrl'
 			 }
 		}
       })
