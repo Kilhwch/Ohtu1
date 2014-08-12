@@ -1,5 +1,5 @@
 <div class ="issueview">
-  <div class="column">
+  <div class="column mainCol">
 	  <p class="navbar-fixed-top"><b>Backlog</b></p>
 	  <div class="issueboxes">
 	  	<issuebox class="backlogbox" ng-repeat="issue in issues | multiselect:this | filter:{labels:'!Ready'}  | filter:{labels:'!InProgress'} | filter:{labels:'!Done'} | filter:textFilter ">
