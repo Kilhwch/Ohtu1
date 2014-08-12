@@ -181,15 +181,14 @@ angular.module('ohtuProjektiAppApp')
         $scope.textFilter = newFilters.textFilter;
     }, true);
     
-    /*$scope.$on('addItem', function(event, args){
-        $scope.openModal(args.choice);
-    });*/
-
-    /*
-    $scope.$on('changedMilestone', function(event, args){
-        console.log("milestone event");
-        $scope.sprint.milestone = args.milestone;
-    });
-    */
+    $scope.issueBoxDragStarted = function(item){
+    	console.log(item);
+    	console.log(item.target);
+    	var elem = item.target;
+    	angular.element(elem).css({
+    		'z-index': 1
+    	});
+    	console.log($(elem).css('border'));
+    };
 
 });
