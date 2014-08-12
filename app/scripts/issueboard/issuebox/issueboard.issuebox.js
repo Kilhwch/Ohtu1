@@ -14,6 +14,9 @@ angular.module('ohtuProjektiAppApp')
             comment.list({},function(data, response) {
                 $scope.comments = data;
             });
+
+            $scope.editissue = angular.copy($scope.issue);
+
             var reload = function () {
                 $state.transitionTo($state.current, $stateParams, {
                   reload: true,
@@ -21,24 +24,24 @@ angular.module('ohtuProjektiAppApp')
                   notify: true
                 });
             };
-            $scope.cancelEditing = function(issue,oldMilestone,oldLabels){
-                issue.milestone = oldMilestone;
-                issue.labels = oldLabels;
+            $scope.cancelEditing = function(issue){
                 issue.editing = false;
                 $scope.modalInstance.dismiss('close');
             };
 
-            $scope.doneEditing = function(issue,oldMilestone,oldLabels){
+            $scope.doneEditing = function(issue){
+                var tmp = angular.copy($scope.issue);
+                
+                $scope.issue.body = $scope.editissue.body;
+                $scope.issue.milestone = $scope.editissue.milestone;
+                $scope.issue.labels = $scope.editissue.labels;
+
                 var options = {body :issue.body, labels : issue.labels.name};
-                if(issue.milestone) options = {body :issue.body, labels : issue.labels.name, milestone : issue.milestone.number};
-                var temp = issue.body;
-                issues.updateIssue(issue.number, options,function(data,response) {
-                    issue = data;
-                    oldMilestone = data.milestone;
-                    oldLabels = data.labels;
-                },function(err) {
-                    issue.milestone = oldMilestone;
-                    issue.labels = oldLabels
+                if(issue.milestone) options = {body :issue.body, labels : issue.labels.name, milestone : issue.milestone};
+                issues.updateIssue(issue.number, options,function(data,response) {},function(err) {
+                    $scope.issue.body = tmp.body;
+                    $scope.issue.milestone = tmp.milestone;
+                    $scope.issue.labels = tmp.labels;
                 });
                 issue.editing = false;
                 $scope.modalInstance.dismiss('close');

@@ -45,7 +45,7 @@ describe('Issue box', function(){
 	    ptor.actions().mouseMove(elems).perform();
 	    elems.element(by.css('.fa.fa-cog')).click();
 
-	    element(by.model('issue.body')).sendKeys("label name");
+	    element(by.model('editissue.body')).sendKeys("label name");
 	    $('#submit').click();
 	     
 	    var issueBody = elems.element(by.css('.issueBody'));

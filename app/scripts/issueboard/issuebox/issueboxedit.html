@@ -7,13 +7,13 @@
 	    <div class="form-group">
 		    <label class="col-sm-2 control-label" for="text">Edit text</label>
 		    <div class="col-sm-9">
-		    	<textarea class="form-control" rows="5" ng-model="issue.body">{{issue.body}}</textarea>
+		    	<textarea class="form-control" rows="5" ng-model="editissue.body">{{editissue.body}}</textarea>
 		    </div>
 	    </div>
 	    <div class="form-group">
 	    	<label class="col-sm-2 control-label" for="text">Change milestone</label>
 	    	<div class="col-sm-9">
-		    	<select class="form-control milestones" ng-model="issue.milestone" ng-options="milestone.title for milestone in milestones">
+		    	<select class="form-control milestones" ng-model="editissue.milestone" ng-options="milestone.title for milestone in milestones">
 		    		<option value="">--Select--</option>
 		    	</select>
 	    	</div>
@@ -21,7 +21,7 @@
 	    <div class="form-group">
 	    	<label class="col-sm-2 control-label" for="text">Change labels</label>
 	    	<div class="col-sm-9">
-		    	<select class="form-control labels" ng-model="issue.labels" ng-options="label.name for label in labels">
+		    	<select class="form-control labels" ng-model="editissue.labels" ng-options="label.name for label in labels">
 		    		<option value="">--Select--</option>
 		    	</select>
 	    	</div>
@@ -49,6 +49,6 @@
  	</form>
  </div>
  <div class="modal-footer">
- 	<button id="submit" class="btn btn-primary" ng-click="doneEditing(issue,[{{issue.milestone}}],[{{issue.labels}}])">Edit</button>
-    <button id="newlabel-close" class="btn btn-warning" ng-click="cancelEditing(issue,[{{issue.milestone}}],[{{issue.labels}}])">Cancel</button>
+ 	<button id="submit" class="btn btn-primary" ng-click="doneEditing(editissue)">Edit</button>
+    <button id="newlabel-close" class="btn btn-warning" ng-click="cancelEditing(editissue)">Cancel</button>
  </div>
