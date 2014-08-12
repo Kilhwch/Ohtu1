@@ -105,8 +105,8 @@ angular.module('ohtuProjektiAppApp')
 
 
     $scope.openIssueEditModal = function(issue) {
-      $scope.issue = issue;
-      $scope.modalInstance = $modal.open({
+        $scope.issue = issue;
+        $scope.modalInstance = $modal.open({
         templateUrl: 'scripts/issueboard/issuebox/issueboxedit.html',
         controller: 'IssueboxCtrl',
         scope: $scope
