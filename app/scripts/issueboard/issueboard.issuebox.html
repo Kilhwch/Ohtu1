@@ -1,4 +1,6 @@
 <div class="backlog issue notedit" ng-class="{highlight : hover}"
+	jqyoui-draggable="{onStart:'issueBoxDragStarted(item)'}" data-drag="true"
+	data-jqyoui-options="{revert:'true'}"
     ng-init="hover = false" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
     <div class="issueHeader">
         <div class="btn-group assigneeDropdown">
