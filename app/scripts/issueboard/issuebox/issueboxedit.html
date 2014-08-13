@@ -27,11 +27,14 @@
 	    <div class="form-group">
 	    	<label class="col-sm-2 control-label" for="text">Change labels</label>
 	    	<div class="col-sm-9">
-		    	<select class="form-control labels" ng-model="editissue.labels" ng-options="label.name for label in labels">
-		    		<option value="">--Select--</option>
-		    	</select>
+		    	<multiselect class="input-lg" multiple="true" ms-selected ="--Select--" 
+		        	ng-model="editissue.labels" ms-header="--Select--"
+		        	options="label.name for label in labels"
+		        	change="">
+		    	</multiselect>
 	    	</div>
 	    </div>
+	    
 	    <accordion>
 	    	<accordion-group is-open="open">
 		    	<accordion-heading>

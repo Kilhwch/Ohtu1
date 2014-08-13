@@ -31,14 +31,20 @@ angular.module('ohtuProjektiAppApp')
 
             $scope.doneEditing = function(issue){
                 var tmp = angular.copy($scope.issue);
+                var newLabels = [];
                 
+                angular.forEach(issue.labels, function(item) {
+                    newLabels.push(item.name)
+                });
+
                 $scope.issue.title = issue.title;
                 $scope.issue.body = issue.body;
                 $scope.issue.milestone = issue.milestone;
                 $scope.issue.labels = issue.labels;
+                
 
-                var options = {title : issue.title, body : issue.body, labels : issue.labels.name};
-                if(issue.milestone) options = {title : issue.title, body :issue.body, labels : issue.labels.name, milestone : issue.milestone.number};
+                var options = {title : issue.title, body : issue.body, labels : newLabels};
+                if(issue.milestone) options = {title : issue.title, body :issue.body, labels : newLabels, milestone : issue.milestone.number};
                 issues.updateIssue(issue.number, options,function(data,response) {},function(err) {
                     $scope.issue.title = tmp.title;
                     $scope.issue.body = tmp.body;

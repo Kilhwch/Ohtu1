@@ -19,6 +19,7 @@ angular
     'ui.bootstrap',
     'multi-select',
     'n3-line-chart',
+    'ui.multiselect'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
     // Github requests using Basic Authentication or OAuth
