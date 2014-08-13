@@ -62,7 +62,7 @@
 }
 
 .header .navbar-header {
-  margin-right: 40px;
+  margin-right: 1px;
 }
 
 .header .navbar-brand {
@@ -73,7 +73,7 @@
   margin-top: 10px;
 }
 .header li {
-  margin-left: 20px;
+  margin-left: 10px;
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
