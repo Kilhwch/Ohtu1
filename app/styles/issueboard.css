@@ -163,3 +163,7 @@
   max-height:100%;
   position:absolute;
 }
+
+.listview{
+  padding-top: 80px;
+}
