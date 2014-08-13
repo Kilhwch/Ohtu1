@@ -167,3 +167,17 @@
 .listview{
   padding-top: 80px;
 }
+
+.multilabel{
+  width:100%;
+  float:left;
+}
+
+.multilabel ul{
+  width:100%;
+}
+
+.multilabel button{
+  text-align:left;
+
+}
