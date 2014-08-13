@@ -10,10 +10,6 @@
 	color: #f5f2eb;
 }
 
-.navbar-nav input{
-    max-width: 80%;
-    position:relative;
-}
 
 .header .fa-2x {
 	margin-top: 4px;
@@ -72,8 +68,14 @@
 .header ul {
   margin-top: 10px;
 }
+
+.textFilter {
+  margin: 0;
+}
+
 .header li {
-  margin-left: 10px;
+  margin-left: 5px;
+  max-width:150px;
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
