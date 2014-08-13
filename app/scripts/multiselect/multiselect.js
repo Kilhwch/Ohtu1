@@ -280,7 +280,7 @@ angular.module('multiselect.tpl.html', [])
     $templateCache.put('multiselect.tpl.html',
 
       "<div class=\"btn-group\">\n" +
-      "  <button type=\"button\" class=\"btn btn-default dropdown-toggle\" ng-click=\"toggleSelect()\" ng-disabled=\"disabled\" ng-class=\"{'error': !valid()}\">\n" +
+      "  <button id=\"labelselect\" type=\"button\" class=\"btn btn-default dropdown-toggle\" ng-click=\"toggleSelect()\" ng-disabled=\"disabled\" ng-class=\"{'error': !valid()}\">\n" +
       "    {{header}} <span class=\"caret\"></span>\n" +
       "  </button>\n" +
       "  <ul class=\"dropdown-menu\">\n" +
@@ -292,7 +292,7 @@ angular.module('multiselect.tpl.html', [])
       "      <button class=\"btn btn-link btn-xs\" ng-click=\"uncheckAll()\" type=\"button\"><i class=\"glyphicon glyphicon-remove\"></i> Uncheck all</button>\n" +
       "    </li>\n" +
       "    <li ng-repeat=\"i in items | filter:searchText\">\n" +
-      "      <a ng-click=\"select(i); focus()\">\n" +
+      "      <a id=\"{{i.label}}\" ng-click=\"select(i); focus()\">\n" +
       "        <i class=\"glyphicon\" ng-class=\"{'glyphicon-ok': i.checked, 'empty': !i.checked}\"></i> {{i.label}}</a>\n" +
       "    </li>\n" +
       "  </ul>\n" +

@@ -29,13 +29,15 @@ describe('Issue box', function(){
 	    var elems = element.all(by.repeater('issue in issues')).first();
 	    ptor.actions().mouseMove(elems).perform();
 	    elems.element(by.css('.fa.fa-cog')).click();
-	    element(by.css('.labels option[value="1"]')).click();
+	    element(by.id('labelselect')).click();
+	    element(by.id('testlabel')).click();
 	    $('#submit').click();
-	    var cols = element.all(by.css('.column')).get(3);
-	    ptor.sleep(500);
-	    var newElem = cols.element(by.repeater('issue in issues'));
-	    expect(newElem.getText()).toContain("Test tickle")
 
+	    ptor.actions().mouseMove(elems).perform();
+	    elems.element(by.css('.fa.fa-cog')).click();
+	    element(by.id('labelselect')).click();
+	    expect(element.all(by.css('.glyphicon-ok')).count()).toBe(2);
+	    $('#editlabel-close').click();
   	});
 
   	it('should edit milestone', function() {
@@ -80,7 +82,20 @@ describe('Issue box', function(){
 
 	});
   
+	it('should cancel changes when edit label is canceled', function() {
+	    var elems = element.all(by.repeater('issue in issues')).first();
+	    ptor.actions().mouseMove(elems).perform();
+	    elems.element(by.css('.fa.fa-cog')).click();
+	    element(by.id('labelselect')).click();
+	    element(by.id('testlabel')).click();
+	    $('#editlabel-close').click();
 
+	    ptor.actions().mouseMove(elems).perform();
+	    elems.element(by.css('.fa.fa-cog')).click();
+	    element(by.id('labelselect')).click();
+	    expect(element.all(by.css('.glyphicon-ok')).count()).toBe(1);
+	    $('#editlabel-close').click();
+  	});
 	/* Most likely the mocked backend is not handling these correctly
 	it('should edit text of issue in edit mode after pressing submit button', function(){
 
