@@ -10,7 +10,7 @@
 
         <div>
 
-          <ul class="nav navbar-nav" ng-if="currentState == 'repository'">
+          <ul class="nav navbar-nav hidden-xs" ng-if="currentState == 'repository'">
             <li>
               <div class="btn-group" dropdown>
                 <i id="add" class="fa fa-plus-circle fa-2x dropdown-toggle"></i>
@@ -24,13 +24,13 @@
             <li ng-controller="IssueboardCtrl">
               <div ui-view="multiselect" />
             </li>
-            <li>
-              <input class ="textFilter form-control"
+            <li >
+              <input class ="textFilter form-control "
               ng-model="filters.textFilter" ng-change="textFilterChanged()" placeholder="Filter">
             </li>
           </ul>
 
-          <ul class="nav nav-pills navbar-right" ng-controller="LoginCtrl">
+          <ul class="nav nav-pills navbar-right hidden-xs" ng-controller="LoginCtrl">
             <li id="list" ng-if="isLoggedIn" ng-class="{'active': getClass('/list')}">
               <a ui-sref="list">List</a>
             </li>
