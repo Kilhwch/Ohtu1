@@ -25,10 +25,11 @@ describe('Creating issues', function() {
       expect(alertDialog.getText()).toContain("Created label: label name");
     });
 
-  it('should receive correct response when deleting a new label', function() {
+  xit('should receive correct response when deleting a new label', function() {
     element(by.id('add')).click();
     element(by.id('New label/Delete label')).click();
     element(by.model('delLabel')).click();
+    browser.pause();
     $('#delLabel').click();
     var alertDialog = ptor.switchTo().alert();
     alertDialog.accept();
