@@ -20,6 +20,9 @@ describe('Creating issues', function() {
       element(by.id('Issues')).click();
       element(by.model('issue.title')).sendKeys('issue title');
       element(by.model('issue.body')).sendKeys('issue body');
+      element(by.css('.milestones option[value="0"]')).click();
+      element(by.id('labelselect')).click();
+      element(by.id('testlabel')).click();
       $('#create-issue').click();
       var alertDialog = ptor.switchTo().alert();
       alertDialog.accept();

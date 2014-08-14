@@ -25,7 +25,7 @@ describe('Issue box', function(){
 	    expect(issueHeader.getText()).toContain("new title");   
 	});
 
- 	xit('should edit label', function() {
+ 	it('should edit label', function() {
 	    var elems = element.all(by.repeater('issue in issues')).first();
 	    ptor.actions().mouseMove(elems).perform();
 	    elems.element(by.css('.fa.fa-cog')).click();
