@@ -19,7 +19,19 @@ angular.module('ohtuProjektiAppApp')
             };
           $scope.issue = {};
           $scope.addIssue = function() {
-            issues.createIssue($scope.issue).success(function(object, response) {
+            console.log($scope.issue)
+            var options = { title:$scope.issue.title,
+                            body: $scope.issue.body,
+                            assignee: $scope.issue.assignee,
+                            labels: $scope.issue.labels};
+            if($scope.issue.milestone) {
+              options= { title:$scope.issue.title,
+                            body: $scope.issue.body,
+                            assignee: $scope.issue.assignee,
+                            labels: $scope.issue.labels,
+                            milestone: $scope.issue.milestone.number};
+            }
+            issues.createIssue(options).success(function(object, response) {
               if (response=='201')
                 $scope.issues.unshift(object);
                 alert("Created issue: "+$scope.issue.title);
