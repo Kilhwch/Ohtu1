@@ -86,10 +86,10 @@
 
 #assignee{
   position: absolute;
-  right: 10px; 
-  top: 10px;
+  right: 8px; 
+  top: 5px;
   padding: 5px;
-  font-size: 15px;
+  font-size: 20px;
   color: rgba(42,44,43,0.5);
 }
 

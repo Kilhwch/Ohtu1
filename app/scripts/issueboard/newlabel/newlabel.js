@@ -28,6 +28,20 @@ angular.module('ohtuProjektiAppApp')
                 reload();
                 $scope.close();
             };
+
+            $scope.renameLabel = function(label, newname) {
+                console.log(label);
+                var options = {name: newname};
+                labels.updateLabel(label, options, function(data,response) {
+                    alert("Renamed label: " + label);
+                    $scope.labels.push(data);
+                }, function(error) {
+                    alert("Rename unsuccessful");
+                });
+                reload();
+                $scope.close();
+            };
+
             $scope.deleteLabel = function(label) {
                 if (label !== "Ready" && label !== "InProgress" && label !== "Done") {
                     labels.deleteLabel(label, function() {
