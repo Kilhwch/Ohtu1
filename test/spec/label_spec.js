@@ -17,7 +17,7 @@ describe('Creating issues', function() {
 
     it('should receive correct response when creating a new label', function() {
       element(by.id('add')).click();
-      element(by.id('New label/Delete label')).click();
+      element(by.id('Labels')).click();
       element(by.model('createlabel.name')).sendKeys('label name');
       $('#sendlabel').click();
       var alertDialog = ptor.switchTo().alert();
@@ -25,15 +25,28 @@ describe('Creating issues', function() {
       expect(alertDialog.getText()).toContain("Created label: label name");
     });
 
-  xit('should receive correct response when deleting a new label', function() {
+  it('should receive correct response when deleting a new label', function() {
     element(by.id('add')).click();
-    element(by.id('New label/Delete label')).click();
-    element(by.model('delLabel')).click();
-    browser.pause();
+    element(by.id('Labels')).click();
+    //element(by.model('delLabel option[value="0"]')).click();
+    $('select#delete').click()
+    $('option[value="0"]').click()
     $('#delLabel').click();
     var alertDialog = ptor.switchTo().alert();
     alertDialog.accept();
     expect(alertDialog.getText()).toContain("Deletion unsuccessful");
+  });
+
+  it('should receive correct response when renaming a new label', function() {
+    element(by.id('add')).click();
+    element(by.id('Labels')).click();
+    $('select#delete').click()
+    $('option[value="0"]').click()
+    element(by.model('renamelabelname')).sendKeys('Uusi');
+    $('#renameLabel').click();
+    var alertDialog = ptor.switchTo().alert();
+    alertDialog.accept();
+    expect(alertDialog.getText()).toContain("Rename unsuccessful");
   });
 
   });

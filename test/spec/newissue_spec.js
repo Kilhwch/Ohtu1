@@ -17,7 +17,7 @@ describe('Creating issues', function() {
 
     it('should receive correct response when creating a new issue', function() {
       element(by.id('add')).click();
-      element(by.id('New issue')).click();
+      element(by.id('Issues')).click();
       element(by.model('issue.title')).sendKeys('issue title');
       element(by.model('issue.body')).sendKeys('issue body');
       $('#create-issue').click();

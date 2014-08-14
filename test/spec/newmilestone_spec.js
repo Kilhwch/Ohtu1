@@ -17,7 +17,7 @@ describe('Creating milestones', function() {
 
     it('should receive correct response when creating a new milestone', function() {
       $('#add').click();
-      element(by.id('New milestone')).click();
+      element(by.id('Milestones')).click();
       element(by.model('milestone.title')).sendKeys('milestone title');
       element(by.model('milestone.description')).sendKeys('milestone description');
       element(by.model('milestone.due_on')).sendKeys('milestone due on');
