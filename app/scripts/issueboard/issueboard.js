@@ -201,7 +201,6 @@ angular.module('ohtuProjektiAppApp')
     }
 
     $scope.issueDropped = function(string1, string2, string3) {
-        console.log('dropped');
         var backlogB = true;
         for (var i = 0; i < $scope.dragedissue.labels.length; ++i) {
             var l = $scope.dragedissue.labels[i].name;
@@ -218,12 +217,10 @@ angular.module('ohtuProjektiAppApp')
 
 
     $scope.issueDroppedBacklog = function(item) {
-        console.log('backlog dropped');
         for (var i = 0; i < $scope.dragedissue.labels.length; ++i) {
             var l = $scope.dragedissue.labels[i].name;
             if (l == 'Ready' || l == 'InProgress' || l == 'Done') {
                 $scope.dragedissue.labels.splice(i,1);
-                console.log($scope.dragedissue.labels);
             }
         }
         replaceLabelName();
