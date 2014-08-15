@@ -181,67 +181,41 @@ angular.module('ohtuProjektiAppApp')
     };
 
     $scope.issueDroppedReady = function(item) {
-        console.log('ready dropped');
-        var backlogB = true;
-        for (var i = 0; i < $scope.dragedissue.labels.length; ++i) {
-            var l = $scope.dragedissue.labels[i].name;
-            if (l == 'InProgress' || l == 'Done') {
-                $scope.dragedissue.labels[i].name = 'Ready';
-                backlogB = false;
-            }
-        }
-        if (backlogB) {
-            $scope.dragedissue.labels.unshift('Ready');
-        }
-        for (var i = 0; i < $scope.issues.length; ++i) {
+        $scope.issueDropped('Done','InProgress', 'Ready');
+    };
+
+    $scope.issueDroppedInProgress = function(item) {
+        $scope.issueDropped('Ready','Done', 'InProgress');
+    };
+    $scope.issueDroppedDone = function(item) {
+        $scope.issueDropped('Ready','InProgress', 'Done');
+    };
+    
+    var replaceLabelName = function() {
+         for (var i = 0; i < $scope.issues.length; ++i) {
             if ($scope.issues[i].number == $scope.dragedissue.number) {
                 $scope.issues[i].labels = $scope.dragedissue.labels;
             }
         }
         issues.updateIssue($scope.dragedissue.number, {labels: $scope.dragedissue.labels}, function(data, response){$scope.dragedissue.labels = data.labels},function(error){});
-    };
-    
-    $scope.issueDroppedInprog = function(item) {
-        console.log('inprog dropped');
+    }
+
+    $scope.issueDropped = function(string1, string2, string3) {
+        console.log('dropped');
         var backlogB = true;
         for (var i = 0; i < $scope.dragedissue.labels.length; ++i) {
             var l = $scope.dragedissue.labels[i].name;
-            if (l == 'Ready' || l == 'Done') {
-                $scope.dragedissue.labels[i].name = 'InProgress';
+            if (l == string1 || l == string2) {
+                $scope.dragedissue.labels[i].name = string3;
                 backlogB = false;
             }
         }
         if (backlogB) {
-            $scope.dragedissue.labels.unshift('InProgress');
+            $scope.dragedissue.labels.unshift(string3);
         }
-        for (var i = 0; i < $scope.issues.length; ++i) {
-            if ($scope.issues[i].number == $scope.dragedissue.number) {
-                $scope.issues[i].labels = $scope.dragedissue.labels;
-            }
-        }
-         issues.updateIssue($scope.dragedissue.number, {labels: $scope.dragedissue.labels}, function(data, response){$scope.dragedissue.labels = data.labels},function(error){});
+        replaceLabelName();
     };
-    
-    $scope.issueDroppedDone = function(item) {
-        console.log('done dropped');
-        var backlogB = true;
-        for (var i = 0; i < $scope.dragedissue.labels.length; ++i) {
-            var l = $scope.dragedissue.labels[i].name;
-            if (l == 'Ready' || l == 'InProgress') {
-                $scope.dragedissue.labels[i].name = 'Done';
-                backlogB = false;
-            }
-        }
-        if (backlogB) {
-            $scope.dragedissue.labels.unshift('Done');
-        }
-        for (var i = 0; i < $scope.issues.length; ++i) {
-            if ($scope.issues[i].number == $scope.dragedissue.number) {
-                $scope.issues[i].labels = $scope.dragedissue.labels;
-            }
-        }
-         issues.updateIssue($scope.dragedissue.number, {labels: $scope.dragedissue.labels}, function(data, response){$scope.dragedissue.labels = data.labels},function(error){});
-    };
+
 
     $scope.issueDroppedBacklog = function(item) {
         console.log('backlog dropped');
@@ -252,12 +226,7 @@ angular.module('ohtuProjektiAppApp')
                 console.log($scope.dragedissue.labels);
             }
         }
-        for (var i = 0; i < $scope.issues.length; ++i) {
-            if ($scope.issues[i].number == $scope.dragedissue.number) {
-                $scope.issues[i].labels = $scope.dragedissue.labels;
-            }
-        }
-         issues.updateIssue($scope.dragedissue.number, {labels: $scope.dragedissue.labels}, function(data, response){$scope.dragedissue.labels = data.labels},function(error){});
+        replaceLabelName();
     };
 
 });

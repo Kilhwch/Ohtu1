@@ -7,14 +7,14 @@
   	</div>
   </div>
   
-  <div class="column" data-drop="true" jqyoui-droppable="{onDrop: 'issueDroppedReady(item)'}">
+  <div class="column" data-drop="true" jqyoui-droppable="{onDrop: 'issueDroppedReady(item) '}">
   	<p class="navbar-fixed-top"><b>Ready</b></p>
   	<div class="issueboxes">
   	<issuebox class="readybox" ng-repeat="issue in issues | multiselect:this  | filter:{labels :'Ready'}  | filter:textFilter "></issuebox>
   	</div>
   </div>
 
-  <div class="column" data-drop="true" jqyoui-droppable="{onDrop: 'issueDroppedInprog(item)'}">
+  <div class="column" data-drop="true" jqyoui-droppable="{onDrop: 'issueDroppedInProgress(item)'}">
   	<p class="navbar-fixed-top"><b>In Progress</b></p>
   	<div class="issueboxes">
   	<issuebox class="inprogressbox" ng-repeat="issue in issues | multiselect:this | filter:{labels :'InProgress'} | filter:textFilter ">
