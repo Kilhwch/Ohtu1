@@ -10,7 +10,7 @@
   <div class="column">
   	<p class="navbar-fixed-top"><b>Ready</b></p>
   	<div class="issueboxes">
-  	<issuebox class="readybox" ng-repeat="issue in issues | multiselect:this  | filter:{labels :'Ready'} | filter:textFilter"></issuebox>
+  	<issuebox class="readybox" ng-repeat="issue in issues | multiselect:this  | filter:{labels :'Ready'}  | filter:{body: textFilter, title: textFilter}  "></issuebox>
   	</div>
   </div>
 
