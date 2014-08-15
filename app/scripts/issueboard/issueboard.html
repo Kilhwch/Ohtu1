@@ -1,21 +1,20 @@
 <div class ="issueview">
-  <div class="column mainCol" jqyoui-droppable>
+  <div class="column mainCol" data-drop="true"  jqyoui-droppable="{onDrop: 'issueDroppedBacklog(item)'}">
 	  <p class="navbar-fixed-top"><b>Backlog</b></p>
 	  <div class="issueboxes">
 	  	<issuebox class="backlogbox" ng-repeat="issue in issues | multiselect:this | filter:{labels:'!Ready'}  | filter:{labels:'!InProgress'} | filter:{labels:'!Done'} | filter:textFilter ">
 	  	</issuebox>
-  	   </div>
+  	</div>
   </div>
   
-  
-  <div class="column" data-drop="true" ng-model='readymodel' jqyoui-droppable="{onDrop: issueDroppedReady(item)}">
+  <div class="column" data-drop="true" jqyoui-droppable="{onDrop: 'issueDroppedReady(item)'}">
   	<p class="navbar-fixed-top"><b>Ready</b></p>
   	<div class="issueboxes">
-  	<issuebox class="readybox" ng-repeat="issue in issues | multiselect:this  | filter:{labels :'Ready'}  | filter:{body: textFilter, title: textFilter}  "></issuebox>
+  	<issuebox class="readybox" ng-repeat="issue in issues | multiselect:this  | filter:{labels :'Ready'}  | filter:textFilter "></issuebox>
   	</div>
   </div>
 
-  <div class="column" data-drop="true" ng-model='inprogmodel' jqyoui-droppable="{onDrop: issueDroppedInprog(item)}"
+  <div class="column" data-drop="true" jqyoui-droppable="{onDrop: 'issueDroppedInprog(item)'}">
   	<p class="navbar-fixed-top"><b>In Progress</b></p>
   	<div class="issueboxes">
   	<issuebox class="inprogressbox" ng-repeat="issue in issues | multiselect:this | filter:{labels :'InProgress'} | filter:textFilter ">
@@ -23,7 +22,7 @@
   	</div>
   </div>
 
-  <div class="column" data-drop="true" ng-model='donemodel' jqyoui-droppable="{onDrop: issueDroppedDone(item)}"
+  <div class="column" data-drop="true" jqyoui-droppable="{onDrop: 'issueDroppedDone(item)' }">
   	<p class="navbar-fixed-top"><b>Done</b></p>
   	<div class="issueboxes">
   	<issuebox class ="donebox" ng-repeat="issue in issues | multiselect:this  | filter:{labels :'Done'} | filter:textFilter ">

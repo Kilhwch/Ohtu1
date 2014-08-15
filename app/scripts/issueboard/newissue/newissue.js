@@ -19,7 +19,7 @@ angular.module('ohtuProjektiAppApp')
             };
           $scope.issue = {};
           $scope.addIssue = function() {
-            console.log($scope.issue)
+            //console.log($scope.issue)
             var options = { title:$scope.issue.title,
                             body: $scope.issue.body,
                             assignee: $scope.issue.assignee,

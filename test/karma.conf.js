@@ -32,7 +32,8 @@ module.exports = function(config) {
       'bower_components/angular-multi-select/angular-multi-select.js',
       'bower_components/n3-line-chart/dist/line-chart.min.js',
       'bower_components/oauth-js/dist/oauth.min.js',  
-      'bower_components/jquery/dist/jquery.min.js',  
+      'bower_components/jquery/dist/jquery.min.js',
+      'bower_components/angular-dragdrop/src/angular-dragdrop.js',  
       'app/scripts/**/*.js'
     ],
 

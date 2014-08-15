@@ -21,8 +21,6 @@ angular.module('ohtuProjektiAppApp')
     var assignees = new github.Assignee($stateParams.owner,$stateParams.repoName);
     
     $scope.createOptions = ['Issues','Labels','Milestones'];
-    
-    
 
     milestones.list().success(function(data) {
         $scope.milestones = data;
@@ -178,61 +176,88 @@ angular.module('ohtuProjektiAppApp')
         $scope.textFilter = newFilters.textFilter;
     }, true);
     
-    $scope.issueBoxDragStarted = function(item, object){
-        console.log("Alku->");
-        
-        
-        console.log(object);
-        console.log(object.helper.context.innerHTML);
-        
-        //var allHeadings = $( "div" ).get(3);
-        //alert( allHeadings );
-        
-        console.log("Loppu->");
-    	
-    	
-    	
-    	var elem = angular.element(item.target);
-    	//$(item.target).hide();
-    	elem.css({
-    		'z-index': 99999,
-    		visibility: 'hidden',
-    		width: 200
-    	});
+    $scope.issueBoxDragStarted = function(object, item, issue){    
+	    $scope.dragedissue = issue;
     };
 
-    $scope.issueBoxDragStopped = function(item){
-    	var elem = angular.element(item.target);
-    	//elem.show();
-    	elem.css({
-    		'z-index': 'auto',
-    		visibility: 'visible',
-    		width: 200
-    	});
-    };
-    
-    $scope.tietopankki = ["beh", "rorlf", "dasd"];
-    
-    $scope.readymodel = [];
-    
-    $scope.inprogmodel = [];
-    
-    $scope.donemodel = [];
-    
     $scope.issueDroppedReady = function(item) {
-        console.log("Issue dropped ready");
-        
-        
+        console.log('ready dropped');
+        var backlogB = true;
+        for (var i = 0; i < $scope.dragedissue.labels.length; ++i) {
+            var l = $scope.dragedissue.labels[i].name;
+            if (l == 'InProgress' || l == 'Done') {
+                $scope.dragedissue.labels[i].name = 'Ready';
+                backlogB = false;
+            }
+        }
+        if (backlogB) {
+            $scope.dragedissue.labels.unshift('Ready');
+        }
+        for (var i = 0; i < $scope.issues.length; ++i) {
+            if ($scope.issues[i].number == $scope.dragedissue.number) {
+                $scope.issues[i].labels = $scope.dragedissue.labels;
+            }
+        }
+        issues.updateIssue($scope.dragedissue.number, {labels: $scope.dragedissue.labels}, function(data, response){$scope.dragedissue.labels = data.labels},function(error){});
     };
     
     $scope.issueDroppedInprog = function(item) {
-        console.log("Issue dropped inprog");
-        
+        console.log('inprog dropped');
+        var backlogB = true;
+        for (var i = 0; i < $scope.dragedissue.labels.length; ++i) {
+            var l = $scope.dragedissue.labels[i].name;
+            if (l == 'Ready' || l == 'Done') {
+                $scope.dragedissue.labels[i].name = 'InProgress';
+                backlogB = false;
+            }
+        }
+        if (backlogB) {
+            $scope.dragedissue.labels.unshift('InProgress');
+        }
+        for (var i = 0; i < $scope.issues.length; ++i) {
+            if ($scope.issues[i].number == $scope.dragedissue.number) {
+                $scope.issues[i].labels = $scope.dragedissue.labels;
+            }
+        }
+         issues.updateIssue($scope.dragedissue.number, {labels: $scope.dragedissue.labels}, function(data, response){$scope.dragedissue.labels = data.labels},function(error){});
     };
     
     $scope.issueDroppedDone = function(item) {
-        console.log("Issue dropped done");
-        
+        console.log('done dropped');
+        var backlogB = true;
+        for (var i = 0; i < $scope.dragedissue.labels.length; ++i) {
+            var l = $scope.dragedissue.labels[i].name;
+            if (l == 'Ready' || l == 'InProgress') {
+                $scope.dragedissue.labels[i].name = 'Done';
+                backlogB = false;
+            }
+        }
+        if (backlogB) {
+            $scope.dragedissue.labels.unshift('Done');
+        }
+        for (var i = 0; i < $scope.issues.length; ++i) {
+            if ($scope.issues[i].number == $scope.dragedissue.number) {
+                $scope.issues[i].labels = $scope.dragedissue.labels;
+            }
+        }
+         issues.updateIssue($scope.dragedissue.number, {labels: $scope.dragedissue.labels}, function(data, response){$scope.dragedissue.labels = data.labels},function(error){});
+    };
+
+    $scope.issueDroppedBacklog = function(item) {
+        console.log('backlog dropped');
+        for (var i = 0; i < $scope.dragedissue.labels.length; ++i) {
+            var l = $scope.dragedissue.labels[i].name;
+            if (l == 'Ready' || l == 'InProgress' || l == 'Done') {
+                $scope.dragedissue.labels.splice(i,1);
+                console.log($scope.dragedissue.labels);
+            }
+        }
+        for (var i = 0; i < $scope.issues.length; ++i) {
+            if ($scope.issues[i].number == $scope.dragedissue.number) {
+                $scope.issues[i].labels = $scope.dragedissue.labels;
+            }
+        }
+         issues.updateIssue($scope.dragedissue.number, {labels: $scope.dragedissue.labels}, function(data, response){$scope.dragedissue.labels = data.labels},function(error){});
     };
 
 });
