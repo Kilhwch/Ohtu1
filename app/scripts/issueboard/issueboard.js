@@ -178,15 +178,61 @@ angular.module('ohtuProjektiAppApp')
         $scope.textFilter = newFilters.textFilter;
     }, true);
     
-    /*$scope.$on('addItem', function(event, args){
-        $scope.openModal(args.choice);
-    });*/
+    $scope.issueBoxDragStarted = function(item, object){
+        console.log("Alku->");
+        
+        
+        console.log(object);
+        console.log(object.helper.context.innerHTML);
+        
+        //var allHeadings = $( "div" ).get(3);
+        //alert( allHeadings );
+        
+        console.log("Loppu->");
+    	
+    	
+    	
+    	var elem = angular.element(item.target);
+    	//$(item.target).hide();
+    	elem.css({
+    		'z-index': 99999,
+    		visibility: 'hidden',
+    		width: 200
+    	});
+    };
 
-    /*
-    $scope.$on('changedMilestone', function(event, args){
-        console.log("milestone event");
-        $scope.sprint.milestone = args.milestone;
-    });
-    */
+    $scope.issueBoxDragStopped = function(item){
+    	var elem = angular.element(item.target);
+    	//elem.show();
+    	elem.css({
+    		'z-index': 'auto',
+    		visibility: 'visible',
+    		width: 200
+    	});
+    };
+    
+    $scope.tietopankki = ["beh", "rorlf", "dasd"];
+    
+    $scope.readymodel = [];
+    
+    $scope.inprogmodel = [];
+    
+    $scope.donemodel = [];
+    
+    $scope.issueDroppedReady = function(item) {
+        console.log("Issue dropped ready");
+        
+        
+    };
+    
+    $scope.issueDroppedInprog = function(item) {
+        console.log("Issue dropped inprog");
+        
+    };
+    
+    $scope.issueDroppedDone = function(item) {
+        console.log("Issue dropped done");
+        
+    };
 
 });
