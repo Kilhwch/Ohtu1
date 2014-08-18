@@ -41,6 +41,11 @@
     color: #435a66;
 }
 
+.header .nav-pills > li.active > a{
+	background-color: #eee;
+	color: #435a66;
+}
+
 .header,
 .footer {
   margin: 0 auto;
