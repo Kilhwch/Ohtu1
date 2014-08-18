@@ -6,6 +6,7 @@ exports.config = {
   specs: [
     'app/scripts/**/*_spec.js',
     'test/spec/*_spec.js'
+ //   'test/spec/issueboard_spec.js'
   ],
 
 
