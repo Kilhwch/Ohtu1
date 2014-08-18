@@ -31,6 +31,23 @@ describe('Listing issues', function() {
     expect(element(by.css('.repoAddress')).getText()).toContain('user/repo');
   });
 
+  describe('drag n drop', function() {
+  
+    it('should drag n drop', function() {
+      var element1 = element.all(by.id('donebox')).first();
+      var element2 = element.all(by.id('readybox')).first();
+      var checkT = element1.getText();
+      ptor.actions().dragAndDrop(
+        element1,
+        element2
+      ).perform();
+      var checkE = element.all(by.id('readybox')).last();
+      expect(checkE.getText()).toContain(checkT);
+
+    });
+
+  });
+
   describe('correct ammount', function(){
     it('should show issue.title', function() {
       var elems = element.all(by.repeater('issue in issues'));
@@ -105,6 +122,8 @@ describe('Listing issues', function() {
     });
 
   });
+
+
   
   
   describe('multiselect filter', function() {
