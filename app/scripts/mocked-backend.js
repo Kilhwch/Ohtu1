@@ -17,10 +17,10 @@ exports.httpBackendMock = function() {
                 var assignee = {'login': 'octocat','id': 1,'avatar_url': 'https://github.com/images/error/octocat_happy.gif'};
 
                 // issuelabels
-                var label = {'name':'Done','color': 'f29513'};
-                var readylabel = {'name':'Ready','color': 'f29513'};
-                var inproglabel = {'name':'InProgress','color': 'f29513'}
-                var donelabel = {'name':'Done','color': 'f29513'};
+                var label = {'name':'State:Done','color': 'f29513'};
+                var readylabel = {'name':'State:Ready','color': 'f29513'};
+                var inproglabel = {'name':'State:InProgress','color': 'f29513'}
+                var donelabel = {'name':'State:Done','color': 'f29513'};
                 var multilabel = {'name':'testlabel','color': 'f29513'};
                 
                 // repos
