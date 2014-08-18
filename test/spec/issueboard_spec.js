@@ -31,7 +31,7 @@ describe('Listing issues', function() {
     expect(element(by.css('.repoAddress')).getText()).toContain('user/repo');
   });
 
-  describe('drag n drop', function() {
+  xdescribe('drag n drop', function() {
   
     it('should drag n drop', function() {
       var element1 = element.all(by.id('donebox')).first();
