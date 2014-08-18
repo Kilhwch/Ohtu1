@@ -106,4 +106,18 @@ angular.module('ohtuProjektiAppApp')
 
         return filtered;
     };
+  })
+  .filter('textfilter', function(){
+    return function(issues, filterBy){
+      if (filterBy == '') return issues;
+
+      var filtered = [];
+
+      issues.forEach(function(issue){
+        if (issue.body && issue.body.indexOf(filterBy) > -1) // case sensitivity?
+          filtered.push(issue);
+      });
+
+      return filtered;
+    }
   });

@@ -172,7 +172,9 @@ angular.module('ohtuProjektiAppApp')
         $rootScope.filtersGrouped.push({ multiSelectGroup: false});
     };
 
-    $scope.$watch(function(){return filteringOptions.getTextFilter();}, function(newFilters, oldFilters){
+    $scope.$watch(
+    	function(){return filteringOptions.getTextFilter();}
+    	, function(newFilters, oldFilters){
         $scope.textFilter = newFilters.textFilter;
     }, true);
     

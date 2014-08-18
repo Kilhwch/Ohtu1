@@ -2,7 +2,7 @@
   <div class="column mainCol" data-drop="true"  jqyoui-droppable="{onDrop: 'issueDroppedBacklog(item)'}">
 	  <p class="navbar-fixed-top"><b>Backlog</b></p>
 	  <div class="issueboxes">
-	  	<issuebox class="backlogbox" ng-repeat="issue in issues | multiselect:this | filter:{labels:'!Ready'}  | filter:{labels:'!InProgress'} | filter:{labels:'!Done'} | filter:textFilter ">
+	  	<issuebox class="backlogbox" ng-repeat="issue in issues | multiselect:this | filter:{labels:'!Ready'}  | filter:{labels:'!InProgress'} | filter:{labels:'!Done'} | textfilter:textFilter ">
 	  	</issuebox>
   	</div>
   </div>
@@ -10,14 +10,14 @@
   <div class="column" data-drop="true" jqyoui-droppable="{onDrop: 'issueDroppedReady(item) '}">
   	<p class="navbar-fixed-top"><b>Ready</b></p>
   	<div class="issueboxes">
-  	<issuebox class="readybox" ng-repeat="issue in issues | multiselect:this  | filter:{labels :'Ready'}  | filter:textFilter "></issuebox>
+  	<issuebox class="readybox" ng-repeat="issue in issues | multiselect:this  | filter:{labels :'Ready'}  | textfilter:textFilter"></issuebox>
   	</div>
   </div>
 
   <div class="column" data-drop="true" jqyoui-droppable="{onDrop: 'issueDroppedInProgress(item)'}">
   	<p class="navbar-fixed-top"><b>In Progress</b></p>
   	<div class="issueboxes">
-  	<issuebox class="inprogressbox" ng-repeat="issue in issues | multiselect:this | filter:{labels :'InProgress'} | filter:textFilter ">
+  	<issuebox class="inprogressbox" ng-repeat="issue in issues | multiselect:this | filter:{labels :'InProgress'} | textfilter:textFilter">
   	</issuebox>
   	</div>
   </div>
@@ -25,7 +25,7 @@
   <div class="column" data-drop="true" jqyoui-droppable="{onDrop: 'issueDroppedDone(item)' }">
   	<p class="navbar-fixed-top"><b>Done</b></p>
   	<div class="issueboxes">
-  	<issuebox class ="donebox" ng-repeat="issue in issues | multiselect:this  | filter:{labels :'Done'} | filter:textFilter ">
+  	<issuebox class ="donebox" ng-repeat="issue in issues | multiselect:this  | filter:{labels :'Done'} | textfilter:textFilter">
   	</issuebox>
   	</div>
   </div>
