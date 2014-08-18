@@ -11,8 +11,8 @@ describe('Filtering', function() {
         var milestones = /https:\/\/api\.github\.com\/repos\/user\/repo\/milestones/;
 
         var issue = {number: 1, title: 'Issue Alpha', body:'Shem', milestone: null};
-        var issue2 = {number: 1, title: 'Issue Beta', body:'Ham', milestone: null , 'labels':[{'name':'Ready','color': 'f29513'}] };
-        var issue3 = {number: 1, title: 'Issue Gamma', body:'Jahpheth', milestone: null , 'labels':[{'name':'InProgress','color': 'f29513'}] };
+        var issue2 = {number: 2, title: 'Issue Beta', body:'Ham', milestone: null , 'labels':[{'name':'Ready','color': 'f29513'}] };
+        var issue3 = {number: 3, title: 'Issue Gamma', body:'Jahpheth', milestone: null , 'labels':[{'name':'InProgress','color': 'f29513'}] };
 
         $httpBackend.whenGET(issueboard).respond([issue, issue2, issue3]);
 
@@ -70,6 +70,22 @@ describe('Filtering', function() {
 
 			var issueHeader = ptor.findElement(by.css('.issueHeader'), elems.first());
 			expect(issueHeader.getText()).toContain("Alpha");
+	    });
+
+	    it('should filter by number', function() {
+			var elem = ptor.findElement(by.css('.textFilter'));
+			elem.sendKeys('1');
+
+			var elems = element.all(by.repeater('issue in issues'));
+			expect(elems.count()).toBe(1);
+
+			var issueHeader = ptor.findElement(by.css('.issueHeader'), elems.first());
+			expect(issueHeader.getText()).toContain("#1");
+
+			elem.clear();
+			elem.sendKeys('4');
+
+			expect(elems.count()).toBe(0);
 	    });
 
 	});

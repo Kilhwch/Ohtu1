@@ -114,9 +114,15 @@ angular.module('ohtuProjektiAppApp')
       var filtered = [];
 
       issues.forEach(function(issue){
-        if (issue.body && issue.body.indexOf(filterBy) > -1) // case sensitivity?
-          filtered.push(issue);
+        if (passesFilter(issue))
+          filtered.push(issue)
       });
+
+      function passesFilter(issue){
+        return (issue.body && issue.body.indexOf(filterBy) > -1) ||
+                (issue.title && issue.title.indexOf(filterBy) > -1) ||
+                (issue.number == parseInt(filterBy))
+      }
 
       return filtered;
     }
