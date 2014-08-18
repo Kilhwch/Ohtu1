@@ -22,5 +22,4 @@ after_success:
   - git branch gh-pages origin/gh-pages
   - ./pages.sh
   - rm .git/credentials
-addons:
-  - firefox: "31.0"
+

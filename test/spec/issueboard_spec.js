@@ -37,10 +37,13 @@ describe('Listing issues', function() {
       var element1 = element.all(by.id('donebox')).first();
       var element2 = element.all(by.id('readybox')).first();
       var checkT = element1.getText();
+    
       ptor.actions().dragAndDrop(
         element1,
         element2
       ).perform();
+
+   //   browser.pause();
       var checkE = element.all(by.id('readybox')).last();
       expect(checkE.getText()).toContain(checkT);
 
@@ -48,7 +51,7 @@ describe('Listing issues', function() {
 
   });
 
-  xdescribe('correct ammount', function(){
+  describe('correct ammount', function(){
     it('should show issue.title', function() {
       var elems = element.all(by.repeater('issue in issues'));
       expect(elems.first().getText()).toContain('Test tickle');
@@ -75,7 +78,7 @@ describe('Listing issues', function() {
     });
   });
 
-  xdescribe('correct place',function(){
+  describe('correct place',function(){
     it('should list issues in Backlog', function() {
       var column = element.all((by.css('.backlogbox'))).get(0);
       expect(column.getText()).toContain('Test tickle')
@@ -126,7 +129,7 @@ describe('Listing issues', function() {
 
   
   
-  xdescribe('multiselect filter', function() {
+  describe('multiselect filter', function() {
     it('should filter issues that have no milestone', function() {
       
       var multiselect = ptor.findElement(by.css('.multiSelect'));
@@ -153,7 +156,7 @@ describe('Listing issues', function() {
     
   });
 
-  xdescribe('filter', function() {
+  describe('filter', function() {
     it('should filter excess issues', function() {
       var elems = element.all(by.repeater('issue in issues'));
       expect(elems.count()).toBe(5);
@@ -176,7 +179,7 @@ describe('Listing issues', function() {
     });
   });
 
-  xdescribe('assignee', function() {
+  describe('assignee', function() {
     it('should not have any to begin with', function() {
       var elem = element.all(by.repeater('issue in issues')).first();
       expect(elem.element(by.css('.avatar-img')).isDisplayed()).toBe(false);
