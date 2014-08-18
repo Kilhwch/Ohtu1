@@ -120,7 +120,8 @@ angular.module('ohtuProjektiAppApp')
 
       function passesFilter(issue){
         return (issue.body && issue.body.indexOf(filterBy) > -1) ||
-                (issue.title && issue.title.indexOf(filterBy) > -1)
+                (issue.title && issue.title.indexOf(filterBy) > -1) ||
+                (issue.number == parseInt(filterBy))
       }
 
       return filtered;
