@@ -33,7 +33,7 @@ describe('Creating issues', function() {
       $('#sendlabel').click();
       var alertDialog = ptor.switchTo().alert();
       alertDialog.accept();
-      expect(alertDialog.getText()).toContain("Created label: state:label name");
+      expect(alertDialog.getText()).toContain("Created label: State:label name");
     });
 
   it('should receive correct response when deleting a new label', function() {

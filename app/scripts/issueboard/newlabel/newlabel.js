@@ -44,7 +44,7 @@ angular.module('ohtuProjektiAppApp')
             };
 
             $scope.deleteLabel = function(label) {
-                if (label !== "Ready" && label !== "InProgress" && label !== "Done") {
+                if (label !== "State:Ready" && label !== "State:InProgress" && label !== "State:Done") {
                     labels.deleteLabel(label, function() {
                         alert("Deleted label: " + label);
                     }, function(error) {
