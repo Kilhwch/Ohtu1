@@ -14,7 +14,6 @@ describe('Issue box', function(){
 	});
 
 	it('should edit title of issue', function(){
-		browser.pause();
 	    var elems = element.all(by.repeater('issue in issues')).first();
 	    ptor.actions().mouseMove(elems).perform();
 	    elems.element(by.css('.fa.fa-cog')).click();
