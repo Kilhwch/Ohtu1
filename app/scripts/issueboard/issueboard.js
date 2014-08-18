@@ -195,14 +195,14 @@ angular.module('ohtuProjektiAppApp')
     }
 
     $scope.issueDroppedReady = function(item) {
-        $scope.issueDropped('Done','InProgress', 'Ready');
+        $scope.issueDropped('State:Done','State:InProgress', 'State:Ready');
     };
 
     $scope.issueDroppedInProgress = function(item) {
-        $scope.issueDropped('Ready','Done', 'InProgress');
+        $scope.issueDropped('State:Ready','State:Done', 'State:InProgress');
     };
     $scope.issueDroppedDone = function(item) {
-        $scope.issueDropped('Ready','InProgress', 'Done');
+        $scope.issueDropped('State:Ready','State:InProgress', 'State:Done');
     };
     
     var replaceLabelName = function() {
@@ -233,7 +233,7 @@ angular.module('ohtuProjektiAppApp')
     $scope.issueDroppedBacklog = function(item) {
         for (var i = 0; i < $scope.dragedissue.labels.length; ++i) {
             var l = $scope.dragedissue.labels[i].name;
-            if (l == 'Ready' || l == 'InProgress' || l == 'Done') {
+            if (l == 'State:Ready' || l == 'State:InProgress' || l == 'State:Done') {
                 $scope.dragedissue.labels.splice(i,1);
             }
         }
