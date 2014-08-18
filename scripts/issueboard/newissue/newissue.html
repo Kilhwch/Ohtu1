@@ -30,7 +30,7 @@
         <div class="col-sm-9">
           <multiselect class="input-lg" multiple="true" ms-selected ="--Select--" 
               ng-model="issue.labels" ms-header="--Select--"
-              options="label.name for label in labels"
+              options="label.name for label in labels|filter: '!state:'"
               change="">
           </multiselect>
         </div>
