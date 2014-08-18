@@ -46,7 +46,7 @@ angular.module('ui.multiselect', [
 
           scope.items = [];
           scope.header = 'Select';
-          scope.multiple = isMultiple;
+          scope.multiple = true;
           scope.disabled = false;
 
           originalScope.$on('$destroy', function () {
