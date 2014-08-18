@@ -17,6 +17,16 @@ body {
   margin-top: 19px;
 }
 
+.repolist .list-group-item.active:hover{
+  background-color: #E5E3DC;
+  border: 1px solid rgba(42,44,43,0.5);
+  color: inherit;
+}
+
+.repolist .list-group-item.active:hover .list-group-item-text{
+  color: inherit;
+}
+
 /* Custom page footer */
 .footer {
   padding-top: 19px;
