@@ -14,6 +14,7 @@ describe('Issue box', function(){
 	});
 
 	it('should edit title of issue', function(){
+		browser.pause();
 	    var elems = element.all(by.repeater('issue in issues')).first();
 	    ptor.actions().mouseMove(elems).perform();
 	    elems.element(by.css('.fa.fa-cog')).click();
@@ -47,10 +48,13 @@ describe('Issue box', function(){
 	    element(by.css('.milestones option[value="0"]')).click();
 	    $('#submit').click();
 
-	    var elem = element.all((by.css('.textFilter'))).first();
-	    elem.sendKeys('testi');
+	    var multiselectBtn = ptor.findElement(by.css('.multiSelectButton'));
+		multiselectBtn.click();
+		var multiselect = ptor.findElement(by.css('.multiSelect'));
+		var item = ptor.findElement(by.cssContainingText('.multiSelectItem', 'testi'), multiselect);
+		item.click();
 	    var elems = element.all(by.repeater('issue in issues'));
-	    expect(elems.count()).toBe(2);
+	    expect(elems.count()).toBe(1);
 
   	});
 
