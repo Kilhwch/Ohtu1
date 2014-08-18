@@ -25,6 +25,17 @@ describe('Creating issues', function() {
       expect(alertDialog.getText()).toContain("Created label: label name");
     });
 
+    it('should receive correct response when creating a new label as a state', function() {
+      element(by.id('add')).click();
+      element(by.id('Labels')).click();
+      element(by.model('createlabel.name')).sendKeys('label name');
+      element(by.model('createlabel.state')).click();
+      $('#sendlabel').click();
+      var alertDialog = ptor.switchTo().alert();
+      alertDialog.accept();
+      expect(alertDialog.getText()).toContain("Created label: state:label name");
+    });
+
   it('should receive correct response when deleting a new label', function() {
     element(by.id('add')).click();
     element(by.id('Labels')).click();
