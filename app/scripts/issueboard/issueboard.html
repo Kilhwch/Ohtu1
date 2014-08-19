@@ -15,9 +15,9 @@
   </div>
 
   <div class="column" data-drop="true" jqyoui-droppable="{onDrop: 'issueDroppedInProgress(item)'}">
-  	<p class="navbar-fixed-top"><b>In Progress</b></p>
+  	<p class="navbar-fixed-top"><b>In Progress {{inprog}}</b></p>
   	<div class="issueboxes">
-  	<issuebox class="inprogressbox" id="inprogressbox" ng-repeat="issue in issues | multiselect:this | filter:{labels :'State:InProgress'} | textfilter:textFilter ">
+  	<issuebox class="inprogressbox" id="inprogressbox" ng-model="inprog" ng-repeat="issue in issues | multiselect:this | filter:{labels :'State:InProgress'} | textfilter:textFilter ">
   	</issuebox>
   	</div>
   </div>
