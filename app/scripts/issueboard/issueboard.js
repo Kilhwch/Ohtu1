@@ -151,7 +151,6 @@ angular.module('ohtuProjektiAppApp')
         // milestones
         
         $rootScope.filtersGrouped.push({name: '<strong>Milestones</strong>', multiSelectGroup: true});
-        $rootScope.filtersGrouped.push({name: "No milestone", ticked: false, type: 'check'});
         
         for (var i = 0; i < $scope.milestones.length; i++) {
             var title = $scope.milestones[i].title;
@@ -160,27 +159,13 @@ angular.module('ohtuProjektiAppApp')
         
         $rootScope.filtersGrouped.push({ multiSelectGroup: false});
         
-        // pseudokoodi jos halutaan että multiselectissä näytetään tikatun milestonen labelit
-        // katotaan onko milestoneja tick,
-        // jos ei, voidaan pushata kaikki labelit
-        // jos on: 
-        // 1. Kutsuttava init() jos joku milestone tickataan
-        // 2. haetaan [filteredMilestones]
-        // 3. for (var int i = 0; i < filteredMilestones.length(); i++) {
-        //        for (var int j = 0; j < issues.length(); j++) {  
-        //            if (filteredMilestones[i].name === issues[j])
-        //                $rootScope.filtersGrouped.push({name: name, ticked: false, type: 'label'});
-        //        }
-        //    }
-        //console.log("update");
-        
         // labels
         
         $rootScope.filtersGrouped.push({name: '<strong>Labels</strong>', multiSelectGroup: true});
         
         for (var i = 0; i < $scope.labels.length; i++) {
             var name = $scope.labels[i].name;
-                if (name != 'Done' && name != 'InProgress' && name != 'Ready') {
+                if (name != 'State:Done' && name != 'State:InProgress' && name != 'State:Ready') {
                     $rootScope.filtersGrouped.push({name: name, ticked: false, type: 'label'});
                 }
         }

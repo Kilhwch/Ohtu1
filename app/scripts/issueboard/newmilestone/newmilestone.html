@@ -34,8 +34,8 @@
                            ng-required="true" close-text="Close" />
                   </div>
                 </div>
-                <button id="newmilestone-create" style="float:right" class="btn btn-primary" ng-click="createMilestone(milestone)">Create</button>
             </div>
+            <button id="newmilestone-create" style="float:right" class="btn btn-primary" ng-click="createMilestone(milestone)">Create</button>
         </form>
         </accordion-group>
         <accordion-group i>
@@ -49,8 +49,8 @@
                   <select class="form-control" ng-model="milestone" id="delete"
                           ng-options="milestone.title for milestone in milestones"></select>
                 </div>
-                <button id="milestone-delete" style="float:right" class="btn btn-danger" ng-click="deleteMilestone(milestone)">Delete</button>
             </div>
+             <button id="milestone-delete" style="float:right" class="btn btn-danger" ng-click="deleteMilestone(milestone)">Delete</button>
         </form>
         </accordion-group>
     </accordion>
