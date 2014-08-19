@@ -100,7 +100,7 @@
 }
 
 
-@media (min-width: 400px) and (max-width: 767px){
+@media (min-width: 380px) and (max-width: 767px){
   .header{
   	height: auto;
   }
@@ -113,6 +113,6 @@
   }
 
   .header .hidden-xs {
-  	display: block !important;
+  	display: none !important;
   }
 }

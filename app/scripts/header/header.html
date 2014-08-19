@@ -3,7 +3,7 @@
         
         <div class="navbar-header">
             <a class="navbar-brand" id="home" ui-sref="main" ng-class="{'active': getClass('/main')}">Haitari</a>
-            <h4 ng-if="currentState == 'repository'" class="repoAddress">
+            <h4 ng-if="currentState == 'repository'" class="repoAddress hidden-xs">
                 {{params.owner}}/{{params.repoName}}
             </h4>
         </div>
@@ -32,7 +32,7 @@
             </li>
           </ul>
 
-          <ul class="nav nav-pills navbar-right hidden-xs" ng-controller="LoginCtrl">
+          <ul class="nav nav-pills navbar-right" ng-controller="LoginCtrl">
             <li id="list" ng-if="isLoggedIn" ng-class="{'active': getClass('/list')}">
               <a ui-sref="list">List</a>
             </li>
