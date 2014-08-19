@@ -33,15 +33,23 @@ angular.module('ohtuProjektiAppApp')
                 var tmp = angular.copy($scope.issue);
                 var newLabels = [];
                 
+                angular.forEach($scope.issue.labels, function(item) {
+                    if(item.name.indexOf("State:")>-1) {
+                        newLabels.unshift(item);
+                        issue.labels.unshift(item);
+                    }
+                });
+
                 angular.forEach(issue.labels, function(item) {
                     newLabels.push(item.name)
                 });
+
+                console.log(tmp.labels);
 
                 $scope.issue.title = issue.title;
                 $scope.issue.body = issue.body;
                 $scope.issue.milestone = issue.milestone;
                 $scope.issue.labels = issue.labels;
-                
 
                 var options = {title : issue.title, body : issue.body, labels : newLabels};
                 if(issue.milestone) options = {title : issue.title, body :issue.body, labels : newLabels, milestone : issue.milestone.number};
