@@ -219,12 +219,12 @@ angular.module('ui.multiselect', [
           };
 
           scope.select = function (item) {
-            if (isMultiple === false) {
+            /*if (isMultiple === false) {
               selectSingle(item);
               scope.toggleSelect();
-            } else {
+            } else {*/
               selectMultiple(item);
-            }
+            //}
           }
         }
       };
