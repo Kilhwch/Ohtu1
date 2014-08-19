@@ -44,6 +44,8 @@ angular.module('ui.multiselect', [
             scope = originalScope.$new(),
             changeHandler = attrs.change || angular.noop;
 
+          attrs.msHeader = '--Select--';
+          attrs.msSelected = '--Select--';
           scope.items = [];
           scope.header = 'Select';
           scope.multiple = true;
@@ -219,12 +221,12 @@ angular.module('ui.multiselect', [
           };
 
           scope.select = function (item) {
-            if (isMultiple === false) {
+            /*if (isMultiple === false) {
               selectSingle(item);
               scope.toggleSelect();
-            } else {
+            } else {*/
               selectMultiple(item);
-            }
+            //}
           }
         }
       };
