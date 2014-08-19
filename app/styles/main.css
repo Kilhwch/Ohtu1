@@ -11,12 +11,6 @@ body {
   overflow: hidden;
 }
 
-.repoAddress {
-  margin-left: 10px;
-  float: right;
-  margin-top: 19px;
-}
-
 .repolist .list-group-item.active:hover{
   background-color: #E5E3DC;
   border: 1px solid rgba(42,44,43,0.5);

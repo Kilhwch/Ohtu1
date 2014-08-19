@@ -29,6 +29,12 @@
 	line-height: 25px
 }
 
+.repoAddress {
+  margin-left: 10px;
+  margin-top: 19px;
+  float: left;
+}
+
 .header .nav-pills{
 	line-height: initial;
 }
@@ -93,3 +99,20 @@
   padding-bottom: 19px;
 }
 
+
+@media (min-width: 400px) and (max-width: 767px){
+  .header{
+  	height: auto;
+  }
+  .header li {
+  	float:left;
+  }
+
+  .header ul {
+  	float:left;
+  }
+
+  .header .hidden-xs {
+  	display: block !important;
+  }
+}
