@@ -1,4 +1,8 @@
-<head> <style>#chart {
-    width: 90%;
-    height: 30%;
-  }</style>  <b>This is a mock chart for burndown view</b> <linechart id="chart" data="data" options="options" mode=""></linechart> <p ng-repeat="issue in listOfIssues"> Created: {{issue.created_at}} Updated: {{issue.updated_at}} </p>
+<head> <style>#linechart {
+  	margin-top: 75px;
+  	margin-bottom: auto;
+  	margin-left: auto;
+  	margin-right: auto;
+    width: 800px;
+    height: 800px;
+  }</style>  <div id="linechart"> <linechart id="chart" data="data" options="options" mode=""></linechart> </div>
