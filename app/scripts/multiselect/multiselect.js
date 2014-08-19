@@ -39,7 +39,7 @@ angular.module('ui.multiselect', [
 
           var exp = attrs.options,
             parsedResult = optionParser.parse(exp),
-            isMultiple = attrs.multiple ? true : false,
+            isMultiple = true,
             required = false,
             scope = originalScope.$new(),
             changeHandler = attrs.change || angular.noop;
