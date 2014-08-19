@@ -6,9 +6,9 @@ angular.module('ohtuProjektiAppApp')
        var filtered = [];
        var filteredLabels = [];
        var filteredMilestones = [];
+       var filteredAssignees = [];
        var noMilestones = false;
        
-       //var tickedMilestones = [];
 
 
        /**
@@ -24,12 +24,20 @@ angular.module('ohtuProjektiAppApp')
        function isLabelTicked() {
            return (filteredLabels.length != 0);
        };
-
+       
+       /**
+        *  Return true if assignee is ticked.
+        */
+       
+       function isAssigneeTicked() {
+          return (filteredAssignees.length != 0);
+       }
+       
        /**
         *  Return true if no item is ticked.
         */
        function isNothingTicked() {
-           return !isLabelTicked() && !isMilestoneTicked() && !noMilestones;
+           return !isLabelTicked() && !isMilestoneTicked() && !isAssigneeTicked() && !noMilestones;
        };
 
 
@@ -51,10 +59,13 @@ angular.module('ohtuProjektiAppApp')
               if (item.type === 'milestone') {
                 filteredMilestones.push(item);
               }
+              if (item.type === 'assignee') {
+                filteredAssignees.push(item);
+              }
             }
-
           }
-
+          
+          
           if (isNothingTicked()) {
             return issues;
           }
@@ -81,10 +92,19 @@ angular.module('ohtuProjektiAppApp')
           for (var i = 0; i < filteredMilestones.length; i++) {
             if (!issue.milestone) return;
             
-            if (issue.milestone.title === filteredMilestones[i].name) {
+            if (filteredMilestones[i].name === issue.milestone.title) {
               filtered.push(issue);
               return;
             }
+          }
+          
+          // Adds to filtered list if the issue has assignee that currently is ticked.
+          for (var i = 0; i < filteredAssignees.length; i++) {
+            if (!issue.assignee) return;
+            
+            if (filteredAssignees[i].name === issue.assignee.login)
+              filtered.push(issue);
+              return;
           }
         }
 
@@ -105,6 +125,7 @@ angular.module('ohtuProjektiAppApp')
         }
         
         angular.forEach(issues, filterIssues);
+        
         return filtered;
     };
   })
