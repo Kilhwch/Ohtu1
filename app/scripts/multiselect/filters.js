@@ -7,6 +7,8 @@ angular.module('ohtuProjektiAppApp')
        var filteredLabels = [];
        var filteredMilestones = [];
        var noMilestones = false;
+       
+       //var tickedMilestones = [];
 
 
        /**
@@ -103,7 +105,6 @@ angular.module('ohtuProjektiAppApp')
         }
         
         angular.forEach(issues, filterIssues);
-
         return filtered;
     };
   })
@@ -123,7 +124,6 @@ angular.module('ohtuProjektiAppApp')
                 (issue.title && issue.title.indexOf(filterBy) > -1) ||
                 (issue.number == parseInt(filterBy))
       }
-
       return filtered;
     }
   });
