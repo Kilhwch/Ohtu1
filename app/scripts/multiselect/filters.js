@@ -7,9 +7,6 @@ angular.module('ohtuProjektiAppApp')
        var filteredLabels = [];
        var filteredMilestones = [];
        var filteredAssignees = [];
-       var noMilestones = false;
-       
-
 
        /**
         *  Return true if a milestone is ticked.
@@ -37,7 +34,7 @@ angular.module('ohtuProjektiAppApp')
         *  Return true if no item is ticked.
         */
        function isNothingTicked() {
-           return !isLabelTicked() && !isMilestoneTicked() && !isAssigneeTicked() && !noMilestones;
+           return !isLabelTicked() && !isMilestoneTicked() && !isAssigneeTicked();
        };
 
 
@@ -46,11 +43,6 @@ angular.module('ohtuProjektiAppApp')
           */
           for (var i = 0; i < $rootScope.filtersGrouped.length; i++) {
             var item = $rootScope.filtersGrouped[i];
-
-            // Checks if "No milestone"-item is ticked.
-            if (item.type === 'check') {
-              noMilestones = item.ticked;
-            }
 
             if (item.ticked) {
               if (item.type === 'label') {
@@ -71,14 +63,6 @@ angular.module('ohtuProjektiAppApp')
           }
 
         function filterIssues(issue) {
-          // Adds to filtered list if the issue has no milestone.
-          if (noMilestones) {
-            if (issue.milestone && !isMilestoneTicked()) {
-              return;
-            }
-            filtered.push(issue);
-            return;
-          }
         
           // Adds to filtered list if the issue has a label that currently is ticked.
           for (var i = 0; i < filteredLabels.length; i++) {
@@ -125,7 +109,6 @@ angular.module('ohtuProjektiAppApp')
         }
         
         angular.forEach(issues, filterIssues);
-        
         return filtered;
     };
   })

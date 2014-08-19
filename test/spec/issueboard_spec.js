@@ -130,18 +130,6 @@ describe('Listing issues', function() {
   
   
   describe('multiselect filter', function() {
-    it('should filter issues that have no milestone', function() {
-      
-      var multiselect = ptor.findElement(by.css('.multiSelect'));
-      var button = ptor.findElement(by.css('.multiSelectButton'));
-      button.click();
-      
-      var item = ptor.findElement(by.cssContainingText('.multiSelectItem', 'No milestone'), multiselect);
-      item.click();
-      var elems = element.all(by.repeater('issue in issues'));
-      expect(elems.count()).toBe(4);
-    });
-    
     it('should filter issues that have a "testlabel" label', function() {
       
       var multiselect = ptor.findElement(by.css('.multiSelect'));
