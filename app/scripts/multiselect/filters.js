@@ -86,9 +86,10 @@ angular.module('ohtuProjektiAppApp')
           for (var i = 0; i < filteredAssignees.length; i++) {
             if (!issue.assignee) return;
             
-            if (filteredAssignees[i].name === issue.assignee.login)
+            if (filteredAssignees[i].name === issue.assignee.login) {
               filtered.push(issue);
               return;
+              }
           }
         }
 
@@ -109,6 +110,7 @@ angular.module('ohtuProjektiAppApp')
         }
         
         angular.forEach(issues, filterIssues);
+        console.log(filtered);
         return filtered;
     };
   })
