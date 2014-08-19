@@ -30,9 +30,4 @@ describe('Listing repos', function() {
     element(by.css('.repo')).sendKeys("Ohtu1");
     expect(element(by.id('searchlink')).getText()).toBe('Kilhwch/Ohtu1');
   });
-
-  it('should show owner when searched', function() {
-    element(by.css('.owner')).sendKeys("Kilh");
-    expect(element(by.id('searchlink')).getText()).toBe('Kilh/');
-  });
 });
