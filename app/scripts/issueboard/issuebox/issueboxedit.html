@@ -47,11 +47,11 @@
 			    		<button id="comment" class="btn btn-primary" ng-click="newComment(body)">Comment!</button>
 			    	</div>
 		    	</div>
-	    		<div ng-repeat="comment in comments">
-	    			<label class="col-sm-2 control-label" for="text">{{comment.user.login}}</label>
-	    			<div class="col-sm-10">
-	    				<p class="form-control" id="comment_body">{{comment.body}}</p>
-	    			</div>
+	    		<div ng-repeat="comment in comments | orderBy:'-created_at' | limitTo: 10 ">
+	    			<dl class="dl-horizontal">
+					  <dt>{{comment.user.login}} {{comment.created_at | date:'dd.MM.yyyy HH:mm' }}</dt>
+					  <dd  id="comment_body" >{{comment.body}}</dd>
+					</dl>
 	    		</div>
 	    	</accordion-group>
 		</accordion>
