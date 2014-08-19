@@ -145,9 +145,10 @@ angular.module('ohtuProjektiAppApp')
     // dropdown valikko
     
     $scope.init = function() {
-        //console.log("Initializing issueboard, scope id: ", $scope.$id);
       if (!$scope.labels) return;
         $rootScope.filtersGrouped = [];
+        
+        // milestones
         
         $rootScope.filtersGrouped.push({name: '<strong>Milestones</strong>', multiSelectGroup: true});
         $rootScope.filtersGrouped.push({name: "No milestone", ticked: false, type: 'check'});
@@ -173,6 +174,8 @@ angular.module('ohtuProjektiAppApp')
         //    }
         //console.log("update");
         
+        // labels
+        
         $rootScope.filtersGrouped.push({name: '<strong>Labels</strong>', multiSelectGroup: true});
         
         for (var i = 0; i < $scope.labels.length; i++) {
@@ -180,6 +183,16 @@ angular.module('ohtuProjektiAppApp')
                 if (name != 'Done' && name != 'InProgress' && name != 'Ready') {
                     $rootScope.filtersGrouped.push({name: name, ticked: false, type: 'label'});
                 }
+        }
+        
+        $rootScope.filtersGrouped.push({ multiSelectGroup: false});
+        
+        // assigneet
+        $rootScope.filtersGrouped.push({name: '<strong>Assignees</strong>', multiSelectGroup: true});
+        
+        for (var i = 0; i < $scope.assignees.length; i++) {
+            var name = $scope.assignees[i].login;
+                $rootScope.filtersGrouped.push({name: name, ticked: false, type: 'assignee'});
         }
         
         $rootScope.filtersGrouped.push({ multiSelectGroup: false});
