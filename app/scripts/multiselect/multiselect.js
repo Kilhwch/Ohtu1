@@ -44,6 +44,8 @@ angular.module('ui.multiselect', [
             scope = originalScope.$new(),
             changeHandler = attrs.change || angular.noop;
 
+          attrs.msHeader = '--Select--';
+          attrs.msSelected = '--Select--';
           scope.items = [];
           scope.header = 'Select';
           scope.multiple = true;
