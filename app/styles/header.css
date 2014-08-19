@@ -109,10 +109,10 @@
   }
 
   .header ul {
-  	float:left;
+  	float:right;
   }
 
-  .header .hidden-xs {
-  	display: none !important;
+  .header .navbar-header::after{
+  	clear:none;
   }
 }
