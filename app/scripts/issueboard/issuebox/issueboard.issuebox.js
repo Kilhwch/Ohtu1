@@ -35,7 +35,7 @@ angular.module('ohtuProjektiAppApp')
                 
                 angular.forEach($scope.issue.labels, function(item) {
                     if(item.name.indexOf("State:")>-1) {
-                        newLabels.unshift(item);
+                        newLabels.unshift(item.name);
                         issue.labels.unshift(item);
                     }
                 });
@@ -44,8 +44,6 @@ angular.module('ohtuProjektiAppApp')
                     newLabels.push(item.name)
                 });
 
-                console.log(tmp.labels);
-
                 $scope.issue.title = issue.title;
                 $scope.issue.body = issue.body;
                 $scope.issue.milestone = issue.milestone;
@@ -53,6 +51,7 @@ angular.module('ohtuProjektiAppApp')
 
                 var options = {title : issue.title, body : issue.body, labels : newLabels};
                 if(issue.milestone) options = {title : issue.title, body :issue.body, labels : newLabels, milestone : issue.milestone.number};
+                console.log(options)
                 issues.updateIssue(issue.number, options,function(data,response) {},function(err) {
                     $scope.issue.title = tmp.title;
                     $scope.issue.body = tmp.body;
