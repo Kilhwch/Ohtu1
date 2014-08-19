@@ -37,12 +37,6 @@
             <li id="list" ng-if="isLoggedIn" ng-class="{'active': getClass('/list')}">
               <a ui-sref="list">List</a>
             </li>
-            <li ng-if="currentState == 'burndown'">
-              <a ui-sref="repository(params)">Repository</a>
-            </li>
-            <li ng-if="currentState == 'repository'">
-              <a ui-sref="burndown(params)">Burndown</a>
-            </li>
             <li id="logout" ng-if="isLoggedIn" ng-class="{'active': getClass('/logout')}">
               <div class="btn-group">
               <p type="button" class="btn dropdown-toggle" data-toggle="dropdown">
