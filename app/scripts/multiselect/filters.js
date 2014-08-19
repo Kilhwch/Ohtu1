@@ -110,7 +110,6 @@ angular.module('ohtuProjektiAppApp')
         }
         
         angular.forEach(issues, filterIssues);
-        console.log(filtered);
         return filtered;
     };
   })
