@@ -49,9 +49,10 @@ angular.module('ohtuProjektiAppApp')
                 $scope.issue.milestone = issue.milestone;
                 $scope.issue.labels = issue.labels;
 
-                var options = {title : issue.title, body : issue.body, labels : newLabels};
-                if(issue.milestone) options = {title : issue.title, body :issue.body, labels : newLabels, milestone : issue.milestone.number};
-                console.log(options)
+                var options = []; 
+                if(issue.milestone== null) options = {title : issue.title, body : issue.body, labels : newLabels, milestone : ""} ;
+                else options = {title : issue.title, body :issue.body, labels : newLabels, milestone : issue.milestone.number};
+                
                 issues.updateIssue(issue.number, options,function(data,response) {},function(err) {
                     $scope.issue.title = tmp.title;
                     $scope.issue.body = tmp.body;

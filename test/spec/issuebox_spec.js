@@ -40,12 +40,13 @@ describe('Issue box', function(){
 	    $('#editlabel-close').click();
   	});
 
-  	it('should edit milestone', function() {
+  	xit('should edit milestone', function() {
 	    var elems = element.all(by.repeater('issue in issues')).first();
 	    ptor.actions().mouseMove(elems).perform();
 	    elems.element(by.css('.fa.fa-cog')).click();
-	    element(by.css('.milestones option[value="0"]')).click();
-	    $('#submit').click();
+	    element(by.id('mstoneselect')).click();
+	    var item = ptor.findElement(by.cssContainingText('.ng-binding', 'testi'));
+	    $('').click();
 
 	    var multiselectBtn = ptor.findElement(by.css('.multiSelectButton'));
 		multiselectBtn.click();

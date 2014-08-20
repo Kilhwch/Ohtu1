@@ -47,7 +47,7 @@ angular.module('ui.multiselect', [
           attrs.msHeader = '--Select--';
           attrs.msSelected = '--Select--';
           scope.items = [];
-          scope.header = 'Select';
+          scope.header = '--Select--';
           scope.multiple = true;
           scope.disabled = false;
 
@@ -284,7 +284,7 @@ angular.module('multiselect.tpl.html', [])
 
       "<div class=\"btn-group multilabel\">\n" +
       "  <button id=\"labelselect\"type=\"button\" class=\"btn btn-default dropdown-toggle form-control\" ng-click=\"toggleSelect()\" ng-disabled=\"disabled\" ng-class=\"{'error': !valid()}\">\n" +
-      "    {{header}} <span class=\"caret\"></span>\n" +
+      "    --Select-- <span class=\"caret\"></span>\n" +
       "  </button>\n" +
       "  <ul class=\"dropdown-menu\">\n" +
       "    <li>\n" +
