@@ -1,7 +1,7 @@
 <div class="backlog issue notedit" ng-class="{highlight : hover}"
 
 	jqyoui-draggable="{onStart: 'issueBoxDragStarted(issue, item)', onStop: 'issueBoxDragStopped(item)'}"
-	data-drag="true" data-jqyoui-options="{revert:true, helper:'clone'}"
+	data-drag="true" data-jqyoui-options="{revert:true, helper:'clone', cancel: '.avatar-img, .fa'}"
 	
     ng-init="hover = false" ng-mouseenter="hover = true" ng-mouseleave="hover = false">
     <div class="issueHeader">
