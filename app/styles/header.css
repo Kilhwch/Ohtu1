@@ -15,7 +15,7 @@
 	margin-top: 7px;
 }
 
-.header .btn-group.open #add {
+.header #add:hover {
 	box-shadow: none;
 	-webkit-filter: Invert(100%);
 }
