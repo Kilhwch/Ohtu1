@@ -177,6 +177,10 @@
   float:left;
 }
 
+textarea {
+  resize: none;
+}
+
 .multilabel ul{
   width:100%;
 }
