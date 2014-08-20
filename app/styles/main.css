@@ -40,3 +40,19 @@ body {
     padding: 3px 10px;
     cursor:pointer;
 }
+
+@media (min-width: 768px) {
+  .dlhorizontal dt {
+    float: left;
+    width: 180px;
+    overflow: hidden;
+    clear: left;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .dlhorizontal dd {
+    margin-left: 200px;
+    word-wrap: break-word;
+  }
+}
