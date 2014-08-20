@@ -65,6 +65,10 @@ angular.module('ohtuProjektiAppApp')
         return _http('GET', '/user/repos', null, success, error);
       },
 
+      repositoryExists: function(user, repo, success, error) {
+        return _http('GET', '/repos/' + user + '/' + repo ,{}, success, error);
+      },
+
       Issue: function(user, repo) {
         var url = '/repos/' + user + '/' + repo + '/issues';
 

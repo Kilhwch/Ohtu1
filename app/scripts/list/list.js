@@ -13,4 +13,16 @@ angular.module('ohtuProjektiAppApp')
     github.userRepos().success(function(data) {
       $scope.repos = data;
     });
+    $scope.repoExists = function() {
+    	github.repositoryExists($scope.owner, $scope.repo)
+    	.success(function(data) {
+    		if (data) {
+    			$state.go('repository', {'owner' : $scope.owner, 'repoName' : $scope.repo});
+    		}
+    	}).error(function(data) {
+    		if (data) {
+    			console.log("repository does not exist? or github is down :)");
+    		}
+    	});
+    }
   });
