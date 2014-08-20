@@ -1,6 +1,6 @@
 // Source and license: https://github.com/amitava82/angular-multiselect
-angular.module('ui.multiselect', [
-  'multiselect.tpl.html'
+angular.module('ui.labelmultiselect', [
+  'labelmultiselect.tpl.html'
 ])
 
   //from bootstrap-ui typeahead parser
@@ -29,7 +29,7 @@ angular.module('ui.multiselect', [
     };
   }])
 
-  .directive('multiselect', ['$parse', '$document', '$compile', '$interpolate', 'optionParser',
+  .directive('labelmultiselect', ['$parse', '$document', '$compile', '$interpolate', 'optionParser',
 
     function ($parse, $document, $compile, $interpolate, optionParser) {
       return {
@@ -55,7 +55,7 @@ angular.module('ui.multiselect', [
             scope.$destroy();
           });
 
-          var popUpEl = angular.element('<multiselect-popup></multiselect-popup>');
+          var popUpEl = angular.element('<labelmultiselect-popup></labelmultiselect-popup>');
 
           //required validator
           if (attrs.required || attrs.ngRequired) {
@@ -232,12 +232,12 @@ angular.module('ui.multiselect', [
       };
     }])
 
-  .directive('multiselectPopup', ['$document', function ($document) {
+  .directive('labelmultiselectPopup', ['$document', function ($document) {
     return {
       restrict: 'E',
       scope: false,
       replace: true,
-      templateUrl: 'multiselect.tpl.html',
+      templateUrl: 'labelmultiselect.tpl.html',
       link: function (scope, element, attrs) {
 
         scope.isVisible = false;
@@ -276,10 +276,10 @@ angular.module('ui.multiselect', [
     }
   }]);
 
-angular.module('multiselect.tpl.html', [])
+angular.module('labelmultiselect.tpl.html', [])
 
   .run(['$templateCache', function($templateCache) {
-    $templateCache.put('multiselect.tpl.html',
+    $templateCache.put('labelmultiselect.tpl.html',
 
 
       "<div class=\"btn-group multilabel\">\n" +

@@ -28,11 +28,11 @@
     <div class="form-group">
         <label class="col-sm-2 control-label" for="text">Labels</label>
         <div class="col-sm-9">
-          <multiselect class="input-lg" multiple="true" ms-selected ="--Select--" 
+          <labelmultiselect class="input-lg" multiple="true" ms-selected ="--Select--" 
               ng-model="issue.labels" ms-header="--Select--"
               options="label.name for label in labels|filter: '!state:'"
               change="">
-          </multiselect>
+          </labelmultiselect>
         </div>
       </div>
   <form>

@@ -19,7 +19,7 @@ angular
     'ui.bootstrap',
     'multi-select',
     'n3-line-chart',
-    'ui.multiselect',
+    'ui.labelmultiselect',
     'ngDragDrop'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {

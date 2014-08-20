@@ -54,10 +54,8 @@ describe('Issue box', function(){
 		var multiselect = ptor.findElement(by.css('.multiSelect'));
 		var item = ptor.findElement(by.cssContainingText('.multiSelectItem', 'testi'), multiselect);
 		item.click();
-		//browser.pause();
 	    var elems = element.all(by.repeater('issue in issues'));
 	    expect(elems.count()).toBe(1);
-
   	});
 
 	it('should edit text of issue', function(){
