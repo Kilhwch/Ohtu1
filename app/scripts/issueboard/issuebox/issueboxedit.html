@@ -19,7 +19,7 @@
 	    <div class="form-group">
 	    	<label class="col-sm-2 control-label" for="text">Change milestone</label>
 			    <div class="btn-group col-sm-9" dropdown is-open="status.isopen">
-			    	<button id="mstoneselect" type="button" class="btn btn-default dropdown-toggle form-control" ng-disabled="disabled">
+			    	<button id="mstonemenu" type="button" class="btn btn-default dropdown-toggle form-control" ng-disabled="disabled">
 			        {{editissue.milestone.title || "No milestone selected"}}  <span class="caret"></span>
 			      	</button>
 			      	<ul class="dropdown-menu" role="menu">
@@ -28,7 +28,7 @@
 			        	</li>
 			        	<li class="divider"></li>
 			        	<li ng-repeat="milestone in milestones">
-			        		<a href ng-click="editissue.milestone = milestone">{{milestone.title}}</a>
+			        		<a class="mstoneoption" href ng-click="editissue.milestone = milestone">{{milestone.title}}</a>
 			        	</li>
 			      	</ul>
 			</div>
