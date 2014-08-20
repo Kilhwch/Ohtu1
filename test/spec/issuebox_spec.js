@@ -40,13 +40,14 @@ describe('Issue box', function(){
 	    $('#editlabel-close').click();
   	});
 
-  	xit('should edit milestone', function() {
+  	it('should edit milestone', function() {
 	    var elems = element.all(by.repeater('issue in issues')).first();
 	    ptor.actions().mouseMove(elems).perform();
 	    elems.element(by.css('.fa.fa-cog')).click();
-	    element(by.id('mstoneselect')).click();
-	    var item = ptor.findElement(by.cssContainingText('.ng-binding', 'testi'));
-	    $('').click();
+	    element(by.id('mstonemenu')).click();
+	    var item = ptor.findElement(by.cssContainingText('.mstoneoption', 'testi'));
+	    item.click();
+	    $('#submit').click();
 
 	    var multiselectBtn = ptor.findElement(by.css('.multiSelectButton'));
 		multiselectBtn.click();
@@ -55,7 +56,6 @@ describe('Issue box', function(){
 		item.click();
 	    var elems = element.all(by.repeater('issue in issues'));
 	    expect(elems.count()).toBe(1);
-
   	});
 
 	it('should edit text of issue', function(){
