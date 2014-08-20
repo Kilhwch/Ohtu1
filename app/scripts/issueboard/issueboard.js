@@ -70,6 +70,14 @@ angular.module('ohtuProjektiAppApp')
 
     };
 
+    $scope.clearAssignee = function(issue){
+        issues.updateIssue(issue.number,{assignee:null}, function(data, response){issue.assignee = data.assignee},function(data, error){
+            console.log('Error while assigning assignee');
+        });
+        issue.editing = false;
+
+    };
+
     $scope.changedLabel = function(issue, oldlabels){
         issues.updateIssue(issue.number, {labels:issue.labels}, function(){},function(error){
             issue.labels = oldlabels;
