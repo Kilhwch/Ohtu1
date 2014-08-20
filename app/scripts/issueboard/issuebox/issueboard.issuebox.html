@@ -9,7 +9,7 @@
         <img ng-src="{{issue.assignee.avatar_url}}"  ng-hide="!issue.assignee.avatar_url.length" class="avatar-img dropdown-toggle" data-toggle="dropdown" title="{{issue.assignee.login}}">
         <i id="assignee" class="fa fa-user dropdown-toggle" data-toggle="dropdown" ng-hide="issue.assignee.avatar_url.length"></i>
           <ul class="dropdown-menu" role="menu">
-            <li><a href ng-click="clearAssignee(issue)"><b>clear assignee</b></a></li>
+            <li ng-hide="!issue.assignee.avatar_url.length" ><a href ng-click="clearAssignee(issue)"><b>clear assignee</b></a></li>
             <li ng-repeat="assignee in assignees">
                 <a href ng-click="assign(issue, assignee)" id="{{assignee}}">{{assignee.login}}</a>
             </li>
