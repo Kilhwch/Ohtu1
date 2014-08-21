@@ -13,6 +13,13 @@ describe('Listing repos', function() {
     browser.get('#/list');
   });
 
+  it('shouldnt be able to enter repo that does not exist', function() {
+      element(by.model('owner')).sendKeys("abba");
+      element(by.model('repo')).sendKeys("music");
+      element(by.id('searchlink')).click();
+      ptor.waitForAngular();
+      expect(browser.getLocationAbsUrl()).toMatch("/list");
+  });
   it('should list repos', function() {
     expect(element.all(by.css('.list-group a')).count()).toBe(2);
   });

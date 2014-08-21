@@ -14,7 +14,15 @@ angular.module('ohtuProjektiAppApp')
     $rootScope, $scope, $filter, $state, $stateParams, github, filteringOptions, $modal, $window) {
 
     if (!github.isAuthenticated()) $state.go('main');
-
+    /*
+    github.repositoryExists($stateParams.owner, $stateParams.repoName)
+        .error(function(data) {
+            if (data) {
+                $state.go('main');
+                console.log("repository does not exist? or github is down :)");
+            }
+        });
+    */
     var issues = new github.Issue($stateParams.owner, $stateParams.repoName);
     var milestones = new github.Milestone($stateParams.owner, $stateParams.repoName);
     var labels = new github.Label($stateParams.owner,$stateParams.repoName);
@@ -204,6 +212,7 @@ angular.module('ohtuProjektiAppApp')
 	    elem.css({
 	    	visibility: 'hidden'
 	    });
+	    
     };
 
     
