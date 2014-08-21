@@ -8,6 +8,14 @@
   background-color: #f5f2eb;
 }
 
+.issue.dragged{
+  width:25%;
+}
+
+.ui-draggable{
+  width:25%;
+}
+
 .issue{
   border: 1px solid rgba(42,44,43,0.5);
   border-radius: 5px;
@@ -153,6 +161,14 @@
 }
 
 .column img{
+  width:40px;
+  height:40px;
+  position: absolute;
+  right: -5px; 
+  top: -5px;
+}
+
+.column .holderimg{
   width:40px;
   height:40px;
   position: absolute;
