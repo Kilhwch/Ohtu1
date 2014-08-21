@@ -20,7 +20,8 @@ angular
     'multi-select',
     'n3-line-chart',
     'ui.labelmultiselect',
-    'ngDragDrop'
+    'ngDragDrop',
+    'ui.bootstrap.datetimepicker'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
     // Github requests using Basic Authentication or OAuth

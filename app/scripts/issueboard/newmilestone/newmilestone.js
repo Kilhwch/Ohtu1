@@ -8,7 +8,7 @@
  * Controller of the ohtuProjektiAppApp
  */
 angular.module('ohtuProjektiAppApp')
-        .controller('NewmilestoneCtrl', function($scope, github, $state,$stateParams, $modalInstance) {
+        .controller('NewmilestoneCtrl', function($scope, github, $state,$stateParams, $modalInstance,$filter) {
             $scope.ghMilestones = new github.Milestone($stateParams.owner, $stateParams.repoName);
             $scope.reload = function () {
                 $state.transitionTo($state.current, $stateParams, {
@@ -18,7 +18,8 @@ angular.module('ohtuProjektiAppApp')
                 });
             };
             $scope.createMilestone = function(milestone) {
-                var options = {title:milestone.title,description:milestone.description,due_on:milestone.due_on};
+                var formattedDate = $filter('date')(milestone.due_on, 'yyyy-MM-ddTHH:mmZ');
+                var options = {title:milestone.title,description:milestone.description,due_on:formattedDate};
                 $scope.ghMilestones.createMilestone(options, function(data,response){
                     alert("Created milestone: " + milestone.title);
                     $scope.milestones.push(data);
