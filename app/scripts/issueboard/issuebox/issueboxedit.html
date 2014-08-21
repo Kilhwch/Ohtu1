@@ -24,7 +24,7 @@
 		        	<span class="caret"></span>
 		      	</button>
 		      	<ul class="dropdown-menu col-sm-11" role="menu" style="left:15px">
-		      		<li><a href ng-click="editissue.milestone = null">Clear milestone</a></li>
+		      		<li><a class="mstoneoption" href ng-click="editissue.milestone = null">Clear milestone</a></li>
 		        	<li class="divider"></li>
 		        	<li ng-repeat="milestone in milestones">
 		        		<a class="mstoneoption" href ng-click="editissue.milestone = milestone">{{milestone.title}}</a>

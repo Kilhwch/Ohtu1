@@ -58,6 +58,42 @@ describe('Issue box', function(){
 	    expect(elems.count()).toBe(1);
   	});
 
+  	it('should remove a milestone from issue', function() {
+	    var elems = element.all(by.repeater('issue in issues')).first();
+	    ptor.actions().mouseMove(elems).perform();
+	    elems.element(by.css('.fa.fa-cog')).click();
+	    element(by.id('mstonemenu')).click();
+	    var item = ptor.findElement(by.cssContainingText('.mstoneoption', 'testi'));
+	    item.click();
+	    $('#submit').click();
+	    
+
+	    var multiselectBtn = ptor.findElement(by.css('.multiSelectButton'));
+		multiselectBtn.click();
+		var multiselect = ptor.findElement(by.css('.multiSelect'));
+		var item = ptor.findElement(by.cssContainingText('.multiSelectItem', 'testi'), multiselect);
+		item.click();
+	    var elems = element.all(by.repeater('issue in issues'));
+	    expect(elems.count()).toBe(1);
+
+	    browser.get('#/repos/user/repo');
+	    
+		elems = element.all(by.repeater('issue in issues')).first();
+	    ptor.actions().mouseMove(elems).perform();
+	    elems.element(by.css('.fa.fa-cog')).click();
+	    element(by.id('mstonemenu')).click();
+	    item = ptor.findElement(by.cssContainingText('.mstoneoption', 'Clear'));
+	    item.click();
+	    $('#submit').click();	
+
+		multiselectBtn = ptor.findElement(by.css('.multiSelectButton'));
+		multiselectBtn.click();
+		item = ptor.findElement(by.cssContainingText('.multiSelectItem', 'testi'), multiselect);
+		item.click(); 
+		elems = element.all(by.repeater('issue in issues'));
+	    expect(elems.count()).toBe(0);       
+  	});
+
 	it('should edit text of issue', function(){
 	    var elems = element.all(by.repeater('issue in issues')).first();
 	    ptor.actions().mouseMove(elems).perform();
