@@ -12,7 +12,7 @@
             <li ng-hide="!issue.assignee.avatar_url.length" ><a href ng-click="clearAssignee(issue)"><b>clear assignee</b></a></li>
             <li ng-hide="!issue.assignee.avatar_url.length"class="divider"></li>
             <li ng-repeat="assignee in assignees">
-                <a href ng-click="assign(issue, assignee)" id="{{assignee}}">{{assignee.login}}</a>
+                <a href ng-click="assign(issue, assignee)" id="{{assignee}}" class="assignee-{{assignee.id}}">{{assignee.login}}</a>
             </li>
           </ul>
         </div>

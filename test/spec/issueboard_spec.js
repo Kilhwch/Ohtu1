@@ -15,8 +15,7 @@ describe('Listing issues', function() {
     browser.get('#/repos/user/repo');
   });
 
-
-
+  
   it('should list issues', function() {
     var elems = element.all(by.repeater('issue in issues'));
     expect(elems.count()).toBe(5);
@@ -174,10 +173,10 @@ describe('Listing issues', function() {
       expect(elem.element(by.id('assignee')).isDisplayed()).toBe(true); 
     });
 
-    xit('should have assignee when assigned', function() {
+    it('should have assignee when assigned', function() {
       var elem = element.all(by.repeater('issue in issues')).first();
       elem.element(by.id('assignee')).click();
-      elem.element(by.id('octocat')).click();
+      elem.element(by.css('.assignee-1')).click();
       expect(elem.element(by.css('.avatar-img')).isDisplayed()).toBe(true);
       expect(elem.element(by.id('assignee')).isDisplayed()).toBe(false);
     });
