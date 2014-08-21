@@ -23,15 +23,8 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label" for="text">Due on</label>
                 <div class="col-sm-10">
-                  <div class="input-group">
-                    <span class="input-group-btn">
-                      <button type="button" class="btn btn-default" ng-click="open($event)">
-                        <i class="glyphicon glyphicon-calendar"></i>
-                      </button>
-                    </span>
-                    <input type="text" class="form-control" datepicker-popup="dd.MM.yyyy"
-                           ng-model="milestone.due_on" is-open="opened" datepicker-options="dateOptions" 
-                           ng-required="true" close-text="Close" />
+                  <div>
+                    <input type="date" class="form-control" ng-model="milestone.due_on"/>
                   </div>
                 </div>
             </div>

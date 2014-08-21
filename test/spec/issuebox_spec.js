@@ -113,7 +113,7 @@ describe('Issue box', function(){
 	// model = issue.labels
 	// button id = submit
 	    element(by.css('.pull-right.glyphicon.ng-scope.glyphicon-chevron-right')).click();
-	    element(by.model('body')).sendKeys("new comment");
+	    element(by.model('data.body')).sendKeys("new comment");
 	    $('#comment').click();
 	    var divi = element.all(by.css('.panel.panel-default.ng-isolate-scope')).first();
 	    var elem = element.all(by.css('.form-control.ng-binding')).first();

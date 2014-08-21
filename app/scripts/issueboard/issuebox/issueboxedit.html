@@ -50,12 +50,15 @@
 	        	</accordion-heading>
 
 	    		<div class="form-group">
-		    		<label class="col-sm-2 control-label" for="text">New:  </label>
+		    		<label class="col-sm-2 control-label" for="text">New</label>
 		    		<div class="col-sm-10">
-			    		<textarea class="form-control" rows="2" ng-model="body"></textarea>
+			    		<textarea class="form-control" rows="2" ng-model="data.body"></textarea>
 			    	</div>
 				</div>
-		    	<button id="comment" class="btn btn-primary" style="float:right" ng-click="newComment(body)">Comment!</button>
+		    	<button id="comment" class="btn btn-primary" style="float:left; margin-left: 2.5cm" ng-click="newComment(data.body)">Comment!</button>
+		    
+		    <br>
+		    <!-- Comments -->
 		    <div class="issuecomments">
 	    		<div ng-repeat="comment in comments | orderBy:'-created_at' | limitTo: 10 ">
 	    			<dl class="dlhorizontal">

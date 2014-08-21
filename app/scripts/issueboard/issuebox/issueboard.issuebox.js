@@ -14,6 +14,11 @@ angular.module('ohtuProjektiAppApp')
             comment.list({},function(data, response) {
                 $scope.comments = data;
             });
+            
+            // new comment 'bodya' varten
+            $scope.data = {
+            body:""
+            };
 
             $scope.editissue = angular.copy($scope.issue);
 
@@ -69,7 +74,7 @@ angular.module('ohtuProjektiAppApp')
                 comment.createComment({body : body},function(data,response){
                     $scope.comments.push(data);
                 }, function(err){
-
                 });
+                $scope.data.body = "";
             };
         });
