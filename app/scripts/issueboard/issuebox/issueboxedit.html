@@ -11,13 +11,13 @@
 		    </div>
 	    </div>
 	    <div class="form-group">
-		    <label class="col-sm-2 control-label" for="text">Edit text</label>
+		    <label class="col-sm-2 control-label" style="top:33px" for="text">Edit text</label>
 		    <div class="col-sm-9">
 		    	<textarea class="form-control" rows="5" ng-model="editissue.body">{{editissue.body}}</textarea>
 		    </div>
 	    </div>
 	    <div class="form-group">
-	    	<label class="col-sm-2 control-label" for="text">Change milestone</label>
+	    	<label class="col-sm-2 control-label" style="bottom: 12px" for="text">Change milestone</label>
 		    <div class="btn-group col-sm-9" dropdown is-open="status.isopen">
 		    	<button id="mstonemenu" type="button" class="btn btn-default dropdown-toggle form-control" ng-disabled="disabled" style="text-align:left">
 		        	{{editissue.milestone.title || "No milestone selected"}}
@@ -33,7 +33,7 @@
 			</div>
 		</div>
 	    <div class="form-group">
-	    	<label class="col-sm-2 control-label" for="text">Change labels</label>
+	    	<label class="col-sm-2 control-label" style="top: 12px" for="text">Change labels</label>
 	    	<div class="col-sm-9">
 		    	<labelmultiselect class="input-lg" multiple="true" ms-selected ="--Select--" 
 		        	ng-model="editissue.labels" ms-header="--Select--"
@@ -50,12 +50,12 @@
 	        	</accordion-heading>
 
 	    		<div class="form-group">
-		    		<label class="col-sm-2 control-label" for="text">New</label>
+		    		<label class="col-sm-2 control-label" style="right:12px; top:5px;" for="text">New</label>
 		    		<div class="col-sm-10">
-			    		<textarea class="form-control" rows="2" ng-model="data.body"></textarea>
+			    		<textarea class="form-control" style="float:none; width:400px;" rows="2" ng-model="data.body"></textarea>
 			    	</div>
 				</div>
-		    	<button id="comment" class="btn btn-primary" style="float:left; margin-left: 2.5cm" ng-click="newComment(data.body)">Comment!</button>
+		    	<button id="comment" class="btn btn-primary" style="margin-left: 2.5cm" ng-click="newComment(data.body)">Comment!</button>
 		    
 		    <br>
 		    <!-- Comments -->
