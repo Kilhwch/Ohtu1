@@ -7,12 +7,13 @@
 	border-color: #d9cdb8;
 	border: 0px;
 	border-radius: 0px;
-	color: #f5f2eb;
+	color: #f5f2eb !important;
 }
 
 
-.header .fa-2x {
-	margin-top: 7px;
+
+#iconwrap{
+  margin-top:12px;
 }
 
 .header #add:hover {
@@ -25,8 +26,7 @@
 }
 
 .header .navbar-header .navbar-brand {
-	color: #f5f2eb;
-	line-height: 25px
+	color: #f5f2eb !important;
 }
 
 .repoAddress {
