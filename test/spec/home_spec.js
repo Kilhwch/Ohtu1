@@ -20,7 +20,7 @@ describe('Home view', function() {
         $('.login-button').click();
         expect(ptor.element(by.id('home')).getText()).toEqual('Haitari');
         expect(ptor.element(by.id('list')).getText()).toEqual('List');
-        element(by.css('.dropdown-toggle')).click();
+        element(by.css('.userlogout')).click();
         expect(ptor.element(by.css('.dropdown-menu a')).getText()).toEqual('Sign out');
     });
 

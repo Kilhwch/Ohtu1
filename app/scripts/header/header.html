@@ -45,7 +45,7 @@
               <a href="#" class="login-button" ng-click="signin()">Login</a>
         </li>
         <li class="dropdown" id="logout" ng-if="isLoggedIn" ng-class="{'active': getClass('/logout')}">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{userName}}<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle userlogout" data-toggle="dropdown">{{userName}}<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
                 <li><a ui-sref="logout">Sign out</a></li>
             </ul>
