@@ -212,7 +212,6 @@ angular.module('ohtuProjektiAppApp')
 	    elem.css({
 	    	visibility: 'hidden'
 	    });
-	    
     };
 
     

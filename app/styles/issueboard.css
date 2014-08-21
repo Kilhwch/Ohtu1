@@ -8,13 +8,6 @@
   background-color: #f5f2eb;
 }
 
-.issue.dragged{
-  width:25%;
-}
-
-.ui-draggable{
-  width:25%;
-}
 
 .issue{
   border: 1px solid rgba(42,44,43,0.5);
@@ -96,7 +89,7 @@
 #assignee{
   position: absolute;
   right: 8px; 
-  top: 5px;
+  top: 8px;
   padding: 5px;
   font-size: 20px;
   color: rgba(42,44,43,0.5);
@@ -161,14 +154,6 @@
 }
 
 .column img{
-  width:40px;
-  height:40px;
-  position: absolute;
-  right: -5px; 
-  top: -5px;
-}
-
-.column .holderimg{
   width:40px;
   height:40px;
   position: absolute;
