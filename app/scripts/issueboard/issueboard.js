@@ -207,15 +207,15 @@ angular.module('ohtuProjektiAppApp')
     
     $scope.issueBoxDragStarted = function(object, item, issue){    
 	    $scope.dragedissue = issue;
-	    console.log(item)
-	    var context = item.helper.context
-	    var elem = angular.element(context)
-
+	    var context = item.helper.context;
+	    var elem = angular.element(context);
 	    elem.css({
 	    	visibility: 'hidden'
 	    });
 	    
     };
+
+    
 
     $scope.issueBoxDragStopped = function(item){
     	var elem = angular.element(item.target);
