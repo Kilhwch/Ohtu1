@@ -181,6 +181,15 @@ describe('Listing issues', function() {
       expect(elem.element(by.id('assignee')).isDisplayed()).toBe(false);
     });
 
+    it('should clear assignee', function() {
+      var elem = element.all(by.repeater('issue in issues')).first();
+      elem.element(by.id('assignee')).click();
+      elem.element(by.css('.assignee-1')).click();
+      elem.element(by.css('.avatar-img')).click();
+      elem.element(by.css('.clear-assignee')).click();
+      expect(elem.element(by.css('.avatar-img')).isDisplayed()).toBe(false);
+      expect(elem.element(by.id('assignee')).isDisplayed()).toBe(true); 
+    });
   });
 
 

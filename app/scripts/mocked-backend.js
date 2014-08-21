@@ -46,8 +46,10 @@ exports.httpBackendMock = function() {
                 
                 $httpBackend.whenPATCH('https://api.github.com/repos/user/repo/issues/1')
                   .respond(function(method, url, data, headers) {
-                   return [201, {number: 1, title: 'Test tickle', body:'Test body', milestone: null, assignee: assignee}];
-                  });
+                    if (data === '{"assignee":null}') { 
+                      return [201, {number: 1, title: 'Test tickle', body:'Test body', milestone: null}];
+                    }
+                    return [201, {number: 1, title: 'Test tickle', body:'Test body', milestone: null, assignee: assignee}];                  });
                 $httpBackend.whenPATCH('https://api.github.com/repos/user/repo/labels')
                   .respond(function(method, url, data, headers) {
                    return [201, data];
