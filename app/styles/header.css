@@ -16,7 +16,7 @@
   margin-top:12px;
 }
 
-.header #add:hover {
+#add:hover {
 	box-shadow: none;
 	-webkit-filter: Invert(100%);
 }
@@ -25,9 +25,14 @@
 	color: #f5f2eb;
 }
 
-.header .navbar-header .navbar-brand {
-	color: #f5f2eb !important;
+.navbar-default .navbar-brand{
+  color: #f5f2eb;
 }
+
+.navbar-default .navbar-nav > li > a{
+  color: #f5f2eb;
+}
+
 
 .repoAddress {
   margin-left: 10px;
