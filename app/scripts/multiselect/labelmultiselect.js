@@ -206,7 +206,6 @@ angular.module('ui.labelmultiselect', [
           }
 
           scope.checkAll = function () {
-            if (!isMultiple) return;
             angular.forEach(scope.items, function (item) {
               item.checked = true;
             });
