@@ -1,14 +1,8 @@
 
-.repolist {
-  height: 80%;
-  overflow-y: scroll;
-}
 
 .backlog.issue {
   background-color: #f5f2eb;
 }
-
-
 
 .issue{
   border: 1px solid rgba(42,44,43,0.5);
@@ -171,6 +165,8 @@
 
 .listview{
   padding-top: 80px;
+  height: 80%;
+  overflow-y: scroll;
 }
 
 .multilabel{

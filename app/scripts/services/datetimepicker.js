@@ -6,6 +6,7 @@
  * @license angular-bootstrap-datetimepicker  v0.2.4
  * (c) 2013 Knight Rider Consulting, Inc. http://www.knightrider.com
  * License: MIT
+ * Source: https://github.com/dalelotts/angular-bootstrap-datetimepicker
  */
 
 /**

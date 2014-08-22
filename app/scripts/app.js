@@ -36,7 +36,6 @@ angular
 		views: {
 			'': {
 				templateUrl: 'scripts/main/main.html',
-				controller: 'IssueboardCtrl',
 			},
 			'header@': {
 				controller: 'HeaderCtrl',
@@ -102,7 +101,6 @@ angular
 			 },
 			 'issuebox@repository': {
 			    templateUrl: 'scripts/issueboard/issuebox/issueboard.issuebox.html',
-			    controller: 'IssueboxCtrl'
 			 }
 		}
       })
