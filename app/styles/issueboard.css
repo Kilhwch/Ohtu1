@@ -14,7 +14,7 @@
   margin-bottom:20px;
   position:relative;
   word-wrap:break-word;
-  cursor: pointer;
+  cursor: grab;
 }
 
 .issue p {
@@ -43,8 +43,10 @@
   background-color: #E5E3DC;
 }
 
+/* This is css for issuebox when dragged */
 .backlog.issue.notedit.ui-draggable.ui-draggable-handle.highlight.ui-draggable-dragging{
   width: 20% !important;
+  cursor: grabbing;
 }
 .column .navbar-fixed-top {
 	left: auto;
@@ -94,6 +96,7 @@
 
 #assignee:hover {
   color: rgba(42,44,43,0.8);
+  cursor: pointer;
 }
 
 .navbar-fixed-top{
@@ -112,6 +115,7 @@
 
 #editCog:hover {
   color: rgba(42,44,43,0.8);
+  cursor: pointer;
 }
 
 ::-webkit-scrollbar {
@@ -148,6 +152,7 @@
 .avatar-img:hover {
   border: 2px solid rgba(42,44,43,0.8);
   border-radius: 20px;
+  cursor: pointer;
 }
 
 .column img{
