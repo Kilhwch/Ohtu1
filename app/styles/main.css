@@ -13,7 +13,7 @@ body {
 
 .listview{
   padding-top: 80px;
-  height: 80%;
+  height: 100vh;
   overflow-y: scroll;
 }
 
