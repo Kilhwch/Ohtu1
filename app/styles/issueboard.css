@@ -45,7 +45,7 @@
 
 /* This is css for issuebox when dragged */
 .backlog.issue.notedit.ui-draggable.ui-draggable-handle.highlight.ui-draggable-dragging{
-  width: 20% !important;
+  width: 20.5% !important;
   cursor: grabbing;
 }
 .column .navbar-fixed-top {
