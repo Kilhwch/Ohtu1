@@ -49,13 +49,14 @@
 	            	Comments <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': open, 'glyphicon-chevron-right': !open}"></i>
 	        	</accordion-heading>
 
+                
 	    		<div class="form-group">
-		    		<label class="col-sm-2 control-label" style="right:12px; top:5px;" for="text">New</label>
-		    		<div class="col-sm-10">
-			    		<textarea class="form-control" style="float:none; width:400px;" rows="2" ng-model="data.body"></textarea>
-			    	</div>
+		    		    
+		    		    <div class="col-sm-9">
+			    		<textarea class="form-control" rows="2" ng-model="data.body"></textarea>
+			    		</div>
 				</div>
-		    	<button id="comment" class="btn btn-primary" style="margin-left: 2.5cm" ng-click="newComment(data.body)">Comment!</button>
+		    	<button id="comment" class="btn btn-primary" ng-click="newComment(data.body)">Comment!</button>
 		    
 		    <br>
 		    <!-- Comments -->
