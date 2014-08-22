@@ -11,7 +11,7 @@
         <i id="assignee" class="fa fa-user dropdown-toggle" data-toggle="dropdown" ng-hide="issue.assignee.avatar_url.length"></i>
           <ul class="dropdown-menu" role="menu">
             <li ng-hide="!issue.assignee.avatar_url.length">
-              <a href ng-click="clearAssignee(issue)" class="clear-assignee"><b>clear assignee</b></a>
+              <a href ng-click="clearAssignee(issue)" class="clear-assignee">Clear Assignee</a>
             </li>
             <li ng-hide="!issue.assignee.avatar_url.length"class="divider"></li>
             <li ng-repeat="assignee in assignees">
