@@ -9,7 +9,7 @@
   border-radius: 5px;
   padding: 0px;
   width:100%;
-  max-width:400px;
+
   min-height:100px;
   margin-bottom:20px;
   position:relative;
@@ -43,7 +43,9 @@
   background-color: #E5E3DC;
 }
 
-
+.backlog.issue.notedit.ui-draggable.ui-draggable-handle.highlight.ui-draggable-dragging{
+  width: 20% !important;
+}
 .column .navbar-fixed-top {
 	left: auto;
 	right: auto;
