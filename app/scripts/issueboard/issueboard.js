@@ -93,7 +93,6 @@ angular.module('ohtuProjektiAppApp')
     };
 
     $scope.$root.openModal = function(choice) {
-        console.log("im in open modal");
         if(choice === "Issues") {
             $scope.openNewIssueModal();
         }
