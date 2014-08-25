@@ -64,7 +64,8 @@
 		    <div class="issuecomments">
 	    		<div ng-repeat="comment in comments | orderBy:'-created_at' | limitTo: 10 ">
 	    			<dl class="dlhorizontal">
-					  <dt>{{comment.user.login}} {{comment.created_at | date:'dd.MM.yyyy HH:mm' }}</dt>
+					  <dt>{{comment.user.login}}</dt>
+					  <dt id="timestamp" >{{comment.created_at | date:'dd.MM.yyyy HH:mm' }}</dt>
 					  <dd  id="comment_body" >{{comment.body}}</dd>
 					</dl>
 	    		</div>

@@ -54,22 +54,29 @@ body {
     cursor:pointer;
 }
 
+.issuecomments{
+  padding-top: 40px;
+}
+
 @media (min-width: 768px) {
   .dlhorizontal dt {
     float: left;
-    width: 180px;
+    width: 120px;
     overflow: hidden;
     clear: left;
-    text-align: right;
+    text-align: left;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
   .dlhorizontal dd {
-    margin-left: 200px;
+    margin-left: 140px;
     word-wrap: break-word;
   }
+
+  .dlhorizontal #timestamp {
+    font-weight: normal;
+    font-size:smaller;
+  }
+
 }
 
-.issuecomments{
-  padding-top: 40px;
-}

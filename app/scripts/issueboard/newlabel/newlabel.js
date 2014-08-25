@@ -8,7 +8,7 @@
  * Controller of the ohtuProjektiAppApp
  */
 angular.module('ohtuProjektiAppApp')
-        .controller('NewlabelCtrl', function($scope, github, $state,$stateParams, $modalInstance) {
+        .controller('NewlabelCtrl', function($scope, github, $state,$stateParams, $modalInstance, alertService) {
             var labels = new github.Label($stateParams.owner, $stateParams.repoName);
             var reload = function () {
                 $state.transitionTo($state.current, $stateParams, {
@@ -21,10 +21,10 @@ angular.module('ohtuProjektiAppApp')
                 if(label.state == true) label.name = "State:"+label.name;
                 var options = {name: label.name};
                 labels.createLabel(options, function(data,response) {
-                    alert("Created label: " + label.name);
+                    alertService.addAlert('success', 'Created label: ' + label.name);
                     $scope.labels.push(data);
                 }, function(error) {
-                    alert("Creation unsuccessful");
+                    alertService.addAlert('danger', 'Creation unssuccessful:');
                 });
                 reload();
                 $scope.close();
@@ -34,10 +34,10 @@ angular.module('ohtuProjektiAppApp')
                 console.log(label);
                 var options = {name: newname};
                 labels.updateLabel(label, options, function(data,response) {
-                    alert("Renamed label: " + label);
+                    alertService.addAlert('success', 'Renamed label: ' + label);
                     $scope.labels.push(data);
                 }, function(error) {
-                    alert("Rename unsuccessful");
+                    alertService.addAlert('danger', 'Rename unssuccessful:');
                 });
                 reload();
                 $scope.close();
@@ -46,9 +46,9 @@ angular.module('ohtuProjektiAppApp')
             $scope.deleteLabel = function(label) {
                 if (label !== "State:Ready" && label !== "State:InProgress" && label !== "State:Done") {
                     labels.deleteLabel(label, function() {
-                        alert("Deleted label: " + label);
+                        alertService.addAlert('success', 'Deleted label: ' + label);
                     }, function(error) {
-                        alert("Deletion unsuccessful");
+                        alertService.addAlert('danger', 'Deletion unssuccessful:');
                     });
                 }
                 else {

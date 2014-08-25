@@ -1,4 +1,7 @@
 <div class ="issueview">
+  <div class ="alerts">
+    <alert id="alert" ng-repeat="alert in alerts" type="{{alert.type}}">{{alert.msg}}</alert>
+  </div>
   <div class="column mainCol" data-drop="true"  jqyoui-droppable="{onDrop: 'issueDroppedBacklog(item)'}">
 	  <p class="navbar-fixed-top"><b>Backlog</b></p>
 	  <div class="issueboxes">

@@ -8,7 +8,7 @@
  * Controller of the ohtuProjektiAppApp
  */
 angular.module('ohtuProjektiAppApp')
-  .controller('NewissueCtrl', function ($state, $scope, github, $stateParams, $modalInstance) {
+  .controller('NewissueCtrl', function ($state, $scope, github, $stateParams, $modalInstance, alertService) {
           var issues = new github.Issue($stateParams.owner, $stateParams.repoName);
           var reload = function () {
                 $state.transitionTo($state.current, $stateParams, {
@@ -34,7 +34,10 @@ angular.module('ohtuProjektiAppApp')
             issues.createIssue(options).success(function(object, response) {
               if (response=='201')
                 $scope.issues.unshift(object);
-                alert("Created issue: "+$scope.issue.title);
+                alertService.addAlert('success', 'Created issue: '+$scope.issue.title);
+
+            }).error(function(data){
+              alertService.addAlert('danger', 'Could not create issue: '+data.message);
             });
             reload();
             $scope.close();

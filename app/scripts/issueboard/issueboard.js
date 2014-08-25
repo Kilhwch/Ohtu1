@@ -11,7 +11,7 @@
 
 angular.module('ohtuProjektiAppApp')
   .controller('IssueboardCtrl', function(
-    $rootScope, $scope, $filter, $state, $stateParams, github, filteringOptions, $modal, $window) {
+    $rootScope, $scope, $filter, $state, $stateParams, github, filteringOptions, $modal, $window, alertService) {
 
     if (!github.isAuthenticated()) $state.go('main');
 
@@ -41,8 +41,7 @@ angular.module('ohtuProjektiAppApp')
         data.editing = false;
         $scope.issues = data;
     }).error(function(data){
-        console.log("error: " + data.message);
-        $state.go('main');
+        alertService.addAlert('danger', data.message);
     });
 
     $scope.editItem = function(issue){
@@ -57,6 +56,7 @@ angular.module('ohtuProjektiAppApp')
        notify: true
        });
      };
+
     
     $scope.changedMilestone = function(issue, oldmilestone){
         issues.updateIssue(issue.number, {milestone:issue.milestone.number}, function(){}, function(error){
@@ -118,8 +118,6 @@ angular.module('ohtuProjektiAppApp')
         controller: 'IssueboxCtrl',
         scope: $scope
       });
-
-
     };
 
     $scope.openNewIssueModal = function() {
@@ -206,7 +204,7 @@ angular.module('ohtuProjektiAppApp')
 	    var context = item.helper.context;
 	    var elem = angular.element(context);
 	    elem.css({
-	    	visibility: 'hidden'
+	    	visibility: 'visible'
 	    });
     };
 

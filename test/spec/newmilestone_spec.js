@@ -13,7 +13,7 @@ describe('Creating milestones', function() {
     browser.get('#/repos/user/repo');
   });
 
-  describe('when create', function() {
+  xdescribe('when create', function() {
 
     it('should receive correct response when creating a new milestone', function() {
       $('#add').click();
