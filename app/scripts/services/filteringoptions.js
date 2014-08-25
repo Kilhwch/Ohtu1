@@ -9,15 +9,20 @@
  */
 angular.module('ohtuProjektiAppApp')
   .service('filteringOptions', function filteringOptions() {
-     var filters = {textFilter : ""};
+     var textFilter = {filter : ""};
+     var groupedFilters = {}
 
      return {
+        getGroupedFilters : function(){
+            return groupedFilters;
+        },
+
      	getTextFilter : function(){
-     		return filters;
+     		return textFilter;
      	},
 
      	setTextFilter : function(newFilter){
-	     	filters.textFilter = newFilter;
+	     	textFilter.filter = newFilter;
      	}
      };
      

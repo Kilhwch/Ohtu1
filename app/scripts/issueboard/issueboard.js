@@ -151,8 +151,7 @@ angular.module('ohtuProjektiAppApp')
       });
     };
     
-    // dropdown valikko
-    
+    // Initialize multiselect filtering
     $scope.init = function() {
       if (!$scope.labels) return;
         $rootScope.filtersGrouped = [];
@@ -194,8 +193,8 @@ angular.module('ohtuProjektiAppApp')
 
     $scope.$watch(
     	function(){return filteringOptions.getTextFilter();}
-    	, function(newFilters, oldFilters){
-        $scope.textFilter = newFilters.textFilter;
+    	, function(newText, oldText){
+        $scope.textFilter = newText.filter;
     }, true);
     
     $scope.issueBoxDragStarted = function(object, item, issue){    

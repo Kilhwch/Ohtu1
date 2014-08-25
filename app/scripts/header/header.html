@@ -33,7 +33,7 @@
       </form>
       <form class="navbar-form navbar-left" role="search"  ng-if="currentState == 'repository'">
         <div class="form-group">
-          <input class ="textFilter form-control" ng-model="filters.textFilter" ng-change="textFilterChanged()" placeholder="Filter" title="Filter by issue body, title, or number">
+          <input class ="textFilter form-control" ng-model="textFilter.filter" ng-change="textFilterChanged()" placeholder="Filter" title="Filter by issue body, title, or number">
         </div>
       </form>
 
