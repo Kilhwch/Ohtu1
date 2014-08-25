@@ -9,11 +9,13 @@
  */
 
 angular.module('ohtuProjektiAppApp')
-  .controller('HeaderCtrl', function($rootScope, $scope, $location, github, filteringOptions, $state, $stateParams) {
+  .controller('HeaderCtrl', function($scope, $location, github, filteringOptions,
+              $state, $stateParams) {
     $scope.currentState = $state.current.name;
     $scope.params = $state.params;
     $scope.isLoggedIn = github.isAuthenticated();
-    $scope.filters = {textFilter: ""};
+    $scope.textFilter = {filter: ""};
+    $scope.groupedFilters = [];
     github.authenticatedUser().success(function(user){
       $scope.userName = user.login;
       $scope.avatar = user.avatar_url;
@@ -28,8 +30,15 @@ angular.module('ohtuProjektiAppApp')
       }
     }
 
+    // Tracks text filter and updates filtering service accordingly
     $scope.textFilterChanged = function(){
-      filteringOptions.setTextFilter($scope.filters.textFilter);
-    };
+      filteringOptions.setTextFilter($scope.textFilter.filter);
+    }
+
+    // Watches for init of filter groups and updates scope variable accordingly
+    $scope.$watch(function(){return filteringOptions.getGroupedFilters();},
+      function(newFilters, oldFilters){
+        $scope.groupedFilters = newFilters;
+      })
  });
 
