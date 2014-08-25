@@ -8,7 +8,7 @@
  * Controller of the ohtuProjektiAppApp
  */
 angular.module('ohtuProjektiAppApp')
-  .controller('ListCtrl', function ($scope, $state, github) {
+  .controller('ListCtrl', function ($scope, $state, github, alertService) {
     if (!github.isAuthenticated()) $state.go('main');
     github.userRepos().success(function(data) {
       $scope.repos = data;
@@ -20,9 +20,7 @@ angular.module('ohtuProjektiAppApp')
     			$state.go('repository', {'owner' : $scope.owner, 'repoName' : $scope.repo});
     		}
     	}).error(function(data) {
-    		if (data) {
-    			console.log("repository does not exist? or github is down :)");
-    		}
+            alertService.addAlert('danger', data.message);
     	});
     }
   });
