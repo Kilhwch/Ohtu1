@@ -26,7 +26,7 @@ describe('Creating issues', function() {
       ptor.ignoreSynchronization = false;
     });
 
-    it('should receive correct response when creating a new label as a state', function() {
+    xit('should receive correct response when creating a new label as a state', function() {
       element(by.id('add')).click();
       element(by.id('Labels')).click();
       element(by.model('createlabel.name')).sendKeys('label name');
