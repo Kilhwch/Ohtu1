@@ -10,8 +10,8 @@
 
 
 angular.module('ohtuProjektiAppApp')
-  .controller('IssueboardCtrl', function(
-    $rootScope, $scope, $filter, $state, $stateParams, github, filteringOptions, $modal, $window, alertService) {
+  .controller('IssueboardCtrl', function($scope, $filter, $state,
+        $stateParams, github, filteringOptions, $modal, $window, alertService) {
 
     if (!github.isAuthenticated()) $state.go('main');
 
@@ -24,18 +24,24 @@ angular.module('ohtuProjektiAppApp')
 
     milestones.list().success(function(data) {
         $scope.milestones = data;
-        $rootScope.$broadcast('viewIssueboard', {milestones: data});
+        //$rootScope.$broadcast('viewIssueboard', {milestones: data});
         
         labels.list().success(function(data) {
-         $scope.labels = data;
-         $scope.init();  
+            $scope.labels = data;
+            //$scope.init();
+            assignees.list().success(function(data) {
+                data.editing = false;
+                $scope.assignees = data;
+                filteringOptions.init($scope.labels, $scope.milestones, $scope.assignees)
+            });         
         });
     });
 
+/*
     assignees.list().success(function(data) {
         data.editing = false;
         $scope.assignees = data;
-    });
+    });*/
 
     issues.list().success(function(data) {
         data.editing = false;
@@ -152,7 +158,8 @@ angular.module('ohtuProjektiAppApp')
     };
     
     // Initialize multiselect filtering
-    $scope.init = function() {
+
+/*    $scope.init = function() {
       if (!$scope.labels) return;
         $rootScope.filtersGrouped = [];
         
@@ -189,7 +196,7 @@ angular.module('ohtuProjektiAppApp')
         }
         
         $rootScope.filtersGrouped.push({ multiSelectGroup: false});
-    };
+    };*/
 
     $scope.$watch(
     	function(){return filteringOptions.getTextFilter();}
