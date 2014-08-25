@@ -25,6 +25,7 @@ describe('Creating milestones', function() {
       ptor.ignoreSynchronization = true;
       var alert = element(by.id('alert'));
       expect(alert.getText()).toContain("Created milestone: milestone title");
+      ptor.ignoreSynchronization = false;
     });
 
   });
@@ -40,6 +41,7 @@ describe('Creating milestones', function() {
       ptor.ignoreSynchronization = true;
       var alert = element(by.id('alert'));
       expect(alert.getText()).toContain("Deleted milestone: testi");
+      ptor.ignoreSynchronization = false;
     });
 
   });

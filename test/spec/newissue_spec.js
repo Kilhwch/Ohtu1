@@ -27,6 +27,7 @@ describe('Creating issues', function() {
       ptor.ignoreSynchronization = true;
       var alert = element(by.id('alert'));
       expect(alert.getText()).toContain("Created issue: issue title");
+      ptor.ignoreSynchronization = false;
     });
 
   });
