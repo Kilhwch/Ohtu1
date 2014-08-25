@@ -16,6 +16,14 @@
   width:25%;
 }
 
+.issueHeader p {
+  width:80%;
+  text-overflow: ellipsis;
+  display block;
+  overflow: hidden;     
+  white-space: nowrap;
+}
+
 .alerts{
   padding-right: 30px;
   position: fixed;
