@@ -53,7 +53,7 @@
                           ng-options="milestone.title for milestone in milestones"></select>
                 </div>
             </div>
-             <button id="milestone-delete" style="float:right" class="btn btn-danger" ng-click="deleteMilestone(milestone)">Delete</button>
+             <button id="milestone-delete" style="float:right" class="btn btn-danger" ng-click="deleteMilestone(milestone)" ng-disabled="!milestone">Delete</button>
         </form>
         </accordion-group>
     </accordion>
