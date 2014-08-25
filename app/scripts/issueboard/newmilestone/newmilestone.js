@@ -21,7 +21,7 @@ angular.module('ohtuProjektiAppApp')
                 var formattedDate = $filter('date')(milestone.due_on, 'yyyy-MM-ddTHH:mmZ');
                 var options = {title:milestone.title,description:milestone.description,due_on:formattedDate};
                 $scope.ghMilestones.createMilestone(options, function(data,response){
-                    alertService.addAlert('success', 'Created milestone:' + milestone.title);
+                    alertService.addAlert('success', 'Created milestone: ' + milestone.title);
                     $scope.milestones.push(data);
                 }, function(err) {
                     alertService.addAlert('danger', 'Creation unsuccessful:');

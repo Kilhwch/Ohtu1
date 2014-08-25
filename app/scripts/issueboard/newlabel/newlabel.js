@@ -52,7 +52,7 @@ angular.module('ohtuProjektiAppApp')
                     });
                 }
                 else {
-                    alert("Deletion of '" + label+ "' is not allowed");
+                    alertService.addAlert('danger', "Deletion of '" + label+ "' is not allowed");
                 }
                 reload();
                 $scope.close();
