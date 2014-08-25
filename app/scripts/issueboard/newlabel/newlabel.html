@@ -17,7 +17,9 @@
         <div class="form-group"> 
             <label class="col-sm-3 control-label" for="text">Manage a label</label>
             <div class="col-sm-6">
-                <select class="form-control" ng-model="delLabel" id="delete" ng-options="label.name as label.name for label in labels"></select>
+                <select class="form-control" ng-model="delLabel" id="delete" ng-options="label.name as label.name for label in labels">
+                    <option value="">--Select--</option>
+                </select>
             </div>
             <button id="delLabel" class="btn btn-danger" ng-click="deleteLabel(delLabel)" ng-show="delLabel">Delete</button>
         </div>
