@@ -8,7 +8,7 @@
  * Controller of the ohtuProjektiAppApp
  */
 angular.module('ohtuProjektiAppApp')
-        .controller('NewmilestoneCtrl', function($scope, github, $state,$stateParams, $modalInstance,$filter) {
+        .controller('NewmilestoneCtrl', function($scope, github, $state,$stateParams, $modalInstance,$filter, alertService) {
             $scope.ghMilestones = new github.Milestone($stateParams.owner, $stateParams.repoName);
             $scope.reload = function () {
                 $state.transitionTo($state.current, $stateParams, {
@@ -21,10 +21,10 @@ angular.module('ohtuProjektiAppApp')
                 var formattedDate = $filter('date')(milestone.due_on, 'yyyy-MM-ddTHH:mmZ');
                 var options = {title:milestone.title,description:milestone.description,due_on:formattedDate};
                 $scope.ghMilestones.createMilestone(options, function(data,response){
-                    alert("Created milestone: " + milestone.title);
+                    alertService.addAlert('success', 'Created milestone:' + milestone.title);
                     $scope.milestones.push(data);
                 }, function(err) {
-                    alert("Creation unsuccessful");
+                    alertService.addAlert('danger', 'Creation unssuccessful:');
                 });
                 $scope.reload();
                 $scope.close();
@@ -33,7 +33,7 @@ angular.module('ohtuProjektiAppApp')
             $scope.deleteMilestone = function(milestone) {
               if (milestone) {
               $scope.ghMilestones.deleteMilestone(milestone.number, function(data) {
-                  alert("Deleted milestone: " + milestone.title);
+                  alertService.addAlert('success', 'Deleted milestone: ' + milestone.title);
                   //var index = $scope.milestones.indexOf(milestone);
                   //$scope.milestones.slice(index,1);
                   $scope.reload();

@@ -13,7 +13,7 @@ describe('Creating issues', function() {
     browser.get('#/repos/user/repo');
   });
 
-  describe('when create', function() {
+  xdescribe('when create', function() {
 
     it('should receive correct response when creating a new label', function() {
       element(by.id('add')).click();

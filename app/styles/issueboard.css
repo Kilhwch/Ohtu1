@@ -4,6 +4,28 @@
   background-color: #f5f2eb;
 }
 
+.ui-draggable-dragging{
+  width:25% !important;
+}
+
+.ui-draggable{
+  width:25%;
+}
+
+.ui-draggable-handle{
+  width:25%;
+}
+
+.alerts{
+  padding-right: 30px;
+  position: fixed;
+  width: 50%;
+  top: 90px;
+  left: 25%;
+  right: 25%;
+  z-index: 10;
+}
+
 .issue{
   border: 1px solid rgba(42,44,43,0.5);
   border-radius: 5px;
@@ -161,12 +183,6 @@
   width:100%;
   height:100%;
   position:absolute;
-}
-
-.listview{
-  padding-top: 80px;
-  height: 80%;
-  overflow-y: scroll;
 }
 
 .multilabel{
