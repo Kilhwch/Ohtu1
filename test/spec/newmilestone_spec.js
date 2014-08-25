@@ -13,7 +13,7 @@ describe('Creating milestones', function() {
     browser.get('#/repos/user/repo');
   });
 
-  xdescribe('when create', function() {
+  describe('when create', function() {
 
     it('should receive correct response when creating a new milestone', function() {
       $('#add').click();
@@ -22,9 +22,9 @@ describe('Creating milestones', function() {
       element(by.model('milestone.description')).sendKeys('milestone description');
       element(by.model('milestone.due_on')).sendKeys('milestone due on');
       $('#newmilestone-create').click();
-      var alertDialog = ptor.switchTo().alert();
-      alertDialog.accept();
-      expect(alertDialog.getText()).toContain("Created milestone: milestone title");
+      ptor.ignoreSynchronization = true;
+      var alert = element(by.id('alert'));
+      expect(alert.getText()).toContain("Created milestone: milestone title");
     });
 
   });
@@ -33,13 +33,13 @@ describe('Creating milestones', function() {
 
     it('should receive correct response when deleting a new milestone', function() {
       $('#add').click();
-      element(by.id('Delete milestone')).click();
+      element(by.id('Milestones')).click();
       $('select#delete').click()
       $('option[value="0"]').click()
       $('#milestone-delete').click();
-      var alertDialog = ptor.switchTo().alert();
-      alertDialog.accept();
-      expect(alertDialog.getText()).toContain("Deleted milestone: testi");
+      ptor.ignoreSynchronization = true;
+      var alert = element(by.id('alert'));
+      expect(alert.getText()).toContain("Deleted milestone: testi");
     });
 
   });
