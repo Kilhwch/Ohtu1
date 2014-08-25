@@ -8,7 +8,7 @@
  * Controller of the ohtuProjektiAppApp
  */
 angular.module('ohtuProjektiAppApp')
-        .controller('IssueboxCtrl', function($scope, github, $state,$stateParams, $modalInstance) {
+        .controller('IssueboxCtrl', function($scope, github, $state,$stateParams, $modalInstance, alertService) {
             var issues = new github.Issue($stateParams.owner, $stateParams.repoName);
             var comment = new github.Comment($stateParams.owner, $stateParams.repoName, $scope.issue)
             comment.list({},function(data, response) {
@@ -58,7 +58,9 @@ angular.module('ohtuProjektiAppApp')
                 if(issue.milestone== null) options = {title : issue.title, body : issue.body, labels : newLabels, milestone : ""} ;
                 else options = {title : issue.title, body :issue.body, labels : newLabels, milestone : issue.milestone.number};
                 
-                issues.updateIssue(issue.number, options,function(data,response) {},function(err) {
+                issues.updateIssue(issue.number, options,function(data,response) {
+                    alertService.addAlert('success','Edit succesful');
+                },function(err) {
                     $scope.issue.title = tmp.title;
                     $scope.issue.body = tmp.body;
                     $scope.issue.milestone = tmp.milestone;
