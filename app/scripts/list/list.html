@@ -1,6 +1,7 @@
 <div class ="listviewWrapper">
   <div class="row listview">
     <div class="col-md-6 col-md-offset-3" ng-controller="ListCtrl">
+       <alert id="alert" ng-repeat="alert in alerts" type="{{alert.type}}">{{alert.msg}}</alert>
     	<input class ="owner form-control" ng-model="owner" placeholder="Owner">
     	<input class ="repo form-control" ng-model="repo" placeholder="Repo">
     	<h4><a ui-sref="list" ng-click="repoExists()" ng-hide="!owner.length || !repo.length" id ="searchlink">{{owner}}/{{repo}}</a></h4>
@@ -9,6 +10,7 @@
          <h4 class="list-group-item-heading">{{repo.name}}</h4>
          <p class="list-group-item-text">{{repo.description}}</p>
         </a>
+
       </div>
     </div>
   </div>
