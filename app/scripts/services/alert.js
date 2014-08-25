@@ -11,7 +11,7 @@ angular.module('ohtuProjektiAppApp')
       $rootScope.alerts.push({'type': type, 'msg': msg});
       $timeout(function() {
                 $rootScope.alerts.splice(0, 1);
-            }, 5000);
+            }, 3000);
     };
 
     alertService.closeAlert = function(index) {

@@ -4,22 +4,11 @@
   background-color: #f5f2eb;
 }
 
-.ui-draggable-dragging{
-  width:25% !important;
-}
-
-.ui-draggable{
-  width:25%;
-}
-
-.ui-draggable-handle{
-  width:25%;
-}
 
 .issueHeader p {
   width:80%;
   text-overflow: ellipsis;
-  display block;
+  display: block;
   overflow: hidden;     
   white-space: nowrap;
 }
