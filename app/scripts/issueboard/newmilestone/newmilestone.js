@@ -24,7 +24,7 @@ angular.module('ohtuProjektiAppApp')
                     alertService.addAlert('success', 'Created milestone:' + milestone.title);
                     $scope.milestones.push(data);
                 }, function(err) {
-                    alertService.addAlert('danger', 'Creation unssuccessful:');
+                    alertService.addAlert('danger', 'Creation unsuccessful:');
                 });
                 $scope.reload();
                 $scope.close();
