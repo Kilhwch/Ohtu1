@@ -65,6 +65,7 @@ angular.module('ohtuProjektiAppApp')
                     $scope.issue.body = tmp.body;
                     $scope.issue.milestone = tmp.milestone;
                     $scope.issue.labels = tmp.labels;
+                    alertService.addAlert('warning','Edit unsuccesful');
                 });
                 issue.editing = false;
                 $scope.modalInstance.dismiss('close');
