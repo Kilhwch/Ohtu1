@@ -17,6 +17,10 @@ body {
   overflow-y: scroll;
 }
 
+.listviewWrapper{
+  overflow: hidden;
+}
+
 .repolist .list-group-item.active:hover{
   background-color: #E5E3DC;
   border: 1px solid rgba(42,44,43,0.5);
