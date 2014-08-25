@@ -1,12 +1,13 @@
 angular.module('ohtuProjektiAppApp')
-  .filter('multiselect', function ($rootScope) {
+  .filter('multiselect', function (filteringOptions) {
     return function (issues, scope) {
-      //console.log("scopeID in filter: ", scope.$id);
-       if (!scope.filtersGrouped) return issues
+      
+       //if (!scope.filtersGrouped) return issues
        var filtered = [];
        var filteredLabels = [];
        var filteredMilestones = [];
        var filteredAssignees = [];
+       var filters = filteringOptions.getGroupedFilters();
 
        /**
         *  Return true if a milestone is ticked.
@@ -41,8 +42,8 @@ angular.module('ohtuProjektiAppApp')
          /**
           *  Filters milestones and labels into their respective arrays.
           */
-          for (var i = 0; i < $rootScope.filtersGrouped.length; i++) {
-            var item = $rootScope.filtersGrouped[i];
+          for (var i = 0; i < filters.length; i++) {
+            var item = filters[i];
 
             if (item.ticked) {
               if (item.type === 'label') {
@@ -110,6 +111,7 @@ angular.module('ohtuProjektiAppApp')
         }
         
         angular.forEach(issues, filterIssues);
+        
         return filtered;
     };
   })

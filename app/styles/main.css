@@ -62,15 +62,19 @@ body {
   padding-top: 40px;
 }
 
+dl {
+    margin-bottom:30px;
+}
+
 @media (min-width: 768px) {
   .dlhorizontal dt {
     float: left;
-    width: 120px;
     overflow: hidden;
     clear: left;
     text-align: left;
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin-left:35px;
   }
   .dlhorizontal dd {
     margin-left: 140px;
