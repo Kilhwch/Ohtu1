@@ -26,7 +26,7 @@
             <div class="col-sm-6">
                 <input  class="form-control"type="text" ng-model="renamelabelname" placeholder="Label name" ng-show="delLabel">
             </div>
-            <button id="renameLabel" class="btn btn-warning" ng-click="renameLabel(delLabel, renamelabelname)" ng-show="delLabel">Rename</button>
+            <button id="renameLabel" class="btn btn-warning" ng-click="renameLabel(delLabel, renamelabelname)" ng-show="delLabel" ng-disabled="!renamelabelname">Rename</button>
         </div>
 
     </form>
