@@ -162,13 +162,12 @@
   -webkit-box-shadow: 0px 0px 3px 0px rgba(150,150,150,1);
   -moz-box-shadow: 0px 0px 3px 0px rgba(150,150,150,1);
   box-shadow: 0px 0px 3px 0px rgba(150,150,150,1);
-  width:40px;
-  height:40px;
 }
 
 .issuecomments img{
+  width:30px;
+  height:30px;
   position: absolute;
-  left: 20px; 
 }
 
 .avatar-img:hover {
@@ -178,6 +177,8 @@
 }
 
 .column img{
+  width:40px;
+  height:40px;
   position: absolute;
   right: -5px; 
   top: -5px;
