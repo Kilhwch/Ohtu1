@@ -13,16 +13,17 @@ describe('Creating issues', function() {
     browser.get('#/repos/user/repo');
   });
 
-  xdescribe('when create', function() {
+  describe('when create', function() {
 
     it('should receive correct response when creating a new label', function() {
       element(by.id('add')).click();
       element(by.id('Labels')).click();
       element(by.model('createlabel.name')).sendKeys('label name');
       $('#sendlabel').click();
-      var alertDialog = ptor.switchTo().alert();
-      alertDialog.accept();
-      expect(alertDialog.getText()).toContain("Created label: label name");
+      ptor.ignoreSynchronization = true;
+      var alert = element(by.id('alert'));
+      expect(alert.getText()).toContain("Created label: label name");
+      ptor.ignoreSynchronization = false;
     });
 
     it('should receive correct response when creating a new label as a state', function() {
@@ -31,9 +32,10 @@ describe('Creating issues', function() {
       element(by.model('createlabel.name')).sendKeys('label name');
       element(by.model('createlabel.state')).click();
       $('#sendlabel').click();
-      var alertDialog = ptor.switchTo().alert();
-      alertDialog.accept();
-      expect(alertDialog.getText()).toContain("Created label: State:label name");
+      ptor.ignoreSynchronization = true;
+      var alert = element(by.id('alert'));
+      expect(alert.getText()).toContain("Created label: State:label name");
+      ptor.ignoreSynchronization = false;
     });
 
   it('should receive correct response when deleting a new label', function() {
@@ -43,9 +45,10 @@ describe('Creating issues', function() {
     $('select#delete').click()
     $('option[value="0"]').click()
     $('#delLabel').click();
-    var alertDialog = ptor.switchTo().alert();
-    alertDialog.accept();
-    expect(alertDialog.getText()).toContain("Deletion unsuccessful");
+    ptor.ignoreSynchronization = true;
+    var alert = element(by.id('alert'));
+    expect(alert.getText()).toContain("Deletion unsuccessful");
+    ptor.ignoreSynchronization = false;
   });
 
   it('should receive correct response when renaming a new label', function() {
@@ -55,9 +58,10 @@ describe('Creating issues', function() {
     $('option[value="0"]').click()
     element(by.model('renamelabelname')).sendKeys('Uusi');
     $('#renameLabel').click();
-    var alertDialog = ptor.switchTo().alert();
-    alertDialog.accept();
-    expect(alertDialog.getText()).toContain("Rename unsuccessful");
+    ptor.ignoreSynchronization = true;
+    var alert = element(by.id('alert'));
+    expect(alert.getText()).toContain("Rename unsuccessful");
+    ptor.ignoreSynchronization = false;
   });
 
   });
