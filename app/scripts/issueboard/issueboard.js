@@ -41,8 +41,7 @@ angular.module('ohtuProjektiAppApp')
         data.editing = false;
         $scope.issues = data;
     }).error(function(data){
-        console.log("error: " + data.message);
-        $state.go('main');
+        alertService.addAlert('danger', data.message);
     });
 
     $scope.editItem = function(issue){
