@@ -17,8 +17,9 @@
 }
 
 #add:hover {
+  cursor: pointer;
+  color: black;
 	box-shadow: none;
-	-webkit-filter: Invert(100%);
 }
 
 .header a, h4 {

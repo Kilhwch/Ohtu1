@@ -20,7 +20,7 @@ angular.module('ohtuProjektiAppApp')
     var labels = new github.Label($stateParams.owner,$stateParams.repoName);
     var assignees = new github.Assignee($stateParams.owner,$stateParams.repoName);
     
-    $scope.createOptions = ['Issues','Labels','Milestones'];
+    $scope.$root.createOptions = ['Issues','Labels','Milestones'];
 
     milestones.list().success(function(data) {
         $scope.milestones = data;
@@ -93,7 +93,8 @@ angular.module('ohtuProjektiAppApp')
       return (issue.labels.length === 0)? "": "#" + issue.labels[0].color;
     };
 
-    $scope.openModal = function(choice) {
+    $scope.$root.openModal = function(choice) {
+        console.log("im in open modal");
         if(choice === "Issues") {
             $scope.openNewIssueModal();
         }
