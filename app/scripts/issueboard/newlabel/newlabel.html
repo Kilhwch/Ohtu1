@@ -5,8 +5,9 @@
     <form role="form" class="form-horizontal">
         <div class="form-group">
             <label class="col-sm-3 control-label" for="text">Create a label</label>
-            <div class="col-sm-6" >
+            <div class="col-sm-6 input-group colorpick">
                 <input  class="form-control"type="text" ng-model="createlabel.name" placeholder="Label name">
+                <ng-color-picker selected='selected' class="ng-color-picker" colors="colors"></ng-color-picker>
             </div>
             <button id="sendlabel" class="btn btn-primary" ng-click="createLabel(createlabel)" ng-show="createlabel.name">Create</button>
             <label class="col-sm-3 control-label" for="text" ng-show="createlabel.name" style="bottom:4px">Set as state</label>
