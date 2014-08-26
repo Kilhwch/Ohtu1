@@ -233,44 +233,28 @@ angular.module('ohtuProjektiAppApp')
         $scope.issueDropped('State:Ready','State:InProgress', 'State:Done');
     };
     
-    var replaceLabelName = function(state) {
-         for (var i = 0; i < $scope.issues.length; ++i) {
+    var replaceLabelName = function() {
+        for (var i = 0; i < $scope.issues.length; ++i) {
             if ($scope.issues[i].number == $scope.dragedissue.number) {
                 $scope.issues[i].labels = $scope.dragedissue.labels;
             }
-        }
-        issues.updateIssue($scope.dragedissue.number, {labels: $scope.dragedissue.labels, 'state' : state}, function(data, response){$scope.dragedissue.labels = data.labels},function(error){});
+        }   
+        issues.updateIssue($scope.dragedissue.number, {labels: $scope.dragedissue.labels}, function(data, response){$scope.dragedissue.labels = data.labels},function(error){});
     }
-
     $scope.issueDropped = function(string1, string2, string3) {
-        // flag for checking if dropped issue came from backlog
         var backlogB = true;
-        // go through labels and see if there's ready, inprogress or done label
         for (var i = 0; i < $scope.dragedissue.labels.length; ++i) {
             var l = $scope.dragedissue.labels[i].name;
             if (l == string1 || l == string2) {
-                //there is ready, in progress or done label so overwrite it
                 $scope.dragedissue.labels[i].name = string3;
                 backlogB = false;
             }
         }
-        // there were no labels so issue was in backlog, add done, ready or inprogress label
         if (backlogB) {
             $scope.dragedissue.labels.unshift(string3);
         }
-        // set state open all except done
-        var state = 'open';
-        // find if we dropped in done
-        for (var i = 0; i < $scope.dragedissue.labels.length; ++i) {
-            var l = $scope.dragedissue.labels[i].name;
-            if (l == 'State:Done') {
-                state = 'closed';
-            }
-        }
-        //this updates it for github
-        replaceLabelName(state);
+        replaceLabelName();
     };
-
 
     $scope.issueDroppedBacklog = function(item) {
         for (var i = 0; i < $scope.dragedissue.labels.length; ++i) {
@@ -279,7 +263,7 @@ angular.module('ohtuProjektiAppApp')
                 $scope.dragedissue.labels.splice(i,1);
             }
         }
-        replaceLabelName('open');
+        replaceLabelName();
     };
 
 });
