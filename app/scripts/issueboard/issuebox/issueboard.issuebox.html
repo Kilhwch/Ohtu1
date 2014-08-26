@@ -26,5 +26,10 @@
         <p>{{issue.body}}</p>
         <i id="editCog" class="fa fa-cog" ng-click="openIssueEditModal(issue)" title="Click to edit" ng-show="hover"></i>
     </div>
+    <div class="issueFooter">
+        <span ng-repeat="label in issue.labels | filter:'!State:' " label="label" class="">
+            <span class="label-pill " style="background-color:#{{label.color}}">{{label.name}}</span>
+        </span>
+    </div>
 </div>
 
