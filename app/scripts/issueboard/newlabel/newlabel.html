@@ -5,15 +5,11 @@
     <form role="form" class="form-horizontal">
         <div class="form-group">
             <label class="col-sm-3 control-label" for="text">Create a label</label>
-            <div class="col-sm-6 input-group colorpick">
-                <input  class="form-control"type="text" ng-model="createlabel.name" placeholder="Label name">
-                <ng-color-picker selected='selected' class="ng-color-picker" colors="colors"></ng-color-picker>
+            <div class="col-sm-6">
+                <input  class="form-control" type="text" ng-model="createlabel.name" placeholder="Label name">
+                <input class="colorPick" type="color" value="#DBDBDB" ng-model="createlabel.color">
             </div>
             <button id="sendlabel" class="btn btn-primary" ng-click="createLabel(createlabel)" ng-show="createlabel.name">Create</button>
-            <label class="col-sm-3 control-label" for="text" ng-show="createlabel.name" style="bottom:4px">Set as state</label>
-            <div class="col-sm-6">
-                <input type="checkbox" ng-model="createlabel.state" ng-show="createlabel.name" style="vertical-align: middle">
-            </div>
         </div>
         <div class="form-group"> 
             <label class="col-sm-3 control-label" for="text">Manage a label</label>

@@ -18,11 +18,10 @@ angular.module('ohtuProjektiAppApp')
                 });
             };
 
-            $scope.selected = '#e1e1e1';
 
             $scope.createLabel = function(label) {
-                if(label.state == true) label.name = "State:"+label.name;
-                var options = {name: label.name};
+                var pickedColor = label.color.slice(1,7)
+                var options = {name: label.name, color: pickedColor};
                 labels.createLabel(options, function(data,response) {
                     alertService.addAlert('success', 'Created label: ' + label.name);
                     $scope.labels.push(data);
@@ -31,7 +30,6 @@ angular.module('ohtuProjektiAppApp')
                 });
                 reload();
                 $scope.close();
-                console.log($scope.selected);
             };
 
             $scope.renameLabel = function(label, newname) {
