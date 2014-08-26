@@ -33,7 +33,6 @@ angular.module('ohtuProjektiAppApp')
             };
 
             $scope.renameLabel = function(label, newname) {
-                console.log(label);
                 var options = {name: newname};
                 labels.updateLabel(label, options, function(data,response) {
                     alertService.addAlert('success', 'Renamed label: ' + label);
