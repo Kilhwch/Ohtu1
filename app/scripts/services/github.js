@@ -15,7 +15,7 @@ angular.module('ohtuProjektiAppApp')
     var apiUrl = 'https://api.github.com';
 
     function _http(method, url, data, success, error) {
-      var options = { method: method, url: apiUrl + url, data: data, cache: false, params: {} };
+      var options = { method: method, url: apiUrl + url, data: data, cache: false, params: {state: 'all'} };
       var token = localStorageService.get('token');
 
       if (method === 'GET') {
