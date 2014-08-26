@@ -17,6 +17,9 @@ angular.module('ohtuProjektiAppApp')
                   notify: true
                 });
             };
+
+            
+
             $scope.createLabel = function(label) {
                 if(label.state == true) label.name = "State:"+label.name;
                 var options = {name: label.name};
