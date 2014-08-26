@@ -7,7 +7,7 @@
             <label class="col-sm-3 control-label" for="text">Create a label</label>
             <div class="col-sm-6">
                 <input  class="form-control" type="text" ng-model="createlabel.name" placeholder="Label name">
-                <input class="colorPick" type="color" value="#DBDBDB" ng-model="createlabel.color">
+                <input class="colorPick" type="color" ng-init="createlabel.color='#DBDBDB' " ng-model="createlabel.color">
             </div>
             <button id="sendlabel" class="btn btn-primary" ng-click="createLabel(createlabel)" ng-show="createlabel.name">Create</button>
         </div>

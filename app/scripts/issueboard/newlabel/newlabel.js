@@ -18,7 +18,6 @@ angular.module('ohtuProjektiAppApp')
                 });
             };
 
-
             $scope.createLabel = function(label) {
                 var pickedColor = label.color.slice(1,7)
                 var options = {name: label.name, color: pickedColor};
