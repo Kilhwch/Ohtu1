@@ -34,6 +34,22 @@ angular.module('ohtuProjektiAppApp')
                 $scope.modalInstance.dismiss('close');
             };
 
+            $scope.closeIssue = function(issue){
+                var options = [];
+                options = {title : issue.title, body : issue.body, labels : issue.labels, milestone : issue.milestone, state: "closed"} ; 
+                issues.updateIssue(issue.number, options,function(data,response) {
+                    alertService.addAlert('success','Closed issue');
+                },function(err) {
+                    alertService.addAlert('warning','Issue was not closed');
+                });
+                for(var i = 0; i < $scope.issues.length; i++){
+                    if($scope.issues[i].number == issue.number){
+                        $scope.issues.splice(i, 1);
+                    }
+                }
+                $scope.close();
+            };
+
             $scope.doneEditing = function(issue){
                 var tmp = angular.copy($scope.issue);
                 var newLabels = [];

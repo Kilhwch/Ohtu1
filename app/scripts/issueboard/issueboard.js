@@ -73,7 +73,7 @@ angular.module('ohtuProjektiAppApp')
 
     $scope.assign = function(issue, assignee){
         issues.updateIssue(issue.number,{assignee:assignee.login}, function(data, response){issue.assignee = data.assignee},function(data, error){
-            console.log('Error while assigning assignee');
+            alertService.addAlert('danger', 'Could not assign');
         });
         issue.editing = false;
 
@@ -81,7 +81,7 @@ angular.module('ohtuProjektiAppApp')
 
     $scope.clearAssignee = function(issue){
         issues.updateIssue(issue.number,{assignee:null}, function(data, response){issue.assignee = data.assignee},function(data, error){
-            console.log('Error while assigning assignee');
+            alertService.addAlert('danger', 'Could not remove assignee');
         });
         issue.editing = false;
 

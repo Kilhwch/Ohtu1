@@ -25,7 +25,7 @@ angular.module('ohtuProjektiAppApp')
                     alertService.addAlert('success', 'Created label: ' + label.name);
                     $scope.labels.push(data);
                 }, function(error) {
-                    alertService.addAlert('danger', 'Creation unsuccessful:');
+                    alertService.addAlert('danger', 'Creation unsuccessful');
                 });
                 reload();
                 $scope.close();
@@ -37,7 +37,7 @@ angular.module('ohtuProjektiAppApp')
                     alertService.addAlert('success', 'Renamed label: ' + label);
                     $scope.labels.push(data);
                 }, function(error) {
-                    alertService.addAlert('danger', 'Rename unsuccessful:');
+                    alertService.addAlert('danger', 'Rename unsuccessful');
                 });
                 reload();
                 $scope.close();
@@ -48,7 +48,7 @@ angular.module('ohtuProjektiAppApp')
                     labels.deleteLabel(label, function() {
                         alertService.addAlert('success', 'Deleted label: ' + label);
                     }, function(error) {
-                        alertService.addAlert('danger', 'Deletion unsuccessful:');
+                        alertService.addAlert('danger', 'Deletion unsuccessful');
                     });
                 }
                 else {
