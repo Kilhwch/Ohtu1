@@ -25,6 +25,10 @@
 	box-shadow: none;
 }
 
+.navbar-default .navbar-brand:hover {
+color: #333 !important;
+}
+
 .colorPick{
   width: 100%;
   height: 20px;
