@@ -1,0 +1,48 @@
+<div class="modal-header">
+    <h3>Manage labels</h3>
+</div>
+<div class="modal-body">
+    <form role="form" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-3 control-label" for="text">Create a label</label>
+            <div class="col-sm-6">
+                <input  class="form-control" type="text" ng-model="createlabel.name" placeholder="Label name">
+                <input class="colorPick" type="color" ng-init="createlabel.color='#DBDBDB' " ng-model="createlabel.color" list="colors">
+                <datalist id="colors">
+                <option>#DBDBDB</option>
+                <option>#e11d21</option>
+                <option>#fbca04</option>
+                <option>#009800</option>
+                <option>#006b75</option>
+                <option>#207de5</option>
+                <option>#0052cc</option>
+                <option>#5319e7</option>
+                </datalist>
+            </div>
+            <button id="sendlabel" class="btn btn-primary" ng-click="createLabel(createlabel)" ng-show="createlabel.name">Create</button>
+        </div>
+        <div class="form-group"> 
+            <label class="col-sm-3 control-label" for="text">Manage a label</label>
+            <div class="col-sm-6">
+                <select class="form-control" ng-model="delLabel" id="delete" ng-options="label.name as label.name for label in labels
+                    | filter: { name : '!State:Ready'}
+                    | filter: { name : '!State:InProgress'}
+                    | filter: { name : '!State:Done'}">
+                    <option value="">--Select--</option>
+                </select>
+            </div>
+            <button id="delLabel" class="btn btn-danger" ng-click="deleteLabel(delLabel)" ng-show="delLabel">Delete</button>
+        </div>
+        <div class="form-group"> 
+            <label class="col-sm-3 control-label" for="text"></label>
+            <div class="col-sm-6">
+                <input  class="form-control"type="text" ng-model="renamelabelname" placeholder="Label name" ng-show="delLabel">
+            </div>
+            <button id="renameLabel" class="btn btn-warning" ng-click="renameLabel(delLabel, renamelabelname)" ng-show="delLabel" ng-disabled="!renamelabelname">Rename</button>
+        </div>
+
+    </form>
+</div>
+<div class="modal-footer">
+    <button id="newlabel-close" class="btn btn-warning" ng-click="close()">Cancel</button>
+</div>

@@ -24,11 +24,9 @@ angular.module('ohtuProjektiAppApp')
 
     milestones.list().success(function(data) {
         $scope.milestones = data;
-        //$rootScope.$broadcast('viewIssueboard', {milestones: data});
         
         labels.list().success(function(data) {
             $scope.labels = data;
-            //$scope.init();
             assignees.list().success(function(data) {
                 data.editing = false;
                 $scope.assignees = data;
@@ -36,12 +34,6 @@ angular.module('ohtuProjektiAppApp')
             });         
         });
     });
-
-/*
-    assignees.list().success(function(data) {
-        data.editing = false;
-        $scope.assignees = data;
-    });*/
 
     issues.list().success(function(data) {
         data.editing = false;
@@ -135,16 +127,16 @@ angular.module('ohtuProjektiAppApp')
     
     $scope.openNewLabelModal = function() {
       var modalInstance = $modal.open({
-        templateUrl: 'scripts/issueboard/newlabel/newlabel.html',
-        controller: 'NewlabelCtrl',
+        templateUrl: 'scripts/issueboard/managelabels/managelabels.html',
+        controller: 'ManagelabelsCtrl',
         scope: $scope 
       });
     };
 
     $scope.openNewMilestoneModal = function() {
       var modalInstance = $modal.open({
-        templateUrl: 'scripts/issueboard/newmilestone/newmilestone.html',
-        controller: 'NewmilestoneCtrl',
+        templateUrl: 'scripts/issueboard/managemilestones/managemilestones.html',
+        controller: 'ManagemilestonesCtrl',
         scope: $scope 
       });
     };
@@ -156,47 +148,6 @@ angular.module('ohtuProjektiAppApp')
         scope: $scope 
       });
     };
-    
-    // Initialize multiselect filtering
-
-/*    $scope.init = function() {
-      if (!$scope.labels) return;
-        $rootScope.filtersGrouped = [];
-        
-        // milestones
-        
-        $rootScope.filtersGrouped.push({name: '<strong>Milestones</strong>', multiSelectGroup: true});
-        
-        for (var i = 0; i < $scope.milestones.length; i++) {
-            var title = $scope.milestones[i].title;
-            $scope.filtersGrouped.push({name: title, ticked: false, type: 'milestone'});
-        }
-        
-        $rootScope.filtersGrouped.push({ multiSelectGroup: false});
-        
-        // labels
-        
-        $rootScope.filtersGrouped.push({name: '<strong>Labels</strong>', multiSelectGroup: true});
-        
-        for (var i = 0; i < $scope.labels.length; i++) {
-            var name = $scope.labels[i].name;
-                if (name != 'State:Done' && name != 'State:InProgress' && name != 'State:Ready') {
-                    $rootScope.filtersGrouped.push({name: name, ticked: false, type: 'label'});
-                }
-        }
-        
-        $rootScope.filtersGrouped.push({ multiSelectGroup: false});
-        
-        // assigneet
-        $rootScope.filtersGrouped.push({name: '<strong>Assignees</strong>', multiSelectGroup: true});
-        
-        for (var i = 0; i < $scope.assignees.length; i++) {
-            var name = $scope.assignees[i].login;
-                $rootScope.filtersGrouped.push({name: name, ticked: false, type: 'assignee'});
-        }
-        
-        $rootScope.filtersGrouped.push({ multiSelectGroup: false});
-    };*/
 
     $scope.$watch(
     	function(){return filteringOptions.getTextFilter();}
@@ -212,8 +163,6 @@ angular.module('ohtuProjektiAppApp')
 	    	visibility: 'visible'
 	    });
     };
-
-    
 
     $scope.issueBoxDragStopped = function(item){
     	var elem = angular.element(item.target);
@@ -239,8 +188,10 @@ angular.module('ohtuProjektiAppApp')
                 $scope.issues[i].labels = $scope.dragedissue.labels;
             }
         }   
-        issues.updateIssue($scope.dragedissue.number, {labels: $scope.dragedissue.labels}, function(data, response){$scope.dragedissue.labels = data.labels},function(error){});
+        issues.updateIssue($scope.dragedissue.number, {labels: $scope.dragedissue.labels}, 
+                  function(data, response){$scope.dragedissue.labels = data.labels}, function(error){});
     }
+    
     $scope.issueDropped = function(string1, string2, string3) {
         var backlogB = true;
         for (var i = 0; i < $scope.dragedissue.labels.length; ++i) {
@@ -265,5 +216,4 @@ angular.module('ohtuProjektiAppApp')
         }
         replaceLabelName();
     };
-
 });

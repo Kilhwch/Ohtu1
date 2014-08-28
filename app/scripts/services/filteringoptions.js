@@ -17,11 +17,6 @@ angular.module('ohtuProjektiAppApp')
             return groupedFilters;
         },
 
-/*
-        setGroupedFilters : function(filters){
-            groupedFilters = filters;
-        },*/
-
      	getTextFilter : function(){
      		return textFilter;
      	},
@@ -30,7 +25,8 @@ angular.module('ohtuProjektiAppApp')
 	     	textFilter.filter = newFilter;
      	},
 
-            // Initialize multiselect filtering
+        
+        // Initialize multiselect filtering
         init : function(labels, milestones, assignees) {
             if (!labels) return;
             groupedFilters = [];
@@ -43,7 +39,6 @@ angular.module('ohtuProjektiAppApp')
                 var title = milestones[i].title;
                 groupedFilters.push({name: title, ticked: false, type: 'milestone'});
             }
-            
             groupedFilters.push({ multiSelectGroup: false});
             
             // labels
@@ -56,7 +51,6 @@ angular.module('ohtuProjektiAppApp')
                         groupedFilters.push({name: name, ticked: false, type: 'label'});
                     }
             }
-            
             groupedFilters.push({ multiSelectGroup: false});
             
             // assigneet
@@ -66,9 +60,7 @@ angular.module('ohtuProjektiAppApp')
                 var name = assignees[i].login;
                     groupedFilters.push({name: name, ticked: false, type: 'assignee'});
             }
-            
             groupedFilters.push({ multiSelectGroup: false});
         }
      };
-     
   });

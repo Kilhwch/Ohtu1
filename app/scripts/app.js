@@ -84,18 +84,18 @@ angular
 			    templateUrl: 'scripts/issueboard/newissue/newissue.html',
 			    controller: 'NewissueCtrl'
 			 },
-			'newlabel@repository': {
-			    templateUrl: 'scripts/issueboard/newlabel/newlabel.html',
-			    controller: 'NewlabelCtrl'
+			'managelabels@repository': {
+			    templateUrl: 'scripts/issueboard/managelabels/managelabels.html',
+			    controller: 'ManagelabelsCtrl'
 			 },
-			'newmilestone@repository': {
-			    templateUrl: 'scripts/issueboard/newmilestone/newmilestone.html',
-			    controller: 'NewmilestoneCtrl'
+			'managemilestones@repository': {
+			    templateUrl: 'scripts/issueboard/managemilestones/managemilestones.html',
+			    controller: 'ManagemilestonesCtrl'
 			 },
-			'deletemilestone@repository': {
-			    templateUrl: 'scripts/issueboard/newmilestone/deletemilestone.html',
-			    controller: 'NewmilestoneCtrl'
-			 },
+			//'deletemilestone@repository': {
+			//    templateUrl: 'scripts/issueboard/newmilestone/deletemilestone.html',
+			//    controller: 'NewmilestoneCtrl'
+			// },
 			 'multiselect@repository': {
 			    templateUrl: 'scripts/multiselect/multiselect.html',
 			 },
