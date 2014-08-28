@@ -1,7 +1,6 @@
 
  <div class="modal-header">
      <h3>Edit Issue</h3>
-     <a ref ng-click="closeIssue(issue)">Close This Issue</a>
  </div>
  <div class="modal-body">
  	<form role="form" class="form-horizontal">
@@ -77,6 +76,9 @@
  	</form>
  </div>
  <div class="modal-footer">
+ 	<div style="float:left">
+ 		<button id="submit" class="btn btn-danger" ng-click="closeIssue(issue)">Close This Issue</button>
+ 	</div>
  	<button id="submit" class="btn btn-primary" ng-click="doneEditing(editissue)">Done</button>
     <button id="editlabel-close" class="btn btn-warning" ng-click="cancelEditing(editissue)">Cancel</button>
  </div>
