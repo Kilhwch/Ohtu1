@@ -34,8 +34,6 @@ angular.module('ohtuProjektiAppApp')
               if (milestone) {
               $scope.ghMilestones.deleteMilestone(milestone.number, function(data) {
                   alertService.addAlert('success', 'Deleted milestone: ' + milestone.title);
-                  //var index = $scope.milestones.indexOf(milestone);
-                  //$scope.milestones.slice(index,1);
                   $scope.reload();
                 });
               }
